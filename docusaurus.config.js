@@ -21,7 +21,8 @@ module.exports = {
         src: "img/favicon.png"
       },
       links: [
-        { to: "docs/doc1", label: "Docs", position: "left" },
+        { to: "docs/panos_api", label: "PAN-OS® API", position: "left" },
+        { to: "docs/doc1", label: "Placeholder", position: "left" },
         {
           href: "https://medium.com/palo-alto-networks-developer-blog",
           label: "Blog",

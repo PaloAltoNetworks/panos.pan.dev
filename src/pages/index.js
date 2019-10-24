@@ -5,51 +5,55 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
-import classnames from 'classnames';
-import Layout from '@theme/Layout';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import styles from './styles.module.css';
+import Link from "@docusaurus/Link";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
+import classnames from "classnames";
+import React from "react";
+import styles from "./styles.module.css";
 
 const features = [
   {
-    title: <>Easy to Use</>,
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
+    title: <>APIs and SDKs</>,
+    imageUrl: "img/panos_apis.svg",
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Our APIs and SDKs provide a collection of open, feature-rich automation
+        opportunities for configuration and management of Palo Alto Networks
+        next-generation firewalls.
       </>
-    ),
+    )
   },
   {
-    title: <>Focus on What Matters</>,
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
+    title: <>Infrastructure-as-Code</>,
+    imageUrl: "img/ansible_terraform.png",
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Version control your infrastructure and eliminate human-error from
+        device configuration with infrastructure-as-code tools and techniques.
+        Tell your tools how the configuration should look and let them automate
+        the rest.
       </>
-    ),
+    )
   },
   {
-    title: <>Powered by React</>,
-    imageUrl: 'img/undraw_docusaurus_react.svg',
+    title: <>Cloud-scale Security</>,
+    imageUrl: "img/cloud_security.svg",
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Whether it's auto-scaling a firewall with a cloud application, seamless
+        policy across on-prem and cloud, or a single place to see all your cloud
+        security events, Palo Alto Networks cloud integrations have you covered.
       </>
-    ),
-  },
+    )
+  }
 ];
 
-function Feature({imageUrl, title, description}) {
+function Feature({ imageUrl, title, description }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
-    <div className={classnames('col col--4', styles.feature)}>
+    <div className={classnames("col col--4", styles.feature)}>
       {imgUrl && (
         <div className="text--center">
           <img className={styles.featureImage} src={imgUrl} alt={title} />
@@ -63,22 +67,24 @@ function Feature({imageUrl, title, description}) {
 
 function Home() {
   const context = useDocusaurusContext();
-  const {siteConfig = {}} = context;
+  const { siteConfig = {} } = context;
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
-      <header className={classnames('hero hero--primary', styles.heroBanner)}>
+      title={`${siteConfig.themeConfig.navbar.title}`}
+      description="All things related to automation and development with PAN-OS®"
+    >
+      <header className={classnames("hero hero--primary", styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
           <div className={styles.buttons}>
             <Link
               className={classnames(
-                'button button--outline button--secondary button--lg',
-                styles.getStarted,
+                "button button--outline button--secondary button--lg",
+                styles.getStarted
               )}
-              to={useBaseUrl('docs/doc1')}>
+              to={useBaseUrl("docs/doc1")}
+            >
               Get Started
             </Link>
           </div>
@@ -90,7 +96,17 @@ function Home() {
             <div className="container">
               <div className="row">
                 {features.map((props, idx) => (
-                  <Feature key={idx} {...props} />
+                  <Feature key={idx} {...props}>
+                    <Link
+                      className={classnames(
+                        "button button--outline button--secondary button--lg",
+                        styles.getStarted
+                      )}
+                      to={useBaseUrl("docs/doc1")}
+                    >
+                      Get Started
+                    </Link>
+                  </Feature>
                 ))}
               </div>
             </div>

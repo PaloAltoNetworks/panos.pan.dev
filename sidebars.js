@@ -9,18 +9,25 @@ const yaml = require("js-yaml");
 const fs = require("fs");
 
 const sidebars = yaml.safeLoad(fs.readFileSync("docs/sidebars.yml", "utf8"))[
-  "SIDEBAR"
+  "SIDEBARS"
 ];
 
-var items = {};
-sidebars.map(item => {
-  const category = item.category;
-  const ids = item.ids;
-  items[category] = ids;
+var sidebarsExport = {};
+sidebars.map(sidebar => {
+  const sidebarName = Object.keys(sidebar)[0];
+  var categories = [];
+  sidebar[sidebarName].map(item => {
+    sidebarObject = {};
+    const category = item.category;
+    const ids = item.ids;
+    sidebarObject["type"] = "category";
+    sidebarObject["label"] = category;
+    sidebarObject["items"] = ids;
+    categories.push(sidebarObject);
+    sidebarsExport[sidebarName] = categories;
+  });
 });
 
-console.log(items);
+console.log(sidebarsExport);
 
-module.exports = {
-  docs: items
-};
+module.exports = sidebarsExport;

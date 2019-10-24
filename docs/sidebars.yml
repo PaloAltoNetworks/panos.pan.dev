@@ -1,0 +1,17 @@
+SIDEBAR:
+  - category: Docusaurus
+    ids:
+      - doc1
+      - doc2
+      - doc3
+  - category: Features
+    ids:
+      - mdx
+      - mdown
+  - category: Steve
+    ids:
+      - ballmer1
+      - doc4
+  - category: Live Coding
+    ids:
+      - livecoding

@@ -20,7 +20,8 @@
     "panw-blox": "^1.2.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-particles-js": "^2.7.0"
+    "react-particles-js": "^2.7.0",
+    "react-scroll-up-button": "^1.6.4"
   },
   "browserslist": {
     "production": [

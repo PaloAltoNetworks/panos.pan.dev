@@ -10,10 +10,10 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import classnames from "classnames";
-import React from "react";
-import styles from "./styles.module.css";
+import React, { useRef } from "react";
 import Particles from "react-particles-js";
-
+import ScrollUpButton from "react-scroll-up-button";
+import styles from "./styles.module.css";
 
 const particlesOptions = {
   particles: {
@@ -21,26 +21,26 @@ const particlesOptions = {
       value: 100,
       density: {
         enable: true,
-        value_area: 900,
-      },
+        value_area: 900
+      }
     },
     color: {
-      value: "#ffffff",
+      value: "#ffffff"
     },
     shape: {
       type: "circle",
       stroke: {
         width: 0,
-        color: "#000000",
+        color: "#000000"
       },
       polygon: {
-        nb_sides: 5,
+        nb_sides: 5
       },
       image: {
         src: "img/github.svg",
         width: 100,
-        height: 100,
-      },
+        height: 100
+      }
     },
     opacity: {
       value: 0.2,
@@ -49,8 +49,8 @@ const particlesOptions = {
         enable: false,
         speed: 1,
         opacity_min: 0.2,
-        sync: false,
-      },
+        sync: false
+      }
     },
     size: {
       value: 3,
@@ -59,15 +59,15 @@ const particlesOptions = {
         enable: false,
         speed: 40,
         size_min: 0.1,
-        sync: false,
-      },
+        sync: false
+      }
     },
     line_linked: {
       enable: true,
       distance: 250,
       color: "#ffffff",
       opacity: 0.2,
-      width: 1,
+      width: 1
     },
     move: {
       enable: true,
@@ -80,29 +80,29 @@ const particlesOptions = {
       attract: {
         enable: false,
         rotateX: 600,
-        rotateY: 1200,
-      },
-    },
+        rotateY: 1200
+      }
+    }
   },
   interactivity: {
     detect_on: "canvas",
     events: {
       onhover: {
         enable: true,
-        mode: "grab",
+        mode: "grab"
       },
-      resize: true,
+      resize: true
     },
     modes: {
       grab: {
         distance: 200,
         line_linked: {
-          opacity: 0.4,
-        },
-      },
-    },
+          opacity: 0.4
+        }
+      }
+    }
   },
-  retina_detect: true,
+  retina_detect: true
 };
 
 const features = [
@@ -160,25 +160,33 @@ function Feature({ imageUrl, title, description }) {
 function Home() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
+  const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop - 15);
+  const vertificalsRef = useRef(null);
+  const toolsRef = useRef(null);
+  const scrollToVerticals = () => scrollToRef(vertificalsRef);
+  const scrollToTools = () => scrollToRef(toolsRef);
   return (
     <Layout
       title={`${siteConfig.themeConfig.navbar.title}`}
       description="All things related to automation and development with PAN-OS®"
     >
+      <ScrollUpButton />
       <header className={classnames("hero hero--primary", styles.heroBanner)}>
         <div className="container">
           <div>
-          <Particles className="particles" params={particlesOptions} />
+            <Particles className="particles" params={particlesOptions} />
           </div>
           <h1 className="hero__title">Next-gen Automation</h1>
-          <p className="hero__subtitle">with the only next-generation security platform</p>
+          <p className="hero__subtitle">
+            with the only next-generation security platform
+          </p>
           <div className={styles.buttons}>
             <Link
               className={classnames(
                 "button button--outline button--secondary button--lg",
                 styles.getStarted
               )}
-              to={useBaseUrl("docs/doc1")}
+              onClick={scrollToVerticals}
             >
               Get Started
             </Link>
@@ -187,26 +195,30 @@ function Home() {
       </header>
       <main>
         {features && features.length && (
-          <section className={styles.features}>
+          <section className={styles.features} ref={vertificalsRef}>
             <div className="container">
               <div className="row">
                 {features.map((props, idx) => (
-                  <Feature key={idx} {...props}>
-                    <Link
-                      className={classnames(
-                        "button button--outline button--secondary button--lg",
-                        styles.getStarted
-                      )}
-                      to={useBaseUrl("docs/doc1")}
-                    >
-                      Get Started
-                    </Link>
-                  </Feature>
+                  <Feature key={idx} {...props} />
                 ))}
+              </div>
+              <div className={styles.buttons}>
+                <Link
+                  className={classnames(
+                    "button button--outline button--primary button--lg",
+                    styles.getStarted
+                  )}
+                  onClick={scrollToTools}
+                >
+                  Tools and SDKs
+                </Link>
               </div>
             </div>
           </section>
         )}
+        <section ref={toolsRef}>
+          <div className="row"></div>
+        </section>
       </main>
     </Layout>
   );

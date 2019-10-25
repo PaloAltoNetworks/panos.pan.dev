@@ -8,11 +8,11 @@
 module.exports = {
   title: "Next-gen Automation",
   tagline: "with the only next-gen security platform",
-  url: "https://your-docusaurus-test-site.com",
+  url: "https://panos.pan.dev",
   baseUrl: "/",
   favicon: "img/panospeelable.png",
   organizationName: "PaloAltoNetworks", // Usually your GitHub org/user name.
-  projectName: "pandevice", // Usually your repo name.
+  projectName: "panos.pan.dev", // Usually your repo name.
   themeConfig: {
     navbar: {
       title: "",

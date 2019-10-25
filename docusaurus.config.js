@@ -21,8 +21,9 @@ module.exports = {
         src: "img/panospeelable.png"
       },
       links: [
-        { to: "docs/panos_api", label: "PAN-OS® API", position: "left" },
-        { to: "docs/doc1", label: "Placeholder", position: "left" },
+        { to: "docs/panos_api", label: "PAN-OS®", position: "left" },
+        { to: "docs/automation", label: "Automation", position: "left" },
+        { to: "docs/cloud", label: "Cloud", position: "left" },
         {
           href: "https://medium.com/palo-alto-networks-developer-blog",
           label: "Blog",
@@ -42,28 +43,29 @@ module.exports = {
           title: "Docs",
           items: [
             {
-              label: "Docs",
-              to: "docs/doc1"
+              label: "PAN-OS®",
+              to: "docs/panos_api"
+            },
+            {
+              label: "Automation",
+              to: "docs/automation"
+            },
+            {
+              label: "Cloud",
+              to: "docs/cloud"
             }
           ]
         },
-        { title: "Docs2",
+        {
+          title: "Community",
           items: [
-          {
-            label: "Docs",
-            to: "docs/doc1"
-          }
+            {
+              label: "Automation and API",
+              href:
+                "https://live.paloaltonetworks.com/t5/Automation-API/ct-p/automation"
+            }
           ]
         },
-        // {
-        //   title: "Community",
-        //   items: [
-        //     {
-        //       label: "Discord",
-        //       href: "https://discordapp.com/invite/docusaurus"
-        //     }
-        //   ]
-        // },
         {
           title: "Social",
           items: [
@@ -75,7 +77,7 @@ module.exports = {
         }
       ],
       logo: {
-        alt: "PAN-OS for developers",
+        alt: "PAN-OS® for developers",
         src: "img/panosfordevelopers.png"
       },
       copyright: `Copyright © ${new Date().getFullYear()} Palo Alto Networks, Inc.`
@@ -87,7 +89,16 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          sidebarPath: require.resolve("./sidebars.js")
+          sidebarPath: require.resolve("./sidebars.js"),
+          editUrl: "https://github.com/PaloAltoNetworks/panos.pan.dev/docs",
+          routeBasePath: "docs",
+          include: ["**/*.md", "**/*.mdx"], // Extensions to include.
+          docLayoutComponent: "@theme/DocPage",
+          docItemComponent: "@theme/DocItem",
+          remarkPlugins: [],
+          rehypePlugins: [],
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css")

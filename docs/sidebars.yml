@@ -1,17 +1,13 @@
 SIDEBARS:
-  - api:
+  - panos:
     - category: Overview
       ids:
         - panos_api
-  - iac:
+  - automation:
     - category: Overview
       ids:
-        - mdx
-  - cloudsec:
+        - automation
+  - cloud:
     - category: Overview
       ids:
-        - ballmer1
-        - doc4
-    - category: Live Coding
-      ids:
-        - livecoding
+        - cloud

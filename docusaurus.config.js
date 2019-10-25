@@ -112,6 +112,13 @@ module.exports = {
       cacheTime: 600 * 1000, // 600 sec - cache purge period
       changefreq: "weekly",
       priority: 0.5
+    },
+    "@docusaurus/plugin-ideal-image",
+    {
+      quality: 70,
+      max: 1030, // max resized image's size.
+      min: 640, // min resized image's size. if original is lower, use that size.
+      steps: 2 // the max number of images generated between min and max (inclusive)
     }
   ]
 };

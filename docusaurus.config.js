@@ -10,7 +10,7 @@ module.exports = {
   tagline: "with the only next-gen security platform",
   url: "https://your-docusaurus-test-site.com",
   baseUrl: "/",
-  favicon: "img/favicon.png",
+  favicon: "img/panospeelable.png",
   organizationName: "PaloAltoNetworks", // Usually your GitHub org/user name.
   projectName: "pandevice", // Usually your repo name.
   themeConfig: {
@@ -18,7 +18,7 @@ module.exports = {
       title: "",
       logo: {
         alt: "PAN-OS® for Developers",
-        src: "img/favicon.png"
+        src: "img/panospeelable.png"
       },
       links: [
         { to: "docs/panos_api", label: "PAN-OS® API", position: "left" },
@@ -47,6 +47,14 @@ module.exports = {
             }
           ]
         },
+        { title: "Docs2",
+          items: [
+          {
+            label: "Docs",
+            to: "docs/doc1"
+          }
+          ]
+        },
         // {
         //   title: "Community",
         //   items: [
@@ -67,8 +75,8 @@ module.exports = {
         }
       ],
       logo: {
-        alt: "Facebook Open Source Logo",
-        src: "https://docusaurus.io/img/oss_logo.png"
+        alt: "PAN-OS for developers",
+        src: "img/panosfordevelopers.png"
       },
       copyright: `Copyright © ${new Date().getFullYear()} Palo Alto Networks, Inc.`
     }

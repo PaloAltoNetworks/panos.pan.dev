@@ -3,11 +3,32 @@ SIDEBARS:
     - category: Overview
       ids:
         - panos_api
+    - category: PAN-OS® XML API
+      ids:
+        - xmlapi_qs
+    - category: PAN-OS® REST API
+      ids:
+        - restapi_qs
+    - category: PAN Device Framework
+      ids:
+        - pandevice_qs
+    - category: PAN Python SDK
+      ids:
+        - panpython_qs
   - automation:
     - category: Overview
       ids:
         - automation
+    - category: Ansible
+      ids:
+        - ansible_qs
+    - category: Terraform
+      ids:
+        - terraform_qs
   - cloud:
     - category: Overview
       ids:
         - cloud
+    - category: Cloud Templates
+      ids:
+        - cloudtemplates_qs

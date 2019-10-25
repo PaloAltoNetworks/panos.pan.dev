@@ -15,7 +15,7 @@ module.exports = {
   projectName: "pandevice", // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: "PAN-OS® for Developers",
+      title: "",
       logo: {
         alt: "PAN-OS® for Developers",
         src: "img/favicon.png"
@@ -86,5 +86,13 @@ module.exports = {
         }
       }
     ]
+  ],
+  plugins: [
+    "@docusaurus/plugin-sitemap",
+    {
+      cacheTime: 600 * 1000, // 600 sec - cache purge period
+      changefreq: "weekly",
+      priority: 0.5
+    }
   ]
 };

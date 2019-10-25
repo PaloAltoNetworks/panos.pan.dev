@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-alpha.30",
+    "@docusaurus/plugin-ideal-image": "^2.0.0-alpha.23",
     "@docusaurus/preset-classic": "^2.0.0-alpha.30",
     "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.23",
     "classnames": "^2.2.6",

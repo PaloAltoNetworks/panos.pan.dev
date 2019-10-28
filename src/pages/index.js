@@ -366,7 +366,7 @@ function Home() {
                 <div className="text--center">
                   <img
                     className={styles.toolImage}
-                    src="img/panos_apis.svg"
+                    src="img/cloud_security.svg"
                     alt="Cloud Templates"
                   />
                 </div>

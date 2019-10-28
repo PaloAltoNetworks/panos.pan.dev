@@ -160,7 +160,7 @@ function Feature({ imageUrl, title, description }) {
 function Home() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
-  const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop - 15);
+  const scrollToRef = ref => ref.current.scrollIntoView({ behavior: "smooth" });
   const vertificalsRef = useRef(null);
   const toolsRef = useRef(null);
   const scrollToVerticals = () => scrollToRef(vertificalsRef);

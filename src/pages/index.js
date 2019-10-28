@@ -248,7 +248,7 @@ function Home() {
                     href="https://github.com/PaloAltoNetworks/pandevice"
                   >
                     <img
-                      src="../static/img/GitHub_Logo_White.png"
+                      src="/img/GitHub_Logo_White.png"
                       width="auto"
                       height="19"
                     />
@@ -285,7 +285,7 @@ function Home() {
                     href="https://github.com/kevinsteves/pan-python"
                   >
                     <img
-                      src="../static/img/GitHub_Logo_White.png"
+                      src="/img/GitHub_Logo_White.png"
                       width="auto"
                       height="19"
                     />
@@ -320,7 +320,7 @@ function Home() {
                     href="https://github.com/PaloAltoNetworks/ansible-pan"
                   >
                     <img
-                      src="../static/img/GitHub_Logo_White.png"
+                      src="/img/GitHub_Logo_White.png"
                       width="auto"
                       height="19"
                     />
@@ -355,7 +355,7 @@ function Home() {
                     href="https://github.com/PaloAltoNetworks/terraform-templates"
                   >
                     <img
-                      src="../static/img/GitHub_Logo_White.png"
+                      src="/img/GitHub_Logo_White.png"
                       width="auto"
                       height="19"
                     />

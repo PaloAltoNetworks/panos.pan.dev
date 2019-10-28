@@ -145,7 +145,7 @@ const features = [
 function Feature({ imageUrl, title, description }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
-    <div className={classnames("col col--4", styles.feature)}>
+    <div className={classnames("col col--4", styles.features)}>
       {imgUrl && (
         <div className="text--center">
           <img className={styles.featureImage} src={imgUrl} alt={title} />
@@ -216,8 +216,185 @@ function Home() {
             </div>
           </section>
         )}
-        <section ref={toolsRef}>
-          <div className="row"></div>
+        <section className={styles.tools} ref={toolsRef}>
+          <div className="container">
+            <div className="row">
+              {/* PAN Device Framework */}
+              <div className={classnames("col col--3", styles.tools)}>
+                <div className="text--center">
+                  <img
+                    className={styles.toolImage}
+                    src="img/panos_apis.svg"
+                    alt="PAN Device Framework"
+                  />
+                </div>
+                <h3>PAN Device Framework</h3>
+                <p className="text text--seconday">Description goes here</p>
+                <div className={styles.buttons}>
+                  <Link
+                    className={classnames(
+                      "button button--outline button--primary button--md",
+                      styles.quickstart
+                    )}
+                    href="/docs/pandevice_qs"
+                  >
+                    Quickstart
+                  </Link>
+                  <Link
+                    className={classnames(
+                      "button button--outline button--primary button--md",
+                      styles.github
+                    )}
+                    href="https://github.com/PaloAltoNetworks/pandevice"
+                  >
+                    <img
+                      src="../static/img/GitHub_Logo_White.png"
+                      width="auto"
+                      height="19"
+                    />
+                  </Link>
+                </div>
+              </div>
+
+              {/* PAN Python SDK */}
+              <div className={classnames("col col--3", styles.tools)}>
+                <div className="text--center">
+                  <img
+                    className={styles.toolImage}
+                    src="img/panos_apis.svg"
+                    alt="PAN Python SDK"
+                  />
+                </div>
+                <h3>PAN Python SDK</h3>
+                <p className="text text--seconday">Description goes here</p>
+                <div className={styles.buttons}>
+                  <Link
+                    className={classnames(
+                      "button button--outline button--primary button--md",
+                      styles.quickstart
+                    )}
+                    href="/docs/panpython_qs"
+                  >
+                    Quickstart
+                  </Link>
+                  <Link
+                    className={classnames(
+                      "button button--outline button--primary button--md",
+                      styles.github
+                    )}
+                    href="https://github.com/kevinsteves/pan-python"
+                  >
+                    <img
+                      src="../static/img/GitHub_Logo_White.png"
+                      width="auto"
+                      height="19"
+                    />
+                  </Link>
+                </div>
+              </div>
+              <div className={classnames("col col--3", styles.tools)}>
+                <div className="text--center">
+                  <img
+                    className={styles.toolImage}
+                    src="img/ansible_logo.png"
+                    alt="Ansible PAN"
+                  />
+                </div>
+                <h3>Ansible PAN</h3>
+                <p className="text text--seconday">Description goes here</p>
+                <div className={styles.buttons}>
+                  <Link
+                    className={classnames(
+                      "button button--outline button--primary button--md",
+                      styles.quickstart
+                    )}
+                    href="/docs/ansible_qs"
+                  >
+                    Quickstart
+                  </Link>
+                  <Link
+                    className={classnames(
+                      "button button--outline button--primary button--md",
+                      styles.github
+                    )}
+                    href="https://github.com/PaloAltoNetworks/ansible-pan"
+                  >
+                    <img
+                      src="../static/img/GitHub_Logo_White.png"
+                      width="auto"
+                      height="19"
+                    />
+                  </Link>
+                </div>
+              </div>
+              <div className={classnames("col col--3", styles.tools)}>
+                <div className="text--center">
+                  <img
+                    className={styles.toolImage}
+                    src="img/terraform_logo.png"
+                    alt="Terraform Templates"
+                  />
+                </div>
+                <h3>Terraform Templates</h3>
+                <p className="text text--seconday">Description goes here</p>
+                <div className={styles.buttons}>
+                  <Link
+                    className={classnames(
+                      "button button--outline button--primary button--md",
+                      styles.quickstart
+                    )}
+                    href="/docs/terraform_qs"
+                  >
+                    Quickstart
+                  </Link>
+                  <Link
+                    className={classnames(
+                      "button button--outline button--primary button--md",
+                      styles.github
+                    )}
+                    href="https://github.com/PaloAltoNetworks/terraform-templates"
+                  >
+                    <img
+                      src="../static/img/GitHub_Logo_White.png"
+                      width="auto"
+                      height="19"
+                    />
+                  </Link>
+                </div>
+              </div>
+              <div className={classnames("col col--3", styles.tools)}>
+                <div className="text--center">
+                  <img
+                    className={styles.toolImage}
+                    src="img/panos_apis.svg"
+                    alt="Cloud Templates"
+                  />
+                </div>
+                <h3>Cloud Templates</h3>
+                <p className="text text--seconday">Description goes here</p>
+                <div className={styles.buttons}>
+                  <Link
+                    className={classnames(
+                      "button button--outline button--primary button--md",
+                      styles.quickstart
+                    )}
+                    href="/docs/cloudtemplates_qs"
+                  >
+                    Quickstart
+                  </Link>
+                  <Link
+                    className={classnames(
+                      "button button--outline button--primary button--md",
+                      styles.github
+                    )}
+                    href="https://live.paloaltonetworks.com/t5/Cloud-Integration/ct-p/Cloud_Templates"
+                  >
+                    Community
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
       </main>
     </Layout>

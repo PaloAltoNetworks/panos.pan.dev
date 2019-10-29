@@ -21,9 +21,13 @@ module.exports = {
         src: "img/panospeelable.png"
       },
       links: [
-        { to: "docs/panos_api", label: "PAN-OS®", position: "left" },
+        {
+          to: "docs/panos_api",
+          label: "APIs and SDKs",
+          position: "left"
+        },
         { to: "docs/automation", label: "Automation", position: "left" },
-        { to: "docs/cloud", label: "Cloud", position: "left" },
+        { to: "docs/cloud", label: "Cloud Templates", position: "left" },
         {
           href: "https://medium.com/palo-alto-networks-developer-blog",
           label: "Blog",
@@ -43,7 +47,7 @@ module.exports = {
           title: "Docs",
           items: [
             {
-              label: "PAN-OS®",
+              label: "APIs and SDKs",
               to: "docs/panos_api"
             },
             {
@@ -51,7 +55,7 @@ module.exports = {
               to: "docs/automation"
             },
             {
-              label: "Cloud",
+              label: "Cloud Templates",
               to: "docs/cloud"
             }
           ]
@@ -90,7 +94,8 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/PaloAltoNetworks/panos.pan.dev/docs",
+          // editUrl:
+          //   "https://github.com/PaloAltoNetworks/panos.pan.dev/tree/master/docs",
           routeBasePath: "docs",
           include: ["**/*.md", "**/*.mdx"], // Extensions to include.
           docLayoutComponent: "@theme/DocPage",

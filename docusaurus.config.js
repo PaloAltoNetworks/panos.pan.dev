@@ -21,6 +21,8 @@ module.exports = {
         src: "img/panospeelable.png"
       },
       links: [
+        { label: "Docs", position: "left"},
+        
         { to: "docs/panos_api", label: "PAN-OS®", position: "left" },
         { to: "docs/automation", label: "Automation", position: "left" },
         { to: "docs/cloud", label: "Cloud", position: "left" },

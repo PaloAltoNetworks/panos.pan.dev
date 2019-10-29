@@ -2,6 +2,15 @@
 id: xmlapi_qs
 title: Quickstart
 sidebar_label: Quickstart
+hide_title: false
+description: PAN-OS® XML API Quickstart
+keywords:
+  - pan-os
+  - panos
+  - xml
+  - api
+  - quickstart
+image: /img/panos_apis.svg
 ---
 
 > The following guide will walk you through sending API requests to the PAN-OS® XML API using <a href="https://curl.haxx.se/docs/httpscripting.html" target="_blank">cURL</a>, although you may optionally use another API tool such as <a href="https://www.getpostman.com/" target="_blank">Postman</a>, <a href="https://insomnia.rest/" target="_blank">Insomnia</a> or <a href="http://restclient.net/" target="_blank">RESTClient</a>. 
@@ -109,4 +118,7 @@ curl -k 'https://<firewall>//api/?type=op&cmd=<show><system><info></info></syste
 
 ## Explore the API
 
-Hungry for more? Check out the <a target="_self" href="https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-panorama-api/get-started-with-the-pan-os-xml-api/explore-the-api.html">official XML API product documentation</a> for a complete reference of available API endpoints and commands.
+Hungry for more? Check out the <a target="_blank" href="https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-panorama-api/get-started-with-the-pan-os-xml-api/explore-the-api.html">official XML API product documentation</a> for a complete reference of available API endpoints and commands.
+
+import ScrollUpButton from "react-scroll-up-button";
+<ScrollUpButton />

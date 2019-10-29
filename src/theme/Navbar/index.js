@@ -9,8 +9,6 @@ import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SearchBar from "@theme/SearchBar";
 import classnames from "classnames";
 import React, { useCallback, useEffect, useState } from "react";
@@ -43,7 +41,7 @@ function NavMenu(props) {
   return (
     <div className="navbar__item dropdown dropdown--hoverable">
       <a class="navbar__link" href="#">
-        {props.label} <FontAwesomeIcon icon={faCaretDown} />
+        {props.label} &#9662;
       </a>
       <ul class="dropdown__menu">
         {props.items.map((linkItem, i) => (

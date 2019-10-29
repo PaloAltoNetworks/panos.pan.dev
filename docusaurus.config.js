@@ -20,14 +20,29 @@ module.exports = {
         alt: "PAN-OS® for Developers",
         src: "img/panospeelable.png"
       },
-      links: [
+      menus: [
         {
-          to: "docs/panos_api",
-          label: "APIs and SDKs",
+          label: "Quickstart",
+          items: [
+            { to: "docs/xmlapi_qs", label: "XML API" },
+            { to: "docs/restapi_qs", label: "REST API" }
+          ],
           position: "left"
         },
-        { to: "docs/automation", label: "Automation", position: "left" },
-        { to: "docs/cloud", label: "Cloud Templates", position: "left" },
+        {
+          label: "Docs",
+          items: [
+            {
+              to: "docs/panos_api",
+              label: "APIs and SDKs"
+            },
+            { to: "docs/automation", label: "Automation" },
+            { to: "docs/cloud", label: "Cloud Templates" }
+          ],
+          position: "left"
+        }
+      ],
+      links: [
         {
           href: "https://medium.com/palo-alto-networks-developer-blog",
           label: "Blog",
@@ -36,7 +51,7 @@ module.exports = {
         {
           href: "https://github.com/PaloAltoNetworks",
           label: "GitHub",
-          position: "right"
+          position: "left"
         }
       ]
     },

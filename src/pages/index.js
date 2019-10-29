@@ -186,9 +186,9 @@ function Home() {
                 "button button--outline button--secondary button--lg",
                 styles.getStarted
               )}
-              onClick={scrollToVerticals}
+              onClick={scrollToTools}
             >
-              Get Started
+              Explore Tools
             </Link>
           </div>
         </div>
@@ -201,17 +201,6 @@ function Home() {
                 {features.map((props, idx) => (
                   <Feature key={idx} {...props} />
                 ))}
-              </div>
-              <div className={styles.buttons}>
-                <Link
-                  className={classnames(
-                    "button button--outline button--primary button--lg",
-                    styles.getStarted
-                  )}
-                  onClick={scrollToTools}
-                >
-                  Tools and SDKs
-                </Link>
               </div>
             </div>
           </section>

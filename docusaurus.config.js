@@ -20,10 +20,29 @@ module.exports = {
         alt: "PAN-OS® for Developers",
         src: "img/panospeelable.png"
       },
+      menus: [
+        {
+          label: "Quickstart",
+          items: [
+            { to: "docs/xmlapi_qs", label: "XML API" },
+            { to: "docs/restapi_qs", label: "REST API" }
+          ],
+          position: "left"
+        },
+        {
+          label: "Docs",
+          items: [
+            {
+              to: "docs/panos_api",
+              label: "APIs and SDKs"
+            },
+            { to: "docs/automation", label: "Automation" },
+            { to: "docs/cloud", label: "Cloud Templates" }
+          ],
+          position: "left"
+        }
+      ],
       links: [
-        { to: "docs/panos_api", label: "PAN-OS®", position: "left" },
-        { to: "docs/automation", label: "Automation", position: "left" },
-        { to: "docs/cloud", label: "Cloud", position: "left" },
         {
           href: "https://medium.com/palo-alto-networks-developer-blog",
           label: "Blog",
@@ -32,7 +51,7 @@ module.exports = {
         {
           href: "https://github.com/PaloAltoNetworks",
           label: "GitHub",
-          position: "right"
+          position: "left"
         }
       ]
     },
@@ -43,7 +62,7 @@ module.exports = {
           title: "Docs",
           items: [
             {
-              label: "PAN-OS®",
+              label: "APIs and SDKs",
               to: "docs/panos_api"
             },
             {
@@ -51,7 +70,7 @@ module.exports = {
               to: "docs/automation"
             },
             {
-              label: "Cloud",
+              label: "Cloud Templates",
               to: "docs/cloud"
             }
           ]
@@ -90,7 +109,8 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/PaloAltoNetworks/panos.pan.dev/docs",
+          // editUrl:
+          //   "https://github.com/PaloAltoNetworks/panos.pan.dev/tree/master/docs",
           routeBasePath: "docs",
           include: ["**/*.md", "**/*.mdx"], // Extensions to include.
           docLayoutComponent: "@theme/DocPage",

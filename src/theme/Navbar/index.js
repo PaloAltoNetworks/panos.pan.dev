@@ -41,7 +41,7 @@ function NavLink(props) {
 
 function NavMenu(props) {
   return (
-    <Link className="navbar__item dropdown dropdown--hoverable">
+    <div className="navbar__item dropdown dropdown--hoverable">
       <a class="navbar__link" href="#">
         {props.label} <FontAwesomeIcon icon={faCaretDown} />
       </a>
@@ -52,22 +52,7 @@ function NavMenu(props) {
           </li>
         ))}
       </ul>
-    </Link>
-  );
-}
-
-function NavMenuSidebar(props) {
-  return (
-    <Link className="navbar__item dropdown dropdown--hoverable" {...props}>
-      {props.label}
-      <ul class="dropdown__menu">
-        {props.items.map((linkItem, i) => (
-          <li class="menu__link">
-            <NavLink {...linkItem} key={i} />
-          </li>
-        ))}
-      </ul>
-    </Link>
+    </div>
   );
 }
 

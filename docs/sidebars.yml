@@ -29,6 +29,20 @@ SIDEBARS:
     - category: Overview
       ids:
         - cloud
-    - category: Cloud Templates
+    - category: AWS
+      ids:
+        - aws_qs
+        - pan_guard_duty
+        - autoscaling_aws
+        - terraform_elb
+        - aws_alb_sandwich
+        - xff_demo
+    - category: Azure
+      ids:
+        - azure_qs
+    - category: Google Cloud
+      ids:
+        - gcp_qs
+    - category: Private Cloud
       ids:
         - cloudtemplates_qs

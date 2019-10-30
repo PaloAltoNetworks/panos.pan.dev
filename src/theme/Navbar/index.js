@@ -40,9 +40,7 @@ function NavLink(props) {
 function NavMenu(props) {
   return (
     <div className="navbar__item dropdown dropdown--hoverable">
-      <a className="navbar__link" href="#">
-        {props.label} &#9662;
-      </a>
+      <a className="navbar__link">{props.label} &#9662;</a>
       <ul className="dropdown__menu">
         {props.items.map((linkItem, i) => (
           <li key={i}>
@@ -54,18 +52,8 @@ function NavMenu(props) {
   );
 }
 
-// const Moon = () => <span className={classnames(styles.toggle, styles.moon)} />;
-// const Sun = () => <span className={classnames(styles.toggle, styles.sun)} />;
-const Moon = () => (
-  <span>
-    <img src="/img/tp.png" />
-  </span>
-);
-const Sun = () => (
-  <span>
-    <img src="/img/devin.png" />
-  </span>
-);
+const Moon = () => <span className={classnames(styles.toggle, styles.moon)} />;
+const Sun = () => <span className={classnames(styles.toggle, styles.sun)} />;
 
 function Navbar() {
   const context = useDocusaurusContext();

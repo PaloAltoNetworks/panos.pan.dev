@@ -40,12 +40,12 @@ function NavLink(props) {
 function NavMenu(props) {
   return (
     <div className="navbar__item dropdown dropdown--hoverable">
-      <a class="navbar__link" href="#">
+      <a className="navbar__link" href="#">
         {props.label} &#9662;
       </a>
-      <ul class="dropdown__menu">
+      <ul className="dropdown__menu">
         {props.items.map((linkItem, i) => (
-          <li>
+          <li key={i}>
             <NavLink {...linkItem} key={i} />
           </li>
         ))}
@@ -54,22 +54,23 @@ function NavMenu(props) {
   );
 }
 
-const Moon = () => <span className={classnames(styles.toggle, styles.moon)} />;
-const Sun = () => <span className={classnames(styles.toggle, styles.sun)} />;
-// const Moon = () => (
-//   <span>
-//     <img src="/img/tp.png" />
-//   </span>
-// );
-// const Sun = () => (
-//   <span>
-//     <img src="/img/devin.png" />
-//   </span>
-// );
+// const Moon = () => <span className={classnames(styles.toggle, styles.moon)} />;
+// const Sun = () => <span className={classnames(styles.toggle, styles.sun)} />;
+const Moon = () => (
+  <span>
+    <img src="/img/tp.png" />
+  </span>
+);
+const Sun = () => (
+  <span>
+    <img src="/img/devin.png" />
+  </span>
+);
 
 function Navbar() {
   const context = useDocusaurusContext();
   const [sidebarShown, setSidebarShown] = useState(false);
+  const [menuShown, setMenuShown] = useState({});
   const [isSearchBarExpanded, setIsSearchBarExpanded] = useState(false);
   const currentTheme =
     typeof document !== "undefined"
@@ -87,6 +88,12 @@ function Navbar() {
   const hideSidebar = useCallback(() => {
     setSidebarShown(false);
   }, [setSidebarShown]);
+
+  const toggleMenu = id => {
+    setMenuShown(menuShown => {
+      return { ...menuShown, [id]: !menuShown[id] };
+    });
+  };
 
   useEffect(() => {
     try {
@@ -231,27 +238,33 @@ function Navbar() {
           <div className="navbar__sidebar__items">
             <div className="menu">
               <ul className="menu__list">
-                {menus.map((menuItem, i) => (
-                  <li className="menu__list-item" key={i}>
-                    <a className="menu__link menu__link--sublist">
-                      {menuItem.label}
-                    </a>
-                    <ul class="menu__list">
-                      {menuItem.items.map((item, i) => (
-                        <li class="menu__list-item">
-                          <a
-                            class="menu__link"
-                            key={i}
-                            href={item.to}
-                            activeClassName="navbar__link--active"
-                          >
-                            {item.label}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ))}
+                {menus.map((menuItem, i) => {
+                  var className = menuShown[i]
+                    ? "menu__list-item"
+                    : "menu__list-item menu__list-item--collapsed";
+
+                  return (
+                    <li className={className} key={i}>
+                      <a
+                        className="menu__link menu__link--sublist"
+                        onClick={() => toggleMenu(i)}
+                      >
+                        {menuItem.label}
+                      </a>
+                      <ul className="menu__list">
+                        {menuItem.items.map((item, i) => (
+                          <li className="menu__list-item" key={i}>
+                            <NavLink
+                              className="menu__link"
+                              {...item}
+                              onClick={hideSidebar}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  );
+                })}
                 {links.map((linkItem, i) => (
                   <li className="menu__list-item" key={i}>
                     <NavLink

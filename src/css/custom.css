@@ -36,3 +36,7 @@
 .button{
   z-index: 1;
 }
+
+.dropdown .dropdown__menu {
+  min-width: 11rem !important;
+}

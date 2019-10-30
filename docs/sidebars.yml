@@ -35,6 +35,8 @@ SIDEBARS:
         - pan_guard_duty
         - autoscaling_aws
         - terraform_elb
+        - aws_alb_sandwich
+        - xff_demo
     - category: Azure
       ids:
         - azure_qs

@@ -43,14 +43,6 @@ module.exports = {
         }
       ],
       links: [
-<<<<<<< HEAD
-        { label: "Docs", position: "left"},
-        
-        { to: "docs/panos_api", label: "PAN-OS®", position: "left" },
-        { to: "docs/automation", label: "Automation", position: "left" },
-        { to: "docs/cloud", label: "Cloud", position: "left" },
-=======
->>>>>>> upstream/develop
         {
           href: "https://medium.com/palo-alto-networks-developer-blog",
           label: "Blog",

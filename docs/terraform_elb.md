@@ -141,7 +141,7 @@ terraform destroy.
 ```
 4. Also make sure to cleanup the Auto Scale Group entities as well as the previously created Launch Configurations prior to running the infrastructure again (typically if using the same name.)
 
-Support Policy
+## Support Policy
 
 This CFT is released under an as-is, best effort, support policy. These scripts should be seen as community supported and Palo Alto Networks will contribute our
 expertise as and when possible. We do not provide technical support or help in using or troubleshooting the components of the project through our normal support

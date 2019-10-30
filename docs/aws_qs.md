@@ -1,7 +1,13 @@
 ---
 id: aws_qs
-title: AWS Scripts and Templates
-sidebar_label: AWS Scripts and Templates
+title: AWS 
+sidebar_label: Overview
 ---
 
-# Hello
+# Auto Scaling VM-Series in AWS Cloud
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fArBo7ec-ro" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+# Transit VPC with the VM-Series on AWS
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OCAylyYH2kQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

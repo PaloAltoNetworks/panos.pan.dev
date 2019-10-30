@@ -193,7 +193,7 @@ function Home() {
           </div>
         </div>
       </header>
-      <main>
+      <main>  
         {features && features.length && (
           <section className={styles.features} ref={vertificalsRef}>
             <div className="container">
@@ -244,7 +244,6 @@ function Home() {
                   </Link>
                 </div>
               </div>
-
               {/* PAN Python SDK */}
               <div className={classnames("col col--3", styles.tools)}>
                 <div className="text--center">

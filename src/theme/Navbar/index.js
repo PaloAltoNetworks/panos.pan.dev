@@ -54,18 +54,18 @@ function NavMenu(props) {
   );
 }
 
-const Moon = () => <span className={classnames(styles.toggle, styles.moon)} />;
-const Sun = () => <span className={classnames(styles.toggle, styles.sun)} />;
-// const Moon = () => (
-//   <span>
-//     <img src="/img/tp.png" />
-//   </span>
-// );
-// const Sun = () => (
-//   <span>
-//     <img src="/img/devin.png" />
-//   </span>
-// );
+//const Moon = () => <span className={classnames(styles.toggle, styles.moon)} />;
+//const Sun = () => <span className={classnames(styles.toggle, styles.sun)} />;
+const Moon = () => (
+  <span>
+    <img src="/img/tp.png" />
+  </span>
+);
+const Sun = () => (
+  <span>
+    <img src="/img/devin.png" />
+  </span>
+);
 
 function Navbar() {
   const context = useDocusaurusContext();

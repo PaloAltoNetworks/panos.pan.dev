@@ -56,6 +56,8 @@ function NavMenu(props) {
 
 // const Moon = () => <span className={classnames(styles.toggle, styles.moon)} />;
 // const Sun = () => <span className={classnames(styles.toggle, styles.sun)} />;
+//const Moon = () => <span className={classnames(styles.toggle, styles.moon)} />;
+//const Sun = () => <span className={classnames(styles.toggle, styles.sun)} />;
 const Moon = () => (
   <span>
     <img src="/img/tp.png" />

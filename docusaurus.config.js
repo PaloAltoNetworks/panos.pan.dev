@@ -25,7 +25,9 @@ module.exports = {
           label: "Quickstart",
           items: [
             { to: "docs/xmlapi_qs", label: "XML API" },
-            { to: "docs/restapi_qs", label: "REST API" }
+            { to: "docs/restapi_qs", label: "REST API" },
+            { to: "docs/pandevice_qs", label: "PAN Device Framework" },
+            { to: "docs/panpython_qs", label: "PAN Python SDK" }
           ],
           position: "left"
         },

@@ -112,9 +112,21 @@ const features = [
     description: (
       <>
         Our APIs and SDKs provide a collection of open, feature-rich automation
-        opportunities for configuration and management of Palo Alto Networks
-        next-generation firewalls.
+        opportunities for configuration and management.
       </>
+    ),
+    button: (
+      <div className={styles.buttons}>
+        <Link
+          className={classnames(
+            "button button--outline button--primary button--md",
+            styles.getStarted
+          )}
+          href="/docs/panos_api"
+        >
+          Learn More
+        </Link>
+      </div>
     )
   },
   {
@@ -122,27 +134,50 @@ const features = [
     imageUrl: "img/ansible_terraform.png",
     description: (
       <>
-        Version control your infrastructure and eliminate human-error from
-        device configuration with infrastructure-as-code tools and techniques.
-        Tell your tools how the configuration should look and let them automate
-        the rest.
+        Version control your infrastructure and eliminate human-error. Declare
+        the target configuration and let them automate the rest.
       </>
+    ),
+    button: (
+      <div className={styles.buttons}>
+        <Link
+          className={classnames(
+            "button button--outline button--primary button--md",
+            styles.getStarted
+          )}
+          href="/docs/automation"
+        >
+          Learn More
+        </Link>
+      </div>
     )
   },
   {
-    title: <>Cloud-scale Security</>,
+    title: <>Cloud Templates</>,
     imageUrl: "img/cloud_security.svg",
     description: (
       <>
-        Whether it's auto-scaling a firewall with a cloud application, seamless
-        policy across on-prem and cloud, or a single place to see all your cloud
-        security events, Palo Alto Networks cloud integrations have you covered.
+        Auto-scale a firewall with a cloud application while ensuring a seamless
+        policy across on-prem and cloud.
       </>
+    ),
+    button: (
+      <div className={styles.buttons}>
+        <Link
+          className={classnames(
+            "button button--outline button--primary button--md",
+            styles.getStarted
+          )}
+          href="/docs/cloud"
+        >
+          Learn More
+        </Link>
+      </div>
     )
   }
 ];
 
-function Feature({ imageUrl, title, description }) {
+function Feature({ imageUrl, title, description, button }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={classnames("col col--4", styles.features)}>
@@ -153,6 +188,7 @@ function Feature({ imageUrl, title, description }) {
       )}
       <h3>{title}</h3>
       <p>{description}</p>
+      {button}
     </div>
   );
 }
@@ -210,15 +246,17 @@ function Home() {
             <div className="row">
               {/* PAN Device Framework */}
               <div className={classnames("col col--3", styles.tools)}>
-                <div className="text--center">
+                <div className="text text--center">
                   <img
                     className={styles.toolImage}
                     src="img/panos_apis.svg"
                     alt="PAN Device Framework"
                   />
                 </div>
-                <h3>PAN Device Framework</h3>
-                <p className="text text--seconday">Description goes here</p>
+                <h4>PAN Device Framework</h4>
+                <p className="text text--primary">
+                  Object-oriented SDK for PAN-OS® and Panorama
+                </p>
                 <div className={styles.buttons}>
                   <Link
                     className={classnames(
@@ -254,8 +292,10 @@ function Home() {
                     alt="PAN Python SDK"
                   />
                 </div>
-                <h3>PAN Python SDK</h3>
-                <p className="text text--seconday">Description goes here</p>
+                <h4>PAN Python SDK</h4>
+                <p className="text text--primary">
+                  Multi-tool set for PAN-OS®, Panorama, WildFire and AutoFocus®
+                </p>
                 <div className={styles.buttons}>
                   <Link
                     className={classnames(
@@ -289,8 +329,10 @@ function Home() {
                     alt="Ansible PAN"
                   />
                 </div>
-                <h3>Ansible PAN</h3>
-                <p className="text text--seconday">Description goes here</p>
+                <h4>Ansible PAN</h4>
+                <p className="text text--primary">
+                  Ansible modules for Palo Alto Networks NGFWs
+                </p>
                 <div className={styles.buttons}>
                   <Link
                     className={classnames(
@@ -324,8 +366,10 @@ function Home() {
                     alt="Terraform Templates"
                   />
                 </div>
-                <h3>Terraform Templates</h3>
-                <p className="text text--seconday">Description goes here</p>
+                <h4>Terraform Templates</h4>
+                <p className="text text--primary">
+                  Deploy infrastructure on AWS and Azure secured by PAN NGFWs
+                </p>
                 <div className={styles.buttons}>
                   <Link
                     className={classnames(
@@ -359,17 +403,19 @@ function Home() {
                     alt="Cloud Templates"
                   />
                 </div>
-                <h3>Cloud Templates</h3>
-                <p className="text text--seconday">Description goes here</p>
+                <h4>Cloud Templates</h4>
+                <p className="text text--primary">
+                  Templates to automate your cloud security journey
+                </p>
                 <div className={styles.buttons}>
                   <Link
                     className={classnames(
                       "button button--outline button--primary button--md",
                       styles.quickstart
                     )}
-                    href="/docs/cloudtemplates_qs"
+                    href="/docs/cloud"
                   >
-                    Quickstart
+                    Overview
                   </Link>
                   <Link
                     className={classnames(

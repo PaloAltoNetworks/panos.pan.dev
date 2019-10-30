@@ -15,6 +15,7 @@ SIDEBARS:
     - category: PAN Python SDK
       ids:
         - panpython_qs
+        - panpython_apikey
   - automation:
     - category: Overview
       ids:

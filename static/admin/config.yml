@@ -1,12 +1,12 @@
 backend:
   name: github
   branch: master
-  repo: sserrata/docusaurus2
+  repo: PaloAltoNetworks/panos.pan.dev
   open_authoring: true
   squash_merges: true
 publish_mode: editorial_workflow
-media_folder: "docs/assets"
-public_folder: "/media"
+media_folder: "../../static/img"
+public_folder: "/img"
 collections:
   - name: "docs" # Used in routes, e.g., /admin/collections/blog
     label: "Docs" # Used in the UI

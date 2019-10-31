@@ -1,5 +1,6 @@
 SIDEBARS:
-  - panos:
+  - sidebar: panos
+    categories:
     - category: Overview
       ids:
         - panos_api
@@ -16,34 +17,36 @@ SIDEBARS:
       ids:
         - panpython_qs
         - panpython_apikey
-  - automation:
-    - category: Overview
-      ids:
-        - automation
-    - category: Ansible
-      ids:
-        - ansible_qs
-    - category: Terraform
-      ids:
-        - terraform_qs
-  - cloud:
-    - category: Overview
-      ids:
-        - cloud
-    - category: AWS
-      ids:
-        - aws_qs
-        - pan_guard_duty
-        - autoscaling_aws
-        - terraform_elb
-        - aws_alb_sandwich
-        - xff_demo
-    - category: Azure
-      ids:
-        - azure_qs
-    - category: Google Cloud
-      ids:
-        - gcp_qs
-    - category: Private Cloud
-      ids:
-        - cloudtemplates_qs
+  - sidebar: automation
+    categories: 
+      - category: Overview
+        ids:
+          - automation
+      - category: Ansible
+        ids:
+          - ansible_qs
+      - category: Terraform
+        ids:
+          - terraform_qs
+  - sidebar: cloud
+    categories:
+      - category: Overview
+        ids:
+          - cloud
+      - category: AWS
+        ids:
+          - aws_qs
+          - pan_guard_duty
+          - autoscaling_aws
+          - terraform_elb
+          - aws_alb_sandwich
+          - xff_demo
+      - category: Azure
+        ids:
+          - azure_qs
+      - category: Google Cloud
+        ids:
+          - gcp_qs
+      - category: Private Cloud
+        ids:
+          - cloudtemplates_qs

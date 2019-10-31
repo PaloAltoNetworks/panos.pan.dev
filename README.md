@@ -4,6 +4,8 @@
 
 This website is built using Docusaurus 2, a modern static website generator (which is currently in alpha).
 
+> Temporary URL: https://condescending-mcclintock-5c4d6f.netlify.com/
+
 ### Installation
 
 ```

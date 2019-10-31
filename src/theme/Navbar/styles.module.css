@@ -11,6 +11,10 @@
   }
 }
 
+.navbar .navbar__logo {
+  height: 100px !important;
+}
+
 .toggle {
   align-items: center;
   display: flex;

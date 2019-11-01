@@ -254,7 +254,7 @@ function Home() {
                   />
                 </div>
                 <h4>PAN Device Framework</h4>
-                <p className="text text--primary">
+                <p className={styles.text__gray}>
                   Object-oriented SDK for PAN-OS® and Panorama
                 </p>
                 <div className={styles.buttons}>
@@ -293,7 +293,7 @@ function Home() {
                   />
                 </div>
                 <h4>PAN Python SDK</h4>
-                <p className="text text--primary">
+                <p className={styles.text__gray}>
                   Multi-tool set for PAN-OS®, Panorama, WildFire and AutoFocus®
                 </p>
                 <div className={styles.buttons}>
@@ -332,7 +332,7 @@ function Home() {
                   />
                 </div>
                 <h4>PAN Go SDK</h4>
-                <p className="text text--primary">
+                <p className={styles.text__gray}>
                   Cross version mechanism for interacting with PAN devices
                 </p>
                 <div className={styles.buttons}>
@@ -371,7 +371,7 @@ function Home() {
                   />
                 </div>
                 <h4>Ansible PAN</h4>
-                <p className="text text--primary">
+                <p className={styles.text__gray}>
                   Ansible modules for Palo Alto Networks NGFWs
                 </p>
                 <div className={styles.buttons}>
@@ -413,7 +413,7 @@ function Home() {
                   />
                 </div>
                 <h4>Terraform Templates</h4>
-                <p className="text text--primary">
+                <p className={styles.text__gray}>
                   Deploy infrastructure on AWS and Azure secured by PAN NGFWs
                 </p>
                 <div className={styles.buttons}>
@@ -452,7 +452,7 @@ function Home() {
                   />
                 </div>
                 <h4>Cloud Templates</h4>
-                <p className="text text--primary">
+                <p className={styles.text__gray}>
                   Templates to automate your cloud security journey
                 </p>
                 <div className={styles.buttons}>

@@ -229,7 +229,7 @@ function Home() {
           </div>
         </div>
       </header>
-      <main>  
+      <main>
         {features && features.length && (
           <section className={styles.features} ref={vertificalsRef}>
             <div className="container">
@@ -249,7 +249,7 @@ function Home() {
                 <div className="text text--center">
                   <img
                     className={styles.toolImage}
-                    src="img/panos_apis.svg"
+                    src="img/python.png"
                     alt="PAN Device Framework"
                   />
                 </div>
@@ -282,12 +282,13 @@ function Home() {
                   </Link>
                 </div>
               </div>
+
               {/* PAN Python SDK */}
               <div className={classnames("col col--3", styles.tools)}>
                 <div className="text--center">
                   <img
                     className={styles.toolImage}
-                    src="img/panos_apis.svg"
+                    src="img/python.png"
                     alt="PAN Python SDK"
                   />
                 </div>
@@ -320,6 +321,47 @@ function Home() {
                   </Link>
                 </div>
               </div>
+
+              {/* PAN Go SDK */}
+              <div className={classnames("col col--3", styles.tools)}>
+                <div className="text--center">
+                  <img
+                    className={styles.toolImage}
+                    src="img/go.svg"
+                    alt="PAN Go SDK"
+                  />
+                </div>
+                <h4>PAN Go SDK</h4>
+                <p className="text text--primary">
+                  Cross version mechanism for interacting with PAN devices
+                </p>
+                <div className={styles.buttons}>
+                  <Link
+                    className={classnames(
+                      "button button--outline button--primary button--md",
+                      styles.quickstart
+                    )}
+                    href="/docs/pango_qs"
+                  >
+                    Quickstart
+                  </Link>
+                  <Link
+                    className={classnames(
+                      "button button--outline button--primary button--md",
+                      styles.github
+                    )}
+                    href="https://github.com/PaloAltoNetworks/pango"
+                  >
+                    <img
+                      src="/img/GitHub_Logo_White.png"
+                      width="auto"
+                      height="19"
+                    />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Ansible PAN */}
               <div className={classnames("col col--3", styles.tools)}>
                 <div className="text--center">
                   <img
@@ -357,6 +399,11 @@ function Home() {
                   </Link>
                 </div>
               </div>
+
+              {/* Placeholder */}
+              <div className={classnames("col col--3", styles.tools)}></div>
+
+              {/* Terraform Templates */}
               <div className={classnames("col col--3", styles.tools)}>
                 <div className="text--center">
                   <img
@@ -394,6 +441,8 @@ function Home() {
                   </Link>
                 </div>
               </div>
+
+              {/* Cloud Templates */}
               <div className={classnames("col col--3", styles.tools)}>
                 <div className="text--center">
                   <img
@@ -427,6 +476,9 @@ function Home() {
                   </Link>
                 </div>
               </div>
+
+              {/* Placeholder */}
+              <div className={classnames("col col--3", styles.tools)}></div>
             </div>
           </div>
         </section>

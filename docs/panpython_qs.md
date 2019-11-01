@@ -2,29 +2,47 @@
 id: panpython_qs
 title: Quickstart
 sidebar_label: Quickstart
+hide_title: false
+description: Getting started with pan-python
+keywords:
+  - pan-os
+  - panos
+  - xml
+  - api
+  - quickstart
+  - pan-python
+  - sdk
+  - python
+image: /img/panos_apis.svg
+---
+
+> The following guide will walk you through installing `pan-python`, a powerful SDK capable of supporting a variety of automation projects and use cases
+
 ---
 
 ## Introducing pan-python
 
 > `pan-python` is a multi-tool set for Palo Alto Networks **PAN-OS**,
-**Panorama**, **WildFire** and **AutoFocus**.
+> **Panorama**, **WildFire** and **AutoFocus**.
 
 > The [panxapi.py](https://github.com/kevinsteves/pan-python/blob/master/doc/panxapi.rst)
-command line program from pan-python will be used in the [PAN-OS XML
-API](https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-panorama-api.html)
-labs to perform API requests.
+> command line program (bundled with `pan-python`) will be used to complete the following steps.
+
+## Where to download and install
 
 > `pan-python` is available on GitHub at
-<https://github.com/kevinsteves/pan-python>, as a [package on
-PyPi](https://pypi.python.org/pypi/pan-python/) (Python Package Index),
-or can be installed using
-[pip](https://pip.pypa.io/en/latest/quickstart/) on Python 2.7 or 3.x.
-pan-python has no dependencies.
+> <https://github.com/kevinsteves/pan-python>, as a [package on
+> PyPi](https://pypi.python.org/pypi/pan-python/) (Python Package Index),
+> or can be installed using
+> [pip](https://pip.pypa.io/en/latest/quickstart/) on Python 2.7 or 3.x.
+> `pan-python` has no dependencies.
+
+## Documentation
 
 > [Documentation](https://github.com/kevinsteves/pan-python/tree/master/doc)
-is available on GitHub and as HTML from the package `doc/` directory.
+> is available on GitHub and as HTML from the package `doc/` directory.
 
-## Example: Install `pan-python` Using `pip`
+## Install `pan-python` using `pip`
 
 > Install `pan-python`:
 
@@ -41,8 +59,10 @@ is available on GitHub and as HTML from the package `doc/` directory.
     Successfully built pan-python
     Installing collected packages: pan-python
     Successfully installed pan-python-0.11.0
-    
-> Check `pan-python` version:
+
+## Show version
+
+> Check your `pan-python` version:
 
     panxapi.py --version
 
@@ -52,10 +72,6 @@ is available on GitHub and as HTML from the package `doc/` directory.
 
 > By default `pip` installs the latest version of the package.
 
-## Lab 1
+---
 
-1.  Install `pan-python` using `pip` and display its version.
-2.  Run **panxapi.py** with **--help** to display command line options.
-3.  View
-    [panxapi.py](https://github.com/kevinsteves/pan-python/blob/master/doc/panxapi.rst)
-    documentation on GitHub.
+> Next, we'll dive into generating an API key, which is the basis for moving on to more advanced topics.

@@ -1,24 +1,28 @@
 SIDEBARS:
   - sidebar: panos
     categories:
-    - category: Overview
-      ids:
-        - panos_api
-    - category: PAN-OS® XML API
-      ids:
-        - xmlapi_qs
-    - category: PAN-OS® REST API
-      ids:
-        - restapi_qs
-    - category: PAN Device Framework
-      ids:
-        - pandevice_qs
-    - category: PAN Python SDK
-      ids:
-        - panpython_qs
-        - panpython_apikey
+      - category: Overview
+        ids:
+          - panos_api
+      - category: PAN-OS® XML API
+        ids:
+          - xmlapi_qs
+      - category: PAN-OS® REST API
+        ids:
+          - restapi_qs
+      - category: PAN Device Framework
+        ids:
+          - pandevice_qs
+      - category: PAN Python SDK
+        ids:
+          - panpython_qs
+          - panpython_apikey
+          - panpython_op
+      - category: PAN Go SDK
+        ids:
+          - pango_qs
   - sidebar: automation
-    categories: 
+    categories:
       - category: Overview
         ids:
           - automation

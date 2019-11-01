@@ -229,7 +229,7 @@ function Home() {
           </div>
         </div>
       </header>
-      <main>  
+      <main>
         {features && features.length && (
           <section className={styles.features} ref={vertificalsRef}>
             <div className="container">
@@ -249,12 +249,12 @@ function Home() {
                 <div className="text text--center">
                   <img
                     className={styles.toolImage}
-                    src="img/panos_apis.svg"
+                    src="img/python.png"
                     alt="PAN Device Framework"
                   />
                 </div>
                 <h4>PAN Device Framework</h4>
-                <p className="text text--primary">
+                <p className={styles.text__gray}>
                   Object-oriented SDK for PAN-OS® and Panorama
                 </p>
                 <div className={styles.buttons}>
@@ -282,17 +282,18 @@ function Home() {
                   </Link>
                 </div>
               </div>
+
               {/* PAN Python SDK */}
               <div className={classnames("col col--3", styles.tools)}>
                 <div className="text--center">
                   <img
                     className={styles.toolImage}
-                    src="img/panos_apis.svg"
+                    src="img/python.png"
                     alt="PAN Python SDK"
                   />
                 </div>
                 <h4>PAN Python SDK</h4>
-                <p className="text text--primary">
+                <p className={styles.text__gray}>
                   Multi-tool set for PAN-OS®, Panorama, WildFire and AutoFocus®
                 </p>
                 <div className={styles.buttons}>
@@ -320,6 +321,47 @@ function Home() {
                   </Link>
                 </div>
               </div>
+
+              {/* PAN Go SDK */}
+              <div className={classnames("col col--3", styles.tools)}>
+                <div className="text--center">
+                  <img
+                    className={styles.toolImage}
+                    src="img/go.svg"
+                    alt="PAN Go SDK"
+                  />
+                </div>
+                <h4>PAN Go SDK</h4>
+                <p className={styles.text__gray}>
+                  Cross version mechanism for interacting with PAN devices
+                </p>
+                <div className={styles.buttons}>
+                  <Link
+                    className={classnames(
+                      "button button--outline button--primary button--md",
+                      styles.quickstart
+                    )}
+                    href="/docs/pango_qs"
+                  >
+                    Quickstart
+                  </Link>
+                  <Link
+                    className={classnames(
+                      "button button--outline button--primary button--md",
+                      styles.github
+                    )}
+                    href="https://github.com/PaloAltoNetworks/pango"
+                  >
+                    <img
+                      src="/img/GitHub_Logo_White.png"
+                      width="auto"
+                      height="19"
+                    />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Ansible PAN */}
               <div className={classnames("col col--3", styles.tools)}>
                 <div className="text--center">
                   <img
@@ -329,7 +371,7 @@ function Home() {
                   />
                 </div>
                 <h4>Ansible PAN</h4>
-                <p className="text text--primary">
+                <p className={styles.text__gray}>
                   Ansible modules for Palo Alto Networks NGFWs
                 </p>
                 <div className={styles.buttons}>
@@ -357,6 +399,11 @@ function Home() {
                   </Link>
                 </div>
               </div>
+
+              {/* Placeholder */}
+              <div className={classnames("col col--3", styles.tools)}></div>
+
+              {/* Terraform Templates */}
               <div className={classnames("col col--3", styles.tools)}>
                 <div className="text--center">
                   <img
@@ -366,7 +413,7 @@ function Home() {
                   />
                 </div>
                 <h4>Terraform Templates</h4>
-                <p className="text text--primary">
+                <p className={styles.text__gray}>
                   Deploy infrastructure on AWS and Azure secured by PAN NGFWs
                 </p>
                 <div className={styles.buttons}>
@@ -394,6 +441,8 @@ function Home() {
                   </Link>
                 </div>
               </div>
+
+              {/* Cloud Templates */}
               <div className={classnames("col col--3", styles.tools)}>
                 <div className="text--center">
                   <img
@@ -403,7 +452,7 @@ function Home() {
                   />
                 </div>
                 <h4>Cloud Templates</h4>
-                <p className="text text--primary">
+                <p className={styles.text__gray}>
                   Templates to automate your cloud security journey
                 </p>
                 <div className={styles.buttons}>
@@ -427,6 +476,9 @@ function Home() {
                   </Link>
                 </div>
               </div>
+
+              {/* Placeholder */}
+              <div className={classnames("col col--3", styles.tools)}></div>
             </div>
           </div>
         </section>

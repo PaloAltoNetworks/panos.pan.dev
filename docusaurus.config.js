@@ -27,7 +27,11 @@ module.exports = {
             { to: "docs/xmlapi_qs", label: "XML API" },
             { to: "docs/restapi_qs", label: "REST API" },
             { to: "docs/pandevice_qs", label: "PAN Device Framework" },
-            { to: "docs/panpython_qs", label: "PAN Python SDK" }
+            { to: "docs/panpython_qs", label: "PAN Python SDK" },
+            { to: "docs/pango_qs", label: "PAN Go SDK" },
+            { to: "docs/terraform_qs", label: "Terraform Provider" },
+            { to: "docs/ansible_qs", label: "Ansible PAN" },
+            { to: "docs/cloudtemplates_qs", label: "Cloud Templates" }
           ],
           position: "left"
         },

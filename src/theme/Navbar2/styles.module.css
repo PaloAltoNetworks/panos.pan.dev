@@ -11,6 +11,10 @@
   }
 }
 
+.navbar .navbar__logo {
+  height: 100px !important;
+}
+
 .toggle {
   align-items: center;
   display: flex;
@@ -23,10 +27,10 @@
   position: absolute;
 }
 .moon::before {
-  content: '\1F31C';
+  content: '\1f319';
 }
 .sun::before {
-  content: '\1F31E';
+  content: '\2600';
 }
 
 @media (max-width: 360px) {

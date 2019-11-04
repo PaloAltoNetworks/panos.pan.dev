@@ -14,6 +14,7 @@ module.exports = {
   organizationName: "PaloAltoNetworks", // Usually your GitHub org/user name.
   projectName: "panos.pan.dev", // Usually your repo name.
   themeConfig: {
+    sidebarCollapsible: true,
     navbar: {
       title: "",
       logo: {

@@ -2,63 +2,72 @@
 id: restapi_qs
 title: Quickstart
 sidebar_label: Quickstart
+hide_title: false
+description: Overview of the PAN-OS API
+keywords:
+  - pan-os
+  - panos
+  - api
+  - rest
+  - quickstart
+image: /img/panos_apis.svg
 ---
 
-> The following guide will walk you through sending API requests to the PAN-OS® REST API using <a href="https://curl.haxx.se/docs/httpscripting.html" target="_blank">cURL</a>, although you may optionally use another API tool such as <a href="https://www.getpostman.com/" target="_blank">Postman</a>, <a href="https://insomnia.rest/" target="_blank">Insomnia</a> or <a href="http://restclient.net/" target="_blank">RESTClient</a>. 
-
----
+> The following guide will walk you through sending API requests to the PAN-OS® REST API using <a href="https://curl.haxx.se/docs/httpscripting.html" target="_blank">cURL</a>, although you may optionally use another API tool such as <a href="https://www.getpostman.com/" target="_blank">Postman</a>, <a href="https://insomnia.rest/" target="_blank">Insomnia</a> or <a href="http://restclient.net/" target="_blank">RESTClient</a>.
 
 ## Enable API Access
 
 1. Select an Admin Role profile.
-    > * Go to Device -> Admin Roles and select or create an admin role.
+
+   - Go to Device -> Admin Roles and select or create an admin role.
 
 2. Select features available to the admin role.
-    > * Select the XML API tab.
-    > * Enable or disable XML API features from the list, such as Report, Log, and Configuration.
-    > * Select OK to confirm your change.
+
+   - Select the XML API tab.
+   - Enable or disable XML API features from the list, such as Report, Log, and Configuration.
+   - Select OK to confirm your change.
 
 3. Assign the admin role to an administrator account.
 
-> Consult the official product documentation for more details.
+   _Consult the [official product documentation](https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-panorama-api/get-started-with-the-pan-os-xml-api/get-your-api-key.html) for more details._
 
 ## Get Your API Key
 
 1. Make a `GET` or `POST` request to the firewall’s hostname or IP address using the administrative credentials and the `type=keygen` URL query argument.
 
-> Be sure to replace `<firewall>` `<username>` and `<password>` with actual values.
+   _Be sure to replace `<firewall>` `<username>` and `<password>` with actual values._
 
-``` console
+```console
 curl -k -X GET 'https://<firewall>/api/?type=keygen&user=<username>&password=<password>'
 ```
 
-> or
+_or_
 
-``` console
+```console
 curl -k -X POST 'https://<firewall>/api/?type=keygen&user=<username>&password=<password>'
 ```
 
-> A successful API call returns `status="success"` along with the API key within the `key` element:
+A successful API call returns `status="success"` along with the API key within the `key` element:
 
-``` javascript
-<response status="success"> 
-  <result> 
-    <key>gJlQWE56987nBxIqyfa62sZeRtYuIo2BgzEA9UOnlZBhU</key> 
-  </result> 
+```javascript
+<response status="success">
+  <result>
+    <key>gJlQWE56987nBxIqyfa62sZeRtYuIo2BgzEA9UOnlZBhU</key>
+  </result>
 </response>
 ```
 
 ## Access the PAN-OS® REST API
 
-> The PAN-OS® REST API URL format includes a base path and endpoint:
+The PAN-OS® REST API URL format includes a base path and endpoint:
 
-``` console
+```console
 https://<IP address or FQDN>/restapi/<PAN-OS version>/<resource endpoint>
 ```
 
-> Available resource endpoints:
+Available resource endpoints:
 
-``` console
+```console
 
 # OBJECTS
 

@@ -22,11 +22,11 @@ image: /img/panos_apis.svg
 
 ## Documentation
 
-> Please refer to the [godoc](https://godoc.org/github.com/PaloAltoNetworks/pango) reference documentation.
+Please refer to the [godoc](https://godoc.org/github.com/PaloAltoNetworks/pango) reference documentation.
 
 ## Using pango
 
-> To start, create a client connection with the desired parameters and then initialize the connection:
+To start, create a client connection with the desired parameters and then initialize the connection:
 
 ```go
 package main
@@ -53,20 +53,20 @@ func main() {
 }
 ```
 
-> Initializing the connection creates the API key (if it was not already specified), then performs `show system info` to get the PAN-OS® version. Once the firewall client connection is created, you can query and configure the Palo Alto Networks device from the functions inside the various namespaces of the client connection.
+Initializing the connection creates the API key (if it was not already specified), then performs `show system info` to get the PAN-OS® version. Once the firewall client connection is created, you can query and configure the Palo Alto Networks device from the functions inside the various namespaces of the client connection.
 
 ## Configuration namespaces
 
-> Namespaces correspond to the various configuration areas available in the GUI.
+Namespaces correspond to the various configuration areas available in the GUI.
 
-> For example:
+For example:
 
 ```go
     err = c.Network.EthernetInterface.Set(...)
     myPolicies, err := c.Policies.Security.GetList()
 ```
 
-> Generally speaking, there are the following functions inside each namespace:
+Generally speaking, there are the following functions inside each namespace:
 
 - `GetList()`
 - `ShowList()`
@@ -76,7 +76,7 @@ func main() {
 - `Edit()`
 - `Delete()`
 
-> These functions correspond with PANOS `Get`, `Show`, `Set`, `Edit`, and `Delete` API calls. `Get()`, `Set()`, and `Edit()` take and return normalized, version independent objects. These version safe objects are typically named `Entry`, which corresponds to how the object is placed in the PANOS XPATH.
+These functions correspond with PANOS `Get`, `Show`, `Set`, `Edit`, and `Delete` API calls. `Get()`, `Set()`, and `Edit()` take and return normalized, version independent objects. These version safe objects are typically named `Entry`, which corresponds to how the object is placed in the PANOS XPATH.
 
 Some `Entry` objects have a special function, `Defaults()`. Invoking this function will initialize the object with some default values. Each `Entry` that implements `Defaults()` calls out in its documentation what parameters are affected by this, and what the defaults are.
 

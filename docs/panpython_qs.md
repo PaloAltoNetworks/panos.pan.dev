@@ -18,37 +18,35 @@ image: /img/panos_apis.svg
 
 > The following guide will walk you through installing `pan-python`, a powerful SDK capable of supporting a variety of automation projects and use cases
 
----
-
 ## Introducing pan-python
 
-> `pan-python` is a multi-tool set for Palo Alto Networks **PAN-OS**,
-> **Panorama**, **WildFire** and **AutoFocus**.
+`pan-python` is a multi-tool set for Palo Alto Networks **PAN-OS**,
+**Panorama**, **WildFire** and **AutoFocus**.
 
-> The [panxapi.py](https://github.com/kevinsteves/pan-python/blob/master/doc/panxapi.rst)
-> command line program (bundled with `pan-python`) will be used to complete the following steps.
+The [panxapi.py](https://github.com/kevinsteves/pan-python/blob/master/doc/panxapi.rst)
+command line program (bundled with `pan-python`) will be used to complete the following steps.
 
 ## Where to download and install
 
-> `pan-python` is available on GitHub at
-> <https://github.com/kevinsteves/pan-python>, as a [package on
-> PyPi](https://pypi.python.org/pypi/pan-python/) (Python Package Index),
-> or can be installed using
-> [pip](https://pip.pypa.io/en/latest/quickstart/) on Python 2.7 or 3.x.
-> `pan-python` has no dependencies.
+`pan-python` is available on GitHub at
+<https://github.com/kevinsteves/pan-python>, as a [package on
+PyPi](https://pypi.python.org/pypi/pan-python/) (Python Package Index),
+or can be installed using
+[pip](https://pip.pypa.io/en/latest/quickstart/) on Python 2.7 or 3.x.
+`pan-python` has no dependencies.
 
 ## Documentation
 
-> [Documentation](https://github.com/kevinsteves/pan-python/tree/master/doc)
-> is available on GitHub and as HTML from the package `doc/` directory.
+[Documentation](https://github.com/kevinsteves/pan-python/tree/master/doc)
+is available on GitHub and as HTML from the package `doc/` directory.
 
 ## Install `pan-python` using `pip`
 
-> Install `pan-python`:
+Install `pan-python`:
 
     pip install --user pan-python
 
-> Example output:
+Example output:
 
     Collecting pan-python
       Downloading pan-python-0.11.0.tar.gz (109kB)
@@ -62,16 +60,16 @@ image: /img/panos_apis.svg
 
 ## Show version
 
-> Check your `pan-python` version:
+Check your `pan-python` version:
 
     panxapi.py --version
 
-> Example output:
+Example output:
 
     pan-python 0.11.0
 
-> By default `pip` installs the latest version of the package.
+By default `pip` installs the latest version of the package.
 
 ---
 
-> Next, we'll dive into generating an API key, which is the basis for moving on to more advanced topics.
+Next, we'll dive into generating an API key, which is the basis for moving on to more advanced topics.

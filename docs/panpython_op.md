@@ -22,17 +22,17 @@ image: /img/panos_apis.svg
 
 ## Operational Commands
 
-> The **panxapi.py** **-o** option performs the `type=op` API request to
-> execute operational commands (CLI). The command is specified with the
-> _cmd_ argument, which is an XML representation of the command line. The
-> **-X** option converts a CLI-style _cmd_ argument to XML (in some cases
-> the expected XML document cannot be derived).
+The **panxapi.py** **-o** option performs the `type=op` API request to
+execute operational commands (CLI). The command is specified with the
+_cmd_ argument, which is an XML representation of the command line. The
+**-X** option converts a CLI-style _cmd_ argument to XML (in some cases
+the expected XML document cannot be derived).
 
 ## Show System Info
 
     panxapi.py -Xjro 'show system info'
 
-> Example output:
+Example output:
 
     op: success
     {
@@ -86,8 +86,8 @@ image: /img/panos_apis.svg
       }
     }
 
-> This example used `-jr` to select the result content of the response as
-> JSON. Response output options include (from `panxapi.py --help`):
+This example used `-jr` to select the result content of the response as
+JSON. Response output options include (from `panxapi.py --help`):
 
     -x                    print XML response to stdout
     -p                    print XML response in Python to stdout

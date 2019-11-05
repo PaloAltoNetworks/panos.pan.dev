@@ -2,40 +2,31 @@
 id: pandevice_qs
 title: Quickstart
 sidebar_label: Quickstart
-hide_title: false
-description: Getting started with the PAN Device Framework
-keywords:
-  - pan-os
-  - panos
-  - xml
-  - api
-  - rest
-  - sdk
-  - pandevice
-  - device
-  - framework
-  - python
-image: /img/panos_apis.svg
 ---
-
 [![GitHub page](https://img.shields.io/badge/GitHub-Repo-brightgreen?style=for-the-badge&logo=github)](https://github.com/PaloAltoNetworks/pandevice)
 
 ## Installation
 
 The easiest method to install pandevice is using pip:
 
-    pip install pandevice
+```
+pip install pandevice
+```
 
 Or, if you have virtualenvwrapper installed:
 
-    mkvirtualenv pandevice
-    pip install pandevice
+```
+mkvirtualenv pandevice
+pip install pandevice
+```
 
 Pip will install the [pan-python](/docs/panpython_qs) library as a dependency.
 
 Upgrade to the latest version:
 
-    pip install --upgrade pandevice
+```
+pip install --upgrade pandevice
+```
 
 ## How to import
 
@@ -75,7 +66,7 @@ subeth.create()
 fw.commit()
 ```
 
-## Perform `show system info`:
+## Perform `show system info`
 
 ```python
 fw = firewall.Firewall("10.0.0.1", api_username="admin", api_password="admin")

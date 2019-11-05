@@ -1,8 +1,8 @@
 backend:
   name: github
   branch: master
-  repo: sserrata/panos.pan.dev
-  open_authoring: false
+  repo: PaloAltoNetworks/panos.pan.dev
+  open_authoring: true
   squash_merges: true
 publish_mode: editorial_workflow
 media_folder: "../../static/img"
@@ -14,10 +14,15 @@ collections:
     create: true # Allow users to create new documents in this collection
     identifier_field: id
     fields: # The fields for each document, usually in front matter
-      - {label: "id", name: "id", widget: "string"} 
-      - {label: "title", name: "title", widget: "string"}
-      - {label: "sidebar_label", name: "sidebar_label", widget: "string", required: false}
-      - {label: "Content", name: "body", widget: "markdown"}
+      - { label: "id", name: "id", widget: "string" }
+      - { label: "title", name: "title", widget: "string" }
+      - {
+          label: "sidebar_label",
+          name: "sidebar_label",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Content", name: "body", widget: "markdown" }
   - name: "sidebars"
     label: "Sidebars"
     identifier_field: category
@@ -26,12 +31,11 @@ collections:
         name: "sidebar"
         file: "docs/sidebars.yml"
         fields:
-          - label: Sidebar 
+          - label: Sidebar
             name: SIDEBAR
             widget: list
             fields:
-              - {label: Category, name: category, widget: string}
-              - label: IDs 
+              - { label: Category, name: category, widget: string }
+              - label: IDs
                 name: ids
-                widget: list                  
-    
+                widget: list

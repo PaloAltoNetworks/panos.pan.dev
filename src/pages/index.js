@@ -327,7 +327,7 @@ function Home() {
                 <div className="text--center">
                   <img
                     className={styles.toolImage}
-                    src="img/go.svg"
+                    src="img/gopher.png"
                     alt="PAN Go SDK"
                   />
                 </div>

@@ -23,25 +23,35 @@ collections:
           required: false,
         }
       - { label: "Content", name: "body", widget: "markdown" }
-    - name: "sidebars"
-        label: "Sidebars"
-        identifier_field: sidebar
-        files:
-          - label: "Sidebars"
-            name: "sidebars"
-            file: "docs/sidebars.yml"
+  - name: "sidebars"
+    label: "Sidebars"
+    identifier_field: sidebar
+    files:
+      - label: "Sidebars"
+        name: "sidebars"
+        file: "docs/sidebars.yml"
+        fields:
+          - label: SIDEBARS
+            name: SIDEBARS
+            widget: list
             fields:
-              - label: SIDEBARS 
-                name: SIDEBARS
+              - {
+                  label: Sidebar,
+                  name: sidebar,
+                  widget: string,
+                  hint: "Sidebar label",
+                }
+              - label: Categories
+                name: categories
                 widget: list
                 fields:
-                  - {label: Sidebar, name: sidebar, widget: string, hint: "Sidebar label"}
-                  - label: Categories
-                    name: categories
+                  - {
+                      label: Category,
+                      name: category,
+                      widget: string,
+                      hint: "Category label",
+                    }
+                  - label: IDs
+                    name: ids
+                    hint: Comma-separted list of document IDs
                     widget: list
-                    fields:
-                      - {label: Category, name: category, widget: string, hint: "Category label"}
-                      - label: IDs 
-                        name: ids
-                        hint: Comma-separted list of document IDs 
-                        widget: list                  

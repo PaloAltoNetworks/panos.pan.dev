@@ -18,7 +18,7 @@ keywords:
 image: /img/panos_apis.svg
 ---
 
-[![GitHub page](https://img.shields.io/badge/GitHub-Repo-brightgreen?style=for-the-badge&logo=github)](https://github.com/PaloAltoNetworks/pandevice)
+[![GitHub page](https://img.shields.io/badge/GitHub-Repo-brightgreen?style=for-the-badge&logo=github)](https://github.com/PaloAltoNetworks/pandevice) [![GitHub stars](https://img.shields.io/github/stars/PaloAltoNetworks/pandevice?style=for-the-badge)](https://github.com/PaloAltoNetworks/pandevice)
 
 ## Installation
 

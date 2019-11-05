@@ -18,6 +18,8 @@ keywords:
 image: /img/panos_apis.svg
 ---
 
+[![GitHub page](https://img.shields.io/badge/GitHub-Repo-brightgreen?style=for-the-badge&logo=github)](https://github.com/PaloAltoNetworks/pandevice)
+
 ## Installation
 
 The easiest method to install pandevice is using pip:

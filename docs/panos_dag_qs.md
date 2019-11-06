@@ -54,17 +54,17 @@ More information about DAGs are available here: https://docs.paloaltonetworks.co
 To create a DAG, follow these steps:
 1. Login on the Next-Generation Firewall with administrative credentials:
 
-![Login](images/01-login.png "Login")
+![Login](/img/01-login.png "Login")
 
 2. Navigate to **Objects** - **Address Groups**, then click on **Add**:
 
-![Add Address Group](images/02-add-address.png "Add Address Group")
+![Add Address Group](/img/02-add-address.png "Add Address Group")
 
 
 3. Enter the **Name** (*testBlock* in the example), select *Dynamic* as **Type**.
 In the **Match** window type *'malicious'*. Note the single quotes. This is the name of the tag you are going to use for matching. Every IP that is tagged with the *malicious* tag will be automatically added in this Dynamic Address Group. Note that you can use the **and** and **or** keywords if you want the DAG to match multiple tags. Then click on OK:
 
-![Dynamic Group](images/03-dynamicgroup.png "Dynamic Group")
+![Dynamic Group](/img/03-dynamicgroup.png "Dynamic Group")
 
 ### Step 2: Create a Security Policy
 
@@ -81,33 +81,33 @@ To change the use case, for example to block infected clients from reaching the 
 To Create a Security Policy, follow these steps:
 1. Navigate to **Policies** - **Security**, then click on **Add**:
 
-![Security Policies](images/04-policies.png "Security Policies")
+![Security Policies](/img/04-policies.png "Security Policies")
 
 2. Enter the parameters as follows:
 
 - In the **General** tab, enter the policy **Name** (*blockDAG* in the example):
 
-![Security Policy - General](images/05-policygeneral.png "Security Policy - General")
+![Security Policy - General](/img/05-policygeneral.png "Security Policy - General")
 
 - In the **Source** tab, **Add** the trusted zone (*L3-Trust* in the example), leave the **Source Address** at *Any*:
 
-![Security Policy - Source](images/06-policysource.png "Security Policy - Source")
+![Security Policy - Source](/img/06-policysource.png "Security Policy - Source")
 
 - In the **Destination** tab, **Add** the untrusted zone (*L3-Untrust* in the example), and **Add** the **testBlock** DAG as the **Destination Address**:
 
-![Security Policy - Destination](images/07-policydestination.png "Security Policy - Destination")
+![Security Policy - Destination](/img/07-policydestination.png "Security Policy - Destination")
 
 - In the **Service/URL Category** tab, select *any* as the **Service**:
 
-![Security Policy - Service](images/08-policyservice.png "Security Policy - Service")
+![Security Policy - Service](/img/08-policyservice.png "Security Policy - Service")
 
 - In the **Actions** tab, select *Drop* as the **Action**, and enable the **Log at Session End** checkbox:
 
-![Security Policy - Action](images/09-policyactions.png "Security Policy - Action")
+![Security Policy - Action](/img/09-policyactions.png "Security Policy - Action")
 
 3. Click OK and check the newly created policy:
 
-![Security Policy List](images/10-policylist.png "Security Policy List")
+![Security Policy List](/img/10-policylist.png "Security Policy List")
 
 **Note:** The ordering of the policy is very important. In this example you must create the block/drop policy on the top of the ruleset. If the policy is shadowed by other rules that allow traffic, it won't be matched and the communications will still be allowed.
 
@@ -118,17 +118,17 @@ To Create a Security Policy, follow these steps:
 
 Now that the DAG and the policy have been created, you can **Commit** the configuration:
 
-![Commit](images/11-commit.png "Commit")
+![Commit](/img/11-commit.png "Commit")
 
 The Firewall configuration has been completed! No further commits are required by the IP registration process.
 
 ### Step 4: Obtain the Firewall API Key
 
-It is now time to start interacting with the PAN-OS APIs. If you're able to connect to the Firewall management interface as admin, you should also be able to issue commands via the API. If you run into issues, please check if API access is enabled for your role: https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-panorama-api/get-started-with-the-pan-os-xml-api/enable-api-access.html#ide6063ba8-2b0b-42eb-98c2-eb4914061722
+It is now time to start interacting with the PAN-OS APIs. If you're able to connect to the Firewall management interface as admin, you should also be able to issue commands via the API. If you run into issues, please check if API access is enabled for your role: https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-panorama-api/get-started-with-the-pan-os-xml-api/enable-api-access.html
 
 The API authentication is based on an API Key which is derived from your credentials (username, password and a firewall master key). The API Key doesn't change unless the credentials change, so you can reuse it for subsequent calls. Make sure you store it securely and don't leave it behind in the source code of your scripts.
 
-More information on the API Key is available here: https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-panorama-api/get-started-with-the-pan-os-xml-api/get-your-api-key.html#idca192ed7-45df-4992-a0f7-41ebe94fbdac
+More information on the API Key is available here: https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-panorama-api/get-started-with-the-pan-os-xml-api/get-your-api-key.html
 
 For more information about the PAN-OS XML API, please refer to the official documentation: https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-panorama-api/get-started-with-the-pan-os-xml-api.html
 
@@ -147,7 +147,7 @@ The successful response will contain the API Key in the XML document:
 ```xml
 <response status = 'success'>
   <result>
-    <key>LWQ5ZFUxVkJUTjR0QVE9PUhPdGVjQWtCQkIxMjM0QVNEdBAB23B5SjRXaVBwQ3N6QlRoQ0g4ci9oL1hOdUt3H21ABQUF2NWsyOFBiNG1vazhmVHN6cS9HQ2kyWitoMzZVSg==</key>
+<key>LWQ5ZFUxVkJUTjR0QVE9PUhPdGVjQWtCQkIxMjM0QVNEdBAB23B5SjRXaVBwQ3N6QlRoQ0g4ci9oL1hOdUt3H21ABQUF2NWsyOFBiNG1vazhmVHN6cS9HQ2kyWitoMzZVSg==</key>
   </result>
 </response>
 ```

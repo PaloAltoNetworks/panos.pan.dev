@@ -265,7 +265,7 @@ After logging on the Firewall Web UI as admin, navigate on **Objects** - **Dynam
 
 If successful, it will display the IP addresses currently associated with the DAG, as shown in the following screenshot:
 
-![Successful IP Registration](images/12-checkdag.png "Successful IP Registration")
+![Successful IP Registration](/img/12-checkdag.png "Successful IP Registration")
 
 #### Method 2: CLI
 

@@ -10,8 +10,6 @@ keywords:
 ---
 # Automate IP blocking with PAN-OS
 
-#### by Steve Ballmer
-
 In this Quickstart guide we'll show how to integrate with Palo Alto Networks Next-Generation Firewalls to automatically block communications (incoming, outgoing or both) from/to specific IP addresses. This is a common pattern used in partner and customer integrations to automate remediation based on external factors, such as alerts or Threat Intel data.
 
 Some common use cases are:
@@ -265,7 +263,7 @@ After logging on the Firewall Web UI as admin, navigate on **Objects** - **Dynam
 
 If successful, it will display the IP addresses currently associated with the DAG, as shown in the following screenshot:
 
-![Successful IP Registration](/img/12-checkdag.png "Successful IP Registration")
+![Successful IP Registration](images/12-checkdag.png "Successful IP Registration")
 
 #### Method 2: CLI
 

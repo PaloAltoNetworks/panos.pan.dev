@@ -130,7 +130,7 @@ The Firewall configuration has been completed! No further commits are required b
 
 ### Step 4: Obtain the Firewall API Key
 
-It is now time to start interacting with the PAN-OS APIs. If you're able to connect to the Firewall management interface as admin, you should also be able to issue commands via the API. If you run into issues, please check if [API access is enabled](/docs/xmlapi_qs) for your role.
+It is now time to start interacting with the PAN-OS APIs. If you're able to connect to the Firewall management interface as admin, you should also be able to issue commands via the API. If you run into issues, please check if [API access is enabled](/docs/xmlapi_qs) for your role. After that, you can generate an API key using the [XML API](/docs/xmlapi_qs#get-your-api-key) or [pan-python](/docs/panpython_apikey).
 
 The API authentication is based on an API Key which is derived from your credentials (username, password and a firewall master key). The API Key doesn't change unless the credentials change, so you can reuse it for subsequent calls. Make sure you store it securely and don't leave it behind in the source code of your scripts.
 

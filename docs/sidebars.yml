@@ -1,6 +1,5 @@
 SIDEBARS:
-  - sidebar: panos
-    categories:
+  - categories:
       - category: Overview
         ids:
           - panos_api
@@ -21,8 +20,11 @@ SIDEBARS:
       - category: PAN Go SDK
         ids:
           - pango_qs
-  - sidebar: automation
-    categories:
+      - category: Tutorials
+        ids:
+          - panos_dag_qs
+    sidebar: panos
+  - categories:
       - category: Overview
         ids:
           - automation
@@ -32,8 +34,8 @@ SIDEBARS:
       - category: Terraform
         ids:
           - terraform_qs
-  - sidebar: cloud
-    categories:
+    sidebar: automation
+  - categories:
       - category: Overview
         ids:
           - cloud
@@ -54,3 +56,4 @@ SIDEBARS:
       - category: Private Cloud
         ids:
           - cloudtemplates_qs
+    sidebar: cloud

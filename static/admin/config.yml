@@ -22,6 +22,26 @@ collections:
           widget: "string",
           required: false,
         }
+      - {
+          label: "hide_title",
+          name: "hide_title",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - {
+          label: "description",
+          name: "description",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "keywords",
+          name: "keywords",
+          widget: "list",
+          required: false,
+          hint: "Comma separated values",
+        }
       - { label: "Content", name: "body", widget: "markdown" }
   - name: "sidebars"
     label: "Sidebars"

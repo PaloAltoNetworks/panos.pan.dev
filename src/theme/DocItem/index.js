@@ -147,6 +147,7 @@ function DocItem(props) {
                               "button button--outline button--primary button--md"
                             )}
                             href={issueUrl}
+                            target="_blank"
                           >
                             Report an Issue
                           </Link>

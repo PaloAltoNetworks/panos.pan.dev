@@ -13,14 +13,7 @@ about: A typo, inaccuracy, or improvement in the documentation
 title: ''
 labels: documentation
 assignees: ''
-doc_url: ''
 ---
-
-## Documentation link
-
-{{ frontMatter.doc_url }}
-
-<!--- Where is the documentation with the issue? -->
 
 ## Describe the problem
 

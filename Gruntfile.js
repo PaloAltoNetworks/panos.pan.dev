@@ -48,6 +48,6 @@ module.exports = function(grunt) {
       }
     };
 
-    grunt.file.write("static/js/lunr/index.json", JSON.stringify(indexPages()));
+    grunt.file.write("static/index.json", JSON.stringify(indexPages()));
   });
 };

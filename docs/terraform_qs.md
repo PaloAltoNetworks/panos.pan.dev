@@ -48,7 +48,7 @@ This repo contains the following sub repositories:
 
    - ``` Automated Terraform & Ansible One-click deployment for AWS and Azure```
 
-        [Terraform and Ansible Docker Container README](docs/terraform_ansible_container)
+        [Terraform and Ansible Docker Container README](terraform_ansible_container)
 
 Support:
 --------

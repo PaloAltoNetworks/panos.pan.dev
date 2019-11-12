@@ -28,6 +28,7 @@ SIDEBARS:
       - category: Overview
         ids:
           - automation
+          - terraform_ansible_container
       - category: Ansible
         ids:
           - ansible_qs

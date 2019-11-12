@@ -22,7 +22,7 @@ The following are ways you can contribute to Palo Alto Networks developer docs:
 
 ## Using Git and GitHub
 
-> Most of the information in this section can be found in [GitHub Help](https://help.github.com) articles. If you're familiar with Git and GitHub, skip to the [Contribute and edit content](#contribute-content) section for the particulars of the code/content flow of this repository.
+> Most of the information in this section can be found in [GitHub Help](https://help.github.com) articles. If you're familiar with Git and GitHub, skip to the [Contribute content](#contribute-content) section for an example `git` flow.
 
 ### Setting up your fork of the repository
 

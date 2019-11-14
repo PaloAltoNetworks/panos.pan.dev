@@ -14,7 +14,6 @@ keywords:
   - pango
   - go
   - golang
-
 image: /img/panos_apis.svg
 ---
 

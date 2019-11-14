@@ -2,6 +2,12 @@
 id: automation
 title: Infrastructure as Code
 sidebar_label: Infrastructure as Code
+hide_title: false
+description: Infrastructure as Code
+keywords:
+  - ansible
+  - terraform
+  - overview
 ---
 
 > Version control your infrastructure and eliminate human-error from device configuration with infrastructure-as-code tools and techniques. Tell your tools how the configuration should look and let them automate the rest.

@@ -2,6 +2,18 @@
 id: ansible_qs
 title: Quickstart
 sidebar_label: Quickstart
+hide_title: false
+description: Getting started with Ansible
+keywords:
+  - pan-os
+  - panos
+  - xml
+  - api
+  - quickstart
+  - pan-python
+  - sdk
+  - python
+image: /img/panos_apis.svg
 ---
 
 # Palo Alto Networks Ansible modules
@@ -11,11 +23,11 @@ operational tasks on Palo Alto Networks Next Generation Firewalls --
 both physical and virtualized form factor. The underlying protocol uses
 API calls that are wrapped within the Ansible framework.
 
--   Free software: Apache 2.0 License
--   Documentation:
-    <https://ansible-pan.readthedocs.io>
--   PANW community supported live page:
-    <http://live.paloaltonetworks.com/ansible>
+- Free software: Apache 2.0 License
+- Documentation:
+  <https://ansible-pan.readthedocs.io>
+- PANW community supported live page:
+  <http://live.paloaltonetworks.com/ansible>
 
 ## Installation
 
@@ -50,7 +62,7 @@ More comprehensive playbooks can be found under:
 ## Ansible galaxy role
 
 The Palo Alto Networks Ansible modules project is a collection of Ansible modules to automate configuration and
-operational tasks on Palo Alto Networks *Next Generation Firewalls*. The underlying protocol uses API calls that are wrapped within Ansible framework.
+operational tasks on Palo Alto Networks _Next Generation Firewalls_. The underlying protocol uses API calls that are wrapped within Ansible framework.
 
 > <https://github.com/PaloAltoNetworks/ansible-pan/>
 
@@ -71,6 +83,5 @@ Unless explicitly tagged, all projects or work posted in our GitHub
 repository (at <https://github.com/PaloAltoNetworks>) or sites other
 than our official Downloads page on <https://support.paloaltonetworks.com>
 are provided under the besteffort policy.
-
 
 ## [Click here for an automated Terraform and Ansible One-click deployment for AWS and Azure](terraform_ansible_container)

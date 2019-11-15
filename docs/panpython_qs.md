@@ -1,6 +1,6 @@
 ---
 id: panpython_qs
-title: Quickstart
+title: PAN Python SDK Quickstart
 sidebar_label: Quickstart
 hide_title: false
 description: Getting started with pan-python

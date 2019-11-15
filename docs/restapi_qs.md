@@ -1,6 +1,6 @@
 ---
 id: restapi_qs
-title: Quickstart
+title: REST API Quickstart
 sidebar_label: Quickstart
 hide_title: false
 description: Overview of the PAN-OS API

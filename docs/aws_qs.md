@@ -1,10 +1,10 @@
 ---
 id: aws_qs
-title: AWS 
+title: AWS Quickstart
 sidebar_label: Overview
 ---
 
-# Auto Scaling VM-Series in AWS Cloud
+# AWS Quickstart
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/fArBo7ec-ro" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

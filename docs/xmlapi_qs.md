@@ -1,6 +1,6 @@
 ---
 id: xmlapi_qs
-title: Quickstart
+title: XML API Quickstart
 sidebar_label: Quickstart
 hide_title: false
 description: PAN-OS® XML API Quickstart

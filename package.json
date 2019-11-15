@@ -21,8 +21,7 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-particles-js": "^2.7.0",
-    "react-scroll-up-button": "^1.6.4",
-    "string": "^3.3.3"
+    "react-scroll-up-button": "^1.6.4"
   },
   "browserslist": {
     "production": [

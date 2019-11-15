@@ -1,6 +1,6 @@
 ---
 id: pandevice_qs
-title: Quickstart
+title: PAN Device Framework Quickstart
 sidebar_label: Quickstart
 hide_title: false
 description: Getting started with pandevice

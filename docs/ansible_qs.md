@@ -1,22 +1,14 @@
 ---
 id: ansible_qs
-title: Quickstart
+title: Ansible Quickstart
 sidebar_label: Quickstart
 hide_title: false
 description: Getting started with Ansible
 keywords:
-  - pan-os
-  - panos
-  - xml
-  - api
+  - playbooks
   - quickstart
-  - pan-python
-  - sdk
-  - python
-image: /img/panos_apis.svg
+  - ansible
 ---
-
-# Palo Alto Networks Ansible modules
 
 A collection of Ansible modules that automate configuration and
 operational tasks on Palo Alto Networks Next Generation Firewalls --

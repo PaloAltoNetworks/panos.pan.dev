@@ -23,6 +23,7 @@ SIDEBARS:
       - category: Tutorials
         ids:
           - panos_dag_qs
+          - panos_tutorials_address_group
     sidebar: panos
   - categories:
       - category: Overview

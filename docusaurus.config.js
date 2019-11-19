@@ -25,7 +25,7 @@ module.exports = {
       title: "",
       logo: {
         alt: "PAN-OS® for Developers",
-        src: "img/panosdevelopers.png"
+        src: "img/panospeelable.png"
       },
       menus: [
         {

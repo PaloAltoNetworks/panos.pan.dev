@@ -1,7 +1,7 @@
 backend:
   name: github
   branch: master
-  repo: sserrata/panos.dev
+  repo: PaloAltoNetworks/panos.pan.dev
   open_authoring: true
   squash_merges: true
 publish_mode: editorial_workflow

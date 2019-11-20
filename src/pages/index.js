@@ -361,16 +361,16 @@ function Home() {
                 </div>
               </div>
 
-              {/* Ansible PAN */}
+              {/* Ansible */}
               <div className={classnames("col col--3", styles.tools)}>
                 <div className="text--center">
                   <img
                     className={styles.toolImage}
                     src="img/ansible_logo.png"
-                    alt="Ansible PAN"
+                    alt="Ansible"
                   />
                 </div>
-                <h4>Ansible PAN</h4>
+                <h4>Ansible</h4>
                 <p className={styles.text__gray}>
                   Ansible modules for Palo Alto Networks NGFWs
                 </p>

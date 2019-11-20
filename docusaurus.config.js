@@ -37,7 +37,7 @@ module.exports = {
             { to: "docs/panpython_qs", label: "PAN Python SDK" },
             { to: "docs/pango_qs", label: "PAN Go SDK" },
             { to: "docs/terraform_qs", label: "Terraform Provider" },
-            { to: "docs/ansible_qs", label: "Ansible PAN" },
+            { to: "docs/ansible_qs", label: "Ansible" },
             { to: "docs/cloudtemplates_qs", label: "Cloud Templates" }
           ],
           position: "left"
@@ -109,7 +109,7 @@ module.exports = {
         }
       ],
       logo: {
-        alt: "PAN-OS® for developers",
+        alt: "PAN-OS® for Developers",
         src: "img/panosfordevelopers.png"
       },
       copyright: `Copyright © ${new Date().getFullYear()} Palo Alto Networks, Inc.`

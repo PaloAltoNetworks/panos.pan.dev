@@ -1,9 +1,9 @@
 ---
 id: panos_tutorials_rule_hit_count
 title: Export security rule hitcount to CSV
-sidebar_label: Rule hitcount to CSV
+sidebar_label: Rule hit count to CSV
 hide_title: false
-description: Export security rule hitcount to CSV 
+description: Export security rule hit count to CSV 
 keywords:
   - PAN-OS API
   - PAN-OS
@@ -212,7 +212,7 @@ The XML text values are casted to integer (hit-count) and formatted (date repres
 
 The last step is a basic sort by hit-count and formatted print (CSV) to stdout.
 
-### Exporting rule hit count to CSV using Python
+### Exporting rule hit count to CSV using GO
 
 Look at the following GO snippet
 

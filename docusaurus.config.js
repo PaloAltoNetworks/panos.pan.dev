@@ -110,7 +110,8 @@ module.exports = {
       ],
       logo: {
         alt: "PAN-OS® for Developers",
-        src: "img/panosfordevelopers.png"
+        src: "img/pandev.png",
+        href: "https://pan.dev"
       },
       copyright: `Copyright © ${new Date().getFullYear()} Palo Alto Networks, Inc.`
     }

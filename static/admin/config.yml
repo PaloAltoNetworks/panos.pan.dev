@@ -1,6 +1,6 @@
 backend:
   name: github
-  branch: master
+  branch: develop
   repo: PaloAltoNetworks/panos.pan.dev
   open_authoring: true
   squash_merges: true

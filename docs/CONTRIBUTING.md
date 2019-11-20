@@ -12,6 +12,7 @@ Thank you for your interest in **Palo Alto Networks** developer documentation!
 - [Using markdown and MDX](#using-markdown-and-mdx)
 - [CLI and code snippets](#cli-and-code-snippets)
 - [Netlify CMS](#netlify-cms)
+- [Adding a document](#adding-a-document)
 - [More resources](#more-resources)
 
 ## Types of contributions
@@ -275,7 +276,7 @@ SIDEBARS:
 
 ### Contributing a doc
 
-Contributing a new document can be achieved with the following steps:
+Contributing a new document can be achieved with the following flow:
 
 - Create a new MD/MDX file under the `docs` folder
 - Add the appropriate frontmatter (including the unique ID)

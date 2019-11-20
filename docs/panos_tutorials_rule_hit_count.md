@@ -175,7 +175,7 @@ if __name__ == "__main__":
     main()
 ```
 
-The first `try / except` block attemps to leverage pan-python to initialize a `xapi` object connected to or PAN-OS device API
+The first `try / except` block attemps to leverage pan-python to initialize a `xapi` object connected to our PAN-OS device API
 
 The second `try / except` block performs the following steps in sequence:
 * Execute the operational command
@@ -184,7 +184,7 @@ The second `try / except` block performs the following steps in sequence:
 
 Let me highline some pieces of code:
 
-```text
+```python
 rules = xapi.element_root.iterfind('.//rules/entry')
 ```
 
@@ -192,7 +192,7 @@ pan-python's xapi object features automatic XML parsing of the API response. A f
 
 That allows us to use the `iterfind` method to produce a generator (`rules`) that will yield all elements with XML tag `entry` at the XPATH `.//rules/entry` (look above for the XML response schema of this operational command)
 
-```text {3-5}
+```python {3-5}
 rule_dict = {}
 for rule in rules:
     rule_name = rule.get('name')
@@ -281,7 +281,7 @@ func main() {
 
 Let's comment some parts of the code.
 
-```text
+```go
 c := &pango.Firewall{Client: pango.Client{
     Hostname: hostname,
     ApiKey:   apiKey,
@@ -294,7 +294,7 @@ if err = c.Initialize(); err != nil {
 
 This is how you define a `Firewall` struct for your PAN-OS device and how you `Initialize()` it to be able to use its `Op()` function.
 
-```text
+```go
 _, respErr := c.Op(cmd, "", nil, &response)
 ```
 
@@ -302,7 +302,7 @@ The `Op(req interface{}, vsys string, extras interface{}, ans interface{})` meth
 
 The following is the struct of the `response` we're passing to `Op()`. Using this strategy we leverage pan-go's XML parser and data conversion features simplifying data processing on our end.
 
-```text
+```go
 type rule struct {
 	RuleName  string `xml:"name,attr"`
 	HitCount  int64  `xml:"hit-count"`

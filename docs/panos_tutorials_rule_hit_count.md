@@ -8,7 +8,7 @@ keywords:
   - PAN-OS API
   - PAN-OS
 ---
-This tutorial covers how to dump the security rulebase hitcount into a CSV file for out-of-band processing. Typical use case is to identify rules with zero or very few hit count that could be elegible during a policy cleanup process.
+This tutorial covers how to dump a security rulebase hit count into a CSV file for offline processing. A typical use case leveraging rule hit counts is to identify rules with zero or very few hits that, otherwise, might be eligible for cleanup or deletion.
 
 ## Requirements
 
@@ -16,7 +16,7 @@ To follow this tutorial, it is recommended that that you are familiar with the c
 
 Make sure you have a Palo Alto Networks Next-Generation Firewall deployed and that you have administrative access to its Management interface via HTTPS. To avoid potential disruptions, it's recommended to run all the tests on a **non-production** environment.
 
-In this tutorial you'll find code examples leveraging the [pan-python](/docs/panpython_qs) and [pan-go](/doc/pango_qs). It is assumed that the reader has basic PAN-OS API knowledge ([curl](/docs/xmlapi_qs)) and that owns an API KEY for his PAN-OS device ([Grab the API Key](/docs/panos_tutorials_address_group#step-1-grab-the-api-key))
+In this tutorial you'll find code examples leveraging the [pan-python](/docs/panpython_qs) and [pan-go](/doc/pango_qs). It is assumed that the reader has basic PAN-OS API knowledge ([curl](/docs/xmlapi_qs)) and that owns an API KEY for his PAN-OS device ([Grab the API Key](/docs/xmlapi_qs#get-your-api-key))
 
 ## Rule hit count
 
@@ -32,7 +32,7 @@ These runtime statistics can provide value in some automation use cases. For ins
 
 The above use cases justify the need for a programmatic way of extracting runtime data points (the rule hit count in this case) from the PAN-OS device.
 
-A network security operations enginer might be used to use the device's CLI (PAN-OS CLI in this case) to access that data. The following is an example of CLI command displaying the rule hit count on a Palo Alto Networks firewall.
+A network security operations engineer might be accustomed to using the device's CLI (PAN-OS CLI in this case) to access that data. The following is an example of CLI command displaying the rule hit count on a Palo Alto Networks firewall.
 
 ```text
 xhoms@PA-220> show rule-hit-count vsys vsys-name vsys1 rule-base security rules all
@@ -48,7 +48,7 @@ VPN Xavi Back                                                    2321        Wed
 ...
 ```
 
-For years, the only way to programmatically access this type of data was using CLI automation tools (Expect / Puppet / ...). But, nowadays, all teams lock to API's to support automation use cases.
+For years, the only way to programmatically access this type of data was using CLI automation tools (Expect / Puppet / ...). But, nowadays, most teams look to leverage APIs to support automation use cases.
 
 ### The "type=op" PAN-OS API command
 
@@ -68,8 +68,13 @@ The case we're covering in this tutorial requires us to use a `type=op` API requ
 For fluent PAN-OS CLI engineers, the easiest way to get the XML document of a CLI command is by enablig CLI debug on their terminal session as in the following example:
 
 ```text
-xhoms@PA-220> debug cli on
-xhoms@PA-220> show rule-hit-count vsys vsys-name vsys1 rule-base security rules all
+debug cli on
+show rule-hit-count vsys vsys-name vsys1 rule-base security rules all
+```
+
+Example output:
+
+```text
 (container-tag: rule-hit-count container-tag: vsys container-tag: vsys-name container-tag: entry key-tag: name value: vsys1 container-tag: rule-base container-tag: entry key-tag: name value: security container-tag: rules container-tag: all pop-tag: pop-tag: pop-tag: pop-tag: pop-tag: pop-tag: pop-tag: pop-tag:)
 ((eol-matched: . #t) (context-inserted-at-end-p: . #f))
 
@@ -87,13 +92,19 @@ With all information we have so far we're ready to construct the URL for our API
 https://<panos-device>/api/?key=<api-key>&type=op&cmd=<show><rule-hit-count><vsys><vsys-name><entry name='vsys1'><rule-base><entry name='security'><rules><all></all></rules></entry></rule-base></entry></vsys-name></vsys></rule-hit-count></show>
 ```
 
-Look at the output generated for this API call (using `curl` command in line 4):
+The following linux command sequence can be used to perform the previous API call:
 
 ```text {4}
-ckent:~ xhoms$ CMD=<show><rule-hit-count><vsys><vsys-name><entry name='vsys1'><rule-base><entry name='security'><rules><all></all></rules></entry></rule-base></entry></vsys-name></vsys></rule-hit-count></show>
-ckent:~ xhoms$ $HOSTNAME=10.11.29.250
-ckent:~ xhoms$ $API_KEY=LUFRPT1HR...
-ckent:~ xhoms$ curl -k --data-urlencode "cmd=$CMD" "https://$HOSTNAME/api/?key=$API_KEY&type=op"
+HOSTNAME=10.11.29.250
+API_KEY=LUFRPT1HR...
+CMD=<show><rule-hit-count><vsys><vsys-name><entry name='vsys1'><rule-base><entry name='security'><rules><all></all></rules></entry></rule-base></entry></vsys-name></vsys></rule-hit-count></show>
+
+curl -k --data-urlencode "cmd=$CMD" "https://$HOSTNAME/api/?key=$API_KEY&type=op"
+```
+
+Example response
+
+```text
 <response status="success"><result><rule-hit-count><vsys><entry name="vsys1"><rule-base><entry name="security"><rules><entry name="LogAllURL-DIdac"><latest>yes</latest><hit-count>510932</hit-count><last-hit-timestamp>1545057765</last-hit-timestamp><last-reset-timestamp>0</last-reset-timestamp><first-hit-timestamp>1529328151</first-hit-timestamp><rule-creation-timestamp>1529328151</rule-creation-timestamp><rule-modification-timestamp>1529328151</rule-modification-timestamp></entry><entry name="HostedPanorama">...
 ```
 

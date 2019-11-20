@@ -10,6 +10,8 @@ Thank you for your interest in **Palo Alto Networks** developer documentation!
 - [Types of contributions](#types-of-contributions)
 - [Use GitHub and Git](#use-github-git)
 - [Using markdown and MDX](#using-markdown-and-mdx)
+- [CLI and code snippets](#cli-and-code-snippets)
+- [Netlify CMS](#netlify-cms)
 - [More resources](#more-resources)
 
 ## Types of contributions
@@ -100,11 +102,11 @@ git merge upstream/master master
 git push origin master
 ```
 
-## Using markdown and MDX
+## Markdown and MDX
 
 ### MDX
 
-MDX syntax can be boiled down to being JSX in Markdown. It’s a superset of Markdown syntax that also supports importing, exporting, and JSX. If you're planning use MDX to author your content be sure to use the `.mdx` file extension when naming your file.
+> MDX syntax can be boiled down to being JSX in Markdown. It’s a superset of Markdown syntax that also supports importing, exporting, and JSX. If you're planning use MDX to author your content be sure to use the `.mdx` file extension when naming your file.
 
 [Getting started](https://mdxjs.com/getting-started) with MDX.
 
@@ -154,6 +156,132 @@ The image below is from [Google][googleweb]
 ```
 
 By using references grouped at the bottom of your file, you can easily find, edit, and reuse link and image URLs.
+
+## CLI and code snippets
+
+When using code blocks try to ensure your example is ready to copy and paste. Consider that a reader may be a beginner with no understanding of the difference between a shell prompt and a command. The same applies to inline comments.
+
+Do this:
+
+```bash
+curl -X GET http://httpbin.org/get
+```
+
+Not this (results in a "command not found" error):
+
+```bash {1}
+$ curl -X GET http://httpbin.org/get
+```
+
+Sample output:
+
+```console
+{
+  "args": {},
+  "headers": {
+    "Accept": "*/*",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/7.54.0"
+  },
+  "origin": "137.83.194.100, 137.83.194.100",
+  "url": "https://httpbin.org/get"
+}
+```
+
+## Netlify CMS
+
+Netlify CMS is an open source content management system that can be used with any static site generator to author, review, edit and preview content. It's an alternative to managing content using your IDE/text-editor, GitHub and the `git` CLI. It functions primarily as a markdown/MDX editor with abstractions and support for git flows, e.g. creating feature branches and pull requests.
+
+### Netlify CMS vs `git`
+
+Although it might be tempting to use Netlify CMS over managing content with `git`, it's important to note the key differences between the two.
+
+As of today, our customized Netlify CMS supports editing the following in Docusaurus:
+
+- Documentation sidebars
+- Docs (MD and MDX)
+- Uploading media/assets\*
+
+> Media/assets uploaded with Netlify CMS will require the author to submit a separate pull/merge request using `git` or GitHub
+
+With respect to **git flow**, Netlify CMS abstracts the following:
+
+- Initial fork of root repository
+- Automatic creation of "feature branches" for each contribution, i.e. one branch per modified or added file
+- Automatic creation of pull request (when moved to **Review**)
+
+> The **git flow** implemented by Netlify CMS is referred to as "open authoring" and follows the approach that each individual contribution moves from a feature-branch to a pull request. In all cases, pull requests will be reviewed by DevRel before they can be approved and merged into `develop` and (eventually) `master` braches.
+
+Please refer to [Using git and GitHub](#using-git-and-github) for instructions on how to manage content using the `git` CLI, your favorite IDE/text-editor and GitHub.
+
+## Adding a document
+
+This section describes the general steps required for adding a document using either `git` or `Netlify CMS`. In the case of Netlify CMS, it's expected for the user to intuit these steps with the WebUI.
+
+### Frontmatter
+
+Each doc requires a frontmatter header, which Docusaurus uses to determine the following:
+
+- What description, title and tags to inject into the HTML `<meta />` tag
+- What sidebar and sidebar category to organize the document under
+- A unique document ID
+
+Example:
+
+```text
+---
+id: panos_api
+title: PAN-OS® API
+sidebar_label: PAN-OS® API
+hide_title: false
+description: Overview of the PAN-OS API
+keywords:
+  - pan-os
+  - panos
+  - xml
+  - api
+  - rest
+image: /img/panos_apis.svg
+---
+```
+
+> If you're not sure where to begin, feel free to use an existing doc as boilerplate. Just remember that each document requires a unique ID
+
+### Sidebar
+
+Each developer site will implement one or more documentation sidebars, depending on the number of vertical content areas covered by that site. The relationship between docs, categories and sidebars can be summarized as follows (listed in hierarchical order from left to right):
+
+```text
+Sidebar --> Category --> [array of document IDs]
+```
+
+Both Netlify CMS and `git` expect the sidebar to be generated from the `sidebars.yml` file located in the `docs` folder.
+
+The following snippet calls out each specific sidebar component (note that an actual sidebars.yml file should not contain comments):
+
+```yaml {3,7,11}
+SIDEBARS:
+  - categories:
+      - category: Overview  <-- Category
+        ids:
+          - panos_api
+      - category: PAN Python SDK
+        ids: <-- List of document IDs
+          - panpython_qs
+          - panpython_apikey
+          - panpython_op
+    sidebar: panos  <-- Sidebar
+```
+
+### Contributing a doc
+
+Contributing a new document can be achieved with the following steps:
+
+- Create a new MD/MDX file under the `docs` folder
+- Add the appropriate frontmatter (including the unique ID)
+- Add the document ID to an existing or new sidebar/sidebar category
+
+> Edit the `sidebars.yml` file for adding a document ID to an existing or new sidebar and/or sidebar category.
 
 ## More resources
 

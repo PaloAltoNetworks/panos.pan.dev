@@ -46,29 +46,37 @@ is available on GitHub and as HTML from the package `doc/` directory.
 
 Install `pan-python`:
 
-    pip install --user pan-python
+```shell-session
+pip install --user pan-python
+```
 
 Example output:
 
-    Collecting pan-python
-      Downloading pan-python-0.11.0.tar.gz (109kB)
-        100% |                                | 112kB 2.0MB/s
-    Building wheels for collected packages: pan-python
-      Running setup.py bdist_wheel for pan-python ... done
-      Stored in directory: /home/ubuntu/.cache/pip/wheels/f4/4c/3e/f8d30075fc8084fd786f23f7751e98a9802759539d500b24de
-    Successfully built pan-python
-    Installing collected packages: pan-python
-    Successfully installed pan-python-0.11.0
+```console
+Collecting pan-python
+  Downloading pan-python-0.11.0.tar.gz (109kB)
+    100% |                                | 112kB 2.0MB/s
+Building wheels for collected packages: pan-python
+  Running setup.py bdist_wheel for pan-python ... done
+  Stored in directory: /home/ubuntu/.cache/pip/wheels/f4/4c/3e/f8d30075fc8084fd786f23f7751e98a9802759539d500b24de
+Successfully built pan-python
+Installing collected packages: pan-python
+Successfully installed pan-python-0.11.0
+```
 
 ## Show version
 
 Check your `pan-python` version:
 
-    panxapi.py --version
+```shell-session
+panxapi.py --version
+```
 
 Example output:
 
-    pan-python 0.11.0
+```console
+pan-python 0.11.0
+```
 
 By default `pip` installs the latest version of the package.
 

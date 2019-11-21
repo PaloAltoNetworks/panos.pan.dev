@@ -37,19 +37,19 @@ image: /img/panos_apis.svg
 
    _Be sure to replace `<firewall>` `<username>` and `<password>` with actual values._
 
-```console
+```shell-session
 curl -k -X GET 'https://<firewall>/api/?type=keygen&user=<username>&password=<password>'
 ```
 
 _or_
 
-```console
+```shell-session
 curl -k -X POST 'https://<firewall>/api/?type=keygen&user=<username>&password=<password>'
 ```
 
 A successful API call returns `status="success"` along with the API key within the `key` element:
 
-```javascript
+```xml
 <response status="success">
   <result>
     <key>gJlQWE56987nBxIqyfa62sZeRtYuIo2BgzEA9UOnlZBhU</key>

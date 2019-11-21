@@ -59,8 +59,13 @@ func main() {
 Change the values in the highlighted lines to adapt the code to your environment. Save the code in `panos-export.go` file and run:
 
 ```shell-session
-$ go get github.com/PaloAltoNetworks/pango
-$ go run panos-export.go
+go get github.com/PaloAltoNetworks/pango
+go run panos-export.go
+```
+
+The output should look like:
+
+```shell-session
 2019/11/21 11:42:44 192.168.10.1: Retrieving API key
 2019/11/21 11:42:45 (op) show system info
 2019/11/21 11:42:45 Initialize ok
@@ -118,7 +123,7 @@ func main() {
 
 > Note that we have added the `-k` flag to disable certificate verification. By default certificate verification is enabled in this code. If your code was working before but now the tool fails with `cannot validate certificate`, you may want to add `-k` to your command line.
 
-Let's try:
+Let's try on the shell:
 
 ```shell-session
 $ go get github.com/PaloAltoNetworks/pango
@@ -131,6 +136,8 @@ $ go run panos-export.go -hostname 192.168.10.1 -username admin -password admin
 ### Get the candidate rulebase
 
 Now that we have been able to connect to the PAN-OS API we need to grab the security rulebase in order to export it. If we were using the XML API directly we could do this with the `get` command of the config API, with the right XPath. The result is an XML dump of the security rulebase.
+
+Sample shell session:
 
 ```shell-session
 $ export API_KEY="<Your API Key>"
@@ -211,7 +218,7 @@ func main() {
 
 First we grab the list of policy names with [client.Security.Policies.GetList](https://godoc.org/github.com/PaloAltoNetworks/pango/poli/security#FwSecurity.GetList), and then we iterate over it to retrieve the details of each single policy with [client.Security.Policies.Get](https://godoc.org/github.com/PaloAltoNetworks/pango/poli/security#FwSecurity.Get).
 
-Result:
+On the shell:
 
 ```shell-session
 $ go run pan-export.go -hostname 192.168.10.1 -password admin -username admin
@@ -268,29 +275,10 @@ func checkForChanges(c *pango.Firewall) {
 		}
 	}
 }
-
-func main() {
-    [...]
-	c := &pango.Firewall{Client: pango.Client{
-		Hostname:          *hostnamePtr,
-		ApiKey:            *apiKeyPtr,
-		Username:          *usernamePtr,
-		Password:          *passwordPtr,
-		VerifyCertificate: !*verifyCertificate,
-		Logging:           pango.LogAction | pango.LogOp,
-	}}
-	if err = c.Initialize(); err != nil {
-		log.Printf("Failed to initialize client: %s", err)
-		return
-	}
-	log.Printf("Initialize ok")
-
-    checkForChanges(c)
-    [...]
-}
 ```
 
 When changes are detected the output looks like:
+
 ```shell-session {5}
 $ go run pan-export.go -hostname 192.168.10.1 -password admin -username admin
 2019/11/21 14:09:52 192.168.10.1: Retrieving API key
@@ -458,7 +446,7 @@ func main() {
 }
 ```
 
-Result:
+On the shell:
 
 ```shell-session
 $ go run pan-export.go -hostname 192.168.10.1 -password admin -username admin > security.csv
@@ -477,8 +465,8 @@ rule1-1,,,,InternalL3,any,false,External,any,false,any,any,,allow,,false,true,fa
 One amazing thing of Go is the support for multiple platform with the same code and toolchain. You can build the tool for multiple platform/OS on the same devel environment without special tools. Just set `GOOS` and `GOARCH` environment variables to what you need before running `go build`. Example, for building for Linux, Mac OS X, Raspberry PI and Windows:
 
 ```shell-session
-$ env GOOS=linux GOARCH=amd64 go build -o pan-export.linux pan-export.go
-$ env GOOS=darwin GOARCH=amd64 go build -o pan-export.macosx pan-export.go
-$ env GOOS=linux GOARCH=arm go build -o pan-export.rpi pan-export.go
-$ env GOOS=windows GOARCH=amd64 go build -o pan-export.exe pan-export.go
+env GOOS=linux GOARCH=amd64 go build -o pan-export.linux pan-export.go
+env GOOS=darwin GOARCH=amd64 go build -o pan-export.macosx pan-export.go
+env GOOS=linux GOARCH=arm go build -o pan-export.rpi pan-export.go
+env GOOS=windows GOARCH=amd64 go build -o pan-export.exe pan-export.go
 ```

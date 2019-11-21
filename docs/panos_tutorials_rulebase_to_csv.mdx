@@ -65,7 +65,7 @@ go run panos-export.go
 
 The output should look like:
 
-```shell-session
+```console
 2019/11/21 11:42:44 192.168.10.1: Retrieving API key
 2019/11/21 11:42:45 (op) show system info
 2019/11/21 11:42:45 Initialize ok
@@ -125,7 +125,7 @@ func main() {
 
 Let's try on the shell:
 
-```shell-session
+```console
 $ go get github.com/PaloAltoNetworks/pango
 $ go run panos-export.go -hostname 192.168.10.1 -username admin -password admin
 2019/11/21 11:42:44 192.168.10.1: Retrieving API key
@@ -220,7 +220,7 @@ First we grab the list of policy names with [client.Security.Policies.GetList](h
 
 On the shell:
 
-```shell-session
+```console
 $ go run pan-export.go -hostname 192.168.10.1 -password admin -username admin
 2019/11/21 13:34:03 192.168.10.1: Retrieving API key
 2019/11/21 13:34:04 (op) show system info
@@ -279,7 +279,7 @@ func checkForChanges(c *pango.Firewall) {
 
 When changes are detected the output looks like:
 
-```shell-session {5}
+```console {5}
 $ go run pan-export.go -hostname 192.168.10.1 -password admin -username admin
 2019/11/21 14:09:52 192.168.10.1: Retrieving API key
 2019/11/21 14:09:53 (op) show system info
@@ -448,7 +448,7 @@ func main() {
 
 On the shell:
 
-```shell-session
+```console
 $ go run pan-export.go -hostname 192.168.10.1 -password admin -username admin > security.csv
 2019/11/21 15:38:23 192.168.10.1: Retrieving API key
 2019/11/21 15:38:23 (op) show system info

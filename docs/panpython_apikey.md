@@ -27,12 +27,16 @@ and username and password arguments for the API request.
 
 ## Generate API Key
 
-    panxapi.py -h 10.30.11.101 -l admin:admin -k
+```shell-session
+panxapi.py -h 10.30.11.101 -l admin:admin -k
+```
 
 Example output:
 
-    keygen: success
-    API key:  "LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09"
+```console
+keygen: success
+API key:  "LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09"
+```
 
 For brevity, the labs use the superuser administrator account `admin`;
 creating API administrator accounts using a custom admin role with the
@@ -55,26 +59,34 @@ to _stdout_.
 Use a null string for the _tagname_ to create tagless variables; these
 are matched when **-t** is not specified.
 
-    panxapi.py -t '' -h 10.30.11.101 -l admin:admin -k
+```shell-session
+panxapi.py -t '' -h 10.30.11.101 -l admin:admin -k
+```
 
 Example output:
 
-    keygen: success
-    # panxapi.py generated: 2017/04/08 09:05:42
-    hostname=10.30.11.101
-    api_key=LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09
+```console
+keygen: success
+# panxapi.py generated: 2017/04/08 09:05:42
+hostname=10.30.11.101
+api_key=LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09
+```
 
 ## Generate `.panrc` with _tagname_
 
-    panxapi.py -t xapilab -h 10.30.11.101 -l admin -k
+```shell-session
+panxapi.py -t xapilab -h 10.30.11.101 -l admin -k
+```
 
 Example output:
 
-    Password:
-    keygen: success
-    # panxapi.py generated: 2017/04/08 09:08:47
-    hostname%xapilab=10.30.11.101
-    api_key%xapilab=LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09
+```console
+Password:
+keygen: success
+# panxapi.py generated: 2017/04/08 09:08:47
+hostname%xapilab=10.30.11.101
+api_key%xapilab=LUFRPT14MW5xOEo1R09KVlBZNnpnemh0VHRBOWl6TGM9bXcwM3JHUGVhRlNiY0dCR0srNERUQT09
+```
 
 When the password is not specified on the command line the user is
 prompted for it. This is useful to avoid leaving the password in the
@@ -84,16 +96,22 @@ shell history.
 
 Shell output redirection can be used to create your `.panrc` file.
 
-    panxapi.py -t xapilab -h 10.30.11.101 -l admin -k >> ~/.panrc
+```shell-session
+panxapi.py -t xapilab -h 10.30.11.101 -l admin -k >> ~/.panrc
+```
 
 Example output:
 
-    Password:
-    keygen: success
+```console
+Password:
+keygen: success
+```
 
 Set least privilege permissions:
 
-    chmod 600 ~/.panrc
+```shell-session
+chmod 600 ~/.panrc
+```
 
 The `.panrc` file contains authentication material; it should have
 strict file permissions (read/write for the owner, and not accessible by

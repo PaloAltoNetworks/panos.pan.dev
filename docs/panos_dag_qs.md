@@ -191,7 +191,7 @@ Create a document, similar to the one above, called `uid-register.xml`.
 
 Then call **curl** with the following parameters:
 
-```bash
+```shell-session
 curl -k -X POST 'https://<your_firewall_url>/api/?type=user-id&key=<your_api_key>' --data-urlencode cmd@uid-register.xml
 ```
 
@@ -216,13 +216,13 @@ Create a document, similar to the one above, called `uid-register.xml`.
 
 Then use _panxapi.py_ to set the tags:
 
-```bash
+```shell-session
 panxapi.py -U uid-register.xml -h <yout_firewall_ip> -K <your_api_key>
 ```
 
 Example output:
 
-```bash
+```console
 dynamic-update: success
 ```
 
@@ -249,7 +249,7 @@ You can login on the Firewall via SSH as admin and run the following commands to
 
 Check DAG membership:
 
-```bash
+```shell-session
 show object dynamic-address-group all
 ```
 
@@ -273,7 +273,7 @@ O: address object; R: registered ip; D: dynamic group; S: static group
 
 Check ip tagging:
 
-```bash
+```shell-session
 show object registered-ip all
 ```
 
@@ -303,7 +303,7 @@ Here are some examples using _curl_:
 
 **Dynamic Address Groups:**
 
-```bash
+```shell-session
 curl -k -X POST 'https://<your_firewall_ip>/api/?type=op&key=<your_api_key>&cmd=<show><object><dynamic-address-group><all></all></dynamic-address-group></object></show>'
 ```
 
@@ -329,7 +329,7 @@ The output will be similar to the following:
 
 **Registered IPs:**
 
-```bash
+```shell-session
 curl -k -X POST 'https://<your_firewall_ip>/api/?type=op&key=<your_api_key>&cmd=<show><object><registered-ip><all></all></registered-ip></object></show>'
 ```
 
@@ -389,7 +389,7 @@ Create a document, similar to the one above, called `uid-unregister.xml`.
 
 Then run **curl** with the following parameters:
 
-```bash
+```shell-session
 curl -k -X POST 'https://<your_firewall_url>/api/?type=user-id&key=<your_api_key>' --data-urlencode cmd@uid-unregister.xml
 ```
 
@@ -414,7 +414,7 @@ Create a document, similar to the one above, called `uid-unregister.xml`.
 
 Then use _panxapi.py_ to unset the tags:
 
-```bash
+```shell-session
 panxapi.py -U uid-unregister.xml -h <your_firewall_ip> -K <your_api_key>
 ```
 

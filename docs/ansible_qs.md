@@ -26,8 +26,8 @@ API calls that are wrapped within the Ansible framework.
 The recommended way to install the modules is installing the Palo Alto
 Networks Ansible Galaxy role:
 
-```bash
-$ ansible-galaxy install PaloAltoNetworks.paloaltonetworks
+```shell-session
+ansible-galaxy install PaloAltoNetworks.paloaltonetworks
 ```
 
 Older modules modules are part of the default Ansible distribution

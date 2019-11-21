@@ -150,17 +150,21 @@ function DocItem(props) {
                               )}
                             </small>
                           </em>
-                          <Link
-                            className={classnames(
-                              "button button--outline button--primary button--md"
-                            )}
-                            href={issueUrl}
-                            target="_blank"
-                          >
-                            Report an Issue
-                          </Link>
                         </div>
                       )}
+                    </div>
+                    <div className="row">
+                      <div className="col text--right">
+                        <Link
+                          className={classnames(
+                            "button button--outline button--primary button--md"
+                          )}
+                          href={issueUrl}
+                          target="_blank"
+                        >
+                          Report an Issue
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 )}

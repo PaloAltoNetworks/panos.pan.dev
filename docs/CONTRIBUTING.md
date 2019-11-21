@@ -282,8 +282,6 @@ Contributing a new document can be achieved with the following flow:
 - Add the appropriate frontmatter (including the unique ID)
 - Add the document ID to an existing or new sidebar/sidebar category
 
-> Edit the `sidebars.yml` file for adding a document ID to an existing or new sidebar and/or sidebar category.
-
 ## More resources
 
 - For more information about Markdown, go to [their site][markdown home].

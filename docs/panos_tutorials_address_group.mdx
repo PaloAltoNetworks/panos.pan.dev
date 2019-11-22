@@ -1,9 +1,9 @@
 ---
 id: panos_tutorials_address_group
-title: Adding an Address Group Object
-sidebar_label: Adding an Address Group Object
+title: Working with Address Groups
+sidebar_label: Working with Address Groups
 hide_title: false
-description: Adding an Address Group Object using PAN-OS API
+description: Working with Address Groups using PAN-OS API
 keywords:
   - PAN-OS API
   - Address Group
@@ -13,7 +13,7 @@ keywords:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In this tutorial covers how to add & populate Static and Dynamic Address Groups to PAN-OS using API. If you are looking into adding IPs to Dynamic Address Groups using the Dynamic Address Group API, please refer to the [dedicated tutorial](panos_dag_qs).
+This tutorial covers how to add & populate Static and Dynamic Address Groups to PAN-OS using API. If you are looking into adding IPs to Dynamic Address Groups using the Dynamic Address Group API, please refer to the [dedicated tutorial](panos_dag_qs).
 
 This tutorial has 2 sections: the first section covers [static Address Groups](#static-address-groups), the second section covers  [Dynamic Address Groups](#dynamic-address-groups).
 
@@ -23,7 +23,7 @@ To follow this tutorial, it is recommended that that you are familiar with the c
 
 Make sure you have a Palo Alto Networks Next-Generation Firewall deployed and that you have administrative access to its Management interface via HTTPS. To avoid potential disruptions, it's recommended to run all the tests on a **non-production** environment.
 
-No specific programming language expertise is required, although _Python_ is recommended. Examples with both [curl](/docs/xmlapi_qs) and [pan-python](/docs/panpython_qs) are provided.
+No specific programming language expertise is required, although _Python_ is recommended. Examples with both [XML API](/docs/xmlapi_qs), [REST API](/docs/restapi_qs) and [pan-python](/docs/panpython_qs) are provided.
 
 ## Static Address Groups
 

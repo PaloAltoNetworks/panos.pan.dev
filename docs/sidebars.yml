@@ -25,6 +25,7 @@ SIDEBARS:
           - panos_dag_qs
           - panos_tutorials_address_group
           - panos_tutorials_rule_hit_count
+          - panos_tutorials_rulebase_to_csv
     sidebar: panos
   - categories:
       - category: Overview

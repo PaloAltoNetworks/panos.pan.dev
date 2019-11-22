@@ -28,7 +28,7 @@ pip install pandevice
 
 Or, if you have virtualenvwrapper installed:
 
-```
+```shell-session
 mkvirtualenv pandevice
 pip install pandevice
 ```
@@ -37,7 +37,7 @@ Pip will install the [pan-python](/docs/panpython_qs) library as a dependency.
 
 Upgrade to the latest version:
 
-```
+```shell-session
 pip install --upgrade pandevice
 ```
 

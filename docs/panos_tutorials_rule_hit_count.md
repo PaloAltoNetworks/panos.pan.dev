@@ -94,7 +94,7 @@ https://<panos-device>/api/?key=<api-key>&type=op&cmd=<show><rule-hit-count><vsy
 
 The following linux command sequence can be used to perform the previous API call:
 
-```text {4}
+```text {5}
 HOSTNAME=10.11.29.250
 API_KEY=LUFRPT1HR...
 CMD=<show><rule-hit-count><vsys><vsys-name><entry name='vsys1'><rule-base><entry name='security'><rules><all></all></rules></entry></rule-base></entry></vsys-name></vsys></rule-hit-count></show>

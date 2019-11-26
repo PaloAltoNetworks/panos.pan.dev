@@ -14,16 +14,16 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies- 
+            - cache-{{ checksum "Pipfile.lock" }}
+            - cache-
       - run:
-          name: Avoid hosts unknown for github
+          name: avoid hosts unknown for github
           command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
 
       - run:
           name: install dependencies
           command: |
             git clone git@github.com:algolia/docsearch-scraper.git && cd docsearch-scraper
-            pip install --user pipenv
             pipenv install
 
       - run:
@@ -33,3 +33,9 @@ jobs:
             pipenv shell
             touch .env
             ./docsearch run
+
+      - save_cache:
+          key: cache-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ~/.local
+            - ~/.cache

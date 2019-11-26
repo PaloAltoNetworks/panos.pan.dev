@@ -5,8 +5,12 @@
 version: 2
 jobs:
   build:
-    machine: true
+    docker:
+      - image: algolia/docsearch-scraper
+
     steps:
       - run:
           name: run scraper
-          command: docker run -it algolia/docsearch-scraper
+          command: |
+            cd /root
+            pipenv run python -m src.index

@@ -1,0 +1,35 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.1
+
+    working_directory: ~/
+
+    steps:
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-
+      - run:
+          name: Avoid hosts unknown for github
+          command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+
+      - run:
+          name: install dependencies
+          command: |
+            git clone git@github.com:algolia/docsearch-scraper.git && cd docsearch-scraper
+            pip install pipenv
+            pipenv install
+
+      - run:
+          name: run docsearch scraper
+          command: |
+            cd ~/docsearch-scraper
+            pipenv shell
+            touch .env
+            ./docsearch run

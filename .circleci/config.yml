@@ -5,37 +5,8 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/python:3.7
-
-    working_directory: ~/
-
+    machine: true
     steps:
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - cache-{{ checksum "Pipfile.lock" }}
-            - cache-
       - run:
-          name: avoid hosts unknown for github
-          command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
-
-      - run:
-          name: install dependencies
-          command: |
-            git clone git@github.com:algolia/docsearch-scraper.git && cd docsearch-scraper
-            pipenv install
-
-      - run:
-          name: run docsearch scraper
-          command: |
-            cd ~/docsearch-scraper
-            pipenv shell
-            touch .env
-            ./docsearch run
-
-      - save_cache:
-          key: cache-{{ checksum "Pipfile.lock" }}
-          paths:
-            - ~/.local
-            - ~/.cache
+          name: run scraper
+          command: docker run -it algolia/docsearch-scraper

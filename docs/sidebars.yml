@@ -38,6 +38,9 @@ SIDEBARS:
       - category: Terraform
         ids:
           - terraform_qs
+      - category: Tutorials
+        ids:
+          - automation_tutorials_ansible_srule
     sidebar: automation
   - categories:
       - category: Overview

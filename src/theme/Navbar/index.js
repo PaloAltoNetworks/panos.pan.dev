@@ -70,6 +70,12 @@ function Navbar() {
     setSidebarShown(false);
   }, [setSidebarShown]);
 
+  const toggleMenu = id => {
+    setMenuShown(menuShown => {
+      return { ...menuShown, [id]: !menuShown[id] };
+    });
+  };
+
   const onToggleChange = useCallback(
     e => setTheme(e.target.checked ? "dark" : ""),
     [setTheme]

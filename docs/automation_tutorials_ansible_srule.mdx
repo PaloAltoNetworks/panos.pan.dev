@@ -28,13 +28,13 @@ Make sure you have a Palo Alto Networks Panorama deployed and that you have admi
 
 ### Install virtualenv (optional)
 
-This is not required, but we suggest using [virtualenv](https://virtualenv.pypa.io/en/latest/) to keep ur test and development environments clean. It's super easy:
+This is not required, but we suggest using [virtualenv](https://virtualenv.pypa.io/en/latest/) to keep your test and development environments clean. It's super easy:
 
 ```shell
 pip install virtualenv
 ```
 
-Once installed, you can use the `virtualenv` command to create a new virtual environment to store your ckages without polluting the system library:
+Once installed, you can use the `virtualenv` command to create a new virtual environment to store your packages without polluting the system library:
 
 ```console
 $ virtualenv ansible-venv
@@ -47,7 +47,7 @@ $ . ./ansible-venv/bin/activate
 (ansible-venv) $
 ```
 
-After the end of the tutorial you can remove Ansible and all the installed packages by removing the rtualenv directory:
+After the end of the tutorial you can remove Ansible and all the installed packages by removing the virtualenv directory:
 ```console
 (ansible-venv) $ deactivate
 $ rm -rf ansible-venv
@@ -74,7 +74,17 @@ ansible-galaxy install PaloAltoNetworks.paloaltonetworks
 Create a file called `vars.yml` with the information of your environment:
 
 ```yaml
-XXX
+panorama_provider:
+  # the hostname or IP address of Panorama
+  ip_address: panorama.example.com
+  # username and password of a Panorama admin user
+  # with access to the XML API
+  username: admin
+  password: admin
+
+# the name of Device Group we will add the security rules to
+# IT SHOULD ALREADY EXIST!
+device_group: DG-Tutorial
 ```
 
 The `vars.yml` file contains sensitive information, we can use `ansible-vault` to encrypt it:
@@ -138,7 +148,7 @@ We can use the following playbook to add a new rule to the Security Rulebase of 
 
 > Note that we use `connection: local` and `hosts: localhost` as there is no Ansible agent running on Panorama/PAN-OS. All the commands will be executed directly on the development host and Ansible will connect to Panorama/PAN-OS using the XML API
 
-We can now the playbook using `ansible-playbook`:
+We can now run the playbook using `ansible-playbook`:
 
 ```console
 $ ansible-playbook -i 127.0.0.1, --ask-vault-pass -e "ansible_python_interpreter=$(which python)" srule.yml
@@ -171,7 +181,7 @@ PLAY RECAP *********************************************************************
 127.0.0.1                  : ok=7    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
-> when `--ask-vault-pass` is used, `ansible-playbook` will assk for the password to decrypt the `vars.yml` file
+> when `--ask-vault-pass` is used, `ansible-playbook` will ask for the password to decrypt the `vars.yml` file
 
 > `-e "ansible_python_interpreter=$(which python)"` is useful when running `ansible-playbook` from inside a virtual environment. It sets the environment variable `ansible_python_interpreter` to the path of the Python interpreter used to run `ansible-playbook`. Ny default `ansible-playbook` uses the system Python interpreter instead of the one in the virtual environment.
 

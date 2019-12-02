@@ -50,6 +50,7 @@ export default ({ children, className: languageClassName, metastring }) => {
 
   let language =
     languageClassName && languageClassName.replace(/language-/, "");
+
   if (!language && prism.defaultLanguage) {
     language = prism.defaultLanguage;
   }
@@ -72,7 +73,7 @@ export default ({ children, className: languageClassName, metastring }) => {
         <div className={styles.codeBlockWrapper}>
           <pre
             ref={target}
-            className={classnames(className, styles.codeBlock, "lines-numbers")}
+            className={classnames(className, styles.codeBlock)}
             style={style}
           >
             {tokens.map((line, i) => {

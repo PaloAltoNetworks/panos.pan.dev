@@ -56,6 +56,7 @@ function NavMenu(props) {
 function Navbar() {
   const context = useDocusaurusContext();
   const [sidebarShown, setSidebarShown] = useState(false);
+  const [menuShown, setMenuShown] = useState({});
   const [isSearchBarExpanded, setIsSearchBarExpanded] = useState(false);
   const [theme, setTheme] = useTheme();
   const { siteConfig = {} } = context;

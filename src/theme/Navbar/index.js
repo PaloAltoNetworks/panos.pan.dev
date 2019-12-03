@@ -195,6 +195,33 @@ function Navbar() {
           <div className="navbar-sidebar__items">
             <div className="menu">
               <ul className="menu__list">
+                {menus.map((menuItem, i) => {
+                  var className = menuShown[i]
+                    ? "menu__list-item"
+                    : "menu__list-item menu__list-item--collapsed";
+
+                  return (
+                    <li className={className} key={i}>
+                      <a
+                        className="menu__link menu__link--sublist"
+                        onClick={() => toggleMenu(i)}
+                      >
+                        {menuItem.label}
+                      </a>
+                      <ul className="menu__list">
+                        {menuItem.items.map((item, i) => (
+                          <li className="menu__list-item" key={i}>
+                            <NavLink
+                              className="menu__link"
+                              {...item}
+                              onClick={hideSidebar}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  );
+                })}
                 {links.map((linkItem, i) => (
                   <li className="menu__list-item" key={i}>
                     <NavLink

@@ -61,16 +61,16 @@ To create a DAG, follow these steps:
 
 1. Login on the Next-Generation Firewall with administrative credentials:
 
-   ![Login](/img/01-login.png "Login")
+   ![Login](assets/01-login.png "Login")
 
 2. Navigate to **Objects** - **Address Groups**, then click on **Add**:
 
-   ![Add Address Group](/img/02-add-address.png "Add Address Group")
+   ![Add Address Group](assets/02-add-address.png "Add Address Group")
 
 3. Enter the **Name** (_testBlock_ in the example), select _Dynamic_ as **Type**.
    In the **Match** window type _'malicious'_. Note the single quotes. This is the name of the tag you are going to use for matching. Every IP that is tagged with the _malicious_ tag will be automatically added in this Dynamic Address Group. Note that you can use the **and** and **or** keywords if you want the DAG to match multiple tags. Then click on OK:
 
-   ![Dynamic Group](/img/03-dynamicgroup.png "Dynamic Group")
+   ![Dynamic Group](assets/03-dynamicgroup.png "Dynamic Group")
 
 ### Step 2: Create a Security Policy
 
@@ -88,33 +88,33 @@ To Create a Security Policy, follow these steps:
 
 1. Navigate to **Policies** - **Security**, then click on **Add**:
 
-   ![Security Policies](/img/04-policies.png "Security Policies")
+   ![Security Policies](assets/04-policies.png "Security Policies")
 
 2. Enter the parameters as follows:
 
 - In the **General** tab, enter the policy **Name** (_blockDAG_ in the example):
 
-  ![Security Policy - General](/img/05-policygeneral.png "Security Policy - General")
+  ![Security Policy - General](assets/05-policygeneral.png "Security Policy - General")
 
 - In the **Source** tab, **Add** the trusted zone (_L3-Trust_ in the example), leave the **Source Address** at _Any_:
 
-  ![Security Policy - Source](/img/06-policysource.png "Security Policy - Source")
+  ![Security Policy - Source](assets/06-policysource.png "Security Policy - Source")
 
 - In the **Destination** tab, **Add** the untrusted zone (_L3-Untrust_ in the example), and **Add** the **testBlock** DAG as the **Destination Address**:
 
-  ![Security Policy - Destination](/img/07-policydestination.png "Security Policy - Destination")
+  ![Security Policy - Destination](assets/07-policydestination.png "Security Policy - Destination")
 
 - In the **Service/URL Category** tab, select _any_ as the **Service**:
 
-  ![Security Policy - Service](/img/08-policyservice.png "Security Policy - Service")
+  ![Security Policy - Service](assets/08-policyservice.png "Security Policy - Service")
 
 - In the **Actions** tab, select _Drop_ as the **Action**, and enable the **Log at Session End** checkbox:
 
-  ![Security Policy - Action](/img/09-policyactions.png "Security Policy - Action")
+  ![Security Policy - Action](assets/09-policyactions.png "Security Policy - Action")
 
 3. Click OK and check the newly created policy:
 
-   ![Security Policy List](/img/10-policylist.png "Security Policy List")
+   ![Security Policy List](assets/10-policylist.png "Security Policy List")
 
 > The ordering of the policy is very important. In this example you must create the block/drop policy on the top of the ruleset. If the policy is shadowed by other rules that allow traffic, it won't be matched and the communications will still be allowed.
 
@@ -124,7 +124,7 @@ To Create a Security Policy, follow these steps:
 
 Now that the DAG and the policy have been created, you can **Commit** the configuration:
 
-![Commit](/img/11-commit.png "Commit")
+![Commit](assets/11-commit.png "Commit")
 
 The Firewall configuration has been completed! No further commits are required by the IP registration process.
 
@@ -238,7 +238,7 @@ After logging on the Firewall Web UI as admin, navigate on **Objects** - **Dynam
 
 If successful, it will display the IP addresses currently associated with the DAG, as shown in the following screenshot:
 
-![Successful IP Registration](/img/12-checkdag.png "Successful IP Registration")
+![Successful IP Registration](assets/12-checkdag.png "Successful IP Registration")
 
 #### Method 2: CLI
 

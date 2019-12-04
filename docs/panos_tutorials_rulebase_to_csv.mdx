@@ -235,13 +235,13 @@ With our code we are retrieving the candidate rulebase. It would be nice if the 
 
 We can perform this check using the op command `show config list changes` and then look if there are pending changes on the security rulebase. An easy way to check the response schema of the command is using the API web UI available on PAN-OS at `https://<firewall>/api`:
 
-![Op Command on API UI](/img/panos_tutorials_rulebase_to_csv_1.png)
+![Op Command on API UI](assets/panos_tutorials_rulebase_to_csv_1.png)
 
 > We use the following op command to select only pending changes affecting policies and objects: `<show><config><list><changes><partial><device-and-network>excluded</device-and-network><shared-object>excluded</shared-object></partial></changes></list></config></show>`
 
 Result:
 
-![Op Command result](/img/panos_tutorials_rulebase_to_csv_2.png)
+![Op Command result](assets/panos_tutorials_rulebase_to_csv_2.png)
 
 In PAN Go we can use the native XML support built into Go runtime to help unmarshaling the response. The PAN Go code to run the command and check the result looks like this:
 

@@ -10,4 +10,4 @@ jobs:
     steps:
     - name: Run the docsearch scraper
       run: |
-        docker run -it algolia/docsearch-scraper
+        docker run algolia/docsearch-scraper

@@ -1,0 +1,13 @@
+name: Algolia docsearch scraper
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Run the docsearch scraper
+      run: |
+        docker run -it algolia/docsearch-scraper

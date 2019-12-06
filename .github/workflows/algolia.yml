@@ -10,4 +10,4 @@ jobs:
     steps:
     - name: Run the docsearch scraper
       run: |
-        docker run --env APPLICATION_ID=${{ secrets.APPLICATION_ID }} --env API_KEY=${{ secrets.API_KEY }} --env CONFIG="${{ secrets.CONFIG }}" algolia/docsearch-scraper
+        docker run --env APPLICATION_ID=${{ secrets.APPLICATION_ID }} --env API_KEY=${{ secrets.API_KEY }} --env CONFIG='${{ secrets.CONFIG }}' algolia/docsearch-scraper

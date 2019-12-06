@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/791dfbf1-c6e8-447d-ac4d-220cb8aa7c6f/deploy-status)](https://app.netlify.com/sites/condescending-mcclintock-5c4d6f/deploys) [![CircleCI](https://circleci.com/gh/PaloAltoNetworks/panos.pan.dev.svg?style=svg&circle-token=31d46bedade3419f137ec26a99da706da5adfd4e)](https://circleci.com/gh/PaloAltoNetworks/panos.pan.dev)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/791dfbf1-c6e8-447d-ac4d-220cb8aa7c6f/deploy-status)](https://app.netlify.com/sites/condescending-mcclintock-5c4d6f/deploys)
 
 # PAN-OS® for Developers
 

@@ -10,5 +10,5 @@ jobs:
     steps:
     - name: Run the docsearch scraper
       run: |
-        while [[ $(curl -sH "Authorization: Bearer $NETLIFY_TOKEN" https://api.netlify.com/api/v1/sites/791dfbf1-c6e8-447d-ac4d-220cb8aa7c6f | jq .state) != '"current"' ]]; do sleep 5; echo "waiting for Netlify build to complete..."; done
+        while ! [[ $(curl -sH "Authorization: Bearer $NETLIFY_TOKEN" https://api.netlify.com/api/v1/sites/791dfbf1-c6e8-447d-ac4d-220cb8aa7c6f | jq .state) == '"current"' ]]; do sleep 5; echo "waiting for Netlify build to complete..."; done
         docker run --env APPLICATION_ID=${{ secrets.APPLICATION_ID }} --env API_KEY=${{ secrets.API_KEY }} --env CONFIG='${{ secrets.CONFIG }}' algolia/docsearch-scraper

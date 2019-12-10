@@ -16,6 +16,8 @@ keywords:
   - automation
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 In this Quickstart guide we'll show how to integrate with Palo Alto Networks Next-Generation Firewalls to automatically block communications (incoming, outgoing or both) from/to specific IP addresses. This is a common pattern used in partner and customer integrations to automate remediation based on external factors, such as alerts or Threat Intel data.
 
 ## Common use cases
@@ -61,7 +63,7 @@ To create a DAG, follow these steps:
 
 1. Login on the Next-Generation Firewall with administrative credentials:
 
-   ![Login](/img/01-login.png "Login")
+   <img alt="Login" src={useBaseUrl('docs/assets/01-login.png')} />;
 
 2. Navigate to **Objects** - **Address Groups**, then click on **Add**:
 

@@ -456,8 +456,12 @@ $ go run pan-export.go -hostname 192.168.10.1 -password admin -username admin > 
 2019/11/21 15:38:24 WARNING: pending changes for security rulebase in candidate config
 $
 $ head -2 security.csv
-Name,Type,Description,Tags,Source Zones,Source Addresses,Negate Source,Destination Zones,Destination Addresses,Negate Destination,Applications,Services,Categories,Action,Log Setting,Log Start,Log End,Disabled,Schedule,ICMP Unreachable,DSRI,Virus,Spyware,Vulnerability,Url Filtering,File Blocking,WildFire Analysis,Data Filtering
-rule1-1,,,,InternalL3,any,false,External,any,false,any,any,,allow,,false,true,false,,false,false,default,strict,default,LogAll,,default,
+Name,Type,Description,Tags,Source Zones,Source Addresses,Negate Source,Destination Zones,
+Destination Addresses,Negate Destination,Applications,Services,Categories,Action,Log Setting,
+Log Start,Log End,Disabled,Schedule,ICMP Unreachable,DSRI,Virus,Spyware,Vulnerability,
+Url Filtering,File Blocking,WildFire Analysis,Data Filtering
+rule1-1,,,,InternalL3,any,false,External,any,false,any,any,,allow,,false,true,false,,false,
+false,default,strict,default,LogAll,,default,
 ```
 
 ## Build it for multiple platforms

@@ -868,19 +868,6 @@
     stringify-object "^3.3.0"
     unist-util-visit "^2.0.1"
 
-"@docusaurus/plugin-content-blog@^2.0.0-alpha.37":
-  version "2.0.0-alpha.37"
-  resolved "https://registry.yarnpkg.com/@docusaurus/plugin-content-blog/-/plugin-content-blog-2.0.0-alpha.37.tgz#ff3ee93cf43726c2e07bbb1bc54185d35c6e4fcd"
-  integrity sha512-FSQ4yKoZ7KTkYxNDkGWLPXqyToT4OXZBsvG3UhnDhli/eWwoOgF+DlcEjGFBKnIGqcNAl+py/5SvXZlndcgd7w==
-  dependencies:
-    "@docusaurus/mdx-loader" "^2.0.0-alpha.37"
-    "@docusaurus/utils" "^2.0.0-alpha.37"
-    feed "^4.0.0"
-    fs-extra "^8.1.0"
-    globby "^10.0.1"
-    loader-utils "^1.2.3"
-    lodash "^4.17.15"
-
 "@docusaurus/plugin-content-blog@^2.0.0-alpha.39":
   version "2.0.0-alpha.39"
   resolved "https://registry.yarnpkg.com/@docusaurus/plugin-content-blog/-/plugin-content-blog-2.0.0-alpha.39.tgz#0ab951136147efb4f17307b45eb1f0133c40c86d"

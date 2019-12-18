@@ -92,7 +92,6 @@ export default ({ children, className: languageClassName, metastring }) => {
               );
             })}
           </pre>
-
           {language != "console" ? (
             <button
               ref={button}

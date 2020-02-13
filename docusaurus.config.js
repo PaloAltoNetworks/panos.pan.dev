@@ -147,5 +147,23 @@ module.exports = {
       changefreq: "weekly",
       priority: 0.5
     }
-  ]
+  ],
+  customFields: {
+    docbar: {
+      options: [
+        {
+          to: "docs/panos_api",
+          label: "APIs and SDKs"
+        },
+        {
+          label: "Automation",
+          to: "docs/automation"
+        },
+        {
+          label: "Cloud Templates",
+          to: "docs/cloud"
+        }
+      ]
+    }
+  }
 };

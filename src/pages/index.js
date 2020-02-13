@@ -122,7 +122,7 @@ const features = [
             "button button--outline button--primary button--md",
             styles.getStarted
           )}
-          href="/docs/apis/panos_api"
+          href="/docs/apis"
         >
           Learn More
         </Link>
@@ -145,7 +145,7 @@ const features = [
             "button button--outline button--primary button--md",
             styles.getStarted
           )}
-          href="/docs/automation/automation"
+          href="/docs/automation"
         >
           Learn More
         </Link>
@@ -168,7 +168,7 @@ const features = [
             "button button--outline button--primary button--md",
             styles.getStarted
           )}
-          href="/docs/cloud/cloud"
+          href="/docs/cloud"
         >
           Learn More
         </Link>

@@ -28,21 +28,23 @@ function Docs() {
       description="All things related to automation and development with Demisto"
     >
       <main>
-        <section className={styles.features} ref={vertificalsRef}>
+        <section className={styles.features}>
           <div className="container">
             <h1>PAN-OS® For Developers</h1>
-            <h4>
+            <description>
             PAN‑OS® is the software that runs all Palo Alto Networks® next-generation firewalls. 
             By leveraging our APIs, SDKs, Automations, and Cloud Templates you can take PAN-OS® to the
             next level.
-            </h4>
+            </description>
+            <br></br><br></br>
             <div className="row">
               <div className="col col--4">
-                <h1>APIs and SDKs</h1>
-                <h5>
+                <h2>APIs and SDKs</h2>
+                <description>
                 Our APIs and SDKs provide a collection of open, feature-rich automation 
                 opportunities for configuration and management.
-                </h5>
+                </description>
+                <br></br><br></br>
                 <a href={useBaseUrl("docs/apis/xmlapi_qs")}>PAN-OS® XML API</a>
                 <br></br>
                 <a href={useBaseUrl("docs/apis/restapi_qs")}>PAN-OS® REST API</a>
@@ -59,7 +61,7 @@ function Docs() {
                 <Link
                   className={classnames(
                     "button button--primary",
-                    styles.getStarted
+                    styles.docs
                   )}
                   href={useBaseUrl("/docs/apis")}
                 >
@@ -67,11 +69,12 @@ function Docs() {
                 </Link>
               </div>
               <div className="col col--4">
-                <h1>Automation and Infrastructure as Code</h1>
-                <h5>
+                <h2>Automation</h2>
+                <description>
                 Version control your infrastructure and eliminate human-error. 
                 Declare the target configuration and let them automate the rest.
-                </h5>
+                </description>
+                <br></br><br></br>
                 <a href={useBaseUrl("docs/automation/terraform_ansible_container")}>Terraform and Ansible Container</a>
                 <br></br>
                 <a href={useBaseUrl("docs/automation/ansible_qs")}>Ansible</a>
@@ -84,7 +87,7 @@ function Docs() {
                 <Link
                   className={classnames(
                     "button button--primary",
-                    styles.getStarted
+                    styles.docs
                   )}
                   href={useBaseUrl("docs/automation")}
                 >
@@ -92,11 +95,12 @@ function Docs() {
                 </Link>    
               </div>
               <div className="col col--4">
-              <h1>Cloud</h1>
-                <h5>
+              <h2>Cloud</h2>
+                <description>
                 Auto-scale a firewall with a cloud application while ensuring a 
                 seamless policy across on-prem and cloud.
-                </h5>
+                </description>
+                <br></br><br></br>
                 <a href={useBaseUrl("docs/cloud/aws_qs")}>AWS</a>
                 <br></br>
                 <a href={useBaseUrl("docs/cloud/azure_qs")}>Azure</a>
@@ -109,7 +113,7 @@ function Docs() {
                 <Link
                   className={classnames(
                     "button button--primary",
-                    styles.getStarted
+                    styles.docs
                   )}
                   href={useBaseUrl("docs/cloud")}
                 >

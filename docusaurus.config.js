@@ -53,15 +53,15 @@ module.exports = {
           items: [
             {
               label: "APIs and SDKs",
-              to: "docs/apis/panos_api"
+              to: "docs/apis"
             },
             {
               label: "Automation",
-              to: "docs/automation/automation"
+              to: "docs/automation"
             },
             {
               label: "Cloud Templates",
-              to: "docs/cloud/cloud"
+              to: "docs/cloud"
             }
           ]
         },
@@ -129,16 +129,16 @@ module.exports = {
     docbar: {
       options: [
         {
-          to: "docs/apis/panos_api",
+          to: "docs/apis",
           label: "APIs and SDKs"
         },
         {
           label: "Automation",
-          to: "docs/automation/automation"
+          to: "docs/automation"
         },
         {
           label: "Cloud Templates",
-          to: "docs/cloud/cloud"
+          to: "docs/cloud"
         }
       ]
     }

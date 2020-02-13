@@ -461,7 +461,7 @@ function Home() {
                       "button button--outline button--primary button--md",
                       styles.quickstart
                     )}
-                    href="/docs/cloud/cloud"
+                    href="/docs/cloud"
                   >
                     Overview
                   </Link>

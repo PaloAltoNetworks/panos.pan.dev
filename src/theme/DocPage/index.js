@@ -79,8 +79,9 @@ function DocPage(props) {
           <Link
             className={
               "button button--outline button--secondary button--md " +
-              (window.location.pathname.split("/")[2] ==
-              useBaseUrl(menuItem.to).split("/")[2]
+              (typeof window !== "undefined" &&
+              window.location.pathname.split("/")[2] ==
+                useBaseUrl(menuItem.to).split("/")[2]
                 ? "button--active"
                 : "")
             }

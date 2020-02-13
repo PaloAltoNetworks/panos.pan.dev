@@ -22,6 +22,7 @@
   --ifm-color-primary-lighter: #e4ddf9;
   --ifm-color-primary-lightest: #f4f1fc;
   --ifm-navbar-search-input-color: var(--ifm-color-gray-900);
+  --ifm-background-color: #fff;
 }
 
 /* Dark mode overrides */

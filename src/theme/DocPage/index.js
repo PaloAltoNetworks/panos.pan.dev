@@ -22,35 +22,6 @@ function matchingRouteExist(routes, pathname) {
   return routes.some(route => matchPath(pathname, route));
 }
 
-function useLocalStorage(key, initialValue) {
-  const [storedValue, setStoredValue] = useState(() => {
-    try {
-      if (typeof window !== "undefined") {
-        const item = window.localStorage.getItem(key);
-        return item ? JSON.parse(item) : initialValue;
-      }
-    } catch (error) {
-      console.log(error);
-      return initialValue;
-    }
-  });
-
-  const setValue = value => {
-    try {
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value;
-      setStoredValue(valueToStore);
-      if (typeof window !== "undefined") {
-        window.localStorage.setItem(key, JSON.stringify(valueToStore));
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  return [storedValue, setValue];
-}
-
 const useResize = myRef => {
   const [sidebarWidth, setSidebarWidth] = useState();
   const handleResize = () => {
@@ -87,10 +58,6 @@ function DocPage(props) {
   const { options = [] } = docbar;
   const sidebarRef = useRef();
   const { sidebarWidth } = useResize(sidebarRef);
-  const [activeTabIndex, setActiveTabIndex] = useLocalStorage(
-    "activeTabIndex",
-    null
-  );
 
   if (!matchingRouteExist(route.routes, location.pathname)) {
     return <NotFound {...props} />;
@@ -112,7 +79,10 @@ function DocPage(props) {
           <Link
             className={
               "button button--outline button--secondary button--md " +
-              (activeTabIndex === i ? "button--active" : "")
+              (window.location.pathname.split("/")[2] ==
+              useBaseUrl(menuItem.to).split("/")[2]
+                ? "button--active"
+                : "")
             }
             style={{
               borderRadius: "5px 5px 0 0",
@@ -123,7 +93,6 @@ function DocPage(props) {
               padding:
                 "calc( var(--ifm-button-padding-vertical) * .65 ) calc( var(--ifm-button-padding-horizontal) * .65 )"
             }}
-            onClick={() => setActiveTabIndex(i)}
             key={i}
             to={useBaseUrl(menuItem.to)}
           >

@@ -108,7 +108,7 @@ const particlesOptions = {
 const features = [
   {
     title: <>APIs and SDKs</>,
-    imageUrl: "img/panos_apis.svg",
+    imageUrl: "/img/panos_apis.svg",
     description: (
       <>
         Our APIs and SDKs provide a collection of open, feature-rich automation
@@ -122,7 +122,7 @@ const features = [
             "button button--outline button--primary button--md",
             styles.getStarted
           )}
-          href="/docs/panos_api"
+          href="/docs/apis/panos_api"
         >
           Learn More
         </Link>
@@ -131,7 +131,7 @@ const features = [
   },
   {
     title: <>Infrastructure-as-Code</>,
-    imageUrl: "img/ansible_terraform.png",
+    imageUrl: "/img/ansible_terraform.png",
     description: (
       <>
         Version control your infrastructure and eliminate human-error. Declare
@@ -145,7 +145,7 @@ const features = [
             "button button--outline button--primary button--md",
             styles.getStarted
           )}
-          href="/docs/automation"
+          href="/docs/automation/automation"
         >
           Learn More
         </Link>
@@ -154,7 +154,7 @@ const features = [
   },
   {
     title: <>Cloud Templates</>,
-    imageUrl: "img/cloud_security.svg",
+    imageUrl: "/img/cloud_security.svg",
     description: (
       <>
         Auto-scale a firewall with a cloud application while ensuring a seamless
@@ -168,7 +168,7 @@ const features = [
             "button button--outline button--primary button--md",
             styles.getStarted
           )}
-          href="/docs/cloud"
+          href="/docs/cloud/cloud"
         >
           Learn More
         </Link>
@@ -249,7 +249,7 @@ function Home() {
                 <div className="text text--center">
                   <img
                     className={styles.toolImage}
-                    src="img/python.png"
+                    src="/img/python.png"
                     alt="PAN Device Framework"
                   />
                 </div>
@@ -263,7 +263,7 @@ function Home() {
                       "button button--outline button--primary button--md",
                       styles.quickstart
                     )}
-                    href="/docs/pandevice_qs"
+                    href="/docs/apis/pandevice_qs"
                   >
                     Quickstart
                   </Link>
@@ -302,7 +302,7 @@ function Home() {
                       "button button--outline button--primary button--md",
                       styles.quickstart
                     )}
-                    href="/docs/panpython_qs"
+                    href="/docs/apis/panpython_qs"
                   >
                     Quickstart
                   </Link>
@@ -327,7 +327,7 @@ function Home() {
                 <div className="text--center">
                   <img
                     className={styles.toolImage}
-                    src="img/gopher.png"
+                    src="/img/gopher.png"
                     alt="PAN Go SDK"
                   />
                 </div>
@@ -341,7 +341,7 @@ function Home() {
                       "button button--outline button--primary button--md",
                       styles.quickstart
                     )}
-                    href="/docs/pango_qs"
+                    href="/docs/apis/pango_qs"
                   >
                     Quickstart
                   </Link>
@@ -366,7 +366,7 @@ function Home() {
                 <div className="text--center">
                   <img
                     className={styles.toolImage}
-                    src="img/ansible_logo.png"
+                    src="/img/ansible_logo.png"
                     alt="Ansible"
                   />
                 </div>
@@ -380,7 +380,7 @@ function Home() {
                       "button button--outline button--primary button--md",
                       styles.quickstart
                     )}
-                    href="/docs/ansible_qs"
+                    href="/docs/automation/ansible_qs"
                   >
                     Quickstart
                   </Link>
@@ -408,7 +408,7 @@ function Home() {
                 <div className="text--center">
                   <img
                     className={styles.toolImage}
-                    src="img/terraform_logo.png"
+                    src="/img/terraform_logo.png"
                     alt="Terraform Templates"
                   />
                 </div>
@@ -422,7 +422,7 @@ function Home() {
                       "button button--outline button--primary button--md",
                       styles.quickstart
                     )}
-                    href="/docs/terraform_qs"
+                    href="/docs/automation/terraform_qs"
                   >
                     Quickstart
                   </Link>
@@ -447,7 +447,7 @@ function Home() {
                 <div className="text--center">
                   <img
                     className={styles.toolImage}
-                    src="img/cloud_security.svg"
+                    src="/img/cloud_security.svg"
                     alt="Cloud Templates"
                   />
                 </div>
@@ -461,7 +461,7 @@ function Home() {
                       "button button--outline button--primary button--md",
                       styles.quickstart
                     )}
-                    href="/docs/cloud"
+                    href="/docs/cloud/cloud"
                   >
                     Overview
                   </Link>

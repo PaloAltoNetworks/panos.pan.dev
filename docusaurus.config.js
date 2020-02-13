@@ -31,14 +31,14 @@ module.exports = {
         {
           label: "Quickstart",
           items: [
-            { to: "docs/xmlapi_qs", label: "XML API" },
-            { to: "docs/restapi_qs", label: "REST API" },
-            { to: "docs/pandevice_qs", label: "PAN Device Framework" },
-            { to: "docs/panpython_qs", label: "PAN Python SDK" },
-            { to: "docs/pango_qs", label: "PAN Go SDK" },
-            { to: "docs/terraform_qs", label: "Terraform Provider" },
-            { to: "docs/ansible_qs", label: "Ansible" },
-            { to: "docs/cloudtemplates_qs", label: "Cloud Templates" }
+            { to: "docs/apis/xmlapi_qs", label: "XML API" },
+            { to: "docs/apis/restapi_qs", label: "REST API" },
+            { to: "docs/apis/pandevice_qs", label: "PAN Device Framework" },
+            { to: "docs/apis/panpython_qs", label: "PAN Python SDK" },
+            { to: "docs/apis/pango_qs", label: "PAN Go SDK" },
+            { to: "docs/automation/terraform_qs", label: "Terraform Provider" },
+            { to: "docs/automation/ansible_qs", label: "Ansible" },
+            { to: "docs/cloud/cloudtemplates_qs", label: "Cloud Templates" }
           ],
           position: "left"
         },
@@ -46,11 +46,11 @@ module.exports = {
           label: "Docs",
           items: [
             {
-              to: "docs/panos_api",
+              to: "docs/apis/panos_api",
               label: "APIs and SDKs"
             },
-            { to: "docs/automation", label: "Automation" },
-            { to: "docs/cloud", label: "Cloud Templates" }
+            { to: "docs/automation/automation", label: "Automation" },
+            { to: "docs/cloud/cloud", label: "Cloud Templates" }
           ],
           position: "left"
         }
@@ -76,15 +76,15 @@ module.exports = {
           items: [
             {
               label: "APIs and SDKs",
-              to: "docs/panos_api"
+              to: "docs/apis/panos_api"
             },
             {
               label: "Automation",
-              to: "docs/automation"
+              to: "docs/automation/automation"
             },
             {
               label: "Cloud Templates",
-              to: "docs/cloud"
+              to: "docs/cloud/cloud"
             }
           ]
         },
@@ -147,5 +147,23 @@ module.exports = {
       changefreq: "weekly",
       priority: 0.5
     }
-  ]
+  ],
+  customFields: {
+    docbar: {
+      options: [
+        {
+          to: "docs/apis/panos_api",
+          label: "APIs and SDKs"
+        },
+        {
+          label: "Automation",
+          to: "docs/automation/automation"
+        },
+        {
+          label: "Cloud Templates",
+          to: "docs/cloud/cloud"
+        }
+      ]
+    }
+  }
 };

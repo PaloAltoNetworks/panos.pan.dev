@@ -45,17 +45,17 @@ function Docs() {
                 opportunities for configuration and management.
                 </description>
                 <br></br><br></br>
-                <a href={useBaseUrl("docs/apis/xmlapi_qs")}>PAN-OS® XML API</a>
+                <Link href={useBaseUrl("docs/apis/xmlapi_qs")}>PAN-OS® XML API</Link>
                 <br></br>
-                <a href={useBaseUrl("docs/apis/restapi_qs")}>PAN-OS® REST API</a>
+                <Link href={useBaseUrl("docs/apis/restapi_qs")}>PAN-OS® REST API</Link>
                 <br></br>
-                <a href={useBaseUrl("docs/apis/pandevice_qs")}>PAN Device Framework</a>
+                <Link href={useBaseUrl("docs/apis/pandevice_qs")}>PAN Device Framework</Link>
                 <br></br>
-                <a href={useBaseUrl("docs/apis/panpython_qs")}>PAN Python SDK</a>
+                <Link href={useBaseUrl("docs/apis/panpython_qs")}>PAN Python SDK</Link>
                 <br></br>
-                <a href={useBaseUrl("docs/apis/pango_qs")}>PAN Go SDK</a>
+                <Link href={useBaseUrl("docs/apis/pango_qs")}>PAN Go SDK</Link>
                 <br></br>
-                <a href={useBaseUrl("docs/apis/panos_dag_qs")}>Tutorials</a>
+                <Link href={useBaseUrl("docs/apis/panos_dag_qs")}>Tutorials</Link>
                 <br></br>
                 <br></br>
                 <Link
@@ -75,13 +75,13 @@ function Docs() {
                 Declare the target configuration and let them automate the rest.
                 </description>
                 <br></br><br></br>
-                <a href={useBaseUrl("docs/automation/terraform_ansible_container")}>Terraform and Ansible Container</a>
+                <Link href={useBaseUrl("docs/automation/terraform_ansible_container")}>Terraform and Ansible Container</Link>
                 <br></br>
-                <a href={useBaseUrl("docs/automation/ansible_qs")}>Ansible</a>
+                <Link href={useBaseUrl("docs/automation/ansible_qs")}>Ansible</Link>
                 <br></br>
-                <a href={useBaseUrl("docs/automation/terraform_qs")}>Terraform</a>
+                <Link href={useBaseUrl("docs/automation/terraform_qs")}>Terraform</Link>
                 <br></br>
-                <a href={useBaseUrl("docs/automation/automation_tutorials_ansible_srule")}>Tutorials</a>
+                <Link href={useBaseUrl("docs/automation/automation_tutorials_ansible_srule")}>Tutorials</Link>
                 <br></br>
                 <br></br>
                 <Link
@@ -101,13 +101,13 @@ function Docs() {
                 seamless policy across on-prem and cloud.
                 </description>
                 <br></br><br></br>
-                <a href={useBaseUrl("docs/cloud/aws_qs")}>AWS</a>
+                <Link href={useBaseUrl("docs/cloud/aws_qs")}>AWS</Link>
                 <br></br>
-                <a href={useBaseUrl("docs/cloud/azure_qs")}>Azure</a>
+                <Link href={useBaseUrl("docs/cloud/azure_qs")}>Azure</Link>
                 <br></br>
-                <a href={useBaseUrl("docs/cloud/gcp_qs")}>Google</a>
+                <Link href={useBaseUrl("docs/cloud/gcp_qs")}>Google</Link>
                 <br></br>
-                <a href={useBaseUrl("docs/cloud/cloudtemplates_qs")}>Private Cloud</a>
+                <Link href={useBaseUrl("docs/cloud/cloudtemplates_qs")}>Private Cloud</Link>
                 <br></br>
                 <br></br>
                 <Link

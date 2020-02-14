@@ -87,7 +87,7 @@ function DocPage(props) {
             }
             style={{
               borderRadius: "5px 5px 0 0",
-              borderColor: "var(--ifm-contents-border-color)",
+              borderColor: "var(--ifm-color-primary-light)",
               borderWidth: "1px",
               borderStyle: "solid",
               borderBottom: "none",

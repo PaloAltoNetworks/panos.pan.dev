@@ -23,6 +23,7 @@
   --ifm-color-primary-lightest: #f4f1fc;
   --ifm-navbar-search-input-color: var(--ifm-color-gray-900);
   --ifm-background-color: #fff;
+  --ifm-footer-background-color: #000000;
 }
 
 /* Dark mode overrides */
@@ -39,6 +40,7 @@ html[data-theme="dark"] {
 
   --ifm-background-color: #121212;
   --ifm-background-surface-color: #1e2125;
+  --ifm-footer-background-color: #000000;
 
   --ifm-hover-overlay: rgba(255, 255, 255, 0.05);
 
@@ -72,6 +74,10 @@ blockquote {
 
 .button {
   z-index: 1;
+}
+
+.card {
+  min-height: 350px;
 }
 
 /* Dropdown menu overrides */

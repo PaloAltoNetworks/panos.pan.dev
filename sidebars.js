@@ -104,5 +104,11 @@ module.exports = {
       label: "Private Cloud",
       items: ["cloud/cloudtemplates_qs"]
     }
+  ],
+  contrib: [
+    {
+      type: "doc",
+      id: "contributing"
+    }
   ]
 };

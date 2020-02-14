@@ -1,6 +1,7 @@
 ---
 id: contributing
-hide_title: true
+title: Contributing Guidelines
+sidebar_label: Contributing Guidelines
 ---
 
 # Contributing Guidelines
@@ -8,10 +9,9 @@ hide_title: true
 Thank you for your interest in **Palo Alto Networks** developer documentation!
 
 - [Types of contributions](#types-of-contributions)
-- [Use GitHub and Git](#use-github-git)
-- [Using markdown and MDX](#using-markdown-and-mdx)
+- [Use GitHub and Git](#using-git-and-github)
+- [Using markdown and MDX](#markdown-and-mdx)
 - [CLI and code snippets](#cli-and-code-snippets)
-- [Netlify CMS](#netlify-cms)
 - [Adding a document](#adding-a-document)
 - [More resources](#more-resources)
 
@@ -19,9 +19,9 @@ Thank you for your interest in **Palo Alto Networks** developer documentation!
 
 The following are ways you can contribute to Palo Alto Networks developer docs:
 
-- Author and contribute documentation via the developer site repository.
-- Report documentation bugs/issues under the developer site repository **Issues** page.
-- Request new documentation by opening a request under the developer site repository **Issues** page.
+- **Author** and contribute documentation via the developer site repository.
+- **Report** documentation bugs/issues under the developer site repository `Issues` page.
+- **Request** new documentation by opening a request under the developer site repository `Issues` page.
 
 ## Using Git and GitHub
 
@@ -99,7 +99,7 @@ git fetch upstream
 # Merges upstream/master with local master branch
 git merge upstream/master master
 
-# Merges upstream/master with local master branch
+# Pushes local master branch to origin/master
 git push origin master
 ```
 
@@ -189,35 +189,9 @@ Sample output:
 }
 ```
 
-## Netlify CMS
-
-Netlify CMS is an open source content management system that can be used with any static site generator to author, review, edit and preview content. It's an alternative to managing content using your IDE/text-editor, GitHub and the `git` CLI. It functions primarily as a markdown/MDX editor with abstractions and support for git flows, e.g. creating feature branches and pull requests.
-
-### Netlify CMS vs `git`
-
-Although it might be tempting to use Netlify CMS over managing content with `git`, it's important to note the key differences between the two.
-
-As of today, our customized Netlify CMS supports editing the following in Docusaurus:
-
-- Documentation sidebars
-- Docs (MD and MDX)
-- Uploading media/assets\*
-
-> Media/assets uploaded with Netlify CMS will require the author to submit a separate pull/merge request using `git` or GitHub
-
-With respect to **git flow**, Netlify CMS abstracts the following:
-
-- Initial fork of root repository
-- Automatic creation of "feature branches" for each contribution, i.e. one branch per modified or added file
-- Automatic creation of pull request (when moved to **Review**)
-
-> The **git flow** implemented by Netlify CMS is referred to as "open authoring" and follows the approach that each individual contribution moves from a feature-branch to a pull request. In all cases, pull requests will be reviewed by DevRel before they can be approved and merged into `develop` and (eventually) `master` braches.
-
-Please refer to [Using git and GitHub](#using-git-and-github) for instructions on how to manage content using the `git` CLI, your favorite IDE/text-editor and GitHub.
-
 ## Adding a document
 
-This section describes the general steps required for adding a document using either `git` or `Netlify CMS`. In the case of Netlify CMS, it's expected for the user to intuit these steps with the WebUI.
+This section describes the general steps required for adding a document using `git`.
 
 ### Frontmatter
 
@@ -231,18 +205,14 @@ Example:
 
 ```text
 ---
-id: panos_api
-title: PAN-OS® API
-sidebar_label: PAN-OS® API
+id: my_awesome_tutorial
+title: My Awesome Tutorial
+sidebar_label: My Awesome Tutorial
 hide_title: false
-description: Overview of the PAN-OS API
+description: A really cool tutorial about something awesome!
 keywords:
-  - pan-os
-  - panos
-  - xml
-  - api
-  - rest
-image: /img/panos_apis.svg
+  - awesome
+  - tutorial
 ---
 ```
 
@@ -256,31 +226,30 @@ Each developer site will implement one or more documentation sidebars, depending
 Sidebar --> Category --> [array of document IDs]
 ```
 
-Both Netlify CMS and `git` expect the sidebar to be generated from the `sidebars.yml` file located in the `docs` folder.
+The sidebar is generated from the `sidebars.js` file located in the root folder.
 
-The following snippet calls out each specific sidebar component (note that an actual sidebars.yml file should not contain comments):
+> The following snippet calls out each specific sidebar component (note that the actual `sidebars.js` file should not contain comments):
 
-```yaml {3,7,11}
-SIDEBARS:
-  - categories:
-      - category: Overview  <-- Category
-        ids:
-          - panos_api
-      - category: PAN Python SDK
-        ids: <-- List of document IDs
-          - panpython_qs
-          - panpython_apikey
-          - panpython_op
-    sidebar: panos  <-- Sidebar
+```js {6,7}
+module.exports = {
+  panos: [
+    // Add your new doc inside an existing sidebar
+    {
+      type: "category",
+      label: "Tutorials", // Category label
+      items: ["apis/my_awesome_tutorial"] // Document ID (including relative path)
+    }
+  ]
+};
 ```
 
 ### Contributing a doc
 
-Contributing a new document can be achieved with the following flow:
+Contributing a new document can be achieved with the following, high-level flow:
 
-- Create a new MD/MDX file under the `docs` folder
-- Add the appropriate frontmatter (including the unique ID)
-- Add the document ID to an existing or new sidebar/sidebar category
+1. Create a new MD/MDX file under the `docs` folder
+2. Add the appropriate frontmatter (including the unique ID)
+3. Add the document ID to an existing or new sidebar/sidebar category
 
 ## More resources
 

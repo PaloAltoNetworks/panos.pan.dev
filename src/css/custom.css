@@ -92,3 +92,13 @@ blockquote {
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
 }
+
+.button--active--tab {
+  background-color: var(--ifm-background-color) !important;
+  color: var(--ifm-color-primary) !important;
+  border-color: var(--ifm-color-primary) !important;
+  border-width: medium !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}

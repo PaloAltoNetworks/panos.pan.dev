@@ -25,7 +25,7 @@ function matchingRouteExist(routes, pathname) {
 const useResize = myRef => {
   const [sidebarWidth, setSidebarWidth] = useState();
   const handleResize = () => {
-    if (myRef.current.getBoundingClientRect().height > 0) {
+    if (myRef.current && myRef.current.getBoundingClientRect().height > 0) {
       setSidebarWidth(myRef.current.offsetWidth - 1);
     } else {
       setSidebarWidth(0);

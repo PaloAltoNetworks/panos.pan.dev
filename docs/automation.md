@@ -1,7 +1,7 @@
 ---
 id: automation
 title: Infrastructure as Code
-sidebar_label: Infrastructure as Code
+sidebar_label: Automation
 hide_title: false
 description: Infrastructure as Code
 keywords:

@@ -27,44 +27,21 @@ module.exports = {
         alt: "PAN-OS® for Developers",
         src: "img/panospeelable.png"
       },
-      menus: [
+      links: [
         {
-          label: "Quickstart",
-          items: [
-            { to: "docs/apis/xmlapi_qs", label: "XML API" },
-            { to: "docs/apis/restapi_qs", label: "REST API" },
-            { to: "docs/apis/pandevice_qs", label: "PAN Device Framework" },
-            { to: "docs/apis/panpython_qs", label: "PAN Python SDK" },
-            { to: "docs/apis/pango_qs", label: "PAN Go SDK" },
-            { to: "docs/automation/terraform_qs", label: "Terraform Provider" },
-            { to: "docs/automation/ansible_qs", label: "Ansible" },
-            { to: "docs/cloud/cloudtemplates_qs", label: "Cloud Templates" }
-          ],
+          label: "Docs",
+          to: "docs",
           position: "left"
         },
         {
-          label: "Docs",
-          items: [
-            {
-              to: "docs/apis/panos_api",
-              label: "APIs and SDKs"
-            },
-            { to: "docs/automation/automation", label: "Automation" },
-            { to: "docs/cloud/cloud", label: "Cloud Templates" }
-          ],
-          position: "left"
-        }
-      ],
-      links: [
-        {
           href: "https://medium.com/palo-alto-networks-developer-blog",
           label: "Blog",
-          position: "left"
+          position: "right"
         },
         {
           href: "https://github.com/PaloAltoNetworks",
           label: "GitHub",
-          position: "left"
+          position: "right"
         }
       ]
     },
@@ -76,15 +53,15 @@ module.exports = {
           items: [
             {
               label: "APIs and SDKs",
-              to: "docs/apis/panos_api"
+              to: "docs/apis"
             },
             {
               label: "Automation",
-              to: "docs/automation/automation"
+              to: "docs/automation"
             },
             {
               label: "Cloud Templates",
-              to: "docs/cloud/cloud"
+              to: "docs/cloud"
             }
           ]
         },
@@ -152,16 +129,16 @@ module.exports = {
     docbar: {
       options: [
         {
-          to: "docs/apis/panos_api",
+          to: "docs/apis",
           label: "APIs and SDKs"
         },
         {
           label: "Automation",
-          to: "docs/automation/automation"
+          to: "docs/automation"
         },
         {
           label: "Cloud Templates",
-          to: "docs/cloud/cloud"
+          to: "docs/cloud"
         }
       ]
     }

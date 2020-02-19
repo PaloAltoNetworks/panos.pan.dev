@@ -1,7 +1,7 @@
 ---
 id: cloud
 title: Cloud Security
-sidebar_label: Cloud Security
+sidebar_label: Cloud Templates
 hide_title: false
 description: Getting started with pango
 keywords:

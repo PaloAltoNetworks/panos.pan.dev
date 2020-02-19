@@ -43,6 +43,17 @@
   border-radius: 0 1em 1em 0;
 }
 
+.description {
+  margin-bottom: 2rem !important;
+}
+
+.docs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
 .buttons-tools-github {
   display: flex;
   align-items: center;
@@ -104,6 +115,9 @@
   left: 0;
 }
 
+.description {
+  padding-bottom: 10px !important;
+}
 .hero__title {
   z-index: 1 !important;
 }

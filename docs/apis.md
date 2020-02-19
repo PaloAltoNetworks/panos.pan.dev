@@ -1,7 +1,7 @@
 ---
-id: panos_api
-title: PAN-OS® API
-sidebar_label: PAN-OS® API
+id: apis
+title: PAN-OS® APIs and SDKs
+sidebar_label: APIs and SDKs
 hide_title: false
 description: Overview of the PAN-OS API
 keywords:

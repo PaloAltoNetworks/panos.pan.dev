@@ -8,9 +8,8 @@
 module.exports = {
   panos: [
     {
-      type: "category",
-      label: "Overview",
-      items: ["apis/panos_api"]
+      type: "doc",
+      id: "apis"
     },
     {
       type: "category",
@@ -50,9 +49,12 @@ module.exports = {
   ],
   automation: [
     {
-      type: "category",
-      label: "Overview",
-      items: ["automation/automation", "automation/terraform_ansible_container"]
+      type: "doc",
+      id: "automation"
+    },
+    {
+      type: "doc",
+      id: "automation/terraform_ansible_container"
     },
     {
       type: "category",
@@ -72,9 +74,8 @@ module.exports = {
   ],
   cloud: [
     {
-      type: "category",
-      label: "Overview",
-      items: ["cloud/cloud"]
+      type: "doc",
+      id: "cloud"
     },
     {
       type: "category",

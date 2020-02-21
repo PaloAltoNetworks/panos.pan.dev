@@ -14,7 +14,9 @@ keywords:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::note
 In this tutorial we will implement a tool to export Security and NAT Rulebases from PAN-OS NGFW in CSV format, using the API (what else?). We will build the tool using Go.
+:::
 
 ## Requirements
 
@@ -121,7 +123,9 @@ func main() {
 }
 ```
 
-> Note that we have added the `-k` flag to disable certificate verification. By default certificate verification is enabled in this code. If your code was working before but now the tool fails with `cannot validate certificate`, you may want to add `-k` to your command line.
+:::note
+Note that we have added the `-k` flag to disable certificate verification. By default certificate verification is enabled in this code. If your code was working before but now the tool fails with `cannot validate certificate`, you may want to add `-k` to your command line.
+:::
 
 Let's try on the shell:
 
@@ -237,7 +241,9 @@ We can perform this check using the op command `show config list changes` and th
 
 ![Op Command on API UI](/img/panos_tutorials_rulebase_to_csv_1.png)
 
-> We use the following op command to select only pending changes affecting policies and objects: `<show><config><list><changes><partial><device-and-network>excluded</device-and-network><shared-object>excluded</shared-object></partial></changes></list></config></show>`
+:::note
+We use the following op command to select only pending changes affecting policies and objects: `<show><config><list><changes><partial><device-and-network>excluded</device-and-network><shared-object>excluded</shared-object></partial></changes></list></config></show>`
+:::
 
 Result:
 

@@ -27,9 +27,13 @@ In this Quickstart guide we'll show how to integrate with Palo Alto Networks Nex
 
 This guide leverages the concept of _dynamic tags_. In PAN-OS it is possible to dynamically associate (and remove) tags from IP addresses, using several ways, including the XML API. A tag is simply a string that can be used as a match criteria in Dynamic Address Groups, allowing the Firewall to dynamically allow/block traffic without requiring a configuration commit.
 
-> While the exact same approach can be applied for _whitelisting_ (as in the last examples above), for simplicity, in this article, we'll just refer to _blocking_, which is the most common use case, but the same techniques apply for both.
+:::note
+While the exact same approach can be applied for _whitelisting_ (as in the last examples above), for simplicity, in this article, we'll just refer to _blocking_, which is the most common use case, but the same techniques apply for both.
+:::
 
-> This article refers to blocking based on IP address, which is very common in automation, and refers to the **Dynamic Address Group** (DAG) feature of PAN-OS. If you need to block URLs or domains, other options are available that are not covered by this guide.
+:::note
+This article refers to blocking based on IP address, which is very common in automation, and refers to the **Dynamic Address Group** (DAG) feature of PAN-OS. If you need to block URLs or domains, other options are available that are not covered by this guide.
+:::
 
 ## Requirements
 
@@ -53,7 +57,9 @@ To block traffic to/from specific IP addresses, you will go through the followin
 
 More information about DAGs are available [here](https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/policy/monitor-changes-in-the-virtual-environment/use-dynamic-address-groups-in-policy.html).
 
-> The scope of this tutorial is to demonstrate how to programmatically tag/untag IPs that can be used in policies. The policies will be created manually via the Web UI. Automating the creation of Security Policies is possible with PAN-OS, although more considerations have to be taken into account (Zones, ordering of rules, etc.), and it is not covered in this guide.
+:::note
+The scope of this tutorial is to demonstrate how to programmatically tag/untag IPs that can be used in policies. The policies will be created manually via the Web UI. Automating the creation of Security Policies is possible with PAN-OS, although more considerations have to be taken into account (Zones, ordering of rules, etc.), and it is not covered in this guide.
+:::
 
 ### Step 1: Create a Dynamic Address Group
 
@@ -116,9 +122,13 @@ To Create a Security Policy, follow these steps:
 
    ![Security Policy List](/img/10-policylist.png "Security Policy List")
 
-> The ordering of the policy is very important. In this example you must create the block/drop policy on the top of the ruleset. If the policy is shadowed by other rules that allow traffic, it won't be matched and the communications will still be allowed.
+:::tip
+The ordering of the policy is very important. In this example you must create the block/drop policy on the top of the ruleset. If the policy is shadowed by other rules that allow traffic, it won't be matched and the communications will still be allowed.
+:::
 
-> The name of the Zones can be different in your setup, as well as the network topology. Multiple zones can be present.
+:::note
+The name of the Zones can be different in your setup, as well as the network topology. Multiple zones can be present.
+:::
 
 ### Step 3: Commit the configuration
 
@@ -293,7 +303,9 @@ Total: 2 registered addresses
 *: received from user-id agent  #: persistent
 ```
 
-> For the `10.0.0.2` note the expiration time and the non persistency.
+:::note
+For the `10.0.0.2` note the expiration time and the non persistency.
+:::
 
 #### Method 3: using the XML API
 
@@ -379,7 +391,9 @@ The following example will unregister both IP addresses registered in the previo
 </uid-message>
 ```
 
-> You can also mix registration and unregistration messages in the same XML document.
+:::tip
+You can also mix registration and unregistration messages in the same XML document.
+:::
 
 You can now push the document to the PAN-OS XML API in the same way as before.
 

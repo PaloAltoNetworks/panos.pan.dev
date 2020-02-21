@@ -18,7 +18,9 @@ image: /img/panos_apis.svg
 
 [![GitHub page](https://img.shields.io/badge/GitHub-Repo-brightgreen?style=for-the-badge&logo=github)](https://github.com/kevinsteves/pan-python) [![GitHub stars](https://img.shields.io/github/stars/kevinsteves/pan-python?style=for-the-badge)](https://github.com/kevinsteves/pan-python)
 
-> The following guide will walk you through installing `pan-python`, a powerful SDK capable of supporting a variety of automation projects and use cases
+:::note
+The following guide will walk you through installing `pan-python`, a powerful SDK capable of supporting a variety of automation projects and use cases
+:::
 
 ## Introducing pan-python
 

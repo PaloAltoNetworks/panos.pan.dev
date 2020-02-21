@@ -19,7 +19,9 @@ image: /img/panos_apis.svg
 
 [![GitHub page](https://img.shields.io/badge/GitHub-Repo-brightgreen?style=for-the-badge&logo=github)](https://github.com/PaloAltoNetworks/pango) [![GitHub stars](https://img.shields.io/github/stars/PaloAltoNetworks/pango?style=for-the-badge)](https://github.com/PaloAltoNetworks/pango)
 
-> Package pango is a golang cross version mechanism for interacting with Palo Alto Networks devices (including physical and virtualized Next-generation Firewalls and Panorama). Versioning support is in place for PANOS 6.1 to 8.1.
+:::note
+Package pango is a golang cross version mechanism for interacting with Palo Alto Networks devices (including physical and virtualized Next-generation Firewalls and Panorama). Versioning support is in place for PANOS 6.1 to 8.1.
+:::
 
 ## Documentation
 

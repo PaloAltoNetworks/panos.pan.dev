@@ -24,6 +24,11 @@
   --ifm-navbar-search-input-color: var(--ifm-color-gray-900);
   --ifm-background-color: #fff;
   --ifm-footer-background-color: #000000;
+  --ifm-heading-font-weight: 600;
+  --ifm-button-font-weight: 600;
+  --ifm-font-weight-semibold: 500;
+  --ifm-code-font-size: 90%;
+  --ra-color-tip: var(--ifm-color-primary);
 }
 
 /* Dark mode overrides */
@@ -50,6 +55,31 @@ html[data-theme="dark"] {
 
   /* Mardown color in dark mode */
   --ifm-color-gray-800: var(--ifm-color-gray-300);
+}
+
+/* Admonition overrides */
+.admonition .admonition-content p {
+  color: var(--ifm-heading-color) !important;
+}
+
+.admonition .admonition-content a {
+  color: var(--ifm-heading-color) !important;
+}
+
+.admonition .admonition-heading h5 {
+  color: var(--ifm-heading-color) !important;
+}
+
+.admonition .admonition-note .admonition-content p {
+  color: #000 !important;
+}
+
+.admonition .admonition-note .admonition-content a {
+  color: #000 !important;
+}
+
+.admonition .admonition-note .admonition-heading h5 {
+  color: #000 !important;
 }
 
 /* Docs overrides */

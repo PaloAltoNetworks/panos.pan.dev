@@ -18,34 +18,36 @@ import NotFound from "@theme/NotFound";
 import React from "react";
 import styles from "./styles.module.css";
 
-function matchingRouteExist(routes, pathname) {
-  return routes.some(route => matchPath(pathname, route));
-}
-
 function DocPage(props) {
-  const { route, docsMetadata, location } = props;
+  const { route: baseRoute, docsMetadata, location } = props;
+  // case-sensitive route such as it is defined in the sidebar
+  const currentRoute =
+    baseRoute.routes.find(route => {
+      return matchPath(location.pathname, route);
+    }) || {};
   const { permalinkToSidebar, docsSidebars, version } = docsMetadata;
-  const sidebar = permalinkToSidebar[location.pathname.replace(/\/$/, "")];
+  const sidebar = permalinkToSidebar[currentRoute.path];
   const {
     siteConfig: { themeConfig = {} } = {},
-    siteConfig: { customFields = {} } = {}
+    siteConfig: { customFields = {} } = {},
+    isClient
   } = useDocusaurusContext();
   const { sidebarCollapsible = true } = themeConfig;
   const { docbar = {} } = customFields;
   const { options = [] } = docbar;
 
-  if (!matchingRouteExist(route.routes, location.pathname)) {
+  if (Object.keys(currentRoute).length === 0) {
     return <NotFound {...props} />;
   }
 
   return (
-    <Layout version={version}>
+    <Layout version={version} key={isClient}>
       <div className={styles.docPage}>
         {sidebar && (
           <div className={styles.docSidebarContainer}>
             <DocSidebar
               docsSidebars={docsSidebars}
-              location={location}
+              path={currentRoute.path}
               sidebar={sidebar}
               sidebarCollapsible={sidebarCollapsible}
             />
@@ -86,7 +88,7 @@ function DocPage(props) {
             ))}
           </div>
           <MDXProvider components={MDXComponents}>
-            {renderRoutes(route.routes)}
+            {renderRoutes(baseRoute.routes)}
           </MDXProvider>
         </main>
       </div>

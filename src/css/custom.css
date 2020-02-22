@@ -115,3 +115,8 @@ blockquote {
   border-left: none !important;
   border-right: none !important;
 }
+
+:target:before {
+  height: 105px !important;
+  margin: -105px 0 0 !important;
+}

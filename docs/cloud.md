@@ -19,7 +19,9 @@ keywords:
 image: /img/cloud_security.svg
 ---
 
-> Whether it's **auto-scaling** a firewall with a cloud application, **seamless policy** across on-prem and cloud, or a single place to see all your **cloud security events**, Palo Alto Networks cloud integrations have you covered.
+:::note
+Whether it's **auto-scaling** a firewall with a cloud application, **seamless policy** across on-prem and cloud, or a single place to see all your **cloud security events**, Palo Alto Networks cloud integrations have you covered.
+:::
 
 #### Cloud Integrations
 

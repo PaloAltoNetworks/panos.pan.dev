@@ -3,12 +3,15 @@ id: panos_tutorials_rule_hit_count
 title: Export security rule hitcount to CSV
 sidebar_label: Rule hit count to CSV
 hide_title: false
-description: Export security rule hit count to CSV 
+description: Export security rule hit count to CSV
 keywords:
   - PAN-OS API
   - PAN-OS
 ---
+
+:::note
 This tutorial covers how to dump a security rulebase hit count into a CSV file for offline processing. A typical use case leveraging rule hit counts is to identify rules with zero or very few hits that, otherwise, might be eligible for cleanup or deletion.
+:::
 
 ## Requirements
 
@@ -25,8 +28,9 @@ Starting with [PAN-OS 8.1](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-n
 ![webui hit count](/img/policy-rule-hit-count-example.png "WebUI Hit Count")
 
 These runtime statistics can provide value in some automation use cases. For instance:
-* In large deployments (thousands of rules) it might be desirable to export specific datapoints (i.e. rule name, hit count and last hit timestamp) into a CSV file for out-of-band processing (periodic security audit checks)
-* SOC operations might be interested on displaying and analyzing time-based graphs of hit-count on selected rules.
+
+- In large deployments (thousands of rules) it might be desirable to export specific datapoints (i.e. rule name, hit count and last hit timestamp) into a CSV file for out-of-band processing (periodic security audit checks)
+- SOC operations might be interested on displaying and analyzing time-based graphs of hit-count on selected rules.
 
 ## Extracting runtime statistics using PAN-OS API
 
@@ -37,14 +41,14 @@ A network security operations engineer might be accustomed to using the device's
 ```text
 xhoms@PA-220> show rule-hit-count vsys vsys-name vsys1 rule-base security rules all
 
-Rule Name                                                        Hit Count   Last Hit Timestamp        Last Reset Timestamp      First Hit Timestamp       Rule Create Timestamp     Rule Modify Timestamp    
+Rule Name                                                        Hit Count   Last Hit Timestamp        Last Reset Timestamp      First Hit Timestamp       Rule Create Timestamp     Rule Modify Timestamp
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-LogAllURL-DIdac                                                  510932      Mon Dec 17 15:42:45 2018  -                         Mon Jun 18 15:22:31 2018  Mon Jun 18 15:22:31 2018  Mon Jun 18 15:22:31 2018 
-HostedPanorama                                                   4487        Fri Apr 27 11:21:18 2018  -                         Wed Apr 25 11:40:01 2018  Wed Apr 25 11:40:01 2018  Wed Apr 25 11:40:01 2018 
-Minemeld hosted on Rancher                                       180262      Wed Nov 20 12:58:01 2019  -                         Fri Sep 13 12:06:27 2019  Fri Sep 13 11:35:24 2019  Fri Sep 13 12:04:04 2019 
-ApolloLCaaS                                                      40945810    Wed Nov 20 13:51:02 2019  -                         Tue Apr 10 18:49:52 2018  Tue Apr 10 18:49:52 2018  Tue Apr 10 18:49:52 2018 
-CrashPlan Access                                                 29184       Wed Nov 20 11:31:07 2019  -                         Thu Jan 24 15:52:04 2019  Thu Jan 24 15:52:04 2019  Thu Jan 24 15:52:04 2019 
-VPN Xavi Back                                                    2321        Wed Jan 17 07:27:20 2018  -                         Fri Jan 12 22:40:00 2018  Fri Jan 12 22:40:00 2018  Fri Jan 12 22:40:00 2018 
+LogAllURL-DIdac                                                  510932      Mon Dec 17 15:42:45 2018  -                         Mon Jun 18 15:22:31 2018  Mon Jun 18 15:22:31 2018  Mon Jun 18 15:22:31 2018
+HostedPanorama                                                   4487        Fri Apr 27 11:21:18 2018  -                         Wed Apr 25 11:40:01 2018  Wed Apr 25 11:40:01 2018  Wed Apr 25 11:40:01 2018
+Minemeld hosted on Rancher                                       180262      Wed Nov 20 12:58:01 2019  -                         Fri Sep 13 12:06:27 2019  Fri Sep 13 11:35:24 2019  Fri Sep 13 12:04:04 2019
+ApolloLCaaS                                                      40945810    Wed Nov 20 13:51:02 2019  -                         Tue Apr 10 18:49:52 2018  Tue Apr 10 18:49:52 2018  Tue Apr 10 18:49:52 2018
+CrashPlan Access                                                 29184       Wed Nov 20 11:31:07 2019  -                         Thu Jan 24 15:52:04 2019  Thu Jan 24 15:52:04 2019  Thu Jan 24 15:52:04 2019
+VPN Xavi Back                                                    2321        Wed Jan 17 07:27:20 2018  -                         Fri Jan 12 22:40:00 2018  Fri Jan 12 22:40:00 2018  Fri Jan 12 22:40:00 2018
 ...
 ```
 
@@ -53,13 +57,14 @@ For years, the only way to programmatically access this type of data was using C
 ### The "type=op" PAN-OS API command
 
 PAN-OS API supports many different type of requests:
-* `type=op` (operation commands: i.e. show commands)
-* `type=config` (configuration management)
-* `type=log` (get log events)
-* `type=user-id` (dataplane real-time object update)
-* `type=keygen` (generate an API KEY out of user and password data)
-* `type=report` (request report generation)
-* ... and few other types
+
+- `type=op` (operation commands: i.e. show commands)
+- `type=config` (configuration management)
+- `type=log` (get log events)
+- `type=user-id` (dataplane real-time object update)
+- `type=keygen` (generate an API KEY out of user and password data)
+- `type=report` (request report generation)
+- ... and few other types
 
 The case we're covering in this tutorial requires us to use a `type=op` API requests. Examples of CLI commands that can be emulated with API `type=op` requests are `show`, `clear`, `delete`, `test`, `request`, etc.
 
@@ -109,6 +114,7 @@ Example response
 ```
 
 The output is a large XML document (it contains hit count details for all rules in the security rule-set) with the following structure:
+
 ```text
 response
   result
@@ -171,7 +177,7 @@ def main():
             last_hit_ts = rule.findtext('last-hit-timestamp')
             rule_dict[rule_name] = (
                 int(hit_count), datetime.datetime.fromtimestamp(int(last_hit_ts)).isoformat())
-        
+
         # STEP 3: Sort the data set and print to stdout with CSV format
         print("rulename,hitcount,lasthitts")
         for rule_name, (hit_count, last_hit_ts) in sorted(rule_dict.items(), key=operator.itemgetter(1)):
@@ -189,9 +195,10 @@ if __name__ == "__main__":
 The first `try / except` block attemps to leverage pan-python to initialize a `xapi` object connected to our PAN-OS device API
 
 The second `try / except` block performs the following steps in sequence:
-* Execute the operational command
-* Parse the XML response
-* Process the result data set (order by hit count number) and print CSV to sdtout
+
+- Execute the operational command
+- Parse the XML response
+- Process the result data set (order by hit count number) and print CSV to sdtout
 
 Let me highline some pieces of code:
 
@@ -216,8 +223,9 @@ for rule in rules:
 A loop iterating the `rules` generator will convert the raw data into a python dictionary whose key will be the rule name and having the tuple `(hit_count, last_hit_ts)` as its value.
 
 Inside the loop, `rule` becomes an `xml.etree` object that will be used to:
-* extract the name XML attribute using its `get()` method (rule name)
-* extract the XML text node from the XML elements hit-count and last-hit-timestamp using its `findtext()` method
+
+- extract the name XML attribute using its `get()` method (rule name)
+- extract the XML text node from the XML elements hit-count and last-hit-timestamp using its `findtext()` method
 
 The XML text values are casted to integer (hit-count) and formatted (date representation of the UNIX timestamp)
 
@@ -273,13 +281,13 @@ func main() {
 		log.Printf("Failed to initialize client: %s", err)
 		return
     }
-    
+
     // STEP 1: Execute the operational command and get the unmarshalled XML response
 	_, respErr := c.Op(cmd, "", nil, &response)
 	if respErr != nil {
 		log.Printf("Failed to execute Op command: %s", respErr)
     }
-    
+
     // STEP 2: Sort the data set and print to stdout with CSV format
 	sort.Sort(byHitCount(response.Rules))
 	fmt.Println("rulename,hitcount,lasthitts")

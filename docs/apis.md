@@ -13,7 +13,9 @@ keywords:
 image: /img/panos_apis.svg
 ---
 
-> When configuring and managing the Palo Alto Networks Next-Generation firewall for scale and agility, it’s important to have a collection of powerful APIs and tools to automate activities and events. Our APIs and SDKs provide a collection of open, feature-rich automation opportunities for the beginning scripter and advanced developer alike.
+:::note
+When configuring and managing the Palo Alto Networks Next-Generation firewall for scale and agility, it’s important to have a collection of powerful APIs and tools to automate activities and events. Our APIs and SDKs provide a collection of open, feature-rich automation opportunities for the beginning scripter and advanced developer alike.
+:::
 
 ### XML API
 

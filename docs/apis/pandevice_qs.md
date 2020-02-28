@@ -94,7 +94,9 @@ object:
 fw.refresh_system_info()
 ```
 
-> See more examples in the [Usage Guide](http://pandevice.readthedocs.io/en/latest/usage.html).
+:::tip
+See more examples in the [Usage Guide](http://pandevice.readthedocs.io/en/latest/usage.html).
+:::
 
 ## Connecting to PAN-OS 8.0 and higher
 

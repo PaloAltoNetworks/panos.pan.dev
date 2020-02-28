@@ -29,6 +29,7 @@
   --ifm-font-weight-semibold: 500;
   --ifm-code-font-size: 90%;
   --ra-color-tip: var(--ifm-color-primary);
+  --ra-color-text-dark: #000;
 }
 
 /* Dark mode overrides */
@@ -58,28 +59,10 @@ html[data-theme="dark"] {
 }
 
 /* Admonition overrides */
-.admonition .admonition-content p {
-  color: var(--ifm-heading-color) !important;
-}
-
-.admonition .admonition-content a {
-  color: var(--ifm-heading-color) !important;
-}
-
+.admonition .admonition-content a,
+.admonition .admonition-content p,
 .admonition .admonition-heading h5 {
   color: var(--ifm-heading-color) !important;
-}
-
-.admonition .admonition-note .admonition-content p {
-  color: #000 !important;
-}
-
-.admonition .admonition-note .admonition-content a {
-  color: #000 !important;
-}
-
-.admonition .admonition-note .admonition-heading h5 {
-  color: #000 !important;
 }
 
 /* Docs overrides */

@@ -9,7 +9,10 @@ keywords:
   - terraform
   - overview
 ---
-> Version control your infrastructure and eliminate human-error from device configuration with infrastructure-as-code tools and techniques. Tell your tools how the configuration should look and let them automate the rest.
+
+:::note
+Version control your infrastructure and eliminate human-error from device configuration with infrastructure-as-code tools and techniques. Tell your tools how the configuration should look and let them automate the rest.
+:::
 
 #### Ansible
 
@@ -19,6 +22,6 @@ Ansible is an open source automation language from RedHat that uses modules to c
 
 Terraform is an open source tool used to build and deploy infrastructure safely and efficiently. Terraform unifies cross-vendor configuration in a single language and is cloud platform agnostic (unlike AWS CFT’s or Azure ARM templates) to produces immutable infrastructure deployments. <a href="https://live.paloaltonetworks.com/t5/Terraform/ct-p/Terraform" target="_blank">More information</a>
 
-- - -
+---
 
 _Join the conversation_ on our <a href="https://live.paloaltonetworks.com/t5/Automation-API/ct-p/automation" target="_blank">API and Automation discussion forum</a>.

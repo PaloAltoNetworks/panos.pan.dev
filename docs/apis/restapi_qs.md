@@ -13,7 +13,9 @@ keywords:
 image: /img/panos_apis.svg
 ---
 
-> The following guide will walk you through sending API requests to the PAN-OS® REST API using <a href="https://curl.haxx.se/docs/httpscripting.html" target="_blank">cURL</a>, although you may optionally use another API tool such as <a href="https://www.getpostman.com/" target="_blank">Postman</a>, <a href="https://insomnia.rest/" target="_blank">Insomnia</a> or <a href="http://restclient.net/" target="_blank">RESTClient</a>.
+:::note
+The following guide will walk you through sending API requests to the PAN-OS® REST API using <a href="https://curl.haxx.se/docs/httpscripting.html" target="_blank">cURL</a>, although you may optionally use another API tool such as <a href="https://www.getpostman.com/" target="_blank">Postman</a>, <a href="https://insomnia.rest/" target="_blank">Insomnia</a> or <a href="http://restclient.net/" target="_blank">RESTClient</a>.
+:::
 
 ## Enable API Access
 

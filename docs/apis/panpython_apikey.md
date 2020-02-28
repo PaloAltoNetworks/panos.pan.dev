@@ -18,7 +18,9 @@ keywords:
 image: /img/panos_apis.svg
 ---
 
-> Requests made to the PAN-OS® XML API will require authentication, in the form of an API key. The following steps will walk you through the process of generating a key and storing it for future use.
+:::note
+Requests made to the PAN-OS® XML API will require authentication, in the form of an API key. The following steps will walk you through the process of generating a key and storing it for future use.
+:::
 
 The **panxapi.py** **-k** option performs the `type=keygen` API request
 to generate the API key for an administrator account. The **-h** and

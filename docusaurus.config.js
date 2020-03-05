@@ -10,7 +10,7 @@ module.exports = {
   tagline: "with the only next-gen security platform",
   url: "https://panos.pan.dev",
   baseUrl: "/",
-  favicon: "img/panospeelable.png",
+  favicon: "img/strata_favicon.png",
   organizationName: "PaloAltoNetworks", // Usually your GitHub org/user name.
   projectName: "panos.pan.dev", // Usually your repo name.
   themeConfig: {

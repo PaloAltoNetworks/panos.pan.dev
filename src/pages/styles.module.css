@@ -94,7 +94,7 @@
   color: white;
   text-align: center;
   justify-content: center;
-  background-color: #263238;
+  background-color: #636e72;
 }
 
 .headerImage {
@@ -143,6 +143,10 @@
 .hero__subtitle {
   z-index: 1 !important;
   color: #a4a9ad !important;
+}
+
+.heroProjectKeywords {
+  color: var(--ifm-color-black);
 }
 
 .text__gray {

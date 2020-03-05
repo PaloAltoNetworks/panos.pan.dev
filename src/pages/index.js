@@ -107,7 +107,7 @@ const particlesOptions = {
 
 const features = [
   {
-    title: <>APIs and SDKs</>,
+    title: <>PAN-OS® APIs</>,
     imageUrl: "/img/panos_apis.svg",
     description: (
       <>
@@ -214,10 +214,17 @@ function Home() {
           <div>
             <Particles className="particles" params={particlesOptions} />
           </div>
-          <h1 className="hero__title">Next-gen Automation</h1>
-          <p className="hero__subtitle">
-            with the only next-generation security platform
-          </p>
+          <h1 className="hero__title">
+            <span className={styles.heroProjectKeywords}>Build</span> Next-gen
+            Automation
+          </h1>
+          <h6 className="hero__subtitle">
+            with the only{" "}
+            <span className={styles.heroProjectKeywords}>
+              next-generation security
+            </span>{" "}
+            platform
+          </h6>
           <div className={styles.buttons}>
             <Link
               className={classnames(

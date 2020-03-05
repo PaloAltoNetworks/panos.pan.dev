@@ -11,7 +11,6 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import classnames from "classnames";
 import React, { useRef } from "react";
-import ScrollUpButton from "react-scroll-up-button";
 import styles from "./styles.module.css";
 
 function Docs() {
@@ -37,11 +36,9 @@ function Docs() {
               Automations, and Cloud Templates you can take PAN-OS® to the next
               level.
             </description>
-            <br></br>
-            <br></br>
             <div className="row">
-              <div className="col col--4">
-                <div class="card shadow--md">
+              <div className={classnames("col col--4", styles.features)}>
+                <div className={classnames("card shadow--md", styles.card)}>
                   <div class="card__header">
                     <h3>APIs and SDKs</h3>
                     <description>
@@ -89,8 +86,8 @@ function Docs() {
                   </div>
                 </div>
               </div>
-              <div className="col col--4">
-                <div class="card shadow--md">
+              <div className={classnames("col col--4", styles.features)}>
+                <div className={classnames("card shadow--md", styles.card)}>
                   <div class="card__header">
                     <h2>Automation</h2>
                     <description>
@@ -137,8 +134,8 @@ function Docs() {
                   </div>
                 </div>
               </div>
-              <div className="col col--4">
-                <div class="card shadow--md">
+              <div className={classnames("col col--4", styles.features)}>
+                <div className={classnames("card shadow--md", styles.card)}>
                   <div class="card__header">
                     <h2>Cloud</h2>
                     <description>
@@ -172,19 +169,21 @@ function Docs() {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-        <section>
-          <div className="container">
-            <div className="row"></div>
-            <div className="col col--12">
-              <h3>Want to contribute? See something missing?</h3>
-              <description>
-                Visit our <a href={useBaseUrl("docs/contributing")}>Contributing Guide</a> to learn how easy it is to help make PAN-OS® for Developers better!
-              </description>
-              <br></br><br></br>
+            <div className="row">
+              <div className="col col--12">
+                <h3>Want to contribute? See something missing?</h3>
+                <description>
+                  Visit our{" "}
+                  <a href={useBaseUrl("docs/contributing")}>
+                    Contributing Guide
+                  </a>{" "}
+                  to learn how easy it is to help make PAN-OS® for Developers
+                  better!
+                </description>
+                <br></br>
+                <br></br>
+              </div>
             </div>
-            
           </div>
         </section>
       </main>

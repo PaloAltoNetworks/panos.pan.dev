@@ -68,6 +68,24 @@
   display: flex;
 }
 
+.card {
+  max-width: 348px;
+  margin: auto;
+}
+
+.cardImage {
+  height: 8rem;
+  width: auto;
+  padding: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cardBody {
+  text-align: center;
+}
+
 .tools {
   align-items: center;
   padding: 2rem 0;

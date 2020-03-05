@@ -107,7 +107,7 @@ const particlesOptions = {
 
 const features = [
   {
-    title: <>APIs and SDKs</>,
+    title: <>PAN-OS® APIs</>,
     imageUrl: "/img/panos_apis.svg",
     description: (
       <>
@@ -181,14 +181,16 @@ function Feature({ imageUrl, title, description, button }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={classnames("col col--4", styles.features)}>
-      {imgUrl && (
-        <div className="text--center">
-          <img className={styles.featureImage} src={imgUrl} alt={title} />
+      <div className={classnames("card shadow--lw", styles.card)}>
+        <div class="card__image">
+          <img src={imgUrl} title={title} className={styles.cardImage} />
         </div>
-      )}
-      <h3>{title}</h3>
-      <p>{description}</p>
-      {button}
+        <div className={(classnames("card__body"), styles.cardBody)}>
+          <h4>{title}</h4>
+          <small>{description}</small>
+        </div>
+        <div class="card__footer">{button}</div>
+      </div>
     </div>
   );
 }
@@ -212,10 +214,17 @@ function Home() {
           <div>
             <Particles className="particles" params={particlesOptions} />
           </div>
-          <h1 className="hero__title">Next-gen Automation</h1>
-          <p className="hero__subtitle">
-            with the only next-generation security platform
-          </p>
+          <h1 className="hero__title">
+            <span className={styles.heroProjectKeywords}>Build</span> Next-gen
+            Automation
+          </h1>
+          <h6 className="hero__subtitle">
+            with the only{" "}
+            <span className={styles.heroProjectKeywords}>
+              next-generation security
+            </span>{" "}
+            platform
+          </h6>
           <div className={styles.buttons}>
             <Link
               className={classnames(

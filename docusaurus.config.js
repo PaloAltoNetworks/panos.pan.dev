@@ -10,7 +10,7 @@ module.exports = {
   tagline: "with the only next-gen security platform",
   url: "https://panos.pan.dev",
   baseUrl: "/",
-  favicon: "img/panospeelable.png",
+  favicon: "img/strata_favicon.png",
   organizationName: "PaloAltoNetworks", // Usually your GitHub org/user name.
   projectName: "panos.pan.dev", // Usually your repo name.
   themeConfig: {
@@ -25,7 +25,8 @@ module.exports = {
       title: "",
       logo: {
         alt: "PAN-OS® for Developers",
-        src: "img/panospeelable.png"
+        src: "img/Strata_Tagline_Logo_RGB.png",
+        srcDark: "img/Strata_Tagline_Logo_RGB_Nameplate_Reversed.png"
       },
       links: [
         {
@@ -46,7 +47,6 @@ module.exports = {
       ]
     },
     footer: {
-      style: "dark",
       links: [
         {
           title: "Docs",
@@ -86,8 +86,8 @@ module.exports = {
         }
       ],
       logo: {
-        alt: "PAN-OS® for Developers",
-        src: "img/pandev.png",
+        alt: "Palo Alto Networks for Developers",
+        src: "img/PANW_Parent_Brand_Primary_Logo_KO.png",
         href: "https://pan.dev"
       },
       copyright: `Copyright © ${new Date().getFullYear()} Palo Alto Networks, Inc.`

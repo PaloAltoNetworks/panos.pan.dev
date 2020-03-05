@@ -68,6 +68,24 @@
   display: flex;
 }
 
+.card {
+  max-width: 348px;
+  margin: auto;
+}
+
+.cardImage {
+  height: 8rem;
+  width: auto;
+  padding: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cardBody {
+  text-align: center;
+}
+
 .tools {
   align-items: center;
   padding: 2rem 0;
@@ -76,7 +94,7 @@
   color: white;
   text-align: center;
   justify-content: center;
-  background-color: #263238;
+  background-color: #3b4446;
 }
 
 .headerImage {
@@ -125,6 +143,10 @@
 .hero__subtitle {
   z-index: 1 !important;
   color: #a4a9ad !important;
+}
+
+.heroProjectKeywords {
+  color: var(--ifm-color-black);
 }
 
 .text__gray {

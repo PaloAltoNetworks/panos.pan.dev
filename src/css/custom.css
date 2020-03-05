@@ -96,6 +96,7 @@ blockquote {
 
 .card {
   min-height: 350px;
+  --ifm-global-shadow-lw: 0 0 0 0 !important;
 }
 
 /* Dropdown menu overrides */
@@ -130,4 +131,12 @@ blockquote {
   .navbar__logo {
     height: auto !important;
   }
+}
+
+.footer {
+  color: #fff !important;
+}
+
+section {
+  border-bottom: 1px solid var(--ifm-hr-border-color);
 }

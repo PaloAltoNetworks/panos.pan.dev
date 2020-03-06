@@ -27,7 +27,7 @@ function Docs() {
       description="All things related to automation and development with Demisto"
     >
       <main>
-        <section className={styles.features}>
+        <section className={styles.features} style={{ borderBottom: "none" }}>
           <div className="container">
             <h1>PAN-OS® For Developers</h1>
             <description>
@@ -180,8 +180,6 @@ function Docs() {
                   to learn how easy it is to help make PAN-OS® for Developers
                   better!
                 </description>
-                <br></br>
-                <br></br>
               </div>
             </div>
           </div>

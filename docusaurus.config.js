@@ -14,6 +14,10 @@ module.exports = {
   organizationName: "PaloAltoNetworks", // Usually your GitHub org/user name.
   projectName: "panos.pan.dev", // Usually your repo name.
   themeConfig: {
+    prism: {
+      theme: require("prism-react-renderer/themes/github"),
+      darkTheme: require("prism-react-renderer/themes/oceanicNext")
+    },
     algolia: {
       apiKey: "81ceae0c1242ce2659cacb30678ba9d7",
       appId: "QAP3NZH9FJ",

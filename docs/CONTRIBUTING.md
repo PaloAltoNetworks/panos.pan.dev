@@ -25,7 +25,9 @@ The following are ways you can contribute to Palo Alto Networks developer docs:
 
 ## Using Git and GitHub
 
-> Most of the information in this section can be found in [GitHub Help](https://help.github.com) articles. If you're familiar with Git and GitHub, skip to the [Contribute content](#contribute-content) section for an example `git` flow.
+:::note
+Most of the information in this section can be found in [GitHub Help](https://help.github.com) articles. If you're familiar with Git and GitHub, skip to the [Contribute content](#contribute-content) section for an example `git` flow.
+:::
 
 ### Setting up your fork of the repository
 
@@ -74,7 +76,9 @@ git push origin {your-branch-name}
 git branch -d {your-branch-name}
 ```
 
-> Try to limit each specific contribution or edit to a branch to help reduce the likelihood of conflicts.
+:::tip
+Try to limit each specific contribution or edit to a branch to help reduce the likelihood of conflicts.
+:::
 
 The following are examples of contributions appropriate for a new branch:
 
@@ -107,7 +111,9 @@ git push origin master
 
 ### MDX
 
-> MDX syntax can be boiled down to being JSX in Markdown. It’s a superset of Markdown syntax that also supports importing, exporting, and JSX. If you're planning use MDX to author your content be sure to use the `.mdx` file extension when naming your file.
+:::info
+MDX syntax can be boiled down to being JSX in Markdown. It’s a superset of Markdown syntax that also supports importing, exporting, and JSX. If you're planning use MDX to author your content be sure to use the `.mdx` file extension when naming your file.
+:::
 
 [Getting started](https://mdxjs.com/getting-started) with MDX.
 
@@ -216,7 +222,9 @@ keywords:
 ---
 ```
 
-> If you're not sure where to begin, feel free to use an existing doc as boilerplate. Just remember that each document requires a unique ID
+:::note
+If you're not sure where to begin, feel free to use an existing doc as boilerplate. Just remember that each document requires a unique ID.
+:::
 
 ### Sidebar
 
@@ -228,7 +236,9 @@ Sidebar --> Category --> [array of document IDs]
 
 The sidebar is generated from the `sidebars.js` file located in the root folder.
 
-> The following snippet calls out each specific sidebar component (note that the actual `sidebars.js` file should not contain comments):
+:::note
+The following snippet calls out each specific sidebar component (note that the actual `sidebars.js` file should not contain comments).
+:::
 
 ```js {6,7}
 module.exports = {

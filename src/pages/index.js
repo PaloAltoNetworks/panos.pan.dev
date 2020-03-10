@@ -182,14 +182,14 @@ function Feature({ imageUrl, title, description, button }) {
   return (
     <div className={classnames("col col--4", styles.features)}>
       <div className={classnames("card shadow--lw", styles.card)}>
-        <div class="card__image">
+        <div className="card__image">
           <img src={imgUrl} title={title} className={styles.cardImage} />
         </div>
         <div className={(classnames("card__body"), styles.cardBody)}>
           <h4>{title}</h4>
           <small>{description}</small>
         </div>
-        <div class="card__footer">{button}</div>
+        <div className="card__footer">{button}</div>
       </div>
     </div>
   );

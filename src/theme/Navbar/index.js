@@ -1,10 +1,11 @@
 /**
- * Copyright (c) 2017-present, Facebook, Inc.
+ * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
 
+import isInternalUrl from "@docusaurus/isInternalUrl";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -17,8 +18,10 @@ import classnames from "classnames";
 import React, { useCallback, useState } from "react";
 import styles from "./styles.module.css";
 
-function NavLink({ to, href, label, position, ...props }) {
+function NavLink({ activeBasePath, to, href, label, position, ...props }) {
   const toUrl = useBaseUrl(to);
+  const activeBaseUrl = useBaseUrl(activeBasePath);
+
   return (
     <Link
       className="navbar__item navbar__link"
@@ -30,7 +33,13 @@ function NavLink({ to, href, label, position, ...props }) {
           }
         : {
             activeClassName: "navbar__link--active",
-            to: toUrl
+            to: toUrl,
+            ...(activeBasePath
+              ? {
+                  isActive: (_match, location) =>
+                    location.pathname.startsWith(activeBaseUrl)
+                }
+              : null)
           })}
       {...props}
     >
@@ -55,8 +64,7 @@ function NavMenu(props) {
 }
 
 function Navbar() {
-  const context = useDocusaurusContext();
-  const { siteConfig = {} } = context;
+  const { siteConfig = {}, isClient } = useDocusaurusContext();
   const { baseUrl, themeConfig = {} } = siteConfig;
   const { navbar = {}, disableDarkMode = false } = themeConfig;
   const {
@@ -95,13 +103,17 @@ function Navbar() {
   );
 
   const logoLink = logo.href || baseUrl;
-  const isExternalLogoLink = /http/.test(logoLink);
-  const logoLinkProps = isExternalLogoLink
-    ? {
-        rel: "noopener noreferrer",
-        target: "_blank"
-      }
-    : null;
+  let logoLinkProps = {};
+
+  if (logo.target) {
+    logoLinkProps = { target: logo.target };
+  } else if (!isInternalUrl(logoLink)) {
+    logoLinkProps = {
+      rel: "noopener noreferrer",
+      target: "_blank"
+    };
+  }
+
   const logoSrc = logo.srcDark && isDarkTheme ? logo.srcDark : logo.src;
   const logoImageUrl = useBaseUrl(logoSrc);
 
@@ -144,11 +156,18 @@ function Navbar() {
           </div>
           <Link className="navbar__brand" to={logoLink} {...logoLinkProps}>
             {logo != null && (
-              <img className="navbar__logo" src={logoImageUrl} alt={logo.alt} />
+              <img
+                key={isClient}
+                className="navbar__logo"
+                src={logoImageUrl}
+                alt={logo.alt}
+              />
             )}
             {title != null && (
               <strong
-                className={isSearchBarExpanded ? styles.hideLogoText : ""}
+                className={classnames("navbar__title", {
+                  [styles.hideLogoText]: isSearchBarExpanded
+                })}
               >
                 {title}
               </strong>
@@ -204,9 +223,16 @@ function Navbar() {
             {...logoLinkProps}
           >
             {logo != null && (
-              <img className="navbar__logo" src={logoImageUrl} alt={logo.alt} />
+              <img
+                key={isClient}
+                className="navbar__logo"
+                src={logoImageUrl}
+                alt={logo.alt}
+              />
             )}
-            {title != null && <strong>{title}</strong>}
+            {title != null && (
+              <strong className="navbar__title">{title}</strong>
+            )}
           </Link>
           {!disableDarkMode && sidebarShown && (
             <Toggle

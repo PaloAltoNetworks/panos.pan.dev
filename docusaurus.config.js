@@ -19,9 +19,8 @@ module.exports = {
       darkTheme: require("prism-react-renderer/themes/oceanicNext")
     },
     algolia: {
-      apiKey: "81ceae0c1242ce2659cacb30678ba9d7",
-      appId: "QAP3NZH9FJ",
-      indexName: "panos.pan.dev",
+      apiKey: process.env.ALGOLIA_APIKEY,
+      indexName: process.env.ALGOLIA_INDEX,
       algoliaOptions: {} // Optional, if provided by Algolia
     },
     sidebarCollapsible: true,

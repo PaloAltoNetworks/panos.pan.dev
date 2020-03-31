@@ -59,7 +59,7 @@ module.exports = {
             },
             {
               href: "https://cortex.pan.dev",
-              label: "Cortex Data Lake",
+              label: "Cortex",
               logo: "/img/cortexfavicon.png"
             },
             {

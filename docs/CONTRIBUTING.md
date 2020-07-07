@@ -37,14 +37,14 @@ Most of the information in this section can be found in [GitHub Help](https://he
 4. Clone your fork to your local machine using the following command:
 
 ```bash
-git clone https://github.com/{your user name}/{the developer site repo}.git
+git clone git@github.com:{your user name}/{the developer site repo}.git
 ```
 
 Next, create a reference to the root repository by entering these commands:
 
 ```bash
 cd <your cloned repo folder>
-git remote add upstream https://github.com/PaloAltoNetworks/{the developer site repo}.git // optionally use the SSH repo URL
+git remote add upstream git@github.com:PaloAltoNetworks/{the developer site repo}.git // optionally use the SSH repo URL
 git fetch upstream
 ```
 
@@ -247,9 +247,9 @@ module.exports = {
     {
       type: "category",
       label: "Tutorials", // Category label
-      items: ["apis/my_awesome_tutorial"] // Document ID (including relative path)
-    }
-  ]
+      items: ["apis/my_awesome_tutorial"], // Document ID (including relative path)
+    },
+  ],
 };
 ```
 

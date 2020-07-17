@@ -21,26 +21,26 @@ const particlesOptions = {
       value: 100,
       density: {
         enable: true,
-        value_area: 900
-      }
+        value_area: 900,
+      },
     },
     color: {
-      value: "#ffffff"
+      value: "#ffffff",
     },
     shape: {
       type: "circle",
       stroke: {
         width: 0,
-        color: "#000000"
+        color: "#000000",
       },
       polygon: {
-        nb_sides: 5
+        nb_sides: 5,
       },
       image: {
         src: "img/github.svg",
         width: 100,
-        height: 100
-      }
+        height: 100,
+      },
     },
     opacity: {
       value: 0.2,
@@ -49,8 +49,8 @@ const particlesOptions = {
         enable: false,
         speed: 1,
         opacity_min: 0.2,
-        sync: false
-      }
+        sync: false,
+      },
     },
     size: {
       value: 3,
@@ -59,15 +59,15 @@ const particlesOptions = {
         enable: false,
         speed: 40,
         size_min: 0.1,
-        sync: false
-      }
+        sync: false,
+      },
     },
     line_linked: {
       enable: true,
       distance: 250,
       color: "#ffffff",
       opacity: 0.2,
-      width: 1
+      width: 1,
     },
     move: {
       enable: true,
@@ -80,29 +80,29 @@ const particlesOptions = {
       attract: {
         enable: false,
         rotateX: 600,
-        rotateY: 1200
-      }
-    }
+        rotateY: 1200,
+      },
+    },
   },
   interactivity: {
     detect_on: "canvas",
     events: {
       onhover: {
         enable: true,
-        mode: "grab"
+        mode: "grab",
       },
-      resize: true
+      resize: true,
     },
     modes: {
       grab: {
         distance: 200,
         line_linked: {
-          opacity: 0.4
-        }
-      }
-    }
+          opacity: 0.4,
+        },
+      },
+    },
   },
-  retina_detect: true
+  retina_detect: true,
 };
 
 const features = [
@@ -127,7 +127,7 @@ const features = [
           Learn More
         </Link>
       </div>
-    )
+    ),
   },
   {
     title: <>Infrastructure-as-Code</>,
@@ -150,7 +150,7 @@ const features = [
           Learn More
         </Link>
       </div>
-    )
+    ),
   },
   {
     title: <>Cloud Templates</>,
@@ -173,8 +173,8 @@ const features = [
           Learn More
         </Link>
       </div>
-    )
-  }
+    ),
+  },
 ];
 
 function Feature({ imageUrl, title, description, button }) {
@@ -198,7 +198,8 @@ function Feature({ imageUrl, title, description, button }) {
 function Home() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
-  const scrollToRef = ref => ref.current.scrollIntoView({ behavior: "smooth" });
+  const scrollToRef = (ref) =>
+    ref.current.scrollIntoView({ behavior: "smooth" });
   const vertificalsRef = useRef(null);
   const toolsRef = useRef(null);
   const scrollToVerticals = () => scrollToRef(vertificalsRef);
@@ -215,15 +216,15 @@ function Home() {
             <Particles className="particles" params={particlesOptions} />
           </div>
           <h1 className="hero__title">
-            <span className={styles.heroProjectKeywords}>Build</span> Next-gen
-            Automation
+            <span className={styles.heroProjectKeywords}>Build</span>{" "}
+            <span className={styles.heroProjectText}>Next-gen Automation</span>
           </h1>
           <h6 className="hero__subtitle">
-            with the only{" "}
+            <span className={styles.heroProjectText}>with the only </span>
             <span className={styles.heroProjectKeywords}>
               next-generation security
             </span>{" "}
-            platform
+            <span className={styles.heroProjectText}>platform</span>
           </h6>
           <div className={styles.buttons}>
             <Link

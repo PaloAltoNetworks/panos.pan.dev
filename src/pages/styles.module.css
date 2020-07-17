@@ -149,6 +149,10 @@
   color: var(--ifm-color-black);
 }
 
+.heroProjectText {
+  color: var(--ifm-color-white);
+}
+
 .text__gray {
   color: #a4a9ad !important;
 }

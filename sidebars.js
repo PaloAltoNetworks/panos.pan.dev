@@ -9,32 +9,36 @@ module.exports = {
   panos: [
     {
       type: "doc",
-      id: "apis"
+      id: "apis",
     },
     {
       type: "category",
       label: "PAN-OS® XML API",
-      items: ["apis/xmlapi_qs"]
+      items: ["apis/xmlapi_qs"],
     },
     {
       type: "category",
       label: "PAN-OS® REST API",
-      items: ["apis/restapi_qs"]
+      items: ["apis/restapi_qs"],
     },
     {
       type: "category",
       label: "PAN Device Framework",
-      items: ["apis/pandevice_qs"]
+      items: ["apis/pandevice_qs"],
     },
     {
       type: "category",
       label: "PAN Python SDK",
-      items: ["apis/panpython_qs", "apis/panpython_apikey", "apis/panpython_op"]
+      items: [
+        "apis/panpython_qs",
+        "apis/panpython_apikey",
+        "apis/panpython_op",
+      ],
     },
     {
       type: "category",
       label: "PAN Go SDK",
-      items: ["apis/pango_qs"]
+      items: ["apis/pango_qs"],
     },
     {
       type: "category",
@@ -43,39 +47,39 @@ module.exports = {
         "apis/panos_dag_qs",
         "apis/panos_tutorials_address_group",
         "apis/panos_tutorials_rule_hit_count",
-        "apis/panos_tutorials_rulebase_to_csv"
-      ]
-    }
+        "apis/panos_tutorials_rulebase_to_csv",
+      ],
+    },
   ],
   automation: [
     {
       type: "doc",
-      id: "automation"
+      id: "automation",
     },
     {
       type: "doc",
-      id: "automation/terraform_ansible_container"
+      id: "automation/terraform_ansible_container",
     },
     {
       type: "category",
       label: "Ansible",
-      items: ["automation/ansible_qs"]
+      items: ["automation/ansible_qs"],
     },
     {
       type: "category",
       label: "Terraform",
-      items: ["automation/terraform_qs"]
+      items: ["automation/terraform_qs"],
     },
     {
       type: "category",
       label: "Tutorials",
-      items: ["automation/automation_tutorials_ansible_srule"]
-    }
+      items: ["automation/automation_tutorials_ansible_srule"],
+    },
   ],
   cloud: [
     {
       type: "doc",
-      id: "cloud"
+      id: "cloud",
     },
     {
       type: "category",
@@ -86,29 +90,33 @@ module.exports = {
         "cloud/autoscaling_aws",
         "cloud/terraform_elb",
         "cloud/aws_alb_sandwich",
-        "cloud/xff_demo"
-      ]
+        "cloud/xff_demo",
+      ],
     },
     {
       type: "category",
       label: "Azure",
-      items: ["cloud/azure_qs"]
+      items: ["cloud/azure_qs"],
     },
     {
       type: "category",
       label: "Google",
-      items: ["cloud/gcp_qs"]
+      items: ["cloud/gcp_qs"],
     },
     {
       type: "category",
       label: "Private Cloud",
-      items: ["cloud/cloudtemplates_qs"]
-    }
+      items: ["cloud/cloudtemplates_qs"],
+    },
   ],
-  contrib: [
+  docs: [
     {
       type: "doc",
-      id: "contributing"
-    }
-  ]
+      id: "_index",
+    },
+    {
+      type: "doc",
+      id: "contributing",
+    },
+  ],
 };

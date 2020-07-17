@@ -16,12 +16,14 @@ module.exports = {
   themeConfig: {
     prism: {
       theme: require("prism-react-renderer/themes/github"),
-      darkTheme: require("prism-react-renderer/themes/oceanicNext")
+      darkTheme: require("prism-react-renderer/themes/oceanicNext"),
     },
     algolia: {
-      apiKey: process.env.ALGOLIA_APIKEY,
-      indexName: process.env.ALGOLIA_INDEX,
-      algoliaOptions: {} // Optional, if provided by Algolia
+      apiKey: "cc0f2da5c80d2fb8dedb7ef9b56b52f2",
+      indexName: "pan",
+      algoliaOptions: {
+        typoTolerance: false,
+      }, // Optional, if provided by Algolia
     },
     sidebarCollapsible: true,
     navbar: {
@@ -29,24 +31,25 @@ module.exports = {
       logo: {
         alt: "PAN-OS® for Developers",
         src: "img/Strata_Tagline_Logo_RGB.png",
-        srcDark: "img/Strata_Tagline_Logo_RGB_Nameplate_Reversed.png"
+        srcDark: "img/Strata_Tagline_Logo_RGB_Nameplate_Reversed.png",
       },
       links: [
         {
           label: "Docs",
           to: "docs",
-          position: "left"
+          position: "left",
         },
         {
           href: "https://medium.com/palo-alto-networks-developer-blog",
           label: "Blog",
-          position: "right"
+          position: "right",
         },
         {
           href: "https://github.com/PaloAltoNetworks",
-          label: "GitHub",
-          position: "right"
-        }
+          position: "right",
+          className: "header-github-link",
+          "aria-label": "GitHub repository",
+        },
       ],
       sites: [
         {
@@ -55,22 +58,22 @@ module.exports = {
             {
               href: "https://panos.pan.dev",
               label: "PAN-OS",
-              logo: "/img/strata_favicon.png"
+              logo: "/img/strata_favicon.png",
             },
             {
               href: "https://cortex.pan.dev",
               label: "Cortex",
-              logo: "/img/cortexfavicon.png"
+              logo: "/img/cortexfavicon.png",
             },
             {
               href: "https://xsoar.pan.dev",
               label: "Cortex XSOAR",
-              logo: "/img/Cortex-XSOAR-product-green.svg"
-            }
+              logo: "/img/Cortex-XSOAR-product-green.svg",
+            },
           ],
-          position: "right"
-        }
-      ]
+          position: "products",
+        },
+      ],
     },
     footer: {
       links: [
@@ -79,17 +82,17 @@ module.exports = {
           items: [
             {
               label: "APIs and SDKs",
-              to: "docs/apis"
+              to: "docs/apis",
             },
             {
               label: "Automation",
-              to: "docs/automation"
+              to: "docs/automation",
             },
             {
               label: "Cloud Templates",
-              to: "docs/cloud"
-            }
-          ]
+              to: "docs/cloud",
+            },
+          ],
         },
         {
           title: "Community",
@@ -97,27 +100,27 @@ module.exports = {
             {
               label: "Automation and API",
               href:
-                "https://live.paloaltonetworks.com/t5/Automation-API/ct-p/automation"
-            }
-          ]
+                "https://live.paloaltonetworks.com/t5/Automation-API/ct-p/automation",
+            },
+          ],
         },
         {
           title: "Social",
           items: [
             {
               label: "Blog",
-              href: "https://medium.com/palo-alto-networks-developer-blog"
-            }
-          ]
-        }
+              href: "https://medium.com/palo-alto-networks-developer-blog",
+            },
+          ],
+        },
       ],
       logo: {
         alt: "Palo Alto Networks for Developers",
         src: "img/PANW_Parent_Brand_Primary_Logo_KO.png",
-        href: "https://pan.dev"
+        href: "https://pan.dev",
       },
-      copyright: `Copyright © ${new Date().getFullYear()} Palo Alto Networks, Inc.`
-    }
+      copyright: `Copyright © ${new Date().getFullYear()} Palo Alto Networks, Inc.`,
+    },
   },
   themes: ["@docusaurus/theme-live-codeblock"],
   presets: [
@@ -125,48 +128,46 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
+          homePageId: "_index",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl:
             "https://github.com/PaloAltoNetworks/panos.pan.dev/tree/master",
-          routeBasePath: "docs",
-          include: ["**/*.md", "**/*.mdx"], // Extensions to include.
-          docLayoutComponent: "@theme/DocPage",
-          docItemComponent: "@theme/DocItem",
-          remarkPlugins: [],
-          rehypePlugins: [],
+          path: "docs",
           showLastUpdateAuthor: true,
-          showLastUpdateTime: true
+          showLastUpdateTime: true,
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css")
-        }
-      }
-    ]
+          customCss: require.resolve("./src/css/custom.css"),
+        },
+      },
+    ],
   ],
   plugins: [
-    "@docusaurus/plugin-sitemap",
-    {
-      cacheTime: 600 * 1000, // 600 sec - cache purge period
-      changefreq: "weekly",
-      priority: 0.5
-    }
+    [
+      "@docusaurus/plugin-sitemap",
+      {
+        cacheTime: 600 * 1000, // 600 sec - cache purge period
+        changefreq: "weekly",
+        priority: 0.5,
+      },
+    ],
   ],
   customFields: {
     docbar: {
       options: [
         {
           to: "docs/apis",
-          label: "APIs and SDKs"
+          label: "APIs and SDKs",
         },
         {
           label: "Automation",
-          to: "docs/automation"
+          to: "docs/automation",
         },
         {
           label: "Cloud Templates",
-          to: "docs/cloud"
-        }
-      ]
-    }
-  }
+          to: "docs/cloud",
+        },
+      ],
+    },
+  },
 };

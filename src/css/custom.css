@@ -192,3 +192,7 @@ html[data-theme="dark"] .header-github-link:before {
 .navbar__link:after {
   display: none !important;
 }
+
+.menu__link--sublist:after {
+  display: none !important;
+}

@@ -193,6 +193,6 @@ html[data-theme="dark"] .header-github-link:before {
   display: none !important;
 }
 
-.menu__link--sublist:after {
+.no_dropdown:after {
   display: none !important;
 }

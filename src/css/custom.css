@@ -154,6 +154,10 @@ blockquote {
   color: #fff !important;
 }
 
+.footer {
+  padding: 1rem;
+}
+
 section {
   border-bottom: 1px solid var(--ifm-hr-border-color);
 }
@@ -193,6 +197,12 @@ html[data-theme="dark"] .header-github-link:before {
   display: none !important;
 }
 
-.menu__link--sublist:after {
+.no_dropdown:after {
   display: none !important;
+}
+
+@media (max-width: 380px){
+  .navbar__logo {
+    content: url("/img/strata_favicon.png") !important;
+  }
 }

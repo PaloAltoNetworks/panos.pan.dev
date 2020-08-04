@@ -13,21 +13,25 @@ module.exports = {
     },
     {
       type: "category",
+      collapsed: false,
       label: "PAN-OS® XML API",
       items: ["apis/xmlapi_qs"],
     },
     {
       type: "category",
+      collapsed: false,
       label: "PAN-OS® REST API",
       items: ["apis/restapi_qs"],
     },
     {
       type: "category",
+      collapsed: false,
       label: "PAN Device Framework",
       items: ["apis/pandevice_qs"],
     },
     {
       type: "category",
+      collapsed: false,
       label: "PAN Python SDK",
       items: [
         "apis/panpython_qs",
@@ -37,11 +41,13 @@ module.exports = {
     },
     {
       type: "category",
+      collapsed: false,
       label: "PAN Go SDK",
       items: ["apis/pango_qs"],
     },
     {
       type: "category",
+      collapsed: false,
       label: "Tutorials",
       items: [
         "apis/panos_dag_qs",
@@ -62,16 +68,19 @@ module.exports = {
     },
     {
       type: "category",
+      collapsed: false,
       label: "Ansible",
       items: ["automation/ansible_qs"],
     },
     {
       type: "category",
+      collapsed: false,
       label: "Terraform",
       items: ["automation/terraform_qs"],
     },
     {
       type: "category",
+      collapsed: false,
       label: "Tutorials",
       items: ["automation/automation_tutorials_ansible_srule"],
     },
@@ -83,6 +92,7 @@ module.exports = {
     },
     {
       type: "category",
+      collapsed: false,
       label: "AWS",
       items: [
         "cloud/aws_qs",
@@ -95,16 +105,19 @@ module.exports = {
     },
     {
       type: "category",
+      collapsed: false,
       label: "Azure",
       items: ["cloud/azure_qs"],
     },
     {
       type: "category",
+      collapsed: false,
       label: "Google",
       items: ["cloud/gcp_qs"],
     },
     {
       type: "category",
+      collapsed: false,
       label: "Private Cloud",
       items: ["cloud/cloudtemplates_qs"],
     },

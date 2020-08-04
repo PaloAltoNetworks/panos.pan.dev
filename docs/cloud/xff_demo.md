@@ -5,14 +5,16 @@ sidebar_label: XFF to User ID Mapping
 ---
 
 ## Overview
----------------
 
+---
 
 The components shown below are deployed in this
-demo![](assets/xff1.png)
+
+<!-- demo![](assets/xff1.png) -->
 
 ## Introduction
----------------
+
+---
 
 The demo performs the following actions.
 
@@ -38,52 +40,52 @@ The demo performs the following actions.
     firewall.
 
 ## Initial Setup
----------------
 
+---
 
-### 1.  Load The Application Load Balancer Certificate
+### 1. Load The Application Load Balancer Certificate
 
 The application load balancer will require a certificate. Access the
 AWS Certificate Manager and select "Load Certificate".
 
-![](assets/xff2.png)
+<!-- ![](assets/xff2.png) -->
 
 - Paste in the text for the public and private key.
 
 - Make a note of the arn of the certicate as it is required by the
-Cloud Formation Template
+  Cloud Formation Template
 
-![](assets/xff3.png)
+<!-- ![](assets/xff3.png) -->
 
-### 2.  Create the Bootstrap Buckets
+### 2. Create the Bootstrap Buckets
 
 - More documentation required here but we can import from the existing
-Wordpress Demo.
+  Wordpress Demo.
 
-### 3.  Deploy the Cloud Formation Template
+### 3. Deploy the Cloud Formation Template
 
-![](assets/xff4.png)
+<!-- ![](assets/xff4.png) -->
 
 - Check that the template deployment completes and make a note of the
-Wordpress URL which is the DNS name of the Application Load Balancer
-and the firewall management IP
+  Wordpress URL which is the DNS name of the Application Load Balancer
+  and the firewall management IP
 
-![](assets/xff5.png)
+<!-- ![](assets/xff5.png) -->
 
-### 4.  Create the API Gateway
+### 4. Create the API Gateway
 
 - Go to the AWS console and select API gateway
 
-![](assets/xff6.png)
+<!-- ![](assets/xff6.png) -->
 
 - Select Actions and create a POST method
 
-![](assets/xff7.png)
+<!-- ![](assets/xff7.png) -->
 
 - Add the lambda region and then the function.
 
 - The Lambda function will have the name {Stack
-Name}-GetXFFHeaderLambda-\*
+  Name}-GetXFFHeaderLambda-\*
 
 - Next Deploy the gateway to a stage
 
@@ -91,46 +93,46 @@ Name}-GetXFFHeaderLambda-\*
 
 - Select Actions and then Deploy
 
-![](assets/xff8.png)
+<!-- ![](assets/xff8.png) -->
 
-![](assets/xff9.png)
+<!-- ![](assets/xff9.png) -->
 
 > - Login to the firewall with credentials
 > - Password for the firewall is admin/Pal0Alt0
 
 - Extract the DNS name from the URL and modify the HTTP log forwarding
-values
+  values
 
-![](assets/xff10.png)
+<!-- ![](assets/xff10.png) -->
 
 - Modify the "URI Format" under "Payload Format"
 
-![](assets/xff11.png)
+<!-- ![](assets/xff11.png) -->
 
-![](assets/xff12.png)
+<!-- ![](assets/xff12.png) -->
 
 - Once configured send a test log message
 
-![](assets/xff13.png)
+<!-- ![](assets/xff13.png) -->
 
 ## Test the deployment
----------------
 
+---
 
 - Open a browser and browse to the URL from the output of the cloud
-formation template
+  formation template
 
 - Setup the DVWA database
 
-![](assets/xff14.png)
+<!-- ![](assets/xff14.png) -->
 
-![](assets/xff15.png)
+<!-- ![](assets/xff15.png) -->
 
 - Login to the application using admin / password credentials
 
 - Lower the security level of the application to "Low"
 
-![](assets/xff16.png)
+<!-- ![](assets/xff16.png) -->
 
 - Next generate Threats using the SQL Injection tab
 
@@ -141,28 +143,28 @@ formation template
 - For simplicity use %\' or \'0\'=\'0
 
 - The firewall should block the attack and the browser will return a 502
-bad Gateway error.
+  bad Gateway error.
 
 - Check the firewall for threat logs
 
-![](assets/xff17.png)
+<!-- ![](assets/xff17.png) -->
 
 - Check the cloudwatch logs.
 
 - If the threat log has been forwarded and processed logs will appear in
-cloudwatch under the log group corresponding to the lambda function
+  cloudwatch under the log group corresponding to the lambda function
 
-![](assets/xff18.png)
+<!-- ![](assets/xff18.png) -->
 
 - Checking DynamoDB should show the IP address in the database
 
-![](assets/xff19.png)
+<!-- ![](assets/xff19.png) -->
 
 - If the notes column indicates uidsent then the username IP has been sent
-to the firewall
+  to the firewall
 
-![](assets/xff20.png)
+<!-- ![](assets/xff20.png) -->
 
 - You should now receive a block page from the original URL
 
-![](assets/xff21.png)
+<!-- ![](assets/xff21.png) -->

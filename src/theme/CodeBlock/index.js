@@ -6,7 +6,6 @@
  */
 
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import usePrismTheme from "@theme/hooks/usePrismTheme";
 import clsx from "clsx";
@@ -15,8 +14,8 @@ import rangeParser from "parse-numeric-range";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
-
 const highlightLinesRangeRegex = /{([\d,-]+)}/;
+
 const getHighlightDirectiveRegex = (
   languages = ["js", "jsBlock", "jsx", "python", "html"]
 ) => {
@@ -42,24 +41,24 @@ const getHighlightDirectiveRegex = (
       start: "<!--",
       end: "-->",
     },
-  };
-  // supported directives
+  }; // supported directives
+
   const directives = [
     "highlight-next-line",
     "highlight-start",
     "highlight-end",
-  ].join("|");
-  // to be more reliable, the opening and closing comment must match
+  ].join("|"); // to be more reliable, the opening and closing comment must match
+
   const commentPattern = languages
     .map(
       (lang) =>
         `(?:${comments[lang].start}\\s*(${directives})\\s*${comments[lang].end})`
     )
-    .join("|");
-  // white space is allowed, but otherwise it should be on it's own line
+    .join("|"); // white space is allowed, but otherwise it should be on it's own line
+
   return new RegExp(`^\\s*(?:${commentPattern})\\s*$`);
-};
-// select comment styles based on language
+}; // select comment styles based on language
+
 const highlightDirectiveRegex = (lang) => {
   switch (lang) {
     case "js":
@@ -84,35 +83,34 @@ const highlightDirectiveRegex = (lang) => {
       return getHighlightDirectiveRegex();
   }
 };
-const codeBlockTitleRegex = /title=".*"/;
 
+const codeBlockTitleRegex = /title=".*"/;
 export default ({ children, className: languageClassName, metastring }) => {
   const {
     siteConfig: {
       themeConfig: { prism = {} },
     },
   } = useDocusaurusContext();
-
   const [showCopied, setShowCopied] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  // The Prism theme on SSR is always the default theme but the site theme
+  const [mounted, setMounted] = useState(false); // The Prism theme on SSR is always the default theme but the site theme
   // can be in a different mode. React hydration doesn't update DOM styles
   // that come from SSR. Hence force a re-render after mounting to apply the
   // current relevant styles. There will be a flash seen of the original
   // styles seen using this current approach but that's probably ok. Fixing
   // the flash will require changing the theming approach and is not worth it
   // at this point.
+
   useEffect(() => {
     setMounted(true);
   }, []);
-
   const button = useRef(null);
   let highlightLines = [];
   let codeBlockTitle = "";
-
   const prismTheme = usePrismTheme();
 
   if (metastring && highlightLinesRangeRegex.test(metastring)) {
+    // Tested above
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const highlightLinesRange = metastring.match(highlightLinesRangeRegex)[1];
     highlightLines = rangeParser
       .parse(highlightLinesRange)
@@ -120,6 +118,8 @@ export default ({ children, className: languageClassName, metastring }) => {
   }
 
   if (metastring && codeBlockTitleRegex.test(metastring)) {
+    // Tested above
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     codeBlockTitle = metastring
       .match(codeBlockTitleRegex)[0]
       .split("title=")[1]
@@ -131,26 +131,28 @@ export default ({ children, className: languageClassName, metastring }) => {
 
   if (!language && prism.defaultLanguage) {
     language = prism.defaultLanguage;
-  }
+  } // only declaration OR directive highlight can be used for a block
 
-  // only declaration OR directive highlight can be used for a block
   let code = children.replace(/\n$/, "");
+
   if (highlightLines.length === 0 && language !== undefined) {
     let range = "";
-    const directiveRegex = highlightDirectiveRegex(language);
-    // go through line by line
+    const directiveRegex = highlightDirectiveRegex(language); // go through line by line
+
     const lines = children.replace(/\n$/, "").split("\n");
-    let blockStart;
-    // loop through lines
+    let blockStart; // loop through lines
+
     for (let index = 0; index < lines.length; ) {
-      const line = lines[index];
-      // adjust for 0-index
+      const line = lines[index]; // adjust for 0-index
+
       const lineNumber = index + 1;
       const match = line.match(directiveRegex);
+
       if (match !== null) {
         const directive = match
           .slice(1)
           .reduce((final, item) => final || item, undefined);
+
         switch (directive) {
           case "highlight-next-line":
             range += `${lineNumber},`;
@@ -167,12 +169,14 @@ export default ({ children, className: languageClassName, metastring }) => {
           default:
             break;
         }
+
         lines.splice(index, 1);
       } else {
         // lines without directives are unchanged
         index += 1;
       }
     }
+
     highlightLines = rangeParser.parse(range);
     code = lines.join("\n");
   }
@@ -180,16 +184,15 @@ export default ({ children, className: languageClassName, metastring }) => {
   const handleCopyCode = () => {
     copy(code);
     setShowCopied(true);
-
     setTimeout(() => setShowCopied(false), 2000);
   };
 
   return (
     <Highlight
       {...defaultProps}
-      key={mounted}
+      key={String(mounted)}
       theme={prismTheme}
-      code={code}
+      code={code} // @ts-expect-error: prism-react-renderer doesn't export Language type
       language={language}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
@@ -216,7 +219,7 @@ export default ({ children, className: languageClassName, metastring }) => {
               <div />
             )}
             <div
-              tabIndex="0"
+              tabIndex={0}
               className={clsx(className, styles.codeBlock, {
                 [styles.codeBlockWithTitle]: codeBlockTitle,
               })}
@@ -227,7 +230,10 @@ export default ({ children, className: languageClassName, metastring }) => {
                     line[0].content = "\n"; // eslint-disable-line no-param-reassign
                   }
 
-                  const lineProps = getLineProps({ line, key: i });
+                  const lineProps = getLineProps({
+                    line,
+                    key: i,
+                  });
 
                   if (highlightLines.includes(i + 1)) {
                     lineProps.className = `${lineProps.className} docusaurus-highlight-code-line`;
@@ -236,7 +242,13 @@ export default ({ children, className: languageClassName, metastring }) => {
                   return (
                     <div key={i} {...lineProps}>
                       {line.map((token, key) => (
-                        <span key={key} {...getTokenProps({ token, key })} />
+                        <span
+                          key={key}
+                          {...getTokenProps({
+                            token,
+                            key,
+                          })}
+                        />
                       ))}
                     </div>
                   );

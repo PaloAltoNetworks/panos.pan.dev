@@ -54,6 +54,9 @@ html[data-theme="dark"] {
   --ifm-footer-background-color: #2d3436 !important;
   --ifm-footer-link-color: #fff;
   --ifm-footer-title-color: #fff;
+  --docsearch-modal-background: var(--ifm-background-color) !important;
+  --docsearch-footer-background: var(--ifm-background-color) !important;
+  --docsearch-hit-background: var(--ifm-navbar-background-color) !important;
 
   --ifm-hover-overlay: rgba(255, 255, 255, 0.05);
 
@@ -201,7 +204,7 @@ html[data-theme="dark"] .header-github-link:before {
   display: none !important;
 }
 
-@media (max-width: 380px){
+@media (max-width: 380px) {
   .navbar__logo {
     content: url("/img/strata_favicon.png") !important;
   }

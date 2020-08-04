@@ -33,7 +33,7 @@ module.exports = {
         src: "img/Strata_Tagline_Logo_RGB.png",
         srcDark: "img/Strata_Tagline_Logo_RGB_Nameplate_Reversed.png",
       },
-      links: [
+      items: [
         {
           label: "Docs",
           to: "docs",
@@ -49,29 +49,6 @@ module.exports = {
           position: "right",
           className: "header-github-link",
           "aria-label": "GitHub repository",
-        },
-      ],
-      sites: [
-        {
-          label: "Products",
-          items: [
-            {
-              href: "https://panos.pan.dev",
-              label: "PAN-OS",
-              logo: "/img/strata_favicon.png",
-            },
-            {
-              href: "https://cortex.pan.dev",
-              label: "Cortex",
-              logo: "/img/cortexfavicon.png",
-            },
-            {
-              href: "https://xsoar.pan.dev",
-              label: "Cortex XSOAR",
-              logo: "/img/Cortex-XSOAR-product-green.svg",
-            },
-          ],
-          position: "products",
         },
       ],
     },
@@ -146,6 +123,7 @@ module.exports = {
     [
       "@docusaurus/plugin-sitemap",
       {
+        id: "trash-sitemap-1",
         cacheTime: 600 * 1000, // 600 sec - cache purge period
         changefreq: "weekly",
         priority: 0.5,
@@ -169,5 +147,30 @@ module.exports = {
         },
       ],
     },
+    sites: [
+      {
+        label: "Products",
+        items: [
+          {
+            href: "https://panos.pan.dev",
+            label: "PAN-OS",
+            logo: "/img/strata_favicon.png",
+          },
+          {
+            href: "https://cortex.pan.dev",
+            label: "Cortex",
+            logo: "/img/cortexfavicon.png",
+          },
+          {
+            href: "https://xsoar.pan.dev",
+            label: "Cortex XSOAR",
+            logo: "/img/Cortex-XSOAR-product-green.svg",
+          },
+        ],
+        position: "products",
+      },
+    ],
   },
+  onBrokenLinks: "error",
+  onDuplicateRoutes: "error",
 };

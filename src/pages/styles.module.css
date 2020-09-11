@@ -97,6 +97,17 @@
   background-color: #3b4446;
 }
 
+.expedition {
+  align-items: left;
+  padding: 2rem 0;
+  width: 100%;
+  display: flex;
+  color: white;
+  text-align: left;
+  justify-content: left;
+  background-color: #dde4e7;
+}
+
 .headerImage {
   height: 300px;
   width: 200px;

@@ -122,6 +122,22 @@ module.exports = {
       items: ["cloud/cloudtemplates_qs"],
     },
   ],
+  expedition: [
+    {
+      type: "doc",
+      id: "expedition",
+    },
+    {
+      type: "doc",
+      id: "expedition/expedition_qs",
+    },
+    {
+      type: "category",
+      collapsed: false,
+      label: "Tutorials",
+      items: ["expedition/expedition_tutorial1"],
+    },
+  ],
   docs: [
     {
       type: "doc",

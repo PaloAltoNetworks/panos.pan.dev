@@ -94,7 +94,7 @@ Filesystem
 After the installation is complete, reach your web browser to navigate to the front-end.
 An initial Expedition web interface is provided through the following route (you may have to substitute the ExpeditionIP by the IP assigned to your VM.)
 
-https://<ExpeditionIP>
+https://`<ExpeditionIP>`
 
 For instance:
 https://192.168.64.138

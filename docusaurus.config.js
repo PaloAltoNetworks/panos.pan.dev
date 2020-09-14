@@ -145,6 +145,10 @@ module.exports = {
           label: "Cloud Templates",
           to: "docs/cloud",
         },
+        {
+          label: "Expedition",
+          to: "docs/expedition",
+        },
       ],
     },
     sites: [

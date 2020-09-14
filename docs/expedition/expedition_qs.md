@@ -25,11 +25,10 @@ The following guide will walk you through sending API requests to the Expedition
 
 1. Access Expediiton-API Documentation Page
 
-   - Go to https://<Expedition>/api/v1/documentation
+   Go to https://`<Expedition>`/api/v1/documentation
 
-   _Be sure to replace `<Expedition>` with your actual Expediiton IP address
-   
-   
+   Be sure to replace `<Expedition>` with your actual Expediiton IP address
+
 ## Login to Expedition 
 
 1. Make a `POST` request to the Expedition’s hostname or IP address using the administrative credentials.

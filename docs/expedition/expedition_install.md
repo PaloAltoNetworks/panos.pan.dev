@@ -66,7 +66,7 @@ root password set to “paloalto”
 
 SSHD with enabled remote access for:
 User: root 		Password: paloalto
-User: expedition	Password: \<untouched\>
+User: expedition	Password: paloalto
 
 Installation of MySQL server 5.7
 User: root		Password: paloalto

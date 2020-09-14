@@ -15,7 +15,7 @@ keywords:
   - configuration
   - expedition
 image: /img/expedition.png
-
+---
 ## Install Expedition
 
 Expedition 2.0 is in constant development to cover new functionalities available in the market and to correct implementation issues that are identified in the code. To keep the Expedition instance up to date, the tool is initially provided as a Debian package. In the future we will also offer containerized flavors of the tool to allow installing it on other platforms rather than Debian based ones.

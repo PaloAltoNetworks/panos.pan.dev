@@ -157,6 +157,39 @@ function Docs() {
                 </div>
               </div>
             </div>
+            <div className={classnames("col col--6", styles.features)}>
+              <div className={classnames("card shadow--md", styles.card)}>
+                <div className="card__header">
+                  <h2>Expedition</h2>
+                  <p>
+                    Migrate configuration from legacy firewalls to Palo Alto
+                    Networks.
+                  </p>
+                </div>
+                <div className="card__body">
+                  <Link href={useBaseUrl("docs/expedition/expedition_qs")}>
+                    Installation
+                  </Link>
+                  <br></br>
+                  <Link href={useBaseUrl("docs/expedition/expedition_apiint")}>
+                    Quickstart
+                  </Link>
+                  <br></br>
+                  <br></br>
+                </div>
+                <div className="card__footer">
+                  <Link
+                    className={classnames(
+                      "button button--primary",
+                      styles.docs
+                    )}
+                    href={useBaseUrl("docs/expedition/expedition_qs")}
+                  >
+                    Go
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="row">
             <div className="col col--12">

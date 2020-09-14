@@ -134,8 +134,8 @@ module.exports = {
     {
       type: "category",
       collapsed: false,
-      label: "Tutorials",
-      items: ["expedition/expedition_tutorial1"],
+      label: "Expedition-API",
+      items: ["expedition/expedition_apiint"],
     },
   ],
   docs: [

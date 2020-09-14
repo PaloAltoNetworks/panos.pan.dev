@@ -132,14 +132,10 @@ module.exports = {
       id: "expedition/expedition_qs",
     },
     {
-      type: "doc",
-      id: "expedition/expedition_install",
-    },
-    {
       type: "category",
       collapsed: false,
-      label: "Tutorials",
-      items: ["expedition/expedition_tutorial1"],
+      label: "Expedition-API",
+      items: ["expedition/expedition_apiint"],
     },
   ],
   docs: [

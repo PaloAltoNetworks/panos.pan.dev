@@ -278,7 +278,11 @@ function Home() {
               </div>
               <div className={classnames("col col--9")}>
                 <div className="text text--center">
-                  <img src="/img/expedition_diagram.png" alt="Expedition 2.0" />
+                  <img
+                    src="/img/expedition2_architecture.svg"
+                    alt="Expedition 2.0"
+                    className={styles.expeditionImage}
+                  />
                 </div>
               </div>
             </div>

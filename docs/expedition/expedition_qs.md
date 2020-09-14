@@ -1,9 +1,9 @@
 ---
-id: expedition_install
-title: Expedition 2.0
-sidebar_label: Install
+id: expedition_qs
+title: Expedition 2.0 QuickStart
+sidebar_label: QuickStart
 hide_title: true
-description: Expedition 2.0 Installation
+description: Expedition 2.0 QuickStart
 keywords:
   - pan-os
   - panos
@@ -27,12 +27,13 @@ As mentioned before, Expedition 2.0 is provided as a Debian package (that may ha
 The following link offers an official download image for the supported machine, Ubuntu 18.04.x LTS (AMD 64) Server
 https://releases.ubuntu.com/18.04/
 The Ubuntu server will need to be provisioned by the end-user. Options include downloading and installing the Ubuntu 18.04 ISO (link above) onto a customer managed server or to provision an Ubuntu 18.04 LTS virtual server available from Google Cloud, AWS or Azure.
-When preparing your VM to host Expedition, consider the following recommended specifications depending on the type of project (migration) that you will cover with it. 
+When preparing your VM to host Expedition, consider the following recommended specifications depending on the type of project (migration) that you will cover with it.  
 
-| Primary usage | Description | Recommended Compute Resources  |
-| :---          |  :---       |  :---                          |
-| Migration     | Involving configruation conversions, but it will not invole traffic log analysis      | 4 CPU/Core 8 GB RAM 40 GB SSD Storage 1nic with 100MBPs/1Gbps   |
-| Machine Learning(Samll Environemnts)  | Involving traffic log analsis convering periods of 30 days and 300MBs/day      | 8 CPU/Cores 16GB RAM 1x10GB(OS related data) 1x 150 GB SSD (project settings and parquet files) 1x1 TB(Traffic and other log files) 1nic with 100Mbps/1Gbps  |
+| Primary usage | Description | Recommended Compute Resources |
+|-|-|-|
+| Migration | Involving configuration conversions, but it will not involve traffic log analysis | 4 CPU/Cores<br/>8 GB RAM<br/>40 GB SSD storage<br/>1 nic with 100Mbps/1Gbps |
+| Machine Learning (small environments) | Involving traffic log analysis covering periods of 30 days and 300MBs/day | 8 CPU/Cores<br/>16 GB RAM<br/>1 x 10GB (OS related data)<br/>1 x 150 GB SSD (Project Settings and parquet files)<br/>1 x 1 TB (Traffic and other log files) <br/>1 nic with 100Mbps/1Gbps |
+| Machine Learning (large environments) | Involving traffic log analysis covering periods of more than 30 days and 300MBs/day | 8 CPU/Cores<br/>32 GB RAM<br/>1 x 10GB (OS related data)<br/>1 x 500 GB SSD (Project Settings and parquet files)<br/>1 x 4 TB (Traffic and other log files) <br/>1 nic with 100Mbps/1Gbps |
 
 Table1: Expedition VM recommended system requirements 
 
@@ -64,17 +65,17 @@ Users
 www-data will belong to the expedition group
 root password set to “paloalto”
 
-SSHD with enabled remote access for:
-User: root 		Password: paloalto
+SSHD with enabled remote access for:  
+User: root 		Password: paloalto  
 User: expedition	Password: paloalto
 
-Installation of MySQL server 5.7
+Installation of MySQL server 5.7  
 User: root		Password: paloalto
 
-Apache + PHP 7.2
-User: admin		Password: paloalto
+Apache + PHP 7.2  
+User: admin		Password: paloalto  
 
-Rsyslog 
+Rsyslog  
 
 Firewalld service initiated allowing connections to
 tcp/22 (ssh remote access)
@@ -83,7 +84,7 @@ tcp/443 (SSL web API)
 tcp/4050-4070 (future Spark connections)
 tcp/5050-5070 (future Spark connections)
 
-Filesystem
+Filesystem  
 /home/userSpace will be created owned by www-data
 /data will be created owned by www-data
 /var/expedition-converter will be created with converter module
@@ -93,8 +94,8 @@ Filesystem
 
 After the installation is complete, reach your web browser to navigate to the front-end.
 An initial Expedition web interface is provided through the following route (you may have to substitute the ExpeditionIP by the IP assigned to your VM.)
-
-https://`<ExpeditionIP>`
-
+```bash
+https://{YourExpeditionIP}
+```
 For instance:
 https://192.168.64.138

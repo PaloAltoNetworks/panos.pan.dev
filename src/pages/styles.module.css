@@ -105,7 +105,7 @@
   color: white;
   text-align: left;
   justify-content: left;
-  background-color: #dde4e7;
+  background-color: #dfe6e9;
 }
 
 .headerImage {
@@ -132,6 +132,11 @@
   max-height: 100%;
   width: auto;
   padding: 1rem 0;
+}
+
+.expeditionImage {
+  height: 550px;
+  width: auto;
 }
 
 .particles {

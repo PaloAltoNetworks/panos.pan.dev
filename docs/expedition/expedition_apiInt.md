@@ -1,6 +1,6 @@
 ---
 id: expedition_apiint
-title: Expedition 2.0
+title: Expedition-API Introductions
 sidebar_label: Expedition-API Introductions
 hide_title: true
 description: Expedition-API

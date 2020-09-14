@@ -25,8 +25,10 @@ Note: The installation process does not support migrating Expedition 1 instances
 
 As mentioned before, Expedition 2.0 is provided as a Debian package (that may have additional dependencies to be satisfied). Specifically, the package has been prepared to be installed in an Ubuntu 18.04 64-bit server.
 The following link offers an official download image for the supported machine, Ubuntu 18.04.x LTS (AMD 64) Server
-https://releases.ubuntu.com/18.04/
-The Ubuntu server will need to be provisioned by the end-user. Options include downloading and installing the Ubuntu 18.04 ISO (link above) onto a customer managed server or to provision an Ubuntu 18.04 LTS virtual server available from Google Cloud, AWS or Azure.
+https://releases.ubuntu.com/18.04/  
+
+The Ubuntu server will need to be provisioned by the end-user. Options include downloading and installing the Ubuntu 18.04 ISO (link above) onto a customer managed server or to provision an Ubuntu 18.04 LTS virtual server available from Google Cloud, AWS or Azure.  
+
 When preparing your VM to host Expedition, consider the following recommended specifications depending on the type of project (migration) that you will cover with it.  
 
 | Primary usage | Description | Recommended Compute Resources |
@@ -49,51 +51,61 @@ This script will prepare the VM to host the different packages necessary for usi
 
 NOTE: This script requires communication to a certain number of apt-get repositories, including conversionupdates.paloaltonetworks.com . It is therefore necessary to allow APT-GET communications to be established from the VM that will host Expedition 2.0. In case of installation failure, make sure that these communications are successful.	
 
-The installation of all those modules would require internet connectivity, mainly to:
-Ubuntu source repositories (http://archive.ubuntu.com )
-Expedition packages (https://conversionupdates.paloaltonetworks.com )
-RabbitMQ for internal messaging (http://www.rabbitmq.com )
-Once a VM has been created with the required specifications (CPU, RAM and Network interfaces), retrieve the installer and execute it with the following commands
+The installation of all those modules would require internet connectivity, mainly to:  
+
+Ubuntu source repositories (http://archive.ubuntu.com )  
+
+Expedition packages (https://conversionupdates.paloaltonetworks.com )  
+
+RabbitMQ for internal messaging (http://www.rabbitmq.com )  
+
+Once a VM has been created with the required specifications (CPU, RAM and Network interfaces), retrieve the installer and execute it with the following commands  
+```bash
 cd ~
 wget https://conversionupdates.paloaltonetworks.com/initSetup2beta.sh
 chmod +x initSetup2beta.sh
-sudo ./initSetup2beta.sh | tee output.log
+sudo ./initSetup2beta.sh | tee output.log  
+```  
+
 Notice that we are downloading the installation script, making it executable (+x), launching it with sudo privileges and storing the installation output messages into a file called output.log.
 The process is no human intervention required.
-After the installation, the following changes will have been applied:
-Users
-www-data will belong to the expedition group
-root password set to “paloalto”
+After the installation, the following changes will have been applied:  
 
-SSHD with enabled remote access for:  
-User: root 		Password: paloalto  
-User: expedition	Password: paloalto
+- **Users**  
+     - www-data will belong to the expedition group  
+     - root password set to “paloalto”  
 
-Installation of MySQL server 5.7  
-User: root		Password: paloalto
 
-Apache + PHP 7.2  
-User: admin		Password: paloalto  
+- **SSHD with enabled remote access for:**  
+    - User: root 		Password: paloalto  
+    - User: expedition	Password: paloalto  
 
-Rsyslog  
+- **Installation of MySQL server 5.7**  
+    - User: root		Password: paloalto  
 
-Firewalld service initiated allowing connections to
-tcp/22 (ssh remote access)
-tcp/80   (initial unsafe web interface)
-tcp/443 (SSL web API)
-tcp/4050-4070 (future Spark connections)
-tcp/5050-5070 (future Spark connections)
+- **Apache + PHP 7.2**  
+    - User: admin		Password: paloalto  
 
-Filesystem  
-/home/userSpace will be created owned by www-data
-/data will be created owned by www-data
-/var/expedition-converter will be created with converter module
-/var/www/html/expedition-api will be created with API module
+- **Rsyslog** 
+    - Firewalld service initiated allowing connections to:
+      - tcp/22 (ssh remote access)  
+      - tcp/80   (initial unsafe web interface)  
+      - tcp/443 (SSL web API)  
+      - tcp/4050-4070 (future Spark connections)  
+      - tcp/5050-5070 (future Spark connections)  
+
+- **Filesystem**  
+
+  - /home/userSpace will be created owned by www-data  
+  - /data will be created owned by www-data  
+  - /var/expedition-converter will be created with converter module  
+  - /var/www/html/expedition-api will be created with API module  
 
 ## Accessing the Expediiton GUI
 
 After the installation is complete, reach your web browser to navigate to the front-end.
-An initial Expedition web interface is provided through the following route (you may have to substitute the ExpeditionIP by the IP assigned to your VM.)
+An initial Expedition web interface is provided through the following route (you may have to substitute the ExpeditionIP by the IP assigned to your VM.)  
+
 ```bash
 https://{YourExpeditionIP}
 ```

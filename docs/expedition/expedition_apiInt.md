@@ -62,9 +62,9 @@ Copy the “api_key” and paste it in Swagger under the **Authorize** button th
 
 Alternatively , you could also do it via your script: 
 
-Make a `POST` request to the Expedition’s hostname or IP address using the administrative credentials.
+Make a `POST` request to the Expedition’s hostname or IP address using the administrative credentials.  
 
-   _Be sure to replace `<Expedition>` `<username>` and `<password>` with actual values._
+_Be sure to replace `<Expedition>` `<username>` and `<password>` with actual values._
 
 ```shell-session
 curl -X POST "https://<Expedition>/api/v1/login" -H "accept: application/json" -H "Content-Type: application/json" -H "X-CSRF-TOKEN: " -d "{\"username\":\"<username>",\"password\":\"<password>"}"

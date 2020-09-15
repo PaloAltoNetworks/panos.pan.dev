@@ -13,25 +13,56 @@ keywords:
   - migration
   - firewall
   - configuration
-  - expedition
 image: /img/expedition.png
 ---
-:::note
-The following guide will walk you through sending API requests to the Expedition-API using <a href="https://curl.haxx.se/docs/httpscripting.html" target="_blank">cURL</a>, although you may optionally use another API tool such as <a href="https://www.getpostman.com/" target="_blank">Postman</a>, <a href="https://insomnia.rest/" target="_blank">Insomnia</a> or <a href="http://restclient.net/" target="_blank">RESTClient</a>.
-:::
+## Introduction  
+The Expedition API (Application Program Interface) has been designed using different routes (URL paths) that represent different objects and features that a user can use with the tool and uses the HTTP verbs (GET, POST, PUT, DELETE) to define the actions that can be done on those objects.  
+
+Even we are in the first version of the API, we have already started applying versioning strategies to support future modifications of the API and allow the coexistence of more than one version on the same Expedition.  
+
+For example,  the following request  
+```console
+GET https://10.0.0.1/api/v1/projects 
+```
+is a request to a feature in the v1 of the API that lists (GET) the different projects defined in Expedition.  
+
+The different verbs that we can use translate to  
+
+GET: 		List  
+POST: 	Create a new entry  
+PUT:		Modify  
+DELETE: 	Delete    
+
+Depending on the user’s permissions and the requested routes, the responses may differ, as some users may have more or less privileges to list/create/modify/delete existing objects in Expedition.
+
+## Expedition-API Documentation & Testing
+
+Expedition offers a web resource for learning about the Expedition API and being able to test it as well. This documentation is based on the Swagger framework, and is provided in each Expedition VM under the following URL:  
+
+```Console
+   https://<YourExpeditionIP>/api/v1/documentation
+```
+   Be sure to replace `<YourExpeditionIP>` with your actual Expediiton IP address  
+
+In order to be able to consume the different API methods, it is necessary to have a valid session (for authentication and authorization). This can be performed in Swagger by making a first request to the /api/v1/login route.
+A request is made by clicking on the selected route to call, activate the interactive mode via the button **“Try it out”**, entering the required parameters and clicking on **Execute**. The default login **(admin)** and password **(paloalto)** are already presented in Swagger.  
+
+![Auth](/img/expedition/auth.png "Auth")
+
+In this case, we will get a response containing an api_key that can be attached to future requests to validate the user’s session and permissions.
+
+![Authresponse](/img/expedition/authresponse.png "Authresponse")  
+
+Copy the “api_key” and paste it in Swagger under the **Authorize** button that you will find on the top of the site. After this login activity, all future requests will be authenticated using the provided api_key.  
+
+![Authorize](/img/expedition/authorize.png "Authorize")  
 
 
-## Access Expedition-API Documentation Page
+![APIpaste](/img/expedition/APIpaste.png "APIpaste")  
 
-1. Access Expediiton-API Documentation Page
+Alternatively , you could also do it via your script: 
 
-   Go to https://`<Expedition>`/api/v1/documentation
-
-   Be sure to replace `<Expedition>` with your actual Expediiton IP address
-
-## Login to Expedition 
-
-1. Make a `POST` request to the Expedition’s hostname or IP address using the administrative credentials.
+Make a `POST` request to the Expedition’s hostname or IP address using the administrative credentials.
 
    _Be sure to replace `<Expedition>` `<username>` and `<password>` with actual values._
 

@@ -21,7 +21,7 @@ image: /img/expedition.png
 Expedition 2.0 is in constant development to cover new functionalities available in the market and to correct implementation issues that are identified in the code. To keep the Expedition instance up to date, the tool is initially provided as a Debian package. In the future we will also offer containerized flavors of the tool to allow installing it on other platforms rather than Debian based ones.
 Note: The installation process does not support migrating Expedition 1 instances into Expedition 2.0
 
-## System Requirement
+## System Requirements
 
 As mentioned before, Expedition 2.0 is provided as a Debian package (that may have additional dependencies to be satisfied). Specifically, the package has been prepared to be installed in an Ubuntu 18.04 64-bit server.
 The following link offers an official download image for the supported machine, Ubuntu 18.04.x LTS (AMD 64) Server

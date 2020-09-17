@@ -29,10 +29,10 @@ is a request to a feature in the v1 of the API that lists (GET) the different pr
 
 The different verbs that we can use translate to  
 
-GET: 		List  
-POST: 	Create a new entry  
-PUT:		Modify  
-DELETE: 	Delete    
+**GET**: 		List  
+**POST**: 	   Create a new entry  
+**PUT**:		   Modify  
+**DELETE**: 	Delete    
 
 Depending on the user’s permissions and the requested routes, the responses may differ, as some users may have more or less privileges to list/create/modify/delete existing objects in Expedition.
 

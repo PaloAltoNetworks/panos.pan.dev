@@ -1,9 +1,9 @@
 ---
 id: expedition_apiint
 title: Expedition-API Introductions
-sidebar_label: Expedition-API Introductions
+sidebar_label: Introductions
 hide_title: true
-description: Expedition-API
+description: Expedition-API Introductions
 keywords:
   - pan-os
   - panos

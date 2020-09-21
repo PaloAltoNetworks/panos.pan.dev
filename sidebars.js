@@ -135,9 +135,7 @@ module.exports = {
       type: "category",
       collapsed: false,
       label: "Expedition-API",
-      items: ["expedition/expedition_apiint",
-              "expedition/workflow",
-             ],
+      items: ["expedition/expedition_apiint"],
     },
   ],
   docs: [

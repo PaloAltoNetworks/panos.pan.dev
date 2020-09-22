@@ -16,7 +16,7 @@ keywords:
 image: /img/expedition.png
 ---
 
-# What is Expedition?
+## What is Expedition?
 
 **Expedition** is the fifth evolution of the Palo Alto Networks Migration Tool. The original main purpose of this tool was to help reduce the time and effort to migrate a configuration from one of the supported vendors to Palo Alto Networks.
 
@@ -29,4 +29,26 @@ With Expedition 2.0, we had two main goals on mind:
 - Improve the tool performance and reliability
 - Provide automation features
 
-With all these huge improvements, we expect the next time you use Expedition the journey to excellence will be easier.
+With all these huge improvements, we expect the next time you use Expedition the journey to excellence will be easier.  
+
+## Expedition 2.0 Modules
+Expedition 2.0 has been designed to be divided in four main process modules (represented in green in below image) to provide web access to the tool, API feature accessibility, configuration conversions and data analytics. Additionally, two relaying modules (in white) are required for data storage and access control.
+
+An extra module (in blue) can be constructed by the community, making use if the API to generate scripts for automation (script processing), using the language of preference. Ultimately, a library of scripts with different workflows can be constructed by sharing those scripts in public/private repositories.  
+
+![Architecture](/img/expedition/expedition2_arc.svg "Architecture")  
+
+## Supported Vendor Matrix 
+The below table listed the supported Vendor in current beta release, there will be more supported vendors in future releases.
+
+For more specific inquiries, please reach to fwmigrate@paloaltonetworks.com  
+
+| Vendor     | Supported Vendor OS           | Global Addr. Obj. | Addr. Group Obj. | Serv. Obj | Serv. Group Obj. | Sec. Pol | NAT Pol. | Net. Int. (L3) | Static routes | VPN |
+|------------|-------------------------------|-------------------|------------------|-----------|------------------|----------|----------|----------------|---------------|-----|
+| Checkpoint | R75, R77                      |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |     |
+|            | >R80                          |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |     |
+| Cisco      | ASA 9.0,9.1,9.2,9.6,8.2,8.4   |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |  ✔  |
+|            | FirePower(only in ASA syntax) |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |     |
+| Fortinet   | Fortigate 4.0,5.0             |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |     |
+
+

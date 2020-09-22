@@ -1,7 +1,7 @@
 ---
 id: workflow
 title: Expedition Automation Workflows
-sidebar_label: Automation Workflows Examples
+sidebar_label: Workflows Examples
 hide_title: false
 description: Expedition Automation Workflows
 keywords:
@@ -56,7 +56,7 @@ Once those variables have been provided, creates and establishes an SSL connecti
 Expedition API responses are in JSON format In the case of a login API call, in the content section we will obtain an API key  and a csrfToken. The first can be used for API consumption in scripts, while the second is intended for HTTPS Web UI requests. While the API key has an expiration time of 1 month and extends its validity time on every login (it may change in the future), a csrfToken has a shorter validity and gets regenerated for each login call.    
 
 We collect the api_key by accessing the corresponding JSON element and remove the surrounding quotes to access the API key string and format it for future authenticated API calls.  
-:::note
+:::info
 This authentication credentials are later prepared in a **$hed** variable that we will attach into the headers of the API calls we send in the future.
 :::  
 
@@ -77,8 +77,18 @@ values={[
 <TabItem value="python">  
 
 ```python
+import json
+import sys
+import argparse
+import requests
+from time import sleep
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+ip="{YourExpeditionIP}"
 print('LOGIN')
-data = {"username":"anna", "password":"1234567890"}
+data = {"username":"admin", "password":"paloalto"}
 r = requests.post('https://'+ip+'/api/v1/login', data=data, verify=False)
 response=r.json()
 apiKey = json.dumps(response['Contents']['response']['data']['content']['api_key'])
@@ -200,7 +210,7 @@ API syntax for Converting 3rd party vendor's configuration:
 | Method | EndPoint                                   | Parameters | Example Value                                                    |
 |-------------|--------------------------------------------|------------|------------------------------------------------------------------|
 |       POST     | `https://<YourExpeditionIP>/api/v1/external-tools/convert` |            | {**"file"**: "/var/www/html/expedition-api/contents/configSamples/CiscoCase/ciscoasa.txt",<br/> **"out"**: "/tmp/cisco.xml"<br/>,**"vendor"**: "ciscoasa" }|
-:::note  
+:::info    
 **Replace "vendor" value with the corresponding supported vendor value**:  
 - **ciscoasa** Cisco ASA
 - **pfsense** Pfsense
@@ -216,7 +226,29 @@ API syntax for Converting 3rd party vendor's configuration:
 
 In the case we have already imported a PAN-OS device into Expedition, it is also possible to provide that device’s identification to use the devices configuration as a base config on which to make the conversion.  
 
-**PHP Snippet 3:** 
+<Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
+values={[
+{ label: 'Python', value: 'python', },
+{ label: 'Php', value: 'php', },
+]
+}>  
+<TabItem value="python">  
+
+```python
+print('CONVERT FORTINET CONFIGURATION TO PALO ALTO')
+data = {"file":originalConfigPath,"out":panosConfigPath,"vendor":vendor, "serial":serial}
+print(data)
+r = requests.post('https://'+ip+'/api/v1/external-tools/convert', data=data, verify=False, headers=hed)
+response=r.json()
+success = json.dumps(response['Contents']['success'])
+if success=='true':
+    #print('Config converted successfully')
+    print(json.dumps(response['Contents']['response']['response-messages']['messages'][0]['message']))
+print('')
+```
+</TabItem> 
+<TabItem value="php"> 
+
 ```php
 echo "\n";
 echo "CONVERT CISCO CONFIGURATION TO PALO ALTO\n";
@@ -243,6 +275,9 @@ if ($success=='true'){
     print_r($jsonResponse->Contents->response->{'response-messages'}->messages[0]->message);
 }
 ```  
+</TabItem>
+</Tabs>  
+
 ### Step 5. Importing the configuration into the Project  
 Once the conversion has done, we can import the resulting XML config file into an existing project for later configuration manipulations, such as delete unused objects, rename zones, etc.  Snipt below shows imporitng the converted configuration into the project. 
 
@@ -252,7 +287,29 @@ API syntax for Importing the PAN-OS Configuration into the project:
 |-------------|--------------------------------------------|------------|------------------------------------------------------------------|
 |       POST     | `https://<YourExpeditionIP>/api/v1/projects/{projectId}/importConfig`<br/><br/>With sample template value **"project"**: "1"<br/><br/>The full API EndPoint will become: <br/><br/>`https://<YourExpeditionIP>/api/v1/projects/1/importConfig`| **"project"**: "$projectID"          |{**"config"**: "/tmp/cisco.xml" }|  
 
-**PHP Snippet 4:**  
+<Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
+values={[
+{ label: 'Python', value: 'python', },
+{ label: 'Php', value: 'php', },
+]
+}>  
+<TabItem value="python">  
+
+```python
+print('IMPORT CONFIGURATION')
+data = {"config":panosConfigPath}
+r = requests.post('https://'+ip+'/api/v1/projects/'+projectId+'/importConfig', data=data, verify=False, headers=hed)
+response=r.json()
+success = json.dumps(response['Contents']['success'])
+if success=='true':
+    print('Config imported successfully')
+    #print(json.dumps(response['Contents']['response']['response-messages']['messages'][0]['message']))
+print('')
+
+```
+</TabItem> 
+<TabItem value="php">
+
 ```php
 
 echo "\n";
@@ -275,6 +332,9 @@ if ($success=='true'){
     echo 'Config imported successfully';
 }
 ```
+</TabItem>
+</Tabs>  
+
 ## Assign PAN-OS Device to the Expdition project  
 If we want to interact with a device for being able to retrieve it’s configuration, push a new configuration or learn from the traffic logs that the device has generated (this feature will come in future releases), we need to declare a Panos Device in Expedition.  
 
@@ -292,7 +352,36 @@ API syntax for adding a PAN-OS device into the project:
 
 The API response will provide us an internal Expedition identificator for the newly generated device. 
 
-**PHP Snippet 5:**  
+<Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
+values={[
+{ label: 'Python', value: 'python', },
+{ label: 'Php', value: 'php', },
+]
+}>  
+<TabItem value="python">  
+
+```python
+print('CREATE NEW DEVICE')
+data = {
+	"device_name": device_name,
+	"serial": serial,
+	"hostname": hostname,
+	"vsys": vsys,
+	"type": type
+}
+r = requests.post('https://'+ip+'/api/v1/devices', data=data, verify=False, headers=hed)
+response=r.json()
+success = json.dumps(response['Contents']['success'])
+if success=='true':
+    deviceId = json.dumps(response['Contents']['response']['data']['content']['id'])
+
+    #print('New device created successfully')
+    print(json.dumps(response['Contents']['response']['response-messages']['messages'][0]['message'][0]))
+print('')  
+```  
+</TabItem> 
+<TabItem value="php">
+
 ```php
 echo "CREATE NEW DEVICE\n";
 $data = array(
@@ -326,6 +415,9 @@ if ($success=='true'){
             ->description);
 }
 ```  
+</TabItem>
+</Tabs> 
+
 ### Step 2. Retrieve Device API Keys  
 Once the device is created, if we need to retrieve its content or make future configuration pushes to the device, it will be necessary to have a device API Key.  
 
@@ -340,7 +432,7 @@ Notice that to be able to retrieve the API keys, we need to provide the login an
 When creating and registering the API key, we should provide the role that can make use of it.  
 
 There are 4 different options: **Admin, User, Viewer, Personal**.  
-:::note
+:::info
 **.admin** (project related): all admin users in a given project will use this API key to interact with the device. In the device audit logs, there will be no unique identification of the user that has submitted the API calls to the device, as it could have been done by any of the project administrators.  
 
 **.user** (project related): all users users in a given project will use this API key to interact with the device. In the device audit logs, there will be no unique identification of the user that has submitted the API calls to the device, as it could have been done by any of the project users.  
@@ -350,9 +442,35 @@ There are 4 different options: **Admin, User, Viewer, Personal**.
 **.personal** (user related): this API key is private to the user that has requested it, and it will be used when this user requires interactions with the Panos Device. A benefit of this key is that in the device audit logs, the user will be identified as having sent the API calls to the device.  
 :::  
 
-The following **PHP Snippet 6** shows how to consume the Expedition API to retrieve PAN-OS Device API keys and register these API keys into the defined device.  
+The following snippet shows how to consume the Expedition API to retrieve PAN-OS Device API keys and register these API keys into the defined device.  
 
-**PHP Snippet 6:**  
+<Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
+values={[
+{ label: 'Python', value: 'python', },
+{ label: 'Php', value: 'php', },
+]
+}>  
+<TabItem value="python">  
+
+```python
+print('ADD DEVICE KEYS')
+data = {
+	"id":deviceId,
+	"role":device_roles,
+	"auth_type":device_auth,
+	"username":device_username,
+	"password":device_pwd
+}
+r = requests.post('https://'+ip+'/api/v1/device/keys', data=data, verify=False, headers=hed)
+response=r.json()
+success = json.dumps(response['Contents']['success'])
+if success=='true':
+    #print('Device keys added')
+    print(json.dumps(response['Contents']['response']['response-messages']['messages'][0]['message']))
+print('')
+```
+</TabItem> 
+<TabItem value="php">  
 
 ```php
 echo "\n";
@@ -383,7 +501,9 @@ if ($success=='true'){
     #print('Device keys added')
     print_r($jsonResponse->Contents->response->{'response-messages'}->messages[0]->message);
 }
-```
+```  
+</TabItem>
+</Tabs>
 
 ### Step 3. Retrieve Device’s content  
 
@@ -402,10 +522,44 @@ Therefore, this task (as several other tasks that require long processing time) 
 So, the API call will respond with a job identified **$jobId** that can be checked to identify when the assigned task is completed.  
 
 In the second part of the code, we present one approach to monitor the execution state of the download config process, which is informed in the status element within the JSON content response. 
+<Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
+values={[
+{ label: 'Python', value: 'python', },
+{ label: 'Php', value: 'php', },
+]
+}>  
+<TabItem value="python">  
 
+```python  
+print('RETRIEVE DEVICE CONTENT')
+r = requests.get('https://'+ip+'/api/v1/device/'+deviceId+'/retrieveContent/candidate', verify=False, headers=hed)
+response=r.json()
+jobId = json.dumps(response['Contents']['response']['data']['content']['jobId'])
+print('Job id: '+jobId)
+#print(json.dumps(response['Contents']['response']['response-messages']['messages']))
+print('')  
 
+print('CHECK IF DEVICE CONTENT IS DOWNLOADED')
+r = requests.get('https://'+ip+'/api/v1/job/status/'+jobId, verify=False, headers=hed)
+response=r.json()
+jobState = json.dumps(response['Contents']['response']['data']['content']['msg']['state'])
+percentage = float(jobState) * 100
+print('Retrieving content from device: '+ str(percentage)+ '%')
 
-**PHP Snippet 7:**  
+#Wait until all content is retrieved from device
+while(jobState != '1'):
+    sleep(5)
+    r = requests.get('https://'+ip+'/api/v1/job/status/'+jobId, verify=False,headers=hed)
+    response = r.json()
+    jobState = json.dumps(response['Contents']['response']['data']['content']['msg']['state'])
+    percentage = float(jobState)*100
+    print('Retrieving content from device: '+ str(round(percentage,2))+ '%')
+    
+print('')  
+```  
+</TabItem> 
+<TabItem value="php">   
+
 ```php
 echo "RETRIEVE DEVICE CONTENT\n";
 
@@ -453,6 +607,9 @@ while($jobState != '1'){
     echo "\n";
 }
 ```
+</TabItem>
+</Tabs> 
+
 ### Step 4. Attach device to the Expedition Project
 
 While a configuration is being downloaded, for instance, it would be possible to attach the device to an existing project, so we have the chance to import the device configuration into the project or so we can send the resulting project configuration back to the device.  
@@ -465,8 +622,28 @@ API syntax for attach device to the Expedition project:
 
 In the snippet below, we show how the device created above which id we prior stored in the **$deviceId** variable, is attached to the newly created project.
 This call is making a modification on the project settings, therefore we are sending a PUT request to the project route.  
+<Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
+values={[
+{ label: 'Python', value: 'python', },
+{ label: 'Php', value: 'php', },
+]
+}>  
+<TabItem value="python">  
 
-**PHP Snippet 8:**  
+```python
+print('ASSIGN DEVICE TO PROJECT')
+data = {"devices":[deviceId],"id":projectId}
+r = requests.put('https://'+ip+'/api/v1/projects', data=data, verify=False, headers=hed)
+response=r.json()
+success = json.dumps(response['Contents']['success'])
+if success=='true':
+    #print('Device assigned to project')
+    print(json.dumps(response['Contents']['response']['response-messages']['messages'][0]['message']))
+print('')
+```
+</TabItem> 
+<TabItem value="php"> 
+
 ```php
 echo "ASSIGN DEVICE TO PROJECT\n";
 $data = ["devices"=>[$deviceId],
@@ -488,7 +665,10 @@ $success = $jsonResponse->Contents->success;
 if ($success=='true'){
     print_r($jsonResponse->Contents->response->{'response-messages'}->messages[0]->message);
 }
-```  
+```
+</TabItem>
+</Tabs>
+
 ## Push configuration to a PAN-OS device  
 Pushing a project configuration to a device requires having a project created, a device declared and having credentials (Device API keys) to interact with such device.  
 Once we have those, what would remain is the generation of the different API calls to a PANOS device that will receive the configuration, and executing those calls to apply the changes on the device’s candidate configuration. 
@@ -496,7 +676,7 @@ Once we have those, what would remain is the generation of the different API cal
 ### Step 1. Generating PAN-OS API calls  
 Once we have a project completed and we desire to submit all or part of the configuration to a PANOS device, we will have to generate the API calls.
 We can create **mega, atomic, subatomic and clear** API calls.  
-:::note  
+:::info  
 **mega**: generates one single API call containing the complete XML configuration.  
 
 **atomic**: would generate one API call for each section in the configuration, such as address objects section, service object section, etc. In case of multiple DGs, we may obtain one API call for each section in the DG.  
@@ -514,7 +694,28 @@ API syntax for generating PAN-OS API calls:
 
 The response will provide us a list of the generated API calls with their corresponding ids and types and order of execution.  
 
-**PHP Snippet 9:**  
+<Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
+values={[
+{ label: 'Python', value: 'python', },
+{ label: 'Php', value: 'php', },
+]
+}>  
+<TabItem value="python">  
+
+```python
+print('PUSH CONFIG TO DEVICE')
+data = {"project":projectId,"baseConfig":panosConfigPath,"source":source}
+r = requests.post('https://'+ip+'/api/v1/apiCalls/atomic', data=data, verify=False, headers=hed)
+response=r.json()
+success = json.dumps(response['Contents']['success'])
+if success=='true':
+    #print('Api calls created')
+    print(json.dumps(response['Contents']['response']['response-messages']['messages'][0]['message']))
+print('')
+```
+</TabItem> 
+<TabItem value="php"> 
+
 ```php
 echo "\n";
 echo "PUSH CONFIG TO DEVICE\n";
@@ -537,6 +738,8 @@ if ($success=='true'){
     print_r($jsonResponse->Contents->response->{'response-messages'}->messages[0]->message);
 }
 ```
+</TabItem>
+</Tabs>  
 
 ### Step 2. Sending API calls to the PAN-OS Device 
 Once generated the API calls, we can submit them to a device, either a Firewall or a Panorama. We can provide the device identification via its serial number. In the case a device is managed by a Panorama, this will be used as a proxy to submit the API calls.
@@ -552,9 +755,54 @@ When submitting the API calls, we can enumerate those ones that we want to submi
 
 Submitting the API calls is executed as a set of tasks in a job. We can monitor the status of the tasks by checking the job status. Once the process is complete, we can request the result of the execution by checking the complete information of the job.  
 
-For instance, in the below snippet 10, we request information regarding possible errors faced during the submission of the API calls.  
+For instance, in the below snippet, we request information regarding possible errors faced during the submission of the API calls.  
 
-**PHP Snippet 10:**  
+<Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
+values={[
+{ label: 'Python', value: 'python', },
+{ label: 'Php', value: 'php', },
+]
+}>  
+<TabItem value="python">  
+
+```python
+data = {"serial":serial,"project":projectId,"source":source}
+r = requests.post('https://'+ip+'/api/v1/device/push', data=data, verify=False, headers=hed)
+response=r.json()
+success = json.dumps(response['Contents']['success'])
+if success=='true':
+    print('Sending api calls')
+    print('')
+jobId = json.dumps(response['Contents']['response']['data']['content']['jobId'])
+
+print('API CALLS STATUS')
+r = requests.get('https://'+ip+'/api/v1/job/status/'+jobId, verify=False, headers=hed)
+response=r.json()
+jobState = json.dumps(response['Contents']['response']['data']['content']['msg']['state'])
+percentage = float(jobState)*100
+print('Pushing config to device: '+ str(round(percentage,2))+ '%')
+
+#Wait until all content is retrieved from device
+while(jobState != '1'):
+    sleep(5)
+    r = requests.get('https://'+ip+'/api/v1/job/status/'+jobId, verify=False,headers=hed)
+    response = r.json()
+    jobState = json.dumps(response['Contents']['response']['data']['content']['msg']['state'])
+    percentage = float(jobState)*100
+    print('Pushing config device: '+ str(round(percentage,2))+ '%')
+
+r = requests.get('https://'+ip+'/api/v1/job/status/'+jobId+'/complete', verify=False, headers=hed)
+response=r.json()
+jobState = json.dumps(response['Contents']['response']['data']['content']['msg']['state'])
+taskCode = json.dumps(response['Contents']['response']['data']['content']['msg']['TasksMsg'][0]['statusCode'])
+if (int(taskCode)==-1):
+	taskStatus = json.dumps(response['Contents']['response']['data']['content']['msg']['TasksMsg'][0]['statusMessage'])
+	taskMessage = json.dumps(response['Contents']['response']['data']['content']['msg']['TasksMsg'][0]['resultCode'])
+print('Config pushed successfully')
+```  
+</TabItem> 
+<TabItem value="php"> 
+
 ```php
 $data = [
      "serial"=>$serial, 
@@ -621,7 +869,10 @@ print_r($jsonResponse);
 $callResultErrors = $jsonResponse->Contents->response->data->content->msg->errors;
 echo "The following API errors have been encountered:";
 print_r($callResultErrors);
-```
+```  
+</TabItem>
+</Tabs> 
+
 ## Export PAN-OS configuration from Expedition  
 
 Instead of making API calls from Expedition as stated in previous section, you can export the PAN-OS configuration from Expedition and manually loaded the configuraiton back to PAN-OS device. 

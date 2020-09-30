@@ -294,24 +294,21 @@ values={[
 ]
 }>  
 <TabItem value="python">  
-
 ```python
 print('IMPORT CONFIGURATION')
 data = {"config":panosConfigPath}
-r = requests.post('https://'+ip+'/api/v1/projects/'+projectId+'/importConfig', data=data, verify=False, headers=hed)
+r = requests.post('https://'+ip+'/api/v1/projects/'+projectId+'importConfig', data=data, verify=False, headers=hed)
 response=r.json()
 success = json.dumps(response['Contents']['success'])
 if success=='true':
     print('Config imported successfully')
     #print(json.dumps(response['Contents']['response']['response-messages']['messages'][0]['message']))
 print('')
-
 ```
 </TabItem> 
 <TabItem value="php">
 
 ```php
-
 echo "\n";
 echo "IMPORT CONFIGURATION\n";
 $data = ["config" => $panosConfigPath];
@@ -451,7 +448,6 @@ values={[
 ]
 }>  
 <TabItem value="python">  
-
 ```python
 print('ADD DEVICE KEYS')
 data = {
@@ -529,7 +525,6 @@ values={[
 ]
 }>  
 <TabItem value="python">  
-
 ```python  
 print('RETRIEVE DEVICE CONTENT')
 r = requests.get('https://'+ip+'/api/v1/device/'+deviceId+'/retrieveContent/candidate', verify=False, headers=hed)
@@ -704,8 +699,8 @@ values={[
 
 ```python
 print('PUSH CONFIG TO DEVICE')
-data = {"project":projectId,"baseConfig":panosConfigPath,"source":source}
-r = requests.post('https://'+ip+'/api/v1/apiCalls/atomic', data=data, verify=False, headers=hed)
+data = {"source":source}
+r = requests.post('https://'+ip+'/api/v1/projects/'+projectId+'apiCalls/atomic', data=data, verify=False, headers=hed)
 response=r.json()
 success = json.dumps(response['Contents']['success'])
 if success=='true':
@@ -766,8 +761,8 @@ values={[
 <TabItem value="python">  
 
 ```python
-data = {"serial":serial,"project":projectId,"source":source}
-r = requests.post('https://'+ip+'/api/v1/device/push', data=data, verify=False, headers=hed)
+data = {"serial":serial,"source":source}
+r = requests.post('https://'+ip+'/api/v1/projects/'+projectID+'/device/push', data=data, verify=False, headers=hed)
 response=r.json()
 success = json.dumps(response['Contents']['success'])
 if success=='true':
@@ -879,7 +874,31 @@ Instead of making API calls from Expedition as stated in previous section, you c
 
 The output file path needs to be writable by the www-data user, therefore we recommend to place those files in the project directory. 
 
-**PHP Snippet 11:**  
+<Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
+values={[
+{ label: 'Python', value: 'python', },
+{ label: 'Php', value: 'php', },
+]
+}>  
+
+<TabItem value="python">
+
+```python
+
+print('EXPORT API CALL AS XML') #you can use it to get the final xml and then upload it manually to the firewall
+outPath = '/home/userSpace/projecs/fortinetDemo'
+sourceId = 1 #you can get the source id with the sources given in the previous api call
+data = {"out":outPath,"sourceId":sourceId}
+r = requests.post('https://'+ip+'/api/v1/'+projectId+'/export', data=data, verify=False, headers=hed)
+response=r.json()
+success = json.dumps(response['Contents']['success'])
+if success=='true':
+    print(json.dumps(response['Contents']['response']['response-messages']['messages'][0]['message']))
+print('')  
+
+```  
+</TabItem> 
+<TabItem value="php">  
 
 ```php
 $data = [
@@ -946,3 +965,5 @@ $callResultErrors = $jsonResponse->Contents->response->data->content->msg->error
 echo "The following errors have been encountered during Config generation:";
 print_r($callResultErrors);
 ```  
+</TabItem>
+</Tabs> 

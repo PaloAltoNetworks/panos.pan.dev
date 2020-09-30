@@ -101,7 +101,7 @@ After the installation, the following changes will have been applied:
   - /var/expedition-converter will be created with converter module  
   - /var/www/html/expedition-api will be created with API module  
 
-## Accessing the Expediiton GUI
+## Accessing the Expediton GUI
 
 After the installation is complete, reach your web browser to navigate to the front-end.
 An initial Expedition web interface is provided through the following route (you may have to substitute the ExpeditionIP by the IP assigned to your VM.)  

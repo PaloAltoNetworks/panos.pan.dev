@@ -883,7 +883,7 @@ API syntax for export PAN-OS configuration from Expedition:
 
 | Method | EndPoint                                                                       | Parameters                                                              | Example Value                           |
 |-------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------|-----------------------------------------|
-|     POST    | `https://<YourExpeditionIP>/api/v1/projects/{projectId}/export` | {**"projectId"**:"$projectId",<br/> With sample parameter value: **{projectID}**:"1" <br/><br/>API EndPoint Full path will become: <br/><br/>*`https://<YourExpeditionIP>/api/v1/projects/1/export`*   |{**"out:"**-> PAN-OS configuration file ,<br/><br/>**"sourceID:"**-> you can get the source id with the sources given in the previous api call<br/>} |  
+|     POST    | `https://<YourExpeditionIP>/api/v1/projects/{projectId}/export` | {**"projectId"**:"$projectId"}<br/><br/> With sample parameter value: **{projectID}**:"1" <br/><br/>API EndPoint Full path will become: <br/><br/>*`https://<YourExpeditionIP>/api/v1/projects/1/export`*   |{**"out:"**-> PAN-OS configuration file ,<br/><br/>**"sourceID:"**-> you can get the source id with the sources given in the previous api call<br/>} |  
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[

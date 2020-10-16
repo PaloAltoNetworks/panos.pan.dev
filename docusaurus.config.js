@@ -50,6 +50,20 @@ module.exports = {
           className: "header-github-link",
           "aria-label": "GitHub repository",
         },
+        {
+          label: "APIs",
+          position: 'left',
+          items:[
+            {
+              to: '/api/expedition',
+              label: 'Expedition',
+            },
+            {
+              to: '/api/petstore',
+              label: 'Pet Store',
+            },
+          ],
+        },
       ],
     },
     footer: {

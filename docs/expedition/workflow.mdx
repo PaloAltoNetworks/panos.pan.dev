@@ -29,33 +29,34 @@ export function SetLanguage (lang) {
 
 **Choose language for code snippet**
 
-<a className="button button--primary" onClick={() => SetLanguage('python')}>
-Python
-</a>&nbsp;
-<a className="button button--info" onClick={() => SetLanguage('php')}>
-Php
-</a>  
+<a className="button button--primary" onClick={() => SetLanguage('python')}>Python</a>&nbsp;
+<a className="button button--info" onClick={() => SetLanguage('php')}>Php</a>&nbsp;
+<a className="button button--danger" onClick={() => SetLanguage('go')}>Go</a>
 <br/>
 <br/>
 
-In this section we present some workflow examples to show you how to consume the Expedition-APIs. The example scripts presented here can be found under:    
+In this section we present some workflow examples to demonstrate how to consume the Expedition-APIs. The example scripts presented here can be found under the following URL:
 
 https://conversionupdates.paloaltonetworks.com/expedition2/examples/workflows.zip   
 
-## Convert 3rd party vendor firewall configuration
 
+## Converting a 3rd party vendor firewall configuration
+### Step 1. Generating Expedition API Keys
+In general, all the API calls to Expedition require user authentication, in order to validate the level of user rights to perform specific API calls.
+This is done through the use of API keys.
+The first step is to log into Expedition and retrieve an API key that would offer us access to later API calls.
 
+As shown in Snippet 1, defines the Expedition IP to connect (`ip` variable), credentials to be used for authentication (```credentials```) and the URL to access the login route (```url```).
 
-### Step 1. Generating Expedition API Keys  
-Nearly all the API calls to Expedition will require authentication. This is done through the use of API keys. The first step is to log into Expedition and retrieve an API key that would offer us access to later API calls.  
+Once those variables have been provided, creates and establishes an SSL connection (```curl```) to Expedition to make a request to the login URL with the specified credentials, and collects the response from the server into the $response variable.
 
-As shown in Snippet 1, defines the Expedition IP to connect ($ip), credentials to be used for authentication ($credentials) and the URL to access the login route ($url).  
+Expedition API responses are in JSON format In the case of a login API call, in the content section we will obtain an API key  and a csrfToken.
+The first can be used for API consumption in scripts, while the second is intended for HTTPS Web UI requests.
+While the API key has an expiration time of 1 month and extends its validity time on every login (it may change in the future),
+a csrfToken has a shorter validity and gets regenerated for each login call.
 
-Once those variables have been provided, creates and establishes an SSL connection ($curl) to Expedition to make a request to the login URL with the specified credentials, and collects the response from the server into the $response variable.  
+We collect the ```api_key``` by accessing the corresponding JSON element and remove the surrounding quotes to access the API key string and format it for future authenticated API calls.
 
-Expedition API responses are in JSON format In the case of a login API call, in the content section we will obtain an API key  and a csrfToken. The first can be used for API consumption in scripts, while the second is intended for HTTPS Web UI requests. While the API key has an expiration time of 1 month and extends its validity time on every login (it may change in the future), a csrfToken has a shorter validity and gets regenerated for each login call.    
-
-We collect the api_key by accessing the corresponding JSON element and remove the surrounding quotes to access the API key string and format it for future authenticated API calls.  
 :::info
 This authentication credentials are later prepared in a **$hed** variable that we will attach into the headers of the API calls we send in the future.
 :::  
@@ -86,10 +87,12 @@ import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-ip="{YourExpeditionIP}"
 print('LOGIN')
-data = {"username":"admin", "password":"paloalto"}
-r = requests.post('https://'+ip+'/api/v1/login', data=data, verify=False)
+
+ip="{YourExpeditionIP}"
+credentials = {"username":"admin", "password":"paloalto"}
+
+r = requests.post('https://'+ip+'/api/v1/login', data=credentials, verify=False)
 response=r.json()
 apiKey = json.dumps(response['Contents']['response']['data']['content']['api_key'])
 auth_token = apiKey[1:-1]

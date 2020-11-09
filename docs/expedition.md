@@ -43,12 +43,12 @@ The below table listed the supported Vendor in current beta release, there will 
 
 For more specific inquiries, please reach to fwmigrate@paloaltonetworks.com  
 
-| Vendor     | Supported Vendor OS           | Global Addr. Obj. | Addr. Group Obj. | Serv. Obj | Serv. Group Obj. | Sec. Pol | NAT Pol. | Net. Int. (L3) | Static routes | VPN |
+| <small>Vendor</small>     | <small>Supported Vendor OS</small>           | <small>Global Addr. Obj.</small> | <small>Addr. Group Obj.</small> | <small>Serv. Obj</small> | <small>Serv. Group Obj.</small> | <small>Sec. Pol</small> | <small>NAT Pol.</small> | <small>Net. Int. (L3)</small> | <small>Static routes</small> | <small>VPN</small> |
 |------------|-------------------------------|-------------------|------------------|-----------|------------------|----------|----------|----------------|---------------|-----|
-| Checkpoint | R75, R77                      |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |     |
+| <small>Checkpoint</small> | R75, R77                      |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |     |
 |            | >R80                          |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |     |
-| Cisco      | ASA 9.0,9.1,9.2,9.6,8.2,8.4   |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |  ✔  |
+| <small>Cisco</small>      | ASA 9.0,9.1,9.2, 9.6,8.2,8.4   |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |  ✔  |
 |            | FirePower(only in ASA syntax) |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |     |
-| Fortinet   | Fortigate 4.0,5.0             |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |     |
+| <small>Fortinet</small>   | Fortigate 4.0,5.0             |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |     |
 
 

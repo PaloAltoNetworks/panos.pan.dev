@@ -1,9 +1,9 @@
 ---
-id: workflow
-title: Expedition Automation Workflows
-sidebar_label: Workflows Examples
+id: expedition_workflow_migration
+title: Migration Workflow
+sidebar_label: Configuration Migration
 hide_title: false
-description: Expedition Automation Workflows
+description: Migration Workflow
 keywords:
   - pan-os
   - panos
@@ -14,6 +14,8 @@ keywords:
   - firewall
   - configuration
   - automation
+  - migration
+  - convertion
 
 image: /img/expedition.png
 ---  
@@ -27,6 +29,8 @@ export function SetLanguage (lang) {
   }
 }  
 
+
+
 **Choose language for code snippet**
 
 <a className="button button--primary" onClick={() => SetLanguage('python')}>Python</a>&nbsp;
@@ -35,121 +39,33 @@ export function SetLanguage (lang) {
 <br/>
 <br/>
 
-In this section we present some workflow examples to demonstrate how to consume the Expedition-APIs. The example scripts presented here can be found under the following URL:
+In this section we present a workflow example to migrate a third party vendor configuration into a PANOS configuration. 
+This code can be found at the following link:
 
-https://conversionupdates.paloaltonetworks.com/expedition2/examples/workflows.zip   
+<a href="https://conversionupdates.paloaltonetworks.com/expedition2/examples/workflows.zip">https://conversionupdates.paloaltonetworks.com/expedition2/examples/workflows.zip</a>   
 
+### Step 1. Obtainig the API Keys
 
-## Converting a 3rd party vendor firewall configuration
-### Step 1. Generating Expedition API Keys
-In general, all the API calls to Expedition require user authentication, in order to validate the level of user rights to perform specific API calls.
-This is done through the use of API keys.
-The first step is to log into Expedition and retrieve an API key that would offer us access to later API calls.
+Refer to [Obtaining the API Keys section](creating_credentials.mdx) to obtain a valid API key stored in the ```hed``` variable.
 
-As shown in Snippet 1, defines the Expedition IP to connect (`ip` variable), credentials to be used for authentication (```credentials```) and the URL to access the login route (```url```).
-
-Once those variables have been provided, creates and establishes an SSL connection (```curl```) to Expedition to make a request to the login URL with the specified credentials, and collects the response from the server into the $response variable.
-
-Expedition API responses are in JSON format In the case of a login API call, in the content section we will obtain an API key  and a csrfToken.
-The first can be used for API consumption in scripts, while the second is intended for HTTPS Web UI requests.
-While the API key has an expiration time of 1 month and extends its validity time on every login (it may change in the future),
-a csrfToken has a shorter validity and gets regenerated for each login call.
-
-We collect the ```api_key``` by accessing the corresponding JSON element and remove the surrounding quotes to access the API key string and format it for future authenticated API calls.
-
-:::info
-This authentication credentials are later prepared in a **$hed** variable that we will attach into the headers of the API calls we send in the future.
-:::  
-
-
-
-API syntax for Login to Expedition:  
-
-| Method | EndPoint                                   | Parameters | Example Value                                                    |
-|-------------|--------------------------------------------|------------|------------------------------------------------------------------|
-|       POST     | `https://<YourExpeditionIP>/api/v1/login` |            | {     **"username"** :   "admin" ,     **"password"** :   "paloalto"   } |  
-
-<Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
-values={[
-{ label: 'Python', value: 'python', },
-{ label: 'Php', value: 'php', },
-]
-}>  
-<TabItem value="python">  
-
-```python
-import json
-import sys
-import argparse
-import requests
-from time import sleep
-import urllib3
-
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-print('LOGIN')
-
-ip="{YourExpeditionIP}"
-credentials = {"username":"admin", "password":"paloalto"}
-
-r = requests.post('https://'+ip+'/api/v1/login', data=credentials, verify=False)
-response=r.json()
-apiKey = json.dumps(response['Contents']['response']['data']['content']['api_key'])
-auth_token = apiKey[1:-1]
-print(auth_token)
-print('')
-
-hed = {'Authorization': 'Bearer ' + auth_token}  
-```
-</TabItem> 
-<TabItem value="php">  
-
-```php
-echo  "LOGIN \n";
-
-$ip="127.0.0.1"; //Enter here your Expedition IP reachable from the Script execution machine
-$url = 'https://'.$ip.'/api/v1/login';
-$credentials =  array(
-    "username" => "admin",
-    "password" => "paloalto"
-);
-
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-curl_setopt($curl,CURLOPT_POST, TRUE);
-curl_setopt($curl,CURLOPT_POSTFIELDS, $credentials);
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-$response = curl_exec($curl);
-
-$jsonResponse = json_decode($response);
-print_r($jsonResponse->Contents->response->{'response-messages'}->messages[0]->message);
-$apiKey = $jsonResponse->Contents->response->data->content->api_key;
-$auth_token = trim($apiKey,"'");
-
-echo "\n";
-$hed = array(
-    'Authorization: Bearer ' . $auth_token,
-);  
-```
-</TabItem>  
-</Tabs>  
 
 ### Step 2. Creating an Expedition project    
 In the large amount of automation cases, we will require having an Expedition project. Making a POST call to the projects route, we can create a project with a desired name.
 By default, the creator of a project is as well one of the project administrators.
-Notice that this time we attach the credentials $hed in the curl headers to demonstrate we have permission to create a project.  
+Notice that this time we attach the credentials ```hed``` in the CURL headers to present our credentials and verify we have permission to create a project.  
 
 API syntax for creating a new project:  
 
-| Method | EndPoint                                   | Parameters | Example Value                                                    |
-|-------------|--------------------------------------------|------------|------------------------------------------------------------------|
-|       POST     | `https://<YourExpeditionIP>/api/v1/projects` |            | {    **"project"**: "project1", **"description"**: "Project for testing" } |  
+| Method      | EndPoint                                     | Parameters                     | 
+|-------------|----------------------------------------------|--------------------------------|
+|    POST     | <small>`https://<ExpIP>/api/v1/projects`</small> | <small>_in url_<br/>{ **"project"**:"project1", **"description"**:"Project for testing" }</small> |  
+|    example  | <small>`https://10.0.01/api/v1/projects`</small> | <small>{"project":"MyLittleProject", "description":"A migration project"}</small>           | 
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[
 { label: 'Python', value: 'python', },
 { label: 'Php', value: 'php', },
+{ label: 'Go', value: 'go', },
 ]
 }>  
 <TabItem value="python">  
@@ -165,6 +81,17 @@ if success=='true':
     projectId = json.dumps(response['Contents']['response']['data']['content']['id'])
     print(json.dumps(response['Contents']['response']['response-messages']['messages'][0]['message']))
 print('')
+```
+</TabItem> 
+<TabItem value="go">  
+
+```go
+package main
+import "fmt"
+
+func main() {
+    //TODO
+}
 ```
 </TabItem> 
 <TabItem value="php"> 
@@ -196,9 +123,11 @@ echo "\n";
 </Tabs>  
 
 ### Step 3. Upload the 3rd party vendor (source) configuration into Expedition  
-The migration process would require to upload one of more configuration files to be migrated. A minimum one would be the original vendor configuration file, and we plan to support bringing also routing table files to support dynamic routing tables which values are not specified in the firewall configuration.
+The migration process would require to upload one of more configuration files to be migrated. 
+A minimum one would be the original vendor configuration file, and we plan to support bringing also routing table files 
+to support dynamic routing tables which values are not specified in the firewall configuration.
 
-For example, you can upload the cisco configration "cisco.asa.txt" within the folder:  
+For example, you can upload the cisco configration "_cisco.asa.txt_" within the folder:  
 ```console
 /var/www/html/expedition-api/contents/configSamples/CiscoCase/ 
 ``` 
@@ -206,15 +135,16 @@ For example, you can upload the cisco configration "cisco.asa.txt" within the fo
 This folder should be reachable by the `www-data` user and its content should be readable by the user as well.
 
 ### Step 4. Converting the source configuration to a PAN-OS configuration  
-The migration process takes an original configuration folder (**$originalConfigFolderPath**) contains one or more files required for the conversion, a path for the resulting PANOS XML config (**$panosConfigPath**) and the vendor selection (**$vendor**) to determine the conversion logic to be applied.  
+The migration process takes an original configuration folder (**```originalConfigFolderPath```**) contains one or more files required for the conversion, a path for the resulting PANOS XML config (**```panosConfigPath```**) and the vendor selection (**`vendor`**) to determine the conversion logic to be applied.  
 
 API syntax for Converting 3rd party vendor's configuration:  
 
-| Method | EndPoint                                   | Parameters | Example Value                                                    |
-|-------------|--------------------------------------------|------------|------------------------------------------------------------------|
-|       POST     | `https://<YourExpeditionIP>/api/v1/external-tools/convert` |            | {**"file"**: "/var/www/html/expedition-api/contents/configSamples/CiscoCase/ciscoasa.txt",<br/> **"out"**: "/tmp/cisco.xml"<br/>,**"vendor"**: "ciscoasa" }|
+| Method      | EndPoint                                                   | Parameters |
+|-------------|------------------------------------------------------------|------------|
+|       POST  | <small>`https://<ExpIP>/api/v1/external-tools/convert`</small> |<small>_in body_<br/>{**"file"**: "path to the config file",<br/> **"out"**: "/tmp/cisco.xml",<br/>**"vendor"**: "ciscoasa" }</small>|
+|    example  | <small>`https://10.0.0.1/api/v1/external-tools/convert`</small> |  <small>{**"file"**: "/var/www/html/expedition-api/contents/configSamples/CiscoCase/<br/>ciscoasa.txt",<br/> **"out"**: "/tmp/cisco.xml",<br/>**"vendor"**: "ciscoasa" }</small>|
 :::info    
-**Replace "vendor" value with the corresponding supported vendor value**:  
+**Replace `vendor` value with the corresponding supported vendor value**:  
 - **ciscoasa** Cisco ASA
 - **pfsense** Pfsense
 - **sophos** Sophos
@@ -233,6 +163,7 @@ In the case we have already imported a PAN-OS device into Expedition, it is also
 values={[
 { label: 'Python', value: 'python', },
 { label: 'Php', value: 'php', },
+{ label: 'Go', value: 'go', },
 ]
 }>  
 <TabItem value="python">  
@@ -279,21 +210,35 @@ if ($success=='true'){
 }
 ```  
 </TabItem>
+<TabItem value="go">  
+
+```go
+package main
+import "fmt"
+
+func main() {
+    //TODO
+}
+```
+</TabItem> 
 </Tabs>  
 
 ### Step 5. Importing the configuration into the Project  
-Once the conversion has done, we can import the resulting XML config file into an existing project for later configuration manipulations, such as delete unused objects, rename zones, etc.  Snipt below shows imporitng the converted configuration into the project. 
+Once the conversion has done, we can import the resulting XML config file into an existing project for later configuration manipulations, such as delete unused objects, rename zones, etc.  
+The Snippet below shows how to import the converted configuration into a project. 
 
 API syntax for Importing the PAN-OS Configuration into the project:  
 
-| Method | EndPoint                                   | Parameters | Example Value                                                    |
-|-------------|--------------------------------------------|------------|------------------------------------------------------------------|
-|       POST     | `https://<YourExpeditionIP>/api/v1/projects/{projectId}/importConfig`<br/><br/>With sample template value **"project"**: "1"<br/><br/>The full API EndPoint will become: <br/><br/>`https://<YourExpeditionIP>/api/v1/projects/1/importConfig`| **"project"**: "$projectID"          |{**"config"**: "/tmp/cisco.xml" }|  
+| Method      | EndPoint                                   | Parameters | 
+|-------------|--------------------------------------------|------------|
+|       POST  | <small>`https://<ExpIP>/api/v1/projects/{projectId}/importConfig`</small> | <small>_in url_<br/>**"project"**: "projectID"<br/><br/>_in body_<br/>{**"config"**: "Panos Config file " }</small>|
+| example     | <small>`https://10.0.0.1/api/v1/projects/1/importConfig`</small>         | <small>_in url_<br/>project=1<br/><br/>_in body_<br/>{**"config"**: "/tmp/convertedCisco.xml" }</small> |
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[
 { label: 'Python', value: 'python', },
 { label: 'Php', value: 'php', },
+{ label: 'Go', value: 'go', },
 ]
 }>  
 <TabItem value="python">  
@@ -334,29 +279,43 @@ if ($success=='true'){
 }
 ```
 </TabItem>
+<TabItem value="go">  
+
+```go
+package main
+import "fmt"
+
+func main() {
+    //TODO
+}
+```
+</TabItem> 
 </Tabs>  
 
 ## Assign PAN-OS Device to the Expdition project  
-If we want to interact with a device for being able to retrieve it’s configuration, push a new configuration or learn from the traffic logs that the device has generated (this feature will come in future releases), we need to declare a Panos Device in Expedition.  
+If we want to interact with a device for being able to retrieve it’s configuration, push a new configuration or learn from the traffic logs that the device has generated (this feature will come in future releases), we need to declare a PANOS Device in Expedition.  
 
 ### Step 1. Add a PAN-OS device (Firewall or Panorama)  
-The first action is to generate an API call to Expedition to declare the new device. Some initial information regarding the device is necessary, including the serial number, device name, IP address or hostname to be able to reach the device and the device model.  
+The first action is to generate an API call to Expedition to declare the new device. 
+Some initial information regarding the device is necessary, including the serial number, device name, IP address or hostname to be able to reach the device and the device model.  
 
  
 
 API syntax for adding a PAN-OS device into the project:  
 
-| Method | EndPoint                                   | Parameters | Example Value                                                    |
-|-------------|--------------------------------------------|------------|------------------------------------------------------------------|
-|       POST     | `https://<YourExpeditionIP>/api/v1/devices` |            |{**"serial"**: "serial#ofyourFW",<br/>**"device_name"**: "myFW2",<br/> **"hostname"**: "myFWhostnameorIP", <br/>**"type"**:"pa220"} |  
+| Method | EndPoint                                   | Parameters | 
+|-------------|--------------------------------------------|------------|
+|    POST     | <small>`https://<ExpIP>/api/v1/devices`</small> |  <small>_in_body_<br/>{**"serial"**: "serial#ofyourFW",<br/>**"device_name"**: "a name",<br/> **"hostname"**: "device IP", <br/>**"type"**:"model"}</small> |  
+|    example  | <small>`https://10.0.0.1/api/v1/devices`</small> |  <small>_in body_<br/>{"serial": "01232212",<br/>"device_name": "myFW2",<br/> "hostname": "10.0.0.2", <br/>"type":"pa220"}</small> |  
 
 
-The API response will provide us an internal Expedition identificator for the newly generated device. 
+The API response will provide us an internal Expedition identifier for the newly generated device. 
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[
 { label: 'Python', value: 'python', },
 { label: 'Php', value: 'php', },
+{ label: 'Go', value: 'go', },
 ]
 }>  
 <TabItem value="python">  
@@ -417,6 +376,17 @@ if ($success=='true'){
 }
 ```  
 </TabItem>
+<TabItem value="go">  
+
+```go
+package main
+import "fmt"
+
+func main() {
+    //TODO
+}
+```
+</TabItem> 
 </Tabs> 
 
 ### Step 2. Retrieve Device API Keys  
@@ -424,9 +394,10 @@ Once the device is created, if we need to retrieve its content or make future co
 
 API syntax for retrieve PAN-OS device API key:  
 
-| Method | EndPoint                                   | Parameters | Example Value                                                    |
-|-------------|--------------------------------------------|------------|------------------------------------------------------------------|
-|       POST     | `https://<YourExpeditionIP>/api/v1/device/keys` |            |{**"id"**: "deviceID",<br/>**"role"**: "admin",<br/> **"username"**: *"YourPAN-OSdeviceLoginusername"*, <br/>**"password"**:*"YourPAN-OSdeviceLoginPassword"*} |  
+| Method | EndPoint                                   | Parameters | 
+|-------------|--------------------------------------------|------------|
+|       POST     | <small>`https://<ExpIP>/api/v1/device/keys`</small> | <small>_in body_<br/>{**"id"**: "deviceID",<br/>**"role"**: "desired role",<br/> **"username"**: *"username in your PANOS device"*, <br/>**"password"**:*"password to access your device"*}</small> |  
+|       POST     | <small>`https://10.0.0.1/api/v1/device/keys`</small> | <small>_in body_<br/>{"id": "deviceID",<br/>"role": "personal",<br/>"username":"didac",<br/>"password":"kuerti"}</small> |  
 
 Notice that to be able to retrieve the API keys, we need to provide the login and password that we use to connect with the PANOS device.  
 
@@ -449,6 +420,7 @@ The following snippet shows how to consume the Expedition API to retrieve PAN-OS
 values={[
 { label: 'Python', value: 'python', },
 { label: 'Php', value: 'php', },
+{ label: 'Go', value: 'go', },
 ]
 }>  
 <TabItem value="python">  
@@ -504,6 +476,17 @@ if ($success=='true'){
 }
 ```  
 </TabItem>
+<TabItem value="go">  
+
+```go
+package main
+import "fmt"
+
+func main() {
+    //TODO
+}
+```
+</TabItem> 
 </Tabs>
 
 ### Step 3. Retrieve Device’s content  
@@ -512,15 +495,16 @@ We can retrieve the config from a device by specify the value either **`candidat
 
 API syntax for retrieve PAN-OS device contents:  
 
-| Method | EndPoint                                                                       | Parameters                                                              | Example Value                           |
-|-------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------|-----------------------------------------|
-|     GET     | `https://<YourExpeditionIP>/api/v1/device/{deviceId}/retrieveContent/{config}`<br/><br/> With **{deviceID}**:"1" **{config}**:"running"<br/><br/>API EndPoint Full path will become: <br/><br/>*`https://<YourExpeditionIP>/api/v1/device/1/retrieveContent/running`*  | **"deviceID"**-> PAN-OS device ID,<br/>**"config"**-> "running"or "candidate" |   |  
+| Method      | EndPoint                                                                                   | Parameters                                                              | 
+|-------------|--------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+|     GET     | <small>`https://<ExpIP>/api/v1/device/{deviceId}/retrieveContent/{config}`</small>  | <small>**"deviceID"**-> PAN-OS device ID,<br/>**"config"**-> "running"or "candidate"</small> |   
+|    example  | <small>`https://10.0.0.1/api/v1/device/1/retrieveContent/running`</small>        | <small>_in url_<br/>deviceID=1<br/>config=candidate</small> |
 
 This is a task that, depending on the configuration size and the connection speed with the Panos Device, may take a reasonable amount of time.  
 
 Therefore, this task (as several other tasks that require long processing time) is executed as a background task so it does not block the whole script execution.  
 
-So, the API call will respond with a job identified **$jobId** that can be checked to identify when the assigned task is completed.  
+So, the API call will respond with a job identified **`jobId`** that can be checked to identify when the assigned task is completed.  
 
 In the second part of the code, we present one approach to monitor the execution state of the download config process, which is informed in the status element within the JSON content response. 
 
@@ -528,6 +512,7 @@ In the second part of the code, we present one approach to monitor the execution
 values={[
 { label: 'Python', value: 'python', },
 { label: 'Php', value: 'php', },
+{ label: 'Go', value: 'go', },
 ]
 }>  
 <TabItem value="python">  
@@ -610,6 +595,17 @@ while($jobState != '1'){
 }
 ```
 </TabItem>
+<TabItem value="go">  
+
+```go
+package main
+import "fmt"
+
+func main() {
+    //TODO
+}
+```
+</TabItem> 
 </Tabs> 
 
 ### Step 4. Attach device to the Expedition Project
@@ -618,16 +614,18 @@ While a configuration is being downloaded, for instance, it would be possible to
 
 API syntax for attach device to the Expedition project:  
 
-| Method | EndPoint                                                                       | Parameters                                                              | Example Value                           |
-|-------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------|-----------------------------------------|
-|     PUT     | `https://<YourExpeditionIP>/api/v1/projects/` |  | {**"devices"**:"deviceID", <br/>**"id"**:"projectID"} |  
+| Method | EndPoint                                                          | Parameters                                                              | 
+|-------------|--------------------------------------------------------------|-------------------------------------------------------------------------|
+|     PUT     | <small>`https://<YourExpeditionIP>/api/v1/projects/`</small> | <small>_in body_<br/>{**"devices"**:["deviceID1", "deviceID2"], <br/>**"id"**:"projectID"}</small> |  
+|     example |  <small>`https://10.0.0.1/api/v1/projects/`</small>          |  <small><br/>{"devices": [1],<br/>"id": 1}</small>|
 
-In the snippet below, we show how the device created above which id we prior stored in the **$deviceId** variable, is attached to the newly created project.
+In the snippet below, we show how the device created above which id we prior stored in the **`deviceId`** variable, is attached to the newly created project.
 This call is making a modification on the project settings, therefore we are sending a PUT request to the project route.  
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[
 { label: 'Python', value: 'python', },
 { label: 'Php', value: 'php', },
+{ label: 'Go', value: 'go', },
 ]
 }>  
 <TabItem value="python">  
@@ -669,6 +667,17 @@ if ($success=='true'){
 }
 ```
 </TabItem>
+<TabItem value="go">  
+
+```go
+package main
+import "fmt"
+
+func main() {
+    //TODO
+}
+```
+</TabItem> 
 </Tabs>
 
 ## Push configuration to a PAN-OS device  
@@ -690,9 +699,10 @@ We can create **mega, atomic, subatomic and clear** API calls.
 
 API syntax for generating PAN-OS API calls:  
 
-| Method | EndPoint                                                                       | Parameters                                                              | Example Value                           |
-|-------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------|-----------------------------------------|
-|     POST     | `https://<YourExpeditionIP>/api/v1/projects/{projectId}/apiCalls/{type}`<br/><br/>  With sample parameter value: **{projectID}**:"1", **{type} **:"atomic"<br/><br/>  API EndPoint Full path will become: <br/><br/>*`https://<YourExpeditionIP>/api/v1/projects/1/apiCalls/atomic`*   | **"projectId"**-> Expedition Project ID,<br/><br/>**"type"**-> "mega" or "atomic" or "subatomic" or "clear" | {**"serial"**: serial#ofyourFW",<br/>**"role"**: "admin",<br/>**"auth_type"**: "UserPassword",<br/>**"username"**: *"YourPAN-OSdeviceLoginusername"*,<br/>**"password"**: *"YourPAN-OSdeviceLoginpassword"*,<br/>**"sourceId"**: 0,<br/>**"action"**: "set"<br/>} |  
+| Method | EndPoint                                                                                    | Parameters                                                              | 
+|-------------|----------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+|     POST    | <small>`https://<YourExpeditionIP>/api/v1/projects/{projectId}/apiCalls/{type}`</small>| <small>_in url_<br/>**"projectId"**-> Expedition Project ID,<br/>**"type"**-> "mega" or "atomic" or "subatomic" or "clear"<br/><br/> _in body_<br/>{**"serial"**: serial#ofyourFW",<br/>**"role"**: "admin",<br/>**"auth_type"**: "UserPassword",<br/>**"username"**: *"YourPAN-OSdeviceLoginusername"*,<br/>**"password"**: *"YourPAN-OSdeviceLoginpassword"*,<br/>**"sourceId"**: 0,<br/>**"action"**: "set"<br/>}</small> |  
+|     example | <small>`https://<YourExpeditionIP>/api/v1/projects/1/apiCalls/atomic`</small>          | <small>{"serial": 012123212,<br/>"role":"admin",<br/>"auth_type":"UserPassword",<br/>"username":"YourPAN-OSdeviceLoginusername",<br/>"password":"YourPAN-OSdeviceLoginpassword",<br/>"sourceId":0,<br/>"action":"set"<br/>}</small> |  
 
 The response will provide us a list of the generated API calls with their corresponding ids and types and order of execution.  
 
@@ -700,6 +710,7 @@ The response will provide us a list of the generated API calls with their corres
 values={[
 { label: 'Python', value: 'python', },
 { label: 'Php', value: 'php', },
+{ label: 'Go', value: 'go', },
 ]
 }>  
 <TabItem value="python">  
@@ -741,6 +752,17 @@ if ($success=='true'){
 }
 ```
 </TabItem>
+<TabItem value="go">  
+
+```go
+package main
+import "fmt"
+
+func main() {
+    //TODO
+}
+```
+</TabItem> 
 </Tabs>  
 
 ### Step 2. Sending API calls to the PAN-OS Device 
@@ -749,9 +771,10 @@ The Device API key that we have assigned will be used for the submission of the 
 
 API syntax for sending APIcalls to the PAN-OS Device:  
 
- Method | EndPoint                                                                       | Parameters                                                              | Example Value                           |
-|-------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------|-----------------------------------------|
-|     POST     | `https://<YourExpeditionIP>/api/v1/projects/{projectId}/device/push`<br/><br/>  With sample parameter value: **{projectID}**:"1"<br/><br/>  API EndPoint Full path will become: <br/><br/>*`https://<YourExpeditionIP>/api/v1/projects/1/device/push`*   | **"projectId"**-> Expedition Project ID<br/> | {**"serial"**: serial#ofyourFW",<br/>**"source"**: PAN-OSconfigfile<br/>} | 
+ Method       | EndPoint                                                                              | Parameters                                                              | 
+|-------------|---------------------------------------------------------------------------------------|-------------------------------------------------------------------------|-----------------------------------------|
+|     POST    | <small>`https://<YourExpeditionIP>/api/v1/projects/{projectId}/device/push`</small>   | <small>_in url_<br/>**"projectId"**-> Expedition Project ID<br/><br/>_in body_<br/>{**"serial"**: serial#ofyourFW",<br/>**"source"**: PAN-OSconfigfile<br/>}</small> | 
+|     example | <small>`https://<YourExpeditionIP>/api/v1/projects/1/device/push`</small>             | <small>_in url_<br/>**"projectId"**= 1<br/><br/>_in body_<br/>{**"serial"**: 01213221,<br/>**"source"**:1<br/>}</small> | 
 
 
 When submitting the API calls, we can enumerate those ones that we want to submit or, if none is specified, all the generated API calls will be submitted to the device in the order of execution.  
@@ -764,6 +787,7 @@ For instance, in the below snippet, we request information regarding possible er
 values={[
 { label: 'Python', value: 'python', },
 { label: 'Php', value: 'php', },
+{ label: 'Go', value: 'go', },
 ]
 }>  
 <TabItem value="python">  
@@ -874,6 +898,17 @@ echo "The following API errors have been encountered:";
 print_r($callResultErrors);
 ```  
 </TabItem>
+<TabItem value="go">  
+
+```go
+package main
+import "fmt"
+
+func main() {
+    //TODO
+}
+```
+</TabItem> 
 </Tabs> 
 
 ## Export PAN-OS configuration from Expedition  
@@ -884,14 +919,16 @@ The output file path needs to be writable by the www-data user, therefore we rec
 
 API syntax for export PAN-OS configuration from Expedition:  
 
-| Method | EndPoint                                                                       | Parameters                                                              | Example Value                           |
-|-------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------|-----------------------------------------|
-|     POST    | `https://<YourExpeditionIP>/api/v1/projects/{projectId}/export` | {**"projectId"**:"$projectId"}<br/><br/> With sample parameter value: **{projectID}**:"1" <br/><br/>API EndPoint Full path will become: <br/><br/>*`https://<YourExpeditionIP>/api/v1/projects/1/export`*   |{**"out:"**-> PAN-OS configuration file ,<br/><br/>**"sourceID:"**-> you can get the source id with the sources given in the previous api call<br/>} |  
+| Method | EndPoint                                                                       | Parameters                                                              |
+|-------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+|     POST    | <small>`https://<ExpIP>/api/v1/projects/{projectId}/export`</small> | <small>_in url_<br/>{**"projectId"**->"$projectId"<br/><br/>_in body_<br/>{**"out:"**->PAN-OS configuration file,<br/>**"sourceID:"**->source configuration ID<br/>}</small> |  
+|     POST    | <small>`https://10.0.0.1/api/v1/projects/1/export`</small> | <small>_in url_**"projectId"**=1<br/><br/>_in body_<br/>{**"out:"**->"toExport.xml",<br/>**"sourceID:"**1}</small> |  
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[
 { label: 'Python', value: 'python', },
 { label: 'Php', value: 'php', },
+{ label: 'Go', value: 'go', },
 ]
 }>  
 
@@ -980,4 +1017,15 @@ echo "The following errors have been encountered during Config generation:";
 print_r($callResultErrors);
 ```  
 </TabItem>
+<TabItem value="go">  
+
+```go
+package main
+import "fmt"
+
+func main() {
+    //TODO
+}
+```
+</TabItem> 
 </Tabs> 

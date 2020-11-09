@@ -167,13 +167,17 @@ function Docs() {
                   </p>
                 </div>
                 <div className="card__body">
+                  <Link href={useBaseUrl("docs/expedition")}>
+                    Overview
+                  </Link>
+                  <br></br>
                   <Link href={useBaseUrl("docs/expedition/expedition_qs")}>
-                    Installation
+                    Quickstart
                   </Link>
                   <br></br>
                   <Link href={useBaseUrl("docs/expedition/expedition_apiint")}>
-                    Quickstart
-                  </Link>
+                                      Expedition-API
+                                    </Link>
                   <br></br>
                   <br></br>
                 </div>

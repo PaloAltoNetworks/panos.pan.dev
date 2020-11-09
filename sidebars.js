@@ -136,8 +136,19 @@ module.exports = {
       collapsed: false,
       label: "Expedition-API",
       items: ["expedition/expedition_apiint",
-              "expedition/workflow",
+              {
+                    type: "category",
+                    collapsed: false,
+                    label: "Expedition-Workflows",
+                    items: ["expedition/creating_credentials",
+                            "expedition/expedition_workflow_migration",
+                           ],
+                  }
              ],
+    },
+    {
+      type: "doc",
+      id: "expedition/expedition_contact",
     },
   ],
   docs: [

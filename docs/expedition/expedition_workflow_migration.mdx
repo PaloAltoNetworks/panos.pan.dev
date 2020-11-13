@@ -134,28 +134,25 @@ For example, you can upload the cisco configration "_cisco.asa.txt_" within the 
 
 This folder should be reachable by the `www-data` user and its content should be readable by the user as well.
 
-### Step 4. Converting the source configuration to a PAN-OS configuration  
-The migration process takes an original configuration folder (**```originalConfigFolderPath```**) contains one or more files required for the conversion, a path for the resulting PANOS XML config (**```panosConfigPath```**) and the vendor selection (**`vendor`**) to determine the conversion logic to be applied.  
+### Step 4. Converting the source configuration to a PAN-OS configuration 
+The migration process takes one compressed ZIP file that encapsulates the file(s) from the original vendor(s) to be migrated,
+a base configuration where the migration will be inserted and a mapping file that provides instructions to determine
+where each configuration needs to be placed. For instance, this file will state whether we want a Fortinet policy to become a
+specific Device Group in a Panorama configuration, if we desire a specific routes file to be used for routing and zones calculations
+for a specific original configuration or if we desire some remapings to take place for specific networks or interfaces. 
 
-API syntax for Converting 3rd party vendor's configuration:  
+Supported vendors are Checkpoint, Cisco (ASA), Fortinet (Fortigate) and Juniper (Junos). <br/>
+Coming vendors, Cisco (Switch, ISR), Junper (Netscreen), PFSense, Sonicwall, Sophos. 
+  
+Refer to [Creating a migration ZIP file](creating_migration_zip) to obtain specific information on how to construct a ```ZIP file``` with the migration contents. 
 
-| Method      | EndPoint                                                   | Parameters |
-|-------------|------------------------------------------------------------|------------|
-|       POST  | <small>`https://<ExpIP>/api/v1/external-tools/convert`</small> |<small>_in body_<br/>{**"file"**: "path to the config file",<br/> **"out"**: "/tmp/cisco.xml",<br/>**"vendor"**: "ciscoasa" }</small>|
-|    example  | <small>`https://10.0.0.1/api/v1/external-tools/convert`</small> |  <small>{**"file"**: "/var/www/html/expedition-api/contents/configSamples/CiscoCase/<br/>ciscoasa.txt",<br/> **"out"**: "/tmp/cisco.xml",<br/>**"vendor"**: "ciscoasa" }</small>|
-:::info    
-**Replace `vendor` value with the corresponding supported vendor value**:  
-- **ciscoasa** Cisco ASA
-- **pfsense** Pfsense
-- **sophos** Sophos
-- **sonicwall**  Sonicwall
-- **netscreen**  Juniper Netscreen
-- **fortinet**  Fortinet Fortigate
-- **srx**  Juniper Junos
-- **cp-r80**  Checkpoint > R80
-- **ciscoswitch**  Cisco Switch
-- **ciscoisr** Cisco ISR
-:::  
+API syntax for Converting 3rd party vendors' configurations:  
+
+| Method      | URL                                                        | Parameters |
+|-------------|-----------------------------------------------------------------|------------|
+|       POST  | <small>`https://<ExpIP>/api/v1/external-tools/convert`</small>  | <small>_in body_<br/>{**"input"**: "path to the ZIP file",<br/>**"output"**: "path to the resulting PANOS config file"}</small>|
+|    example  | <small>`https://10.0.0.1/api/v1/external-tools/convert`</small> | <small>_in body_<br/>{**"input"**: "/var/www/html/expedition-api/contents/configSamples/migration1.zip",<br/>**"output"**:"/tmp/convertedConfig.xml" }</small>|
+
 
 In the case we have already imported a PAN-OS device into Expedition, it is also possible to provide that device’s identification to use the devices configuration as a base config on which to make the conversion.  
 
@@ -232,7 +229,7 @@ API syntax for Importing the PAN-OS Configuration into the project:
 | Method      | EndPoint                                   | Parameters | 
 |-------------|--------------------------------------------|------------|
 |       POST  | <small>`https://<ExpIP>/api/v1/projects/{projectId}/importConfig`</small> | <small>_in url_<br/>**"project"**: "projectID"<br/><br/>_in body_<br/>{**"config"**: "Panos Config file " }</small>|
-| example     | <small>`https://10.0.0.1/api/v1/projects/1/importConfig`</small>         | <small>_in url_<br/>project=1<br/><br/>_in body_<br/>{**"config"**: "/tmp/convertedCisco.xml" }</small> |
+| example     | <small>`https://10.0.0.1/api/v1/projects/1/importConfig`</small>         | <small>_in url_<br/>project=1<br/><br/>_in body_<br/>{**"config"**: "/tmp/convertedConfig.xml" }</small> |
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[

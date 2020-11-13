@@ -59,7 +59,11 @@ The ``mapping.json file`` would represent the mapping structure used for perform
 The following is an example that represents the migration of three configurations into different ```device groups``` in a Panorama configuration:
 ```json
 {
-  "baseConfig": "config.xml",
+  "baseConfig":{
+      "file": "config.xml",
+      "type": "panorama",
+      "version": "10.0"
+     },
   "configs":
     [{
         "name": "Branches",
@@ -124,16 +128,16 @@ in the configuration, and declared security policies.
 
 | Method      | URL                                                             | Parameters |
 |-------------|-----------------------------------------------------------------|------------|
-| POST        | <small> `https://<ExpIP>/api/v1/mapping/discovery` </small>       | <small>_in body_<br/>{**"vendor"**: "value",<br/>**"input"**: "path to the ZIP file"}</small>|
-| example     | <small> `https://<ExpIP>/api/v1/mapping/discovery` </small>       | <small>_in body_<br/>{**"vendor"**: "stonesoft",<br/>**"input"**: "/tmp/myMigrationFiles/cpProviders/exported_data.xml"}</small>| |
+| POST        | <small> `https://<ExpIP>/api/v1/migration/discovery` </small>       | <small>_in body_<br/>{**"vendor"**: "value",<br/>**"input"**: "path to the config file"}</small>|
+| example     | <small> `https://<ExpIP>/api/v1/migration/discovery` </small>       | <small>_in body_<br/>{"vendor": "stonesoft",<br/>"input": "/tmp/myMigrationFiles/cpProviders/exported_data.xml"}</small>| |
 
 
 <br/>Response example:
 <Tabs defaultValue={'stonesoft'}
 values={[
 { label: 'Stonesoft', value: 'stonesoft', },
-{ label: 'Cisco ASA', value: 'ciscoasa', },
-{ label: 'Checkpoint R80', value: 'cp80', },
+{ label: 'Checkpoint <R80', value: 'cp', },
+{ label: 'Checkpoint R80+', value: 'cp80', },
 ]
 }>  
 <TabItem value="stonesoft"> 
@@ -156,10 +160,15 @@ values={[
 }
 ```
 </TabItem> 
-<TabItem value="ciscoasa"> 
+<TabItem value="cp"> 
 
-```text
-No data provided yet 
+```json
+{
+  "policies": [
+      "policy1",
+      "policy2" 
+  ]
+} 
 ```
 </TabItem> 
 <TabItem value="cp80"> 

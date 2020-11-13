@@ -59,12 +59,8 @@ The ``mapping.json file`` would represent the mapping structure used for perform
 The following is an example that represents the migration of three configurations into different ```device groups``` in a Panorama configuration:
 ```json
 {
-  "baseconfig": {
-      "file": "config.xml",
-      "type": "panorama",
-      "version": "10.0"
-  },
-  "mapping":
+  "baseConfig": "config.xml",
+  "configs":
     [{
         "name": "Branches",
         "vendor": "cp",

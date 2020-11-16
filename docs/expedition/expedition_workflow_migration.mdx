@@ -59,7 +59,7 @@ API syntax for creating a new project:
 | Method      | EndPoint                                     | Parameters                     | 
 |-------------|----------------------------------------------|--------------------------------|
 |    POST     | <small>`https://<ExpIP>/api/v1/projects`</small> | <small>_in url_<br/>{ **"project"**:"project1", **"description"**:"Project for testing" }</small> |  
-|    example  | <small>`https://10.0.01/api/v1/projects`</small> | <small>{"project":"MyLittleProject", "description":"A migration project"}</small>           | 
+|    example  | <small>`https://10.0.0.1/api/v1/projects`</small> | <small>{"project":"MyLittleProject", "description":"A migration project"}</small>           | 
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[
@@ -699,7 +699,7 @@ API syntax for generating PAN-OS API calls:
 | Method | EndPoint                                                                                    | Parameters                                                              | 
 |-------------|----------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 |     POST    | <small>`https://<YourExpeditionIP>/api/v1/projects/{projectId}/apiCalls/{type}`</small>| <small>_in url_<br/>**"projectId"**-> Expedition Project ID,<br/>**"type"**-> "mega" or "atomic" or "subatomic" or "clear"<br/><br/> _in body_<br/>{**"serial"**: serial#ofyourFW",<br/>**"role"**: "admin",<br/>**"auth_type"**: "UserPassword",<br/>**"username"**: *"YourPAN-OSdeviceLoginusername"*,<br/>**"password"**: *"YourPAN-OSdeviceLoginpassword"*,<br/>**"sourceId"**: 0,<br/>**"action"**: "set"<br/>}</small> |  
-|     example | <small>`https://<YourExpeditionIP>/api/v1/projects/1/apiCalls/atomic`</small>          | <small>{"serial": 012123212,<br/>"role":"admin",<br/>"auth_type":"UserPassword",<br/>"username":"YourPAN-OSdeviceLoginusername",<br/>"password":"YourPAN-OSdeviceLoginpassword",<br/>"sourceId":0,<br/>"action":"set"<br/>}</small> |  
+|     example | <small>`https://10.0.0.1/api/v1/projects/1/apiCalls/atomic`</small>          | <small>{"serial": 012123212,<br/>"role":"admin",<br/>"auth_type":"UserPassword",<br/>"username":"YourPAN-OSdeviceLoginusername",<br/>"password":"YourPAN-OSdeviceLoginpassword",<br/>"sourceId":0,<br/>"action":"set"<br/>}</small> |  
 
 The response will provide us a list of the generated API calls with their corresponding ids and types and order of execution.  
 
@@ -771,7 +771,7 @@ API syntax for sending APIcalls to the PAN-OS Device:
  Method       | EndPoint                                                                              | Parameters                                                              | 
 |-------------|---------------------------------------------------------------------------------------|-------------------------------------------------------------------------|-----------------------------------------|
 |     POST    | <small>`https://<YourExpeditionIP>/api/v1/projects/{projectId}/device/push`</small>   | <small>_in url_<br/>**"projectId"**-> Expedition Project ID<br/><br/>_in body_<br/>{**"serial"**: serial#ofyourFW",<br/>**"source"**: PAN-OSconfigfile<br/>}</small> | 
-|     example | <small>`https://<YourExpeditionIP>/api/v1/projects/1/device/push`</small>             | <small>_in url_<br/>"projectId"= 1<br/><br/>_in body_<br/>{"serial": 01213221,<br/>"source":1<br/>}</small> | 
+|     example | <small>`https://10.0.0.1/api/v1/projects/1/device/push`</small>             | <small>_in url_<br/>"projectId"= 1<br/><br/>_in body_<br/>{"serial": 01213221,<br/>"source":1<br/>}</small> | 
 
 
 When submitting the API calls, we can enumerate those ones that we want to submit or, if none is specified, all the generated API calls will be submitted to the device in the order of execution.  

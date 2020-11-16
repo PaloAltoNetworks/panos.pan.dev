@@ -30,8 +30,6 @@ The modules are:
 - **Expedition Converter**: In charge of parsing and translating thrid party vendors' configurations into PANOS firewalls and Panoramas
 - **Expedition Analytics**: Offers functionalities for traffic log analytics, rule improvement suggestions, and other "data analytics"-related tasks
  
-![comment]("using different routes (URL paths) that represent different objects and features that a user can use with the tool and uses the HTTP verbs (GET, POST, PUT, DELETE) to define the actions that can be done on those objects.")  
-
 As most of the Web APIs, Expedition has exposed the functionalities making use of routes and HTTP verbs. 
 The routes (URL paths), indicate the object or objects that are targets for an action, 
 while the HTTP verbs (GET, POST, PUT, DELETE) indicate the action to be applied on such object.
@@ -138,7 +136,7 @@ A successful API call returns, within the Contents section, `status="success"` a
 ```
 
 Below is a sample Python script to show you how to login to Expedition-API endpoint and save the API key in variable, `hed`, so you can reference it in your subsequent API calls.  
-```javascript
+```python
 import json
 import requests
 import urllib3

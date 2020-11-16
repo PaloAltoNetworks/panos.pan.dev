@@ -32,9 +32,22 @@ With Expedition 2.0, we had two main goals on mind:
 With all these huge improvements, we expect the next time you use Expedition the journey to excellence will be easier.  
 
 ## Expedition 2.0 Modules
-Expedition 2.0 has been designed to be divided in four main process modules (represented in green in below image) to provide web access to the tool, API feature accessibility, configuration conversions and data analytics. Additionally, two relaying modules (in white) are required for data storage and access control.
+The Expedition 2.0 tool aims at facilitating the consumption of PANOS features and assiting on the correct application of good practices in on NGFW devices.  
+
+For instance, the tool can assist on the implementation of security policies using Applications, Users and Regions, 
+the reduction of number of address and service objects to increase policy administration
+and advising on potential configuration inconsistencies and deficiencies to help placing the focus on those relevant points, among other features.  
+
+To achieve the above-mentioned features and more, the Expedition 2.0 has been designed to be divided in four main process modules  (represented in green in below image) to provide web access to the tool, API feature accessibility, configuration conversions and data analytics. Additionally, two relaying modules (in white) are required for data storage and access control.
 
 An extra module (in blue) can be constructed by the community, making use if the API to generate scripts for automation (script processing), using the language of preference. Ultimately, a library of scripts with different workflows can be constructed by sharing those scripts in public/private repositories.  
+This separation of concerns, allows each module to evolve and improve the overall functionality, increase reusability and reliability.  
+The modules are:
+- **Expedition Web API**: Exposes all the Expedition functionalities via an Application Program Interface that offers high level of scripting and automation 
+- **Expedition Web UI**: Provides a web interface that offers access to all Expedition functionalities with a low learning curve_
+- **Expedition Converter**: In charge of parsing and translating thrid party vendors' configurations into PANOS firewalls and Panoramas
+- **Expedition Analytics**: Offers functionalities for traffic log analytics, rule improvement suggestions, and other "data analytics"-related tasks  
+
 
 ![Architecture](/img/expedition/expedition2_arc.svg "Architecture")  
 
@@ -50,5 +63,7 @@ For more specific inquiries, please reach to fwmigrate@paloaltonetworks.com
 | <small>Cisco</small>      | ASA 9.0,9.1,9.2, 9.6,8.2,8.4   |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |  ✔  |
 |            | FirePower(only in ASA syntax) |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |     |
 | <small>Fortinet</small>   | Fortigate 4.0,5.0             |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |     |
-
+| <small>Juniper</small>      | All Netscreen Firewalls(ScreenOS)   |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |  ✔  |
+|            | Junos 11.4,12.1,12.3 |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |   ✔   |
+| <small>Sonicwall</small>   | <6.5             |                  |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |     |
 

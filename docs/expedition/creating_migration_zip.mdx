@@ -129,8 +129,8 @@ in the configuration, and declared security policies.
 | Method      | URL                                                             | Parameters |
 |-------------|-----------------------------------------------------------------|------------|
 | POST        | <small> `https://<ExpIP>/api/v1/migration/discovery` </small>       | <small>_in body_<br/>{**"vendor"**: "value",<br/>**"config"**: "path to the config file",<br/>(if cp) **"policy"**: "path to the policy file",<br/>(if cp) **"objects"**: "path to the objects file",<br/>(if cp) **"rulebase"**: "path to the rulebase file"}</small>|
-| example     | <small> `https://<ExpIP>/api/v1/migration/discovery` </small>       | <small>_in body_<br/>{"vendor": "stonesoft",<br/>"config": "/tmp/myMigrationFiles/cpProviders/exported_data.xml"}</small>| |
-| example     | <small> `https://<ExpIP>/api/v1/migration/discovery` </small>       | <small>_in body_<br/>{"vendor": "cp",<br/>"policy": "/tmp/myMigrationFiles/cpProviders/policy.W",<br/>"objects": "/tmp/myMigrationFiles/cpBranches/objects.C",<br/>"rulebase": "/tmp/myMigrationFiles/cpBranches/rulebases_5_0.fws"}</small>| |
+| example     | <small> `https://10.0.0.1/api/v1/migration/discovery` </small>       | <small>_in body_<br/>{"vendor": "stonesoft",<br/>"config": "/tmp/myMigrationFiles/cpProviders/exported_data.xml"}</small>| |
+| example     | <small> `https://10.0.0.1/api/v1/migration/discovery` </small>       | <small>_in body_<br/>{"vendor": "cp",<br/>"policy": "/tmp/myMigrationFiles/cpProviders/policy.W",<br/>"objects": "/tmp/myMigrationFiles/cpBranches/objects.C",<br/>"rulebase": "/tmp/myMigrationFiles/cpBranches/rulebases_5_0.fws"}</small>| |
 
 Depending on the vendor, more parameters can be given to discover sections within them. For instance, Checkpoint <R80 would also allow the fields
 `policy` (in replacement of `config`), `objects` and `rulebase`.

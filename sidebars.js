@@ -141,6 +141,7 @@ module.exports = {
                     collapsed: false,
                     label: "Expedition-Workflows",
                     items: ["expedition/creating_credentials",
+                            "expedition/creating_migration_zip",
                             "expedition/expedition_workflow_migration",
                            ],
                   }

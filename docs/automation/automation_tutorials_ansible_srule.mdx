@@ -61,12 +61,12 @@ You can easily add Ansible to any Python environment using `pip`:
 pip install ansible
 ```
 
-### Install Ansible role for PAN-OS API
+### Install Ansible collection for PAN-OS API
 
-Palo Alto Networks provides an Ansible role to facilitate working with PAN-OS API. Use `ansible-galaxy` to install it:
+Palo Alto Networks provides an Ansible collection to facilitate working with PAN-OS API. Use `ansible-galaxy` to install it:
 
 ```shell
-ansible-galaxy install PaloAltoNetworks.paloaltonetworks
+ansible-galaxy collection install paloaltonetworks.panos
 ```
 
 ### Add your environment variables
@@ -111,8 +111,8 @@ We can use the following playbook to add a new rule to the Security Rulebase of 
 - hosts: localhost
   connection: local
   
-  roles:
-    - role: PaloAltoNetworks.paloaltonetworks
+collections:
+    - paloaltonetworks.panos
 
   handlers:
     - name: commit config
@@ -159,13 +159,13 @@ PLAY [localhost] ***************************************************************
 TASK [Gathering Facts] *****************************************************************
 ok: [127.0.0.1]
 
-TASK [PaloAltoNetworks.paloaltonetworks : Install pan-python required library] *********
+TASK [paloaltonetworks.panos : Install pan-python required library] *********
 ok: [127.0.0.1]
 
-TASK [PaloAltoNetworks.paloaltonetworks : Install pandevice required library] **********
+TASK [paloaltonetworks.panos : Install pandevice required library] **********
 ok: [127.0.0.1]
 
-TASK [PaloAltoNetworks.paloaltonetworks : Install xmltodict required library] **********
+TASK [paloaltonetworks.panos : Install xmltodict required library] **********
 ok: [127.0.0.1]
 
 TASK [include variables (free-form)] ***************************************************
@@ -198,8 +198,8 @@ The playbook we have just created also commits the configuration on Panorama whe
 - hosts: localhost
   connection: local
   
-  roles:
-    - role: PaloAltoNetworks.paloaltonetworks
+  collections:
+    - paloaltonetworks.panos
 
   handlers:
     - name: commit config
@@ -248,13 +248,13 @@ PLAY [localhost] ***************************************************************
 TASK [Gathering Facts] *****************************************************************
 ok: [127.0.0.1]
 
-TASK [PaloAltoNetworks.paloaltonetworks : Install pan-python required library] *********
+TASK [paloaltonetworks.panos : Install pan-python required library] *********
 ok: [127.0.0.1]
 
-TASK [PaloAltoNetworks.paloaltonetworks : Install pandevice required library] **********
+TASK [paloaltonetworks.panos : Install pandevice required library] **********
 ok: [127.0.0.1]
 
-TASK [PaloAltoNetworks.paloaltonetworks : Install xmltodict required library] **********
+TASK [paloaltonetworks.panos : Install xmltodict required library] **********
 ok: [127.0.0.1]
 
 TASK [include variables (free-form)] ***************************************************
@@ -282,8 +282,8 @@ The structure of the playbook is the same with an handler performing a commit on
 - hosts: localhost
   connection: local
   
-  roles:
-    - role: PaloAltoNetworks.paloaltonetworks
+  collections:
+    - paloaltonetworks.panos
 
   handlers:
     - name: commit config
@@ -359,13 +359,13 @@ PLAY [localhost] ***************************************************************
 TASK [Gathering Facts] *****************************************************************
 ok: [127.0.0.1]
 
-TASK [PaloAltoNetworks.paloaltonetworks : Install pan-python required library] *********
+TASK [paloaltonetworks.panos : Install pan-python required library] *********
 ok: [127.0.0.1]
 
-TASK [PaloAltoNetworks.paloaltonetworks : Install pandevice required library] **********
+TASK [paloaltonetworks.panos : Install pandevice required library] **********
 ok: [127.0.0.1]
 
-TASK [PaloAltoNetworks.paloaltonetworks : Install xmltodict required library] **********
+TASK [paloaltonetworks.panos : Install xmltodict required library] **********
 ok: [127.0.0.1]
 
 TASK [include variables (free-form)] ***************************************************
@@ -401,13 +401,13 @@ PLAY [localhost] ***************************************************************
 TASK [Gathering Facts] *****************************************************************
 ok: [127.0.0.1]
 
-TASK [PaloAltoNetworks.paloaltonetworks : Install pan-python required library] *********
+TASK [paloaltonetworks.panos : Install pan-python required library] *********
 ok: [127.0.0.1]
 
-TASK [PaloAltoNetworks.paloaltonetworks : Install pandevice required library] **********
+TASK [paloaltonetworks.panos : Install pandevice required library] **********
 ok: [127.0.0.1]
 
-TASK [PaloAltoNetworks.paloaltonetworks : Install xmltodict required library] **********
+TASK [paloaltonetworks.panos : Install xmltodict required library] **********
 ok: [127.0.0.1]
 
 TASK [include variables (free-form)] ***************************************************

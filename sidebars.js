@@ -122,6 +122,36 @@ module.exports = {
       items: ["cloud/cloudtemplates_qs"],
     },
   ],
+  expedition: [
+    {
+      type: "doc",
+      id: "expedition",
+    },
+    {
+      type: "doc",
+      id: "expedition/expedition_qs",
+    },
+    {
+      type: "category",
+      collapsed: false,
+      label: "Expedition-API",
+      items: ["expedition/expedition_apiint",
+              {
+                    type: "category",
+                    collapsed: false,
+                    label: "Expedition-Workflows",
+                    items: ["expedition/creating_credentials",
+                            "expedition/creating_migration_zip",
+                            "expedition/expedition_workflow_migration",
+                           ],
+                  }
+             ],
+    },
+    {
+      type: "doc",
+      id: "expedition/expedition_contact",
+    },
+  ],
   docs: [
     {
       type: "doc",

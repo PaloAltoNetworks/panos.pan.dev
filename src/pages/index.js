@@ -175,12 +175,35 @@ const features = [
       </div>
     ),
   },
+  {
+    title: <>Expedition</>,
+    imageUrl: "/img/expedition.png",
+    description: (
+      <>
+        Migrate configuration from legacy firewalls to Palo Alto Networks.
+        Policy optimization, object cleanup, App-ID adoption and more!
+      </>
+    ),
+    button: (
+      <div className={styles.buttons}>
+        <Link
+          className={classnames(
+            "button button--outline button--primary button--md",
+            styles.getStarted
+          )}
+          href="/docs/expedition"
+        >
+          Learn More
+        </Link>
+      </div>
+    ),
+  },
 ];
 
 function Feature({ imageUrl, title, description, button }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
-    <div className={classnames("col col--4", styles.features)}>
+    <div className={classnames("col col--3", styles.features)}>
       <div className={classnames("card shadow--lw", styles.card)}>
         <div className="card__image">
           <img src={imgUrl} title={title} className={styles.cardImage} />
@@ -251,6 +274,43 @@ function Home() {
             </div>
           </section>
         )}
+        <section className={styles.expedition}>
+          <div className="container">
+            <div className="row row--no-gutters">
+              <div className={classnames("col col--3")}>
+                <div className="text">
+                  <img
+                    className={styles.toolImage}
+                    src="/img/expedition.png"
+                    alt="Expedition 2.0"
+                  />
+                </div>
+                <h1>Expedition 2.0</h1>
+                <p className={styles.text__gray}>
+                  Migrate configuration from legacy firewalls to Palo Alto
+                  Networks
+                </p>
+                <div>
+                  <Link
+                    className={classnames("button button--info button--md")}
+                    href="/docs/expedition"
+                  >
+                    Learn More
+                  </Link>
+                </div>
+              </div>
+              <div className={classnames("col col--9")}>
+                <div className="text text--center">
+                  <img
+                    src="/img/expedition2_architecture.svg"
+                    alt="Expedition 2.0"
+                    className={styles.expeditionImage}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <section className={styles.tools} ref={toolsRef}>
           <div className="container">
             <div className="row">
@@ -410,8 +470,43 @@ function Home() {
                 </div>
               </div>
 
-              {/* Placeholder */}
-              <div className={classnames("col col--3", styles.tools)}></div>
+              {/* Expedition */}
+              <div
+                className={classnames("col col--3 col--offset-1", styles.tools)}
+              >
+                <div className="text--center">
+                  <img
+                    className={styles.toolImage}
+                    src="/img/expedition.png"
+                    alt="Expedition"
+                  />
+                </div>
+                <h4>Expedition 2.0</h4>
+                <p className={styles.text__gray}>
+                  Migrate configuration from legacy firewalls to Palo Alto
+                  Networks
+                </p>
+                <div className={styles.buttons}>
+                  <Link
+                    className={classnames(
+                      "button button--outline button--primary button--md",
+                      styles.quickstart
+                    )}
+                    href="/docs/expedition/expedition_qs"
+                  >
+                    Quickstart
+                  </Link>
+                  <Link
+                    className={classnames(
+                      "button button--outline button--primary button--md",
+                      styles.github
+                    )}
+                    href="https://live.paloaltonetworks.com/t5/expedition-migration-tool/ct-p/migration_tool"
+                  >
+                    Community
+                  </Link>
+                </div>
+              </div>
 
               {/* Terraform Templates */}
               <div className={classnames("col col--3", styles.tools)}>

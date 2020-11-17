@@ -66,4 +66,3 @@ For more specific inquiries, please reach to fwmigrate@paloaltonetworks.com
 | <small>Juniper</small>      | All Netscreen Firewalls(ScreenOS)   |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |  ✔  |
 |            | Junos 11.4,12.1,12.3 |       ✔           |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |   ✔   |
 | <small>Sonicwall</small>   | <6.5             |                  |       ✔          |    ✔      |        ✔         |    ✔     |    ✔     |      ✔         |      ✔        |     |
-

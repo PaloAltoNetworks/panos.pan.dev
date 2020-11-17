@@ -153,7 +153,6 @@ API syntax for Converting 3rd party vendors' configurations:
 |       POST  | <small>`https://<ExpIP>/api/v1/migration/convert`</small>  | <small>_in body_<br/>{**"input"**: "path to the ZIP file",<br/>**"output"**: "path to the resulting PANOS config file",<br/>(optional) **dry-run**: boolean}</small>|
 |    example  | <small>`https://10.0.0.1/api/v1/migration/convert`</small> | <small>_in body_<br/>{"input": "/var/www/html/expedition-api/contents/configSamples/migration1.zip",<br/>"output":"/tmp/convertedConfig.xml",<br/> dry-run: true }</small>|
 
-
 In the case we have already imported a PAN-OS device into Expedition, it is also possible to provide that device’s identification to use the devices configuration as a base config on which to make the conversion.  
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
@@ -772,7 +771,6 @@ API syntax for sending APIcalls to the PAN-OS Device:
 |-------------|---------------------------------------------------------------------------------------|-------------------------------------------------------------------------|-----------------------------------------|
 |     POST    | <small>`https://<YourExpeditionIP>/api/v1/projects/{projectId}/device/push`</small>   | <small>_in url_<br/>**"projectId"**-> Expedition Project ID<br/><br/>_in body_<br/>{**"serial"**: serial#ofyourFW",<br/>**"source"**: PAN-OSconfigfile<br/>}</small> | 
 |     example | <small>`https://10.0.0.1/api/v1/projects/1/device/push`</small>             | <small>_in url_<br/>"projectId"= 1<br/><br/>_in body_<br/>{"serial": 01213221,<br/>"source":1<br/>}</small> | 
-
 
 When submitting the API calls, we can enumerate those ones that we want to submit or, if none is specified, all the generated API calls will be submitted to the device in the order of execution.  
 

@@ -136,6 +136,7 @@ A successful API call returns, within the Contents section, `status="success"` a
 ```
 
 Below is a sample Python script to show you how to login to Expedition-API endpoint and save the API key in variable, `hed`, so you can reference it in your subsequent API calls.  
+
 ```python
 import json
 import requests

@@ -1,4 +1,5 @@
 ---
+id: pandevice_qs
 id: pan-os-python_qs
 title: PAN-OS-Python Framework Quickstart
 sidebar_label: Quickstart

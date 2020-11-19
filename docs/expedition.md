@@ -32,7 +32,7 @@ With Expedition 2.0, we had two main goals on mind:
 With all these huge improvements, we expect the next time you use Expedition the journey to excellence will be easier.  
 
 ## Expedition 2.0 Modules
-The Expedition 2.0 tool aims at facilitating the consumption of PANOS features and assiting on the correct application of good practices in on NGFW devices.  
+The Expedition 2.0 tool aims at facilitating the consumption of PANOS features and assisting on the correct application of good practices in on NGFW devices.  
 
 For instance, the tool can assist on the implementation of security policies using Applications, Users and Regions, 
 the reduction of number of address and service objects to increase policy administration
@@ -45,7 +45,7 @@ This separation of concerns, allows each module to evolve and improve the overal
 The modules are:
 - **Expedition Web API**: Exposes all the Expedition functionalities via an Application Program Interface that offers high level of scripting and automation 
 - **Expedition Web UI**: Provides a web interface that offers access to all Expedition functionalities with a low learning curve_
-- **Expedition Converter**: In charge of parsing and translating thrid party vendors' configurations into PANOS firewalls and Panoramas
+- **Expedition Converter**: In charge of parsing and translating third party vendors' configurations into PANOS firewalls and Panoramas
 - **Expedition Analytics**: Offers functionalities for traffic log analytics, rule improvement suggestions, and other "data analytics"-related tasks  
 
 
@@ -54,7 +54,7 @@ The modules are:
 ## Supported Vendor Matrix 
 The below table listed the supported Vendor in current beta release, there will be more supported vendors in future releases.
 
-For more specific inquiries, please reach to fwmigrate@paloaltonetworks.com  
+For more specific inquiries, please contact fwmigrate@paloaltonetworks.com  
 
 | <small>Vendor</small>     | <small>Supported Vendor OS</small>           | <small>Global Addr. Obj.</small> | <small>Addr. Group Obj.</small> | <small>Serv. Obj</small> | <small>Serv. Group Obj.</small> | <small>Sec. Pol</small> | <small>NAT Pol.</small> | <small>Net. Int. (L3)</small> | <small>Static routes</small> | <small>VPN</small> |
 |------------|-------------------------------|-------------------|------------------|-----------|------------------|----------|----------|----------------|---------------|-----|

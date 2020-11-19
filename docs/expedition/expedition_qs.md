@@ -18,8 +18,11 @@ image: /img/expedition.png
 ---
 ## Install Expedition
 
-Expedition 2.0 is in constant development to cover new functionalities available in the market and to correct implementation issues that are identified in the code. To keep the Expedition instance up to date, the tool is initially provided as a Debian package. In the future we will also offer containerized flavors of the tool to allow installing it on other platforms rather than Debian based ones.
-Note: The installation process does not support migrating Expedition 1 instances into Expedition 2.0
+Expedition 2.0 is in constant development to cover new functionalities available in the market and to correct implementation issues that are identified in the code. To keep the Expedition instance up to date, the tool is initially provided as a Debian package. In the future we will also offer containerized flavors of the tool to allow installing it on other platforms rather than Debian based ones.  
+
+:::note
+The installation process does not support migrating Expedition 1 instances into Expedition 2.0  
+:::
 
 ## System Requirements
 
@@ -47,9 +50,11 @@ https://conversionupdates.paloaltonetworks.com/initSetup2beta.sh
 
 The script will perform some initial verifications, including the existence of a user with username “expedition”, and that the Expedition package has not been installed in advance, so it would not modify the settings of an already installed Expedition VM.
 
-This script will prepare the VM to host the different packages necessary for using Expedition 2, including the web service -based API, the converter, the JS Web UI, rsyslog for future syslog service support, Java and Spark for future traffic log analysis and additional required services such as rabbitmq, zip, and SSH.
+This script will prepare the VM to host the different packages necessary for using Expedition 2, including the web service -based API, the converter, the JS Web UI, rsyslog for future syslog service support, Java and Spark for future traffic log analysis and additional required services such as rabbitmq, zip, and SSH.  
 
-NOTE: This script requires communication to a certain number of apt-get repositories, including conversionupdates.paloaltonetworks.com . It is therefore necessary to allow APT-GET communications to be established from the VM that will host Expedition 2.0. In case of installation failure, make sure that these communications are successful.	
+:::note
+ This script requires communication to a certain number of apt-get repositories, including conversionupdates.paloaltonetworks.com . It is therefore necessary to allow APT-GET communications to be established from the VM that will host Expedition 2.0. In case of installation failure, make sure that these communications are successful.	
+:::
 
 The installation of all those modules would require internet connectivity, mainly to:  
 
@@ -101,7 +106,20 @@ After the installation, the following changes will have been applied:
   - /var/expedition-converter will be created with converter module  
   - /var/www/html/expedition-api will be created with API module  
 
-## Accessing the Expediton GUI
+## Update Expedition
+
+Issue below commands to update your Expedition to a newer version release:  
+
+
+```console
+$sudo apt-get update
+$sudo apt-get install expedition2-beta expedition2-converter-beta
+```
+:::note
+If you just completed the installation in previous step, you do not need to issue above commands since the installation package you ran should contain the latest release. 
+:::
+
+## Accessing the Expedition GUI
 
 After the installation is complete, reach your web browser to navigate to the front-end.
 An initial Expedition web interface is provided through the following route (you may have to substitute the ExpeditionIP by the IP assigned to your VM.)  

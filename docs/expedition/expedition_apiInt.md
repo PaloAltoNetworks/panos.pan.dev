@@ -18,7 +18,7 @@ keywords:
 image: /img/expedition.png
 ---
 ## Introduction  
-The Expedition 2.0 tool aims at facilitating the consumption of PANOS features and assiting on the correct application of good practices in on NGFW devices. 
+The Expedition 2.0 tool aims at facilitating the consumption of PANOS features and assisting on the correct application of good practices in on NGFW devices. 
 For instance, the tool can assist on the implementation of security policies using Applications, Users and Regions, 
 the reduction of number of address and service objects to increase policy administration
 and advising on potential configuration inconsistencies and deficiencies to help placing the focus on those relevant points, among other features.     
@@ -27,7 +27,7 @@ This separation of concerns, allows each module to evolve and improve the overal
 The modules are:
 - **Expedition Web API**: Exposes all the Expedition functionalities via an Application Program Interface that offers high level of scripting and automation 
 - **Expedition Web UI**: Provides a web interface that offers access to all Expedition functionalities with a low learning curve_
-- **Expedition Converter**: In charge of parsing and translating thrid party vendors' configurations into PANOS firewalls and Panoramas
+- **Expedition Converter**: In charge of parsing and translating third party vendors' configurations into PANOS firewalls and Panoramas
 - **Expedition Analytics**: Offers functionalities for traffic log analytics, rule improvement suggestions, and other "data analytics"-related tasks
  
 As most of the Web APIs, Expedition has exposed the functionalities making use of routes and HTTP verbs. 

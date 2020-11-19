@@ -24,16 +24,18 @@ API calls that are wrapped within the Ansible framework.
 ## Installation
 
 The recommended way to install the modules is installing the Palo Alto
-Networks Ansible Galaxy role:
+Networks Ansible Galaxy collection:
 
 ```shell-session
-ansible-galaxy install PaloAltoNetworks.paloaltonetworks
+ansible-galaxy collection install paloaltonetworks.panos
 ```
 
-Older modules modules are part of the default Ansible distribution
-which is available at:
+Then in your playbooks you can specify that you want to use the panos collection like so:
 
-> <https://github.com/ansible/ansible/tree/devel/lib/ansible/modules/network/panos>
+```shell-session
+collections:
+    - paloaltonetworks.panos
+```
 
 It is also available as free **Apache 2.0** licensed code from Palo Alto
 Networks Github repo if you want to see what is coming in the next release:
@@ -51,7 +53,7 @@ More comprehensive playbooks can be found under:
 
     /ansible-playbooks/
 
-## Ansible galaxy role
+## Ansible galaxy collection
 
 The Palo Alto Networks Ansible modules project is a collection of Ansible modules to automate configuration and
 operational tasks on Palo Alto Networks _Next Generation Firewalls_. The underlying protocol uses API calls that are wrapped within Ansible framework.

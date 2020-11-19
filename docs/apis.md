@@ -29,7 +29,7 @@ The new PAN-OS REST API simplifies access to policy resources on the firewall as
 
 Jumpstart your automation project with SDKs for Python and Go!
 
-##### PAN Device Framework
+##### PAN-OS-Python Framework
 
 Object-based interaction with the firewall in these language simplifies interaction with the firewall so you can focus on the automation itself. [Get Started](/docs/apis/pandevice_qs)
 

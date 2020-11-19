@@ -1,44 +1,45 @@
 ---
 id: pandevice_qs
-title: PAN Device Framework Quickstart
+title: PAN-OS-Python Framework Quickstart
 sidebar_label: Quickstart
 hide_title: false
-description: Getting started with pandevice
+description: Getting started with pan-os-python
 keywords:
   - pan-os
   - panos
   - xml
   - api
   - quickstart
-  - pandevice
+  - pan-os-python
   - sdk
   - python
+  - pandevice
 image: /img/panos_apis.svg
 ---
 
-[![GitHub page](https://img.shields.io/badge/GitHub-Repo-brightgreen?style=for-the-badge&logo=github)](https://github.com/PaloAltoNetworks/pandevice) [![GitHub stars](https://img.shields.io/github/stars/PaloAltoNetworks/pandevice?style=for-the-badge)](https://github.com/PaloAltoNetworks/pandevice)
+[![GitHub page](https://img.shields.io/badge/GitHub-Repo-brightgreen?style=for-the-badge&logo=github)](https://github.com/PaloAltoNetworks/pan-os-python) [![GitHub stars](https://img.shields.io/github/stars/PaloAltoNetworks/pan-os-python?style=for-the-badge)](https://github.com/PaloAltoNetworks/pan-os-python)
 
 ## Installation
 
-The easiest method to install pandevice is using pip:
+The easiest method to install pan-os-python is using pip (pan-os-python only supports Python3):
 
 ```
-pip install pandevice
+pip install pan-os-python
 ```
 
 Or, if you have virtualenvwrapper installed:
 
 ```shell-session
-mkvirtualenv pandevice
-pip install pandevice
+mkvirtualenv pan-os-python
+pip install pan-os-python
 ```
 
-Pip will install the [pan-python](/docs/panpython_qs) library as a dependency.
+Pip will install the [pan-python](/docs/apis/panpython_qs) library as a dependency.
 
 Upgrade to the latest version:
 
 ```shell-session
-pip install --upgrade pandevice
+pip install --upgrade pan-os-python
 ```
 
 ## How to import
@@ -46,30 +47,30 @@ pip install --upgrade pandevice
 To use Palo Alto Networks Device Framework in a project:
 
 ```python
-import pandevice
+import panos
 ```
 
 You can also be more specific about which modules you want to import:
 
 ```python
-from pandevice import firewall
-from pandevice import network
+from panos import firewall
+from panos import network
 ```
 
-## A few examples
+### A few examples
 
 For configuration tasks, create a tree structure using the classes in
 each module. Nodes hierarchy must follow the model in the [Configuration
-Tree](http://pandevice.readthedocs.io/en/latest/configtree.html).
+Tree](https://pan-os-python.readthedocs.io/en/latest/configtree.html).
 
 The following examples assume the modules were imported as such:
 
 ```python
-from pandevice import firewall
-from pandevice import network
+from panos import firewall
+from panos import network
 ```
 
-## Create a subinterface and commit:
+### Create a subinterface and commit:
 
 ```python
 fw = firewall.Firewall("10.0.0.1", api_username="admin", api_password="admin")
@@ -79,7 +80,7 @@ subeth.create()
 fw.commit()
 ```
 
-## Perform `show system info`
+### Perform `show system info`
 
 ```python
 fw = firewall.Firewall("10.0.0.1", api_username="admin", api_password="admin")
@@ -95,8 +96,46 @@ fw.refresh_system_info()
 ```
 
 :::tip
-See more examples in the [Usage Guide](http://pandevice.readthedocs.io/en/latest/usage.html).
+See more examples in the [How to Guides](https://pan-os-python.readthedocs.io/en/latest/howto.html).
 :::
+
+## Upgrade from pandevice
+
+This pan-os-python package is the evolution of the older pandevice package. To upgrade from pandevice to pan-os-python, follow these steps.
+
+### Step 1. Ensure you are using python3
+
+[Python2 is end-of-life](https://www.python.org/doc/sunset-python-2/) and not supported by pan-os-python.
+
+### Step 2. Uninstall pandevice
+
+```shell-session
+pip uninstall pandevice
+```
+
+### Step 3. Install pan-os-python
+
+```shell-session
+pip3 install pan-os-python
+```
+
+### Step 4. Change the import statements in your code from pandevice to panos
+
+```shell-session
+import pandevice
+from pandevice.firewall import Firewall
+```
+would change to
+
+```shell-session
+import panos
+from panos.firewall import Firewall
+```
+
+### Step 5. Test your script or application
+
+There are no known breaking changes between pandevice v0.14.0 and pan-os-python v1.0.0, but it is a major upgrade so please verify everything works as expected.
+
 
 ## Connecting to PAN-OS 8.0 and higher
 

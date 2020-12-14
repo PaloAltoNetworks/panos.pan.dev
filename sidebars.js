@@ -143,6 +143,7 @@ module.exports = {
                     items: ["expedition/creating_credentials",
                             "expedition/creating_migration_zip",
                             "expedition/expedition_workflow_migration",
+                            "expedition/expedition_workflow_filters",
                            ],
                   }
              ],

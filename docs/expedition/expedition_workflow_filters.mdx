@@ -1,9 +1,9 @@
 ---
-id: expedition_workflow_migration
-title: Migration Workflow
-sidebar_label: Configuration Migration
+id: expedition_workflow_filters
+title: Using Filters Workflow
+sidebar_label: Using Filters 
 hide_title: false
-description: Migration Workflow
+description: Using Filters Workflow
 keywords:
   - pan-os
   - panos
@@ -39,10 +39,38 @@ export function SetLanguage (lang) {
 <br/>
 <br/>
 
-In this section we present a workflow example to migrate a third party vendor configuration into a PANOS configuration. 
+In this section we present a workflow example to create a set of filters with one goal in mind.
+During the development of this section, we will learn on the usage of `predefined filters`, `simple filters`, 
+`complex filters` and `combination filters`; as well on the task related to their creation, monitoring on their execution state and collection of filtered results.
+
 This code can be found at the following link:
 
 <a href="https://conversionupdates.paloaltonetworks.com/expedition2/examples/workflows.zip">https://conversionupdates.paloaltonetworks.com/expedition2/examples/workflows.zip</a>   
+
+### Preamble A. Filter characteristics
+
+Expedition 2 allows creating filters on the different objects that a configuration contains. 
+restrict the target of actions, specifying the objects that should appear in reports, identifying objects
+that should be deleted, etc. 
+One filters may be desirable for multiple goals, therefore, the filters have been designed for 
+sharing and reuse.
+
+As main characteristics, we can state that filters are  
+- **named**, so we can identify them and refer to them
+- **executed in background**, as tasks that can be monitored and are non-blocking
+- **stored**, so we can get back to the results of a filter at any given point
+- **reusable**, in order to combine them in other filters
+- **exportable** between projects and between Expeditions, to be shared in the community or applied to multiple projects in an easy manner
+
+### Preamble B. Filters Types
+
+| Filter Type              | Description                                                                               | Example                  |  
+|--------------------------|-------------------------------------------------------------------------------------------|--------------------------|
+|    Predefined            | Predefined filtes. This do not require parameters as the logic is intrinsic to the filter | `fi1`: [address] is ipv4            |  
+|    Simple                | Filters that specify                                                                      | `fi2`: [address,addressGroup] name contains 'Ala'                 |
+|    Combination           | Filters that use other filters' results to evaluate the filter logic                      | `fi3`: [securityRule] source contains filter filter2              |
+|    Operation             | Filters that perform boolean logic operations on other defined filters                    | `fi4`: (filter fi1 and filter fi2) or filter fi3                  |
+
 
 ### Step 1. Obtainig the API Keys
 
@@ -149,7 +177,7 @@ Refer to [Creating a migration ZIP file](creating_migration_zip) to obtain speci
 API syntax for Converting 3rd party vendors' configurations:  
 
 | Method      | URL                                                        | Parameters |
-|-------------|------------------------------------------------------------|------------|
+|-------------|-----------------------------------------------------------------|------------|
 |       POST  | <small>`https://<ExpIP>/api/v1/migration/convert`</small>  | <small>_in body_<br/>{**"input"**: "path to the ZIP file",<br/>**"output"**: "path to the resulting PANOS config file",<br/>(optional) **dry-run**: boolean}</small>|
 |    example  | <small>`https://10.0.0.1/api/v1/migration/convert`</small> | <small>_in body_<br/>{"input": "/var/www/html/expedition-api/contents/configSamples/migration1.zip",<br/>"output":"/tmp/convertedConfig.xml",<br/> dry-run: true }</small>|
 

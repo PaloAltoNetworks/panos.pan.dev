@@ -175,12 +175,35 @@ const features = [
       </div>
     ),
   },
+  {
+    title: <>Expedition</>,
+    imageUrl: "/img/expedition.png",
+    description: (
+      <>
+        Migrate configuration from legacy firewalls to Palo Alto Networks.
+        Policy optimization, object cleanup, App-ID adoption and more!
+      </>
+    ),
+    button: (
+      <div className={styles.buttons}>
+        <Link
+          className={classnames(
+            "button button--outline button--primary button--md",
+            styles.getStarted
+          )}
+          href="/docs/expedition"
+        >
+          Learn More
+        </Link>
+      </div>
+    ),
+  },
 ];
 
 function Feature({ imageUrl, title, description, button }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
-    <div className={classnames("col col--4", styles.features)}>
+    <div className={classnames("col col--3", styles.features)}>
       <div className={classnames("card shadow--lw", styles.card)}>
         <div className="card__image">
           <img src={imgUrl} title={title} className={styles.cardImage} />

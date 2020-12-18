@@ -170,6 +170,11 @@ module.exports = {
             label: "Cortex XSOAR",
             logo: "/img/Cortex-XSOAR-product-green.svg",
           },
+          {
+            href: "https://prisma.pan.dev",
+            label: "Prisma Cloud",
+            logo: "/img/prismafavicon.png",
+          },
         ],
         position: "products",
       },

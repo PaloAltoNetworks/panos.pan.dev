@@ -156,11 +156,6 @@ module.exports = {
         label: "Products",
         items: [
           {
-            href: "https://panos.pan.dev",
-            label: "PAN-OS",
-            logo: "/img/strata_favicon.png",
-          },
-          {
             href: "https://cortex.pan.dev",
             label: "Cortex",
             logo: "/img/cortexfavicon.png",
@@ -169,6 +164,16 @@ module.exports = {
             href: "https://xsoar.pan.dev",
             label: "Cortex XSOAR",
             logo: "/img/Cortex-XSOAR-product-green.svg",
+          },
+          {
+            href: "https://panos.pan.dev",
+            label: "PAN-OS",
+            logo: "/img/strata_favicon.png",
+          },
+          {
+            href: "https://prisma.pan.dev",
+            label: "Prisma",
+            logo: "/img/prismafavicon.png",
           },
         ],
         position: "products",

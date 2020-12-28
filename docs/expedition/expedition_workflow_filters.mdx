@@ -1,9 +1,9 @@
 ---
-id: expedition_workflow_migration
-title: Migration Workflow
-sidebar_label: Configuration Migration
+id: expedition_workflow_filters
+title: Using Filters Workflow
+sidebar_label: Using Filters 
 hide_title: false
-description: Migration Workflow
+description: Using Filters Workflow
 keywords:
   - pan-os
   - panos
@@ -39,18 +39,43 @@ export function SetLanguage (lang) {
 <br/>
 <br/>
 
-In this section we present a workflow example to migrate a third party vendor configuration into a PANOS configuration. 
+In this section we present a workflow example to create a set of filters with one goal in mind.
+During the development of this section, we will learn on the usage of `predefined filters`, `simple filters`, 
+`complex filters` and `combination filters`; as well on the task related to their creation, monitoring on their execution state and collection of filtered results.
+
 This code can be found at the following link:
 
 <a href="https://conversionupdates.paloaltonetworks.com/expedition2/examples/workflows.zip">https://conversionupdates.paloaltonetworks.com/expedition2/examples/workflows.zip</a>   
 
-### Step 1. Obtaining the API Keys
+### Preamble A. Filter characteristics
 
-Refer to [Obtaining the API Keys](creating_credentials.mdx) section to obtain a valid API key stored in the ```hed``` variable.
+Expedition 2 allows creating filters on the different objects that a configuration contains. 
+restrict the target of actions, specifying the objects that should appear in reports, identifying objects
+that should be deleted, etc. 
+One filters may be desirable for multiple goals, therefore, the filters have been designed for 
+sharing and reuse.
 
-### Step 2. Start the Expedition Agent
+As main characteristics, we can state that filters are  
+- **named**, so we can identify them and refer to them
+- **executed in background**, as tasks that can be monitored and are non-blocking
+- **stored**, so we can get back to the results of a filter at any given point
+- **reusable**, in order to combine them in other filters
+- **exportable** between projects and between Expeditions, to be shared in the community or applied to multiple projects in an easy manner
 
-Refer to [Managing Expedition's Agent](managing_expedition_agent) section  to start the agent and be able to perform imports into a project.
+### Preamble B. Filters Types
+
+| Filter Type              | Description                                                                               | Example                  |  
+|--------------------------|-------------------------------------------------------------------------------------------|--------------------------|
+|    Predefined            | Predefined filtes. This do not require parameters as the logic is intrinsic to the filter | `fi1`: [address] is ipv4            |  
+|    Simple                | Filters that specify                                                                      | `fi2`: [address,addressGroup] name contains 'Ala'                 |
+|    Combination           | Filters that use other filters' results to evaluate the filter logic                      | `fi3`: [securityRule] source contains filter filter2              |
+|    Operation             | Filters that perform boolean logic operations on other defined filters                    | `fi4`: (filter fi1 and filter fi2) or filter fi3                  |
+
+
+### Step 1. Obtainig the API Keys
+
+Refer to [Obtaining the API Keys section](creating_credentials.mdx) to obtain a valid API key stored in the ```hed``` variable.
+
 
 ### Step 2. Creating an Expedition project    
 In the large amount of automation cases, we will require having an Expedition project. Making a POST call to the projects route, we can create a project with a desired name.
@@ -62,7 +87,7 @@ API syntax for creating a new project:
 | Method      | EndPoint                                     | Parameters                     | 
 |-------------|----------------------------------------------|--------------------------------|
 |    POST     | <small>`https://<ExpIP>/api/v1/projects`</small> | <small>_in url_<br/>{ **"project"**:"project1", **"description"**:"Project for testing" }</small> |  
-|    example  | <small>`https://10.0.0.1/api/v1/projects`</small> | <small>{"project":"MyLittleProject", "description":"A migration project"}</small>           | 
+|    example  | <small>`https://10.0.01/api/v1/projects`</small> | <small>{"project":"MyLittleProject", "description":"A migration project"}</small>           | 
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[
@@ -130,18 +155,12 @@ The migration process would require to upload one of more configuration files to
 A minimum one would be the original vendor configuration file, and we plan to support bringing also routing table files 
 to support dynamic routing tables which values are not specified in the firewall configuration.
 
-The configurations to be migrated must be contained in a Zip file that provides the different configuration files and 
-some instructions on how the migration needs to be performed.
-More information about this Zip creation can be found in [Creating a migration file](creating_migration_zip.mdx) for a 
-manual Zip creation and in [Creating a migration file (by steps)](creating_migration_zip_2.mdx) for an assisted Zip creation.
+For example, you can upload the cisco configration "_cisco.asa.txt_" within the folder:  
+```console
+/var/www/html/expedition-api/contents/configSamples/CiscoCase/ 
+``` 
 
-(CASE A) In case of performing the Zip manually, make sure you:
-- name the Zip such as `zipArchive_&lt;resourceId&gt;.zip` in where `resourceId` is a numeric value you would later use to refer to the zip resourceId.
-For instance, _zipArchive_1234.zip_.
-- locate the zip file within the `/home/userSpace/uploads/`
-- the `zipArchive_&lt;resourceId&gt;.zip` has been set to allow `www-data` to read and write on it.
-
-(CASE B) If you follow the assisted Zip creation, the related API calls will provide you with the Zip resourceId.
+This folder should be reachable by the `www-data` user and its content should be readable by the user as well.
 
 ### Step 4. Converting the source configuration to a PAN-OS configuration 
 The migration process takes one compressed ZIP file that encapsulates the file(s) from the original vendor(s) to be migrated,
@@ -150,15 +169,20 @@ where each configuration needs to be placed. For instance, this file will state 
 specific Device Group in a Panorama configuration, if we desire a specific routes file to be used for routing and zones calculations
 for a specific original configuration or if we desire some remapings to take place for specific networks or interfaces. 
 
-Refer to [Creating a migration ZIP file](creating_migration_zip) to see the list of supported vendors
+Supported vendors are Checkpoint, Cisco (ASA), Fortinet (Fortigate) and Juniper (Junos). <br/>
+Coming vendors, Cisco (Switch, ISR), Junper (Netscreen), PFSense, Sonicwall, Sophos. 
+  
+Refer to [Creating a migration ZIP file](creating_migration_zip) to obtain specific information on how to construct a ```ZIP file``` with the migration contents. 
 
 API syntax for Converting 3rd party vendors' configurations:  
 
 | Method      | URL                                                        | Parameters |
-|-------------|------------------------------------------------------------|------------|
-|       POST  | <small>`https://<ExpIP>/api/v1/migration/convert`</small>  | <small>_in body_<br/>{**"resource"**: "Zip resource id",<br/>(optional) **dry-run**: boolean}</small>|
-|    example  | <small>`https://10.0.0.1/api/v1/migration/convert`</small> | <small>_in body_<br/>{"resource": 1234,<br/> dry-run: true }</small>|
+|-------------|-----------------------------------------------------------------|------------|
+|       POST  | <small>`https://<ExpIP>/api/v1/migration/convert`</small>  | <small>_in body_<br/>{**"input"**: "path to the ZIP file",<br/>**"output"**: "path to the resulting PANOS config file",<br/>(optional) **dry-run**: boolean}</small>|
+|    example  | <small>`https://10.0.0.1/api/v1/migration/convert`</small> | <small>_in body_<br/>{"input": "/var/www/html/expedition-api/contents/configSamples/migration1.zip",<br/>"output":"/tmp/convertedConfig.xml",<br/> dry-run: true }</small>|
 
+
+In the case we have already imported a PAN-OS device into Expedition, it is also possible to provide that device’s identification to use the devices configuration as a base config on which to make the conversion.  
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[
@@ -171,19 +195,14 @@ values={[
 
 ```python
 print('CONVERT FORTINET CONFIGURATION TO PALO ALTO')
-data = {"resource":zipResource}
-r = requests.post(
-        'https://'+ip+'/api/v1/migration/convert', 
-        data=data, 
-        verify=False, 
-        headers=hed)
+data = {"file":originalConfigPath,"out":panosConfigPath,"vendor":vendor, "serial":serial}
+print(data)
+r = requests.post('https://'+ip+'/api/v1/external-tools/convert', data=data, verify=False, headers=hed)
 response=r.json()
 success = json.dumps(response['Contents']['success'])
 if success=='true':
     #print('Config converted successfully')
-    print(
-      json.dumps(
-         response['Contents']['response']['response-messages']['messages'][0]['message']))
+    print(json.dumps(response['Contents']['response']['response-messages']['messages'][0]['message']))
 print('')
 ```
 </TabItem> 
@@ -222,7 +241,7 @@ if ($success=='true'){
 package main
 import "fmt"
 
-func main() {Creating an Expedition project
+func main() {
     //TODO
 }
 ```
@@ -237,8 +256,8 @@ API syntax for Importing the PAN-OS Configuration into the project:
 
 | Method      | EndPoint                                   | Parameters | 
 |-------------|--------------------------------------------|------------|
-|       POST  | <small>`https://<ExpIP>/api/v1/projects/{projectId}/import`</small> | <small>_in url_<br/>**"project"**: "projectID"<br/><br/>_in body_<br/>{ **"resource"**: "configuration resource id" }</small>|
-| example     | <small>`https://10.0.0.1/api/v1/projects/1/import`</small>         | <small>_in url_<br/>project=1<br/><br/>_in body_<br/>{ "resource": "43232" }</small> |
+|       POST  | <small>`https://<ExpIP>/api/v1/projects/{projectId}/importConfig`</small> | <small>_in url_<br/>**"project"**: "projectID"<br/><br/>_in body_<br/>{**"config"**: "Panos Config file " }</small>|
+| example     | <small>`https://10.0.0.1/api/v1/projects/1/importConfig`</small>         | <small>_in url_<br/>project=1<br/><br/>_in body_<br/>{"config": "/tmp/convertedConfig.xml" }</small> |
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[
@@ -251,7 +270,7 @@ values={[
 
 ```python
 print('IMPORT CONFIGURATION')
-data = {"resource":converterConfig}
+data = {"config":panosConfigPath}
 r = requests.post('https://'+ip+'/api/v1/projects/'+projectId+'importConfig', data=data, verify=False, headers=hed)
 response=r.json()
 success = json.dumps(response['Contents']['success'])
@@ -708,7 +727,7 @@ API syntax for generating PAN-OS API calls:
 | Method | EndPoint                                                                                    | Parameters                                                              | 
 |-------------|----------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 |     POST    | <small>`https://<YourExpeditionIP>/api/v1/projects/{projectId}/apiCalls/{type}`</small>| <small>_in url_<br/>**"projectId"**-> Expedition Project ID,<br/>**"type"**-> "mega" or "atomic" or "subatomic" or "clear"<br/><br/> _in body_<br/>{**"serial"**: serial#ofyourFW",<br/>**"role"**: "admin",<br/>**"auth_type"**: "UserPassword",<br/>**"username"**: *"YourPAN-OSdeviceLoginusername"*,<br/>**"password"**: *"YourPAN-OSdeviceLoginpassword"*,<br/>**"sourceId"**: 0,<br/>**"action"**: "set"<br/>}</small> |  
-|     example | <small>`https://10.0.0.1/api/v1/projects/1/apiCalls/atomic`</small>          | <small>{"serial": 012123212,<br/>"role":"admin",<br/>"auth_type":"UserPassword",<br/>"username":"YourPAN-OSdeviceLoginusername",<br/>"password":"YourPAN-OSdeviceLoginpassword",<br/>"sourceId":0,<br/>"action":"set"<br/>}</small> |  
+|     example | <small>`https://<YourExpeditionIP>/api/v1/projects/1/apiCalls/atomic`</small>          | <small>{"serial": 012123212,<br/>"role":"admin",<br/>"auth_type":"UserPassword",<br/>"username":"YourPAN-OSdeviceLoginusername",<br/>"password":"YourPAN-OSdeviceLoginpassword",<br/>"sourceId":0,<br/>"action":"set"<br/>}</small> |  
 
 The response will provide us a list of the generated API calls with their corresponding ids and types and order of execution.  
 
@@ -780,7 +799,8 @@ API syntax for sending APIcalls to the PAN-OS Device:
  Method       | EndPoint                                                                              | Parameters                                                              | 
 |-------------|---------------------------------------------------------------------------------------|-------------------------------------------------------------------------|-----------------------------------------|
 |     POST    | <small>`https://<YourExpeditionIP>/api/v1/projects/{projectId}/device/push`</small>   | <small>_in url_<br/>**"projectId"**-> Expedition Project ID<br/><br/>_in body_<br/>{**"serial"**: serial#ofyourFW",<br/>**"source"**: PAN-OSconfigfile<br/>}</small> | 
-|     example | <small>`https://10.0.0.1/api/v1/projects/1/device/push`</small>             | <small>_in url_<br/>"projectId"= 1<br/><br/>_in body_<br/>{"serial": 01213221,<br/>"source":1<br/>}</small> | 
+|     example | <small>`https://<YourExpeditionIP>/api/v1/projects/1/device/push`</small>             | <small>_in url_<br/>"projectId"= 1<br/><br/>_in body_<br/>{"serial": 01213221,<br/>"source":1<br/>}</small> | 
+
 
 When submitting the API calls, we can enumerate those ones that we want to submit or, if none is specified, all the generated API calls will be submitted to the device in the order of execution.  
 

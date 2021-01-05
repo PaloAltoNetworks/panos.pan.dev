@@ -62,7 +62,7 @@ For more specific inquiries, please contact fwmigrate@paloaltonetworks.com
 |            | >R80                          |       ✅           |       ✅          |    ✅      |        ✅         |    ✅     |    ✅     |      ✅         |      ✅        |     |
 | <small>Cisco</small>      | ASA 9.0,9.1,9.2, 9.6,8.2,8.4   |       ✅           |       ✅          |    ✅      |        ✅         |    ✅     |    ✅     |      ✅         |      ✅        |  ✅  |
 |            | FirePower(only in ASA syntax) |       ✅           |       ✅          |    ✅      |        ✅         |    ✅     |    ✅     |      ✅         |      ✅        |     |
-| <small>Fortinet</small>   | Fortigate 4.0,5.0             |       ✅           |       ✅          |    ✅      |        ✅         |    ✅     |    ✅     |      ✅         |      ✅        |     |
+| <small>Fortinet</small>   | Fortigate 4.0,5.0,6.0             |       ✅           |       ✅          |    ✅      |        ✅         |    ✅     |    ✅     |      ✅         |      ✅        |     |
 | <small>Juniper</small>      | All Netscreen Firewalls(ScreenOS)   |       ✅           |       ✅          |    ✅      |        ✅         |    ✅     |    ✅     |      ✅         |      ✅        |  ✅  |
 |            | Junos 11.4,12.1,12.3 |       ✅           |       ✅          |    ✅      |        ✅         |    ✅     |    ✅     |      ✅         |      ✅        |   ✅   |
 | <small>Sonicwall</small>   | <6.5             |                  |       ✅          |    ✅      |        ✅         |    ✅     |    ✅     |      ✅         |      ✅        |     |

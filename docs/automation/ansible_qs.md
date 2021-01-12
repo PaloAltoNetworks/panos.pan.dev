@@ -17,9 +17,17 @@ API calls that are wrapped within the Ansible framework.
 
 - Free software: Apache 2.0 License
 - Documentation:
-  <https://ansible-pan.readthedocs.io>
+  <https://paloaltonetworks.github.io/pan-os-ansible/>
 - PANW community supported live page:
   <http://live.paloaltonetworks.com/ansible>
+
+## Ansible Collection
+
+The Palo Alto Networks Ansible collection can be used to automate configuration and operational tasks on Palo Alto Networks Next Generation Firewalls using the PAN-OS API.
+
+It is available under the **Apache 2.0** license.
+
+> <https://github.com/PaloAltoNetworks/pan-os-ansible/>
 
 ## Installation
 
@@ -37,28 +45,11 @@ collections:
     - paloaltonetworks.panos
 ```
 
-It is also available as free **Apache 2.0** licensed code from Palo Alto
-Networks Github repo if you want to see what is coming in the next release:
-
-> <https://github.com/PaloAltoNetworks/ansible-pan/>
-
 ## Sample playbooks
 
-Sample playbooks can be found within this repo under:
+A repository of sample playbooks, along with usage instructions is available at:
 
-    /examples
-    (e.g. /examples/fw_dag.yml)
-
-More comprehensive playbooks can be found under:
-
-    /ansible-playbooks/
-
-## Ansible galaxy collection
-
-The Palo Alto Networks Ansible modules project is a collection of Ansible modules to automate configuration and
-operational tasks on Palo Alto Networks _Next Generation Firewalls_. The underlying protocol uses API calls that are wrapped within Ansible framework.
-
-> <https://github.com/PaloAltoNetworks/ansible-pan/>
+> <https://github.com/PaloAltoNetworks/ansible-playbooks/>
 
 ## Support
 

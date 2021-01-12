@@ -129,3 +129,5 @@ If successful, the response from the API should look similar to the following:
 ## Explore the API
 
 Hungry for more? Check out the <a target="_blank" href="https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-panorama-api/get-started-with-the-pan-os-xml-api/explore-the-api.html">official XML API product documentation</a> for a complete reference of available API endpoints and commands.
+
+If you are using Postman, a <a target="_blank" href="https://documenter.getpostman.com/view/2937330/7LgDQwG">documented collection</a> is available.

@@ -131,26 +131,6 @@ module.exports = {
     ],
   ],
   customFields: {
-    docbar: {
-      options: [
-        {
-          to: "docs/apis",
-          label: "APIs and SDKs",
-        },
-        {
-          label: "Automation",
-          to: "docs/automation",
-        },
-        {
-          label: "Cloud Templates",
-          to: "docs/cloud",
-        },
-        {
-          label: "Expedition",
-          to: "docs/expedition",
-        },
-      ],
-    },
     sites: [
       {
         label: "Products",

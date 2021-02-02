@@ -172,7 +172,7 @@ module.exports = {
           },
           {
             href: "https://prisma.pan.dev",
-            label: "Prisma",
+            label: "Prisma Cloud",
             logo: "/img/prismafavicon.png",
           },
         ],

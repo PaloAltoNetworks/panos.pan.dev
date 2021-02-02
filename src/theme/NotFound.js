@@ -8,9 +8,8 @@ import React from 'react';
 import Layout from '@theme/Layout';
 
 function NotFound() {
-  return (
-    <Layout title="Page Not Found">
-      <div className="container margin-vert--xl">
+  return <Layout title="Page Not Found">
+      <main className="container margin-vert--xl">
         <div className="row">
           <div className="col col--6 col--offset-3">
             <h1 className="hero__title">Page Not Found</h1>
@@ -21,9 +20,8 @@ function NotFound() {
             </p>
           </div>
         </div>
-      </div>
-    </Layout>
-  );
+      </main>
+    </Layout>;
 }
 
 export default NotFound;

@@ -44,13 +44,16 @@ This code can be found at the following link:
 
 <a href="https://conversionupdates.paloaltonetworks.com/expedition2/examples/workflows.zip">https://conversionupdates.paloaltonetworks.com/expedition2/examples/workflows.zip</a>   
 
-### Step 1. Obtainig the API Keys
+### Step 1. Obtaining the API Keys
 
-Refer to [Obtaining the API Keys section](creating_credentials.mdx) to obtain a valid API key stored in the ```hed``` variable.
+Refer to [Obtaining the API Keys](creating_credentials.mdx) section to obtain a valid API key stored in the ```hed``` variable.
 
+### Step 2. Start the Expedition Agent
+
+Refer to [Managing Expedition's Agent](managing_expedition_agent) section  to start the agent and be able to perform imports into a project.
 
 ### Step 2. Creating an Expedition project    
-In the large amount of automation cases, we will require having an Expedition project. Making a POST call to the projects route, we can create a project with a desired name.
+In the large amount of automation cases, we will require having an Expedition project. Making a POST call to the project route, we can create a project with a desired name.
 By default, the creator of a project is as well one of the project administrators.
 Notice that this time we attach the credentials ```hed``` in the CURL headers to present our credentials and verify we have permission to create a project.  
 
@@ -58,8 +61,8 @@ API syntax for creating a new project:
 
 | Method      | EndPoint                                     | Parameters                     | 
 |-------------|----------------------------------------------|--------------------------------|
-|    POST     | <small>`https://<ExpIP>/api/v1/projects`</small> | <small>_in url_<br/>{ **"project"**:"project1", **"description"**:"Project for testing" }</small> |  
-|    example  | <small>`https://10.0.0.1/api/v1/projects`</small> | <small>{"project":"MyLittleProject", "description":"A migration project"}</small>           | 
+|    POST     | <small>`https://<ExpIP>/api/v1/project`</small> | <small>_in url_<br/>{ **"project"**:"project1", **"description"**:"Project for testing" }</small> |  
+|    example  | <small>`https://10.0.0.1/api/v1/project`</small> | <small>{"project":"MyLittleProject", "description":"A migration project"}</small>           | 
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[
@@ -73,7 +76,7 @@ values={[
 ```python
 print('CREATE NEW PROJECT')
 data = {"project":projectName}
-r = requests.post('https://'+ip+'/api/v1/projects', data=data, verify=False, headers=hed)
+r = requests.post('https://'+ip+'/api/v1/project', data=data, verify=False, headers=hed)
 response=r.json()
 success = json.dumps(response['Contents']['success'])
 if success=='true':
@@ -101,7 +104,7 @@ func main() {
 echo "\n";
 echo "CREATE NEW PROJECT\n";
 $data = ["project"=> $projectName];
-$url = 'https://'.$ip.'/api/v1/projects';
+$url = 'https://'.$ip.'/api/v1/project';
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
 curl_setopt($curl, CURLOPT_HTTPHEADER,$hed);
@@ -127,12 +130,18 @@ The migration process would require to upload one of more configuration files to
 A minimum one would be the original vendor configuration file, and we plan to support bringing also routing table files 
 to support dynamic routing tables which values are not specified in the firewall configuration.
 
-For example, you can upload the cisco configration "_cisco.asa.txt_" within the folder:  
-```console
-/var/www/html/expedition-api/contents/configSamples/CiscoCase/ 
-``` 
+The configurations to be migrated must be contained in a Zip file that provides the different configuration files and 
+some instructions on how the migration needs to be performed.
+More information about this Zip creation can be found in [Creating a migration file](creating_migration_zip.mdx) for a 
+manual Zip creation and in [Creating a migration file (by steps)](creating_migration_zip_2.mdx) for an assisted Zip creation.
 
-This folder should be reachable by the `www-data` user and its content should be readable by the user as well.
+(CASE A) In case of performing the Zip manually, make sure you:
+- name the Zip such as `zipArchive_<resourceId>.zip` in where `resourceId` is a numeric value you would later use to refer to the zip resourceId.
+For instance, _zipArchive_1234.zip_.
+- locate the zip file within the `/home/userSpace/uploads/`
+- the `zipArchive_<resourceId>.zip` has been set to allow `www-data` to read and write on it.
+
+(CASE B) If you follow the assisted Zip creation, the related API calls will provide you with the Zip resourceId.
 
 ### Step 4. Converting the source configuration to a PAN-OS configuration 
 The migration process takes one compressed ZIP file that encapsulates the file(s) from the original vendor(s) to be migrated,
@@ -141,19 +150,15 @@ where each configuration needs to be placed. For instance, this file will state 
 specific Device Group in a Panorama configuration, if we desire a specific routes file to be used for routing and zones calculations
 for a specific original configuration or if we desire some remapings to take place for specific networks or interfaces. 
 
-Supported vendors are Checkpoint, Cisco (ASA), Fortinet (Fortigate) and Juniper (Junos). <br/>
-Coming vendors, Cisco (Switch, ISR), Junper (Netscreen), PFSense, Sonicwall, Sophos. 
-  
-Refer to [Creating a migration ZIP file](creating_migration_zip) to obtain specific information on how to construct a ```ZIP file``` with the migration contents. 
+Refer to [Creating a migration ZIP file](creating_migration_zip) to see the list of supported vendors
 
 API syntax for Converting 3rd party vendors' configurations:  
 
 | Method      | URL                                                        | Parameters |
-|-------------|-----------------------------------------------------------------|------------|
-|       POST  | <small>`https://<ExpIP>/api/v1/migration/convert`</small>  | <small>_in body_<br/>{**"input"**: "path to the ZIP file",<br/>**"output"**: "path to the resulting PANOS config file",<br/>(optional) **dry-run**: boolean}</small>|
-|    example  | <small>`https://10.0.0.1/api/v1/migration/convert`</small> | <small>_in body_<br/>{"input": "/var/www/html/expedition-api/contents/configSamples/migration1.zip",<br/>"output":"/tmp/convertedConfig.xml",<br/> dry-run: true }</small>|
+|-------------|------------------------------------------------------------|------------|
+|       POST  | <small>`https://<ExpIP>/api/v1/migration/convert`</small>  | <small>_in body_<br/>{**"resource"**: "Zip resource id",<br/>(optional) **dry-run**: boolean}</small>|
+|    example  | <small>`https://10.0.0.1/api/v1/migration/convert`</small> | <small>_in body_<br/>{"resource": 1234,<br/> dry-run: true }</small>|
 
-In the case we have already imported a PAN-OS device into Expedition, it is also possible to provide that device’s identification to use the devices configuration as a base config on which to make the conversion.  
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[
@@ -166,14 +171,19 @@ values={[
 
 ```python
 print('CONVERT FORTINET CONFIGURATION TO PALO ALTO')
-data = {"file":originalConfigPath,"out":panosConfigPath,"vendor":vendor, "serial":serial}
-print(data)
-r = requests.post('https://'+ip+'/api/v1/external-tools/convert', data=data, verify=False, headers=hed)
+data = {"resource":zipResource}
+r = requests.post(
+        'https://'+ip+'/api/v1/migration/convert', 
+        data=data, 
+        verify=False, 
+        headers=hed)
 response=r.json()
 success = json.dumps(response['Contents']['success'])
 if success=='true':
     #print('Config converted successfully')
-    print(json.dumps(response['Contents']['response']['response-messages']['messages'][0]['message']))
+    print(
+      json.dumps(
+         response['Contents']['response']['response-messages']['messages'][0]['message']))
 print('')
 ```
 </TabItem> 
@@ -212,7 +222,7 @@ if ($success=='true'){
 package main
 import "fmt"
 
-func main() {
+func main() {Creating an Expedition project
     //TODO
 }
 ```
@@ -227,8 +237,8 @@ API syntax for Importing the PAN-OS Configuration into the project:
 
 | Method      | EndPoint                                   | Parameters | 
 |-------------|--------------------------------------------|------------|
-|       POST  | <small>`https://<ExpIP>/api/v1/projects/{projectId}/importConfig`</small> | <small>_in url_<br/>**"project"**: "projectID"<br/><br/>_in body_<br/>{**"config"**: "Panos Config file " }</small>|
-| example     | <small>`https://10.0.0.1/api/v1/projects/1/importConfig`</small>         | <small>_in url_<br/>project=1<br/><br/>_in body_<br/>{"config": "/tmp/convertedConfig.xml" }</small> |
+|       POST  | <small>`https://<ExpIP>/api/v1/project/{projectId}/import`</small> | <small>_in url_<br/>**"project"**: "projectID"<br/><br/>_in body_<br/>{ **"resource"**: "configuration resource id" }</small>|
+| example     | <small>`https://10.0.0.1/api/v1/project/1/import`</small>         | <small>_in url_<br/>project=1<br/><br/>_in body_<br/>{ "resource": "43232" }</small> |
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[
@@ -241,8 +251,8 @@ values={[
 
 ```python
 print('IMPORT CONFIGURATION')
-data = {"config":panosConfigPath}
-r = requests.post('https://'+ip+'/api/v1/projects/'+projectId+'importConfig', data=data, verify=False, headers=hed)
+data = {"resource":converterConfig}
+r = requests.post('https://'+ip+'/api/v1/project/'+projectId+'importConfig', data=data, verify=False, headers=hed)
 response=r.json()
 success = json.dumps(response['Contents']['success'])
 if success=='true':
@@ -257,7 +267,7 @@ print('')
 echo "\n";
 echo "IMPORT CONFIGURATION\n";
 $data = ["config" => $panosConfigPath];
-$url = 'https://'.$ip.'/api/v1/projects/'.$projectId.'/importConfig';
+$url = 'https://'.$ip.'/api/v1/project/'.$projectId.'/importConfig';
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_HTTPHEADER,$hed);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
@@ -612,8 +622,8 @@ API syntax for attach device to the Expedition project:
 
 | Method | EndPoint                                                          | Parameters                                                              | 
 |-------------|--------------------------------------------------------------|-------------------------------------------------------------------------|
-|     PUT     | <small>`https://<YourExpeditionIP>/api/v1/projects/`</small> | <small>_in body_<br/>{**"devices"**:["deviceID1", "deviceID2"], <br/>**"id"**:"projectID"}</small> |  
-|     example |  <small>`https://10.0.0.1/api/v1/projects/`</small>          |  <small><br/>{"devices": [1],<br/>"id": 1}</small>|
+|     PUT     | <small>`https://<YourExpeditionIP>/api/v1/project/`</small> | <small>_in body_<br/>{**"devices"**:["deviceID1", "deviceID2"], <br/>**"id"**:"projectID"}</small> |  
+|     example |  <small>`https://10.0.0.1/api/v1/project/`</small>          |  <small><br/>{"devices": [1],<br/>"id": 1}</small>|
 
 In the snippet below, we show how the device created above which id we prior stored in the **`deviceId`** variable, is attached to the newly created project.
 This call is making a modification on the project settings, therefore we are sending a PUT request to the project route.  
@@ -629,7 +639,7 @@ values={[
 ```python
 print('ASSIGN DEVICE TO PROJECT')
 data = {"devices":[deviceId],"id":projectId}
-r = requests.put('https://'+ip+'/api/v1/projects', data=data, verify=False, headers=hed)
+r = requests.put('https://'+ip+'/api/v1/project', data=data, verify=False, headers=hed)
 response=r.json()
 success = json.dumps(response['Contents']['success'])
 if success=='true':
@@ -645,7 +655,7 @@ echo "ASSIGN DEVICE TO PROJECT\n";
 $data = ["devices"=>[$deviceId],
         "id"=>$projectId];
 
-$url = 'https://'.$ip.'/api/v1/projects';
+$url = 'https://'.$ip.'/api/v1/project';
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_HTTPHEADER,$hed);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
@@ -697,8 +707,8 @@ API syntax for generating PAN-OS API calls:
 
 | Method | EndPoint                                                                                    | Parameters                                                              | 
 |-------------|----------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-|     POST    | <small>`https://<YourExpeditionIP>/api/v1/projects/{projectId}/apiCalls/{type}`</small>| <small>_in url_<br/>**"projectId"**-> Expedition Project ID,<br/>**"type"**-> "mega" or "atomic" or "subatomic" or "clear"<br/><br/> _in body_<br/>{**"serial"**: serial#ofyourFW",<br/>**"role"**: "admin",<br/>**"auth_type"**: "UserPassword",<br/>**"username"**: *"YourPAN-OSdeviceLoginusername"*,<br/>**"password"**: *"YourPAN-OSdeviceLoginpassword"*,<br/>**"sourceId"**: 0,<br/>**"action"**: "set"<br/>}</small> |  
-|     example | <small>`https://10.0.0.1/api/v1/projects/1/apiCalls/atomic`</small>          | <small>{"serial": 012123212,<br/>"role":"admin",<br/>"auth_type":"UserPassword",<br/>"username":"YourPAN-OSdeviceLoginusername",<br/>"password":"YourPAN-OSdeviceLoginpassword",<br/>"sourceId":0,<br/>"action":"set"<br/>}</small> |  
+|     POST    | <small>`https://<YourExpeditionIP>/api/v1/project/{projectId}/apiCalls/{type}`</small>| <small>_in url_<br/>**"projectId"**-> Expedition Project ID,<br/>**"type"**-> "mega" or "atomic" or "subatomic" or "clear"<br/><br/> _in body_<br/>{**"serial"**: serial#ofyourFW",<br/>**"role"**: "admin",<br/>**"auth_type"**: "UserPassword",<br/>**"username"**: *"YourPAN-OSdeviceLoginusername"*,<br/>**"password"**: *"YourPAN-OSdeviceLoginpassword"*,<br/>**"sourceId"**: 0,<br/>**"action"**: "set"<br/>}</small> |  
+|     example | <small>`https://10.0.0.1/api/v1/project/1/apiCalls/atomic`</small>          | <small>{"serial": 012123212,<br/>"role":"admin",<br/>"auth_type":"UserPassword",<br/>"username":"YourPAN-OSdeviceLoginusername",<br/>"password":"YourPAN-OSdeviceLoginpassword",<br/>"sourceId":0,<br/>"action":"set"<br/>}</small> |  
 
 The response will provide us a list of the generated API calls with their corresponding ids and types and order of execution.  
 
@@ -714,7 +724,7 @@ values={[
 ```python
 print('PUSH CONFIG TO DEVICE')
 data = {"source":source}
-r = requests.post('https://'+ip+'/api/v1/projects/'+projectId+'apiCalls/atomic', data=data, verify=False, headers=hed)
+r = requests.post('https://'+ip+'/api/v1/project/'+projectId+'apiCalls/atomic', data=data, verify=False, headers=hed)
 response=r.json()
 success = json.dumps(response['Contents']['success'])
 if success=='true':
@@ -731,7 +741,7 @@ echo "PUSH CONFIG TO DEVICE\n";
 $data = [
     "sourceId"=>$source
   ];
-$url = 'https://'.$ip.'/api/v1/projects/'.$projectId.'/apiCalls/atomic';
+$url = 'https://'.$ip.'/api/v1/project/'.$projectId.'/apiCalls/atomic';
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_HTTPHEADER,$hed);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
@@ -769,8 +779,8 @@ API syntax for sending APIcalls to the PAN-OS Device:
 
  Method       | EndPoint                                                                              | Parameters                                                              | 
 |-------------|---------------------------------------------------------------------------------------|-------------------------------------------------------------------------|-----------------------------------------|
-|     POST    | <small>`https://<YourExpeditionIP>/api/v1/projects/{projectId}/device/push`</small>   | <small>_in url_<br/>**"projectId"**-> Expedition Project ID<br/><br/>_in body_<br/>{**"serial"**: serial#ofyourFW",<br/>**"source"**: PAN-OSconfigfile<br/>}</small> | 
-|     example | <small>`https://10.0.0.1/api/v1/projects/1/device/push`</small>             | <small>_in url_<br/>"projectId"= 1<br/><br/>_in body_<br/>{"serial": 01213221,<br/>"source":1<br/>}</small> | 
+|     POST    | <small>`https://<YourExpeditionIP>/api/v1/project/{projectId}/device/push`</small>   | <small>_in url_<br/>**"projectId"**-> Expedition Project ID<br/><br/>_in body_<br/>{**"serial"**: serial#ofyourFW",<br/>**"source"**: PAN-OSconfigfile<br/>}</small> | 
+|     example | <small>`https://10.0.0.1/api/v1/project/1/device/push`</small>             | <small>_in url_<br/>"projectId"= 1<br/><br/>_in body_<br/>{"serial": 01213221,<br/>"source":1<br/>}</small> | 
 
 When submitting the API calls, we can enumerate those ones that we want to submit or, if none is specified, all the generated API calls will be submitted to the device in the order of execution.  
 
@@ -789,7 +799,7 @@ values={[
 
 ```python
 data = {"serial":serial,"source":source}
-r = requests.post('https://'+ip+'/api/v1/projects/'+projectID+'/device/push', data=data, verify=False, headers=hed)
+r = requests.post('https://'+ip+'/api/v1/project/'+projectID+'/device/push', data=data, verify=False, headers=hed)
 response=r.json()
 success = json.dumps(response['Contents']['success'])
 if success=='true':
@@ -830,7 +840,7 @@ $data = [
      "serial"=>$serial, 
      "source"=>$source
    ];
-$url = 'https://'.$ip.'/api/v1/projects/'.$projectId.'/device/push';
+$url = 'https://'.$ip.'/api/v1/project/'.$projectId.'/device/push';
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_HTTPHEADER,$hed);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
@@ -916,8 +926,8 @@ API syntax for export PAN-OS configuration from Expedition:
 
 | Method | EndPoint                                                                       | Parameters                                                              |
 |-------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-|     POST    | <small>`https://<ExpIP>/api/v1/projects/{projectId}/export`</small> | <small>_in url_<br/>{**"projectId"**->"$projectId"<br/><br/>_in body_<br/>{**"out:"**->PAN-OS configuration file,<br/>**"sourceID:"**->source configuration ID<br/>}</small> |  
-|     POST    | <small>`https://10.0.0.1/api/v1/projects/1/export`</small> | <small>_in url_<br/>"projectId"=1<br/><br/>_in body_<br/>{"out:"->"toExport.xml",<br/>"sourceID:"1}</small> |  
+|     POST    | <small>`https://<ExpIP>/api/v1/project/{projectId}/export`</small> | <small>_in url_<br/>{**"projectId"**->"$projectId"<br/><br/>_in body_<br/>{**"out:"**->PAN-OS configuration file,<br/>**"sourceID:"**->source configuration ID<br/>}</small> |  
+|     POST    | <small>`https://10.0.0.1/api/v1/project/1/export`</small> | <small>_in url_<br/>"projectId"=1<br/><br/>_in body_<br/>{"out:"->"toExport.xml",<br/>"sourceID:"1}</small> |  
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[
@@ -951,7 +961,7 @@ $data = [
      "sourceId"=>$source, 
      "out"=>"/home/userSpace/projects/$projectId/panos.xml"
    ];
-$url = 'https://'.$ip.'/api/v1/projects/'.$projectId.'/export';
+$url = 'https://'.$ip.'/api/v1/project/'.$projectId.'/export';
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_HTTPHEADER,$hed);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);

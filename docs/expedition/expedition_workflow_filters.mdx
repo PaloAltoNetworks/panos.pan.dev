@@ -1,0 +1,73 @@
+---
+id: expedition_workflow_filters
+title: Using Filters Workflow
+sidebar_label: Using Filters 
+hide_title: false
+description: Using Filters Workflow
+keywords:
+  - pan-os
+  - panos
+  - xml
+  - api
+  - expedition
+  - migration
+  - firewall
+  - configuration
+  - automation
+  - migration
+  - convertion
+
+image: /img/expedition.png
+---  
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Link from "@docusaurus/Link"; 
+export function SetLanguage (lang) {
+  if (typeof window !== 'undefined'){
+    localStorage.setItem('defaultLanguage', lang)
+    window.location.reload()
+  }
+}  
+
+
+
+**Choose language for code snippet**
+
+<a className="button button--primary" onClick={() => SetLanguage('python')}>Python</a>&nbsp;
+<a className="button button--info" onClick={() => SetLanguage('php')}>Php</a>&nbsp;
+<a className="button button--danger" onClick={() => SetLanguage('go')}>Go</a>
+<br/>
+<br/>
+
+In this section we present a workflow example to create a set of filters with one goal in mind.
+During the development of this section, we will learn on the usage of `predefined filters`, `simple filters`, 
+`complex filters` and `combination filters`; as well on the task related to their creation, monitoring on their execution state and collection of filtered results.
+
+This code can be found at the following link:
+
+<a href="https://conversionupdates.paloaltonetworks.com/expedition2/examples/workflows.zip">https://conversionupdates.paloaltonetworks.com/expedition2/examples/workflows.zip</a>   
+
+### Preamble A. Filter characteristics
+
+Expedition 2 allows creating filters on the different objects that a configuration contains. 
+restrict the target of actions, specifying the objects that should appear in reports, identifying objects
+that should be deleted, etc. 
+One filters may be desirable for multiple goals, therefore, the filters have been designed for 
+sharing and reuse.
+
+As main characteristics, we can state that filters are  
+- **named**, so we can identify them and refer to them
+- **executed in background**, as tasks that can be monitored and are non-blocking
+- **stored**, so we can get back to the results of a filter at any given point
+- **reusable**, in order to combine them in other filters
+- **exportable** between projects and between Expeditions, to be shared in the community or applied to multiple projects in an easy manner
+
+### Preamble B. Filters Types
+
+| Filter Type              | Description                                                                               | Example                  |  
+|--------------------------|-------------------------------------------------------------------------------------------|--------------------------|
+|    Predefined            | Predefined filters. This do not require parameters as the logic is intrinsic to the filter| <small>`fi1`: [address] is ipv4 </small>            |  
+|    Simple                | Filters that specify                                                                      | <small>`fi2`: [address,addressGroup] name contains 'DNS'           </small>      |
+|    Combination           | Filters that use other filters' results to evaluate the filter logic                      | <small>`fi3`: [securityRule] source contains filter `'fi2'`        </small>      |
+|    Operation             | Filters that perform boolean logic operations on other defined filters                    | <small>`fi4`: (filter `'fi1'` and filter `'fi2'`) or filter `'fi3'`</small>                  |
+

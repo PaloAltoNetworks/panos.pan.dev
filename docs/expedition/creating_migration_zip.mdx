@@ -1,7 +1,7 @@
 ---
 id: creating_migration_zip
 title: Migration Zip file
-sidebar_label: Creating a migration file
+sidebar_label: Creating a migration file (manual)
 hide_title: false
 description: Creating a migration file
 keywords:
@@ -108,17 +108,17 @@ The following is an example that represents the migration of three configuration
 - **cp-r80**  &rarr; Checkpoint > R80
 - **ciscoasa** &rarr; Cisco ASA
 - **fortinet**  &rarr; Fortinet Fortigate
+- **netscreen** &rarr; Juniper Netscreen
+- **sonicwall** &rarr; Sonicwall
 - **srx**  &rarr; Juniper Junos
 
 _**Coming soon:**_
 - _**ciscoswitch** &rarr; Cisco Switch_
 - _**ciscoisr** &rarr; Cisco ISR_
-- _**netscreen** &rarr; Juniper Netscreen_
 - _**pfsense** &rarr; Pfsense_
-- _**sonicwall** &rarr; Sonicwall_
 - _**sophos** &rarr; Sophos_
-:::  
-  
+:::
+
 ### Obtaining Third party vendor's configuration information
 To assist you in the generation of the mapping.json file, we can call a ``discovery`` method that would analyze a 
 configuration file and, depending on the vendor, will provide back a set of valid options.

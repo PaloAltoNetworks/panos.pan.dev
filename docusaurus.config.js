@@ -6,8 +6,7 @@
  */
 
 module.exports = {
-  title: "Next-gen Automation",
-  tagline: "with the only next-gen security platform",
+  title: "Palo Alto Networks for Developers",
   url: "https://panos.pan.dev",
   baseUrl: "/",
   favicon: "img/strata_favicon.png",
@@ -30,8 +29,8 @@ module.exports = {
       title: "",
       logo: {
         alt: "PAN-OS® for Developers",
-        src: "img/Strata_Tagline_Logo_RGB.png",
-        srcDark: "img/Strata_Tagline_Logo_RGB_Nameplate_Reversed.png",
+        src: "img/Strata_Tagline_Logo_RGB.svg",
+        srcDark: "img/Strata_Tagline_Logo_RGB_Nameplate_Reversed.svg",
       },
       items: [
         {

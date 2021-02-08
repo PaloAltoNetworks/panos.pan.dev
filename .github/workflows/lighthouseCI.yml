@@ -11,8 +11,8 @@ jobs:
         uses: jakepartusch/wait-for-netlify-action@v1
         id: netlify
         with:
-          site_name: 'docusaurus-2'
-          max_timeout: 600
+          site_name: 'panos-pan-dev'
+          max_timeout: 1800
       - name: Audit URLs using Lighthouse
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v3

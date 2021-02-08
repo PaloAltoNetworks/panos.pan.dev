@@ -53,6 +53,10 @@
   --ifm-list-margin: var(--ifm-leading);
   --ifm-font-family-base: 'Montserrat', sans-serif, 'Font Awesome 5 Free';
   --ifm-font-family-monospace: 'Roboto Mono', monospace;
+  /* Links */
+  --ifm-link-color: var(--ifm-color-primary-dark);
+  --ifm-link-hover-color: var(--ifm-color-primary-darker);
+  --ifm-navbar-link-hover-color: var(--ifm-color-primary-dark);
 }
 
 /* Dark mode overrides */
@@ -68,6 +72,7 @@ html[data-theme="dark"] {
   --ifm-color-emphasis-900: var(--ifm-color-gray-100);
   --ifm-background-color: #3b4446;
   --ifm-navbar-background-color: #2d3436;
+  --ifm-navbar-link-hover-color: var(--ifm-color-primary-dark) !important;
   --ifm-background-surface-color: #3b4446;
   --ifm-footer-background-color: #2d3436 !important;
   --ifm-footer-link-color: #fff;
@@ -88,6 +93,8 @@ html[data-theme="dark"] {
   /* Code background and color */
   --ifm-code-background: #282d33;
   --ifm-code-color: #fff;
+
+  --ifm-menu-link-sublist-icon-filter: none !important;
 }
 
 /* Center all columns in main wrapper */ 

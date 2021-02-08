@@ -31,8 +31,8 @@ module.exports = {
       title: "",
       logo: {
         alt: "PAN-OS® for Developers",
-        src: "img/Strata_Tagline_Logo_RGB.png",
-        srcDark: "img/Strata_Tagline_Logo_RGB_Nameplate_Reversed.png",
+        src: "img/Strata_Tagline_Logo_RGB.svg",
+        srcDark: "img/Strata_Tagline_Logo_RGB_Nameplate_Reversed.svg",
       },
       items: [
         {

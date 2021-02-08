@@ -11,99 +11,8 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import classnames from "classnames";
 import React, { useRef } from "react";
-import Particles from "react-particles-js";
 import ScrollUpButton from "react-scroll-up-button";
 import styles from "./styles.module.css";
-
-const particlesOptions = {
-  particles: {
-    number: {
-      value: 100,
-      density: {
-        enable: true,
-        value_area: 900,
-      },
-    },
-    color: {
-      value: "#ffffff",
-    },
-    shape: {
-      type: "circle",
-      stroke: {
-        width: 0,
-        color: "#000000",
-      },
-      polygon: {
-        nb_sides: 5,
-      },
-      image: {
-        src: "img/github.svg",
-        width: 100,
-        height: 100,
-      },
-    },
-    opacity: {
-      value: 0.2,
-      random: false,
-      anim: {
-        enable: false,
-        speed: 1,
-        opacity_min: 0.2,
-        sync: false,
-      },
-    },
-    size: {
-      value: 3,
-      random: true,
-      anim: {
-        enable: false,
-        speed: 40,
-        size_min: 0.1,
-        sync: false,
-      },
-    },
-    line_linked: {
-      enable: true,
-      distance: 250,
-      color: "#ffffff",
-      opacity: 0.2,
-      width: 1,
-    },
-    move: {
-      enable: true,
-      speed: 4,
-      direction: "none",
-      random: false,
-      straight: false,
-      out_mode: "out",
-      bounce: false,
-      attract: {
-        enable: false,
-        rotateX: 600,
-        rotateY: 1200,
-      },
-    },
-  },
-  interactivity: {
-    detect_on: "canvas",
-    events: {
-      onhover: {
-        enable: true,
-        mode: "grab",
-      },
-      resize: true,
-    },
-    modes: {
-      grab: {
-        distance: 200,
-        line_linked: {
-          opacity: 0.4,
-        },
-      },
-    },
-  },
-  retina_detect: true,
-};
 
 const features = [
   {
@@ -119,8 +28,8 @@ const features = [
       <div className={styles.buttons}>
         <Link
           className={classnames(
-            "button button--outline button--primary button--md",
-            styles.getStarted
+            "button button--primary button--md",
+            styles.featureButtons
           )}
           href="/docs/apis"
         >
@@ -142,8 +51,8 @@ const features = [
       <div className={styles.buttons}>
         <Link
           className={classnames(
-            "button button--outline button--primary button--md",
-            styles.getStarted
+            "button button--primary button--md",
+            styles.featureButtons
           )}
           href="/docs/automation"
         >
@@ -165,8 +74,8 @@ const features = [
       <div className={styles.buttons}>
         <Link
           className={classnames(
-            "button button--outline button--primary button--md",
-            styles.getStarted
+            "button button--primary button--md",
+            styles.featureButtons
           )}
           href="/docs/cloud"
         >
@@ -188,8 +97,8 @@ const features = [
       <div className={styles.buttons}>
         <Link
           className={classnames(
-            "button button--outline button--primary button--md",
-            styles.getStarted
+            "button button--primary button--md",
+            styles.featureButtons
           )}
           href="/docs/expedition"
         >
@@ -231,13 +140,11 @@ function Home() {
     <Layout
       title={`${siteConfig.themeConfig.navbar.title}`}
       description="All things related to automation and development with PAN-OS®"
+      wrapperClassName="homepage"
     >
       <ScrollUpButton />
       <header className={classnames("hero hero--primary", styles.heroBanner)}>
         <div className="container">
-          <div>
-            <Particles className="particles" params={particlesOptions} />
-          </div>
           <h1 className="hero__title">
             <span className={styles.heroProjectKeywords}>Build</span>{" "}
             <span className={styles.heroProjectText}>Next-gen Automation</span>
@@ -251,10 +158,7 @@ function Home() {
           </h6>
           <div className={styles.buttons}>
             <Link
-              className={classnames(
-                "button button--outline button--secondary button--lg",
-                styles.getStarted
-              )}
+              className={classnames("button button--lg", styles.getStarted)}
               onClick={scrollToTools}
             >
               Explore Tools
@@ -285,14 +189,17 @@ function Home() {
                     alt="Expedition 2.0"
                   />
                 </div>
-                <h1>Expedition 2.0</h1>
+                <h1 className={styles.text__dark}>Expedition 2.0</h1>
                 <p className={styles.text__gray}>
                   Migrate configuration from legacy firewalls to Palo Alto
                   Networks
                 </p>
                 <div>
                   <Link
-                    className={classnames("button button--info button--md")}
+                    className={classnames(
+                      "button button--info button--lg",
+                      styles.expeditionButton
+                    )}
                     href="/docs/expedition"
                   >
                     Learn More
@@ -330,7 +237,7 @@ function Home() {
                 <div className={styles.buttons}>
                   <Link
                     className={classnames(
-                      "button button--outline button--primary button--md",
+                      "button button--info button--md",
                       styles.quickstart
                     )}
                     href="/docs/apis/pandevice_qs"
@@ -339,20 +246,17 @@ function Home() {
                   </Link>
                   <Link
                     className={classnames(
-                      "button button--outline button--primary button--md",
+                      "button button--secondary button--md",
                       styles.github
                     )}
                     href="https://github.com/PaloAltoNetworks/pandevice"
                   >
-                    <img
-                      src="/img/GitHub_Logo_White.png"
-                      width="auto"
-                      height="19"
-                    />
+                    <i
+                      className={classnames("fab fa-github", styles.githubFont)}
+                    ></i>
                   </Link>
                 </div>
               </div>
-
               {/* PAN Python SDK */}
               <div className={classnames("col col--3", styles.tools)}>
                 <div className="text--center">
@@ -369,7 +273,7 @@ function Home() {
                 <div className={styles.buttons}>
                   <Link
                     className={classnames(
-                      "button button--outline button--primary button--md",
+                      "button button--info button--md",
                       styles.quickstart
                     )}
                     href="/docs/apis/panpython_qs"
@@ -378,20 +282,17 @@ function Home() {
                   </Link>
                   <Link
                     className={classnames(
-                      "button button--outline button--primary button--md",
+                      "button button--secondary button--md",
                       styles.github
                     )}
                     href="https://github.com/kevinsteves/pan-python"
                   >
-                    <img
-                      src="/img/GitHub_Logo_White.png"
-                      width="auto"
-                      height="19"
-                    />
+                    <i
+                      className={classnames("fab fa-github", styles.githubFont)}
+                    ></i>
                   </Link>
                 </div>
               </div>
-
               {/* PAN Go SDK */}
               <div className={classnames("col col--3", styles.tools)}>
                 <div className="text--center">
@@ -408,7 +309,7 @@ function Home() {
                 <div className={styles.buttons}>
                   <Link
                     className={classnames(
-                      "button button--outline button--primary button--md",
+                      "button button--info button--md",
                       styles.quickstart
                     )}
                     href="/docs/apis/pango_qs"
@@ -417,20 +318,17 @@ function Home() {
                   </Link>
                   <Link
                     className={classnames(
-                      "button button--outline button--primary button--md",
+                      "button button--secondary button--md",
                       styles.github
                     )}
                     href="https://github.com/PaloAltoNetworks/pango"
                   >
-                    <img
-                      src="/img/GitHub_Logo_White.png"
-                      width="auto"
-                      height="19"
-                    />
+                    <i
+                      className={classnames("fab fa-github", styles.githubFont)}
+                    ></i>
                   </Link>
                 </div>
               </div>
-
               {/* Ansible */}
               <div className={classnames("col col--3", styles.tools)}>
                 <div className="text--center">
@@ -447,7 +345,7 @@ function Home() {
                 <div className={styles.buttons}>
                   <Link
                     className={classnames(
-                      "button button--outline button--primary button--md",
+                      "button button--info button--md",
                       styles.quickstart
                     )}
                     href="/docs/automation/ansible_qs"
@@ -456,20 +354,17 @@ function Home() {
                   </Link>
                   <Link
                     className={classnames(
-                      "button button--outline button--primary button--md",
+                      "button button--secondary button--md",
                       styles.github
                     )}
                     href="https://github.com/PaloAltoNetworks/ansible-pan"
                   >
-                    <img
-                      src="/img/GitHub_Logo_White.png"
-                      width="auto"
-                      height="19"
-                    />
+                    <i
+                      className={classnames("fab fa-github", styles.githubFont)}
+                    ></i>
                   </Link>
                 </div>
               </div>
-
               {/* Expedition */}
               <div
                 className={classnames("col col--3 col--offset-1", styles.tools)}
@@ -489,7 +384,7 @@ function Home() {
                 <div className={styles.buttons}>
                   <Link
                     className={classnames(
-                      "button button--outline button--primary button--md",
+                      "button button--info button--md",
                       styles.quickstart
                     )}
                     href="/docs/expedition/expedition_qs"
@@ -498,16 +393,17 @@ function Home() {
                   </Link>
                   <Link
                     className={classnames(
-                      "button button--outline button--primary button--md",
+                      "button button--secondary button--md",
                       styles.github
                     )}
                     href="https://live.paloaltonetworks.com/t5/expedition-migration-tool/ct-p/migration_tool"
                   >
-                    Community
+                    <i
+                      className={classnames("fas fa-users", styles.githubFont)}
+                    ></i>
                   </Link>
                 </div>
               </div>
-
               {/* Terraform Templates */}
               <div className={classnames("col col--3", styles.tools)}>
                 <div className="text--center">
@@ -524,7 +420,7 @@ function Home() {
                 <div className={styles.buttons}>
                   <Link
                     className={classnames(
-                      "button button--outline button--primary button--md",
+                      "button button--info button--md",
                       styles.quickstart
                     )}
                     href="/docs/automation/terraform_qs"
@@ -533,20 +429,17 @@ function Home() {
                   </Link>
                   <Link
                     className={classnames(
-                      "button button--outline button--primary button--md",
+                      "button button--secondary button--md",
                       styles.github
                     )}
                     href="https://github.com/PaloAltoNetworks/terraform-templates"
                   >
-                    <img
-                      src="/img/GitHub_Logo_White.png"
-                      width="auto"
-                      height="19"
-                    />
+                    <i
+                      className={classnames("fab fa-github", styles.githubFont)}
+                    ></i>
                   </Link>
                 </div>
               </div>
-
               {/* Cloud Templates */}
               <div className={classnames("col col--3", styles.tools)}>
                 <div className="text--center">
@@ -563,7 +456,7 @@ function Home() {
                 <div className={styles.buttons}>
                   <Link
                     className={classnames(
-                      "button button--outline button--primary button--md",
+                      "button button--info button--md",
                       styles.quickstart
                     )}
                     href="/docs/cloud"
@@ -572,12 +465,14 @@ function Home() {
                   </Link>
                   <Link
                     className={classnames(
-                      "button button--outline button--primary button--md",
+                      "button button--secondary button--md",
                       styles.github
                     )}
                     href="https://live.paloaltonetworks.com/t5/Cloud-Integration/ct-p/Cloud_Templates"
                   >
-                    Community
+                    <i
+                      className={classnames("fas fa-users", styles.githubFont)}
+                    ></i>
                   </Link>
                 </div>
               </div>

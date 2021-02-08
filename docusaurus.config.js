@@ -41,14 +41,15 @@ module.exports = {
         },
         {
           href: "https://medium.com/palo-alto-networks-developer-blog",
-          label: "Blog",
           position: "right",
+          className: "header-medium-link",
+          "aria-label": "Palo Alto Networks Developer Blog",
         },
         {
           href: "https://github.com/PaloAltoNetworks",
           position: "right",
           className: "header-github-link",
-          "aria-label": "GitHub repository",
+          "aria-label": "Palo Alto Networks GitHub Org",
         },
       ],
     },
@@ -85,8 +86,11 @@ module.exports = {
           title: "Social",
           items: [
             {
-              label: "Blog",
-              href: "https://medium.com/palo-alto-networks-developer-blog",
+              html: `
+                <a href="https://medium.com/palo-alto-networks-developer-blog" target="_blank" rel="noreferrer noopener" aria-label="Palo Alto Networks Developer Blog">
+                  <i class="fab fa-medium fa-2x"></i>
+                </a>
+              `,
             },
           ],
         },
@@ -160,4 +164,11 @@ module.exports = {
   },
   onBrokenLinks: "error",
   onDuplicateRoutes: "error",
+  stylesheets: [
+    {
+      href: "https://use.fontawesome.com/releases/v5.15.0/css/all.css",
+      type: "text/css",
+      rel: "stylesheet",
+    },
+  ],
 };

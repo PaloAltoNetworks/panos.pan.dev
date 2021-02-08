@@ -10,11 +10,30 @@
  * and scoped locally.
  */
 
+ /* Hero */
 .heroBanner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  min-height: 380px;
+}
+
+.hero__title {
+  z-index: 1 !important;
+}
+
+.hero__subtitle {
+  z-index: 1 !important;
+  color: #a4a9ad !important;
+}
+
+.heroProjectKeywords {
+  color: var(--ifm-color-black);
+}
+
+.heroProjectText {
+  color: var(--ifm-color-white);
 }
 
 @media screen and (max-width: 966px) {
@@ -23,6 +42,27 @@
   }
 }
 
+.particles {
+  background-color: "#262941";
+  z-index: -10;
+  position: "absolute";
+  width: "100%";
+  height: "100%";
+  top: 0;
+  left: 0;
+}
+
+.getStarted {
+  background-color: #000000;
+  border-width: 0px;
+  color: #fff !important;
+}
+
+.getStarted:hover {
+  background-color: #333333; /* Green */
+}
+
+/* Tools */
 .buttons {
   display: flex;
   align-items: center;
@@ -34,6 +74,9 @@
   align-items: center;
   justify-content: center;
   border-radius: 1em 0 0 1em;
+  border-color: black;
+  border-right: 0;
+  color: var(--ifm-font-color) !important;
 }
 
 .github {
@@ -41,31 +84,49 @@
   align-items: center;
   justify-content: center;
   border-radius: 0 1em 1em 0;
+  border-color: black;
 }
 
-.description {
-  margin-bottom: 2rem !important;
+.githubFont {
+  font-size: 1.5em;
 }
 
-.docs {
-  display: flex;
+.tools {
   align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+  color: white;
+  text-align: center;
   justify-content: center;
-  margin-bottom: 2rem;
+  background-color: #3b4446;
 }
 
-.buttons-tools-github {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0 1em 1em 0 !important;
+.toolImage {
+  height: 80px;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  padding: 1rem 0;
 }
 
+.text__gray {
+  color: #a4a9ad !important;
+}
+
+.text__dark {
+  color: #333333 !important;
+}
+
+/* Features */
 .features {
   align-items: center;
   padding: 2rem 0;
   width: 100%;
   display: flex;
+}
+
+.featureButtons {
+  color: #fff !important;
 }
 
 .card {
@@ -84,19 +145,14 @@
 
 .cardBody {
   text-align: center;
+  padding-bottom: inherit;
 }
 
-.tools {
-  align-items: center;
-  padding: 2rem 0;
-  width: 100%;
-  display: flex;
-  color: white;
-  text-align: center;
-  justify-content: center;
-  background-color: #3b4446;
+.cardFooter {
+  margin-top: inherit;
 }
 
+/* Expedition */
 .expedition {
   align-items: left;
   padding: 2rem 0;
@@ -105,33 +161,7 @@
   color: white;
   text-align: left;
   justify-content: left;
-  background-color: #dfe6e9;
-}
-
-.headerImage {
-  height: 300px;
-  width: 200px;
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  padding: 1rem 0;
-}
-
-.featureImage {
-  height: 150px;
-  width: 100px;
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  padding: 1rem 0;
-}
-
-.toolImage {
-  height: 80px;
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  padding: 1rem 0;
+  background-color: #F5F5FA;
 }
 
 .expeditionImage {
@@ -139,36 +169,6 @@
   width: auto;
 }
 
-.particles {
-  background-color: "#262941";
-  z-index: -10;
-  position: "absolute";
-  width: "100%";
-  height: "100%";
-  top: 0;
-  left: 0;
-}
-
-.description {
-  padding-bottom: 10px !important;
-}
-.hero__title {
-  z-index: 1 !important;
-}
-
-.hero__subtitle {
-  z-index: 1 !important;
-  color: #a4a9ad !important;
-}
-
-.heroProjectKeywords {
-  color: var(--ifm-color-black);
-}
-
-.heroProjectText {
-  color: var(--ifm-color-white);
-}
-
-.text__gray {
-  color: #a4a9ad !important;
+.expeditionButton {
+  color: white;
 }

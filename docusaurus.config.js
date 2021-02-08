@@ -126,6 +126,7 @@ module.exports = {
     [
       "@docusaurus/plugin-sitemap",
       {
+        id: "panos-site-map",
         cacheTime: 600 * 1000, // 600 sec - cache purge period
         changefreq: "weekly",
         priority: 0.5,
@@ -162,8 +163,8 @@ module.exports = {
       },
     ],
   },
-  onBrokenLinks: "error",
-  onDuplicateRoutes: "error",
+  onBrokenLinks: "warn",
+  onDuplicateRoutes: "warn",
   stylesheets: [
     {
       href: "https://use.fontawesome.com/releases/v5.15.0/css/all.css",

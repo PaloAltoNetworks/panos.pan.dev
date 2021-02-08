@@ -6,8 +6,7 @@
  */
 
 module.exports = {
-  title: "Next-gen Automation",
-  tagline: "with the only next-gen security platform",
+  title: "Palo Alto Networks for Developers",
   url: "https://panos.pan.dev",
   baseUrl: "/",
   favicon: "img/strata_favicon.png",
@@ -30,8 +29,8 @@ module.exports = {
       title: "",
       logo: {
         alt: "PAN-OS® for Developers",
-        src: "img/Strata_Tagline_Logo_RGB.png",
-        srcDark: "img/Strata_Tagline_Logo_RGB_Nameplate_Reversed.png",
+        src: "img/Strata_Tagline_Logo_RGB.svg",
+        srcDark: "img/Strata_Tagline_Logo_RGB_Nameplate_Reversed.svg",
       },
       items: [
         {
@@ -41,14 +40,15 @@ module.exports = {
         },
         {
           href: "https://medium.com/palo-alto-networks-developer-blog",
-          label: "Blog",
           position: "right",
+          className: "header-medium-link",
+          "aria-label": "Palo Alto Networks Developer Blog",
         },
         {
           href: "https://github.com/PaloAltoNetworks",
           position: "right",
           className: "header-github-link",
-          "aria-label": "GitHub repository",
+          "aria-label": "Palo Alto Networks GitHub Org",
         },
       ],
     },
@@ -85,8 +85,11 @@ module.exports = {
           title: "Social",
           items: [
             {
-              label: "Blog",
-              href: "https://medium.com/palo-alto-networks-developer-blog",
+              html: `
+                <a href="https://medium.com/palo-alto-networks-developer-blog" target="_blank" rel="noreferrer noopener" aria-label="Palo Alto Networks Developer Blog">
+                  <i class="fab fa-medium fa-2x"></i>
+                </a>
+              `,
             },
           ],
         },
@@ -105,7 +108,6 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          homePageId: "_index",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl:
             "https://github.com/PaloAltoNetworks/panos.pan.dev/tree/master",
@@ -123,7 +125,7 @@ module.exports = {
     [
       "@docusaurus/plugin-sitemap",
       {
-        id: "trash-sitemap-1",
+        id: "panos-site-map",
         cacheTime: 600 * 1000, // 600 sec - cache purge period
         changefreq: "weekly",
         priority: 0.5,
@@ -131,26 +133,6 @@ module.exports = {
     ],
   ],
   customFields: {
-    docbar: {
-      options: [
-        {
-          to: "docs/apis",
-          label: "APIs and SDKs",
-        },
-        {
-          label: "Automation",
-          to: "docs/automation",
-        },
-        {
-          label: "Cloud Templates",
-          to: "docs/cloud",
-        },
-        {
-          label: "Expedition",
-          to: "docs/expedition",
-        },
-      ],
-    },
     sites: [
       {
         label: "Products",
@@ -180,6 +162,13 @@ module.exports = {
       },
     ],
   },
-  onBrokenLinks: "error",
-  onDuplicateRoutes: "error",
+  onBrokenLinks: "warn",
+  onDuplicateRoutes: "warn",
+  stylesheets: [
+    {
+      href: "https://use.fontawesome.com/releases/v5.15.0/css/all.css",
+      type: "text/css",
+      rel: "stylesheet",
+    },
+  ],
 };

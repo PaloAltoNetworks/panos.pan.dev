@@ -5,39 +5,24 @@
  * LICENSE file in the root directory of this source tree.
  */
 import Link from "@docusaurus/Link";
+import { useThemeConfig } from "@docusaurus/theme-common";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useHideableNavbar from "@theme/hooks/useHideableNavbar";
 import useLockBodyScroll from "@theme/hooks/useLockBodyScroll";
-import useLogo from "@theme/hooks/useLogo";
 import useThemeContext from "@theme/hooks/useThemeContext";
 import useWindowSize, { windowSizes } from "@theme/hooks/useWindowSize";
-import NavbarItem from "@theme/NavbarItem"; // retrocompatible with v1
+import IconMenu from "@theme/IconMenu";
+import Logo from "@theme/Logo";
+import NavbarItem from "@theme/NavbarItem";
 import SearchBar from "@theme/SearchBar";
 import Toggle from "@theme/Toggle";
 import clsx from "clsx";
 import React, { useCallback, useEffect, useState } from "react";
-import styles from "./styles.module.css";
+import styles from "./styles.module.css"; // retrocompatible with v1
 
 const DefaultNavItemPosition = "right"; // If split links by left/right
 // if position is unspecified, fallback to right (as v1)
-
-function splitNavItemsByPosition(items) {
-  const leftItems = items.filter(
-    (item) => (item.position ?? DefaultNavItemPosition) === "left"
-  );
-  const rightItems = items.filter(
-    (item) => (item.position ?? DefaultNavItemPosition) === "right"
-  );
-  const productItems = items.filter(
-    (item) => (item.position ?? DefaultNavItemPosition) === "products"
-  );
-  return {
-    leftItems,
-    rightItems,
-    productItems,
-  };
-}
 
 function NavLink({
   activeBasePath,
@@ -153,7 +138,6 @@ function SiteItem({
   return (
     <div
       className={clsx("navbar__item", "dropdown", "dropdown--hoverable", {
-        "dropdown--left": position === "left",
         "dropdown--right": position === "right",
         "dropdown--left": position === "products",
       })}
@@ -191,9 +175,9 @@ function MobileSiteItem({ items, position: _position, className, ...props }) {
   // Need to destructure position from props so that it doesn't get passed on.
   const navLinkClassNames = (extraClassName, isSubList = false) =>
     clsx(
-      "menu__link",
+      "menu__link no_dropdown",
       {
-        "menu__link--sublist no_dropdown": isSubList,
+        "menu__link--sublist": isSubList,
       },
       extraClassName
     );
@@ -229,22 +213,37 @@ function MobileSiteItem({ items, position: _position, className, ...props }) {
   );
 }
 
+function splitNavItemsByPosition(items) {
+  const leftItems = items.filter(
+    (item) => (item.position ?? DefaultNavItemPosition) === "left"
+  );
+  const rightItems = items.filter(
+    (item) => (item.position ?? DefaultNavItemPosition) === "right"
+  );
+  const productItems = items.filter(
+    (item) => (item.position ?? DefaultNavItemPosition) === "products"
+  );
+  return {
+    leftItems,
+    rightItems,
+    productItems,
+  };
+}
+
 function Navbar() {
   const {
     siteConfig: {
-      themeConfig: {
-        navbar: { title = "", items = [], hideOnScroll = false } = {},
-        colorMode: { disableSwitch: disableColorModeSwitch = false } = {},
-      },
       customFields: { sites = [] },
     },
-    isClient,
   } = useDocusaurusContext();
+  const {
+    navbar: { items, hideOnScroll, style },
+    colorMode: { disableSwitch: disableColorModeSwitch },
+  } = useThemeConfig();
   const [sidebarShown, setSidebarShown] = useState(false);
   const [isSearchBarExpanded, setIsSearchBarExpanded] = useState(false);
   const { isDarkTheme, setLightTheme, setDarkTheme } = useThemeContext();
   const { navbarRef, isNavbarVisible } = useHideableNavbar(hideOnScroll);
-  const { logoLink, logoLinkProps, logoImageUrl, logoAlt } = useLogo();
   useLockBodyScroll(sidebarShown);
   const showSidebar = useCallback(() => {
     setSidebarShown(true);
@@ -262,7 +261,6 @@ function Navbar() {
       setSidebarShown(false);
     }
   }, [windowSize]);
-
   const allItems = items.concat(sites);
   const { leftItems, rightItems, productItems } = splitNavItemsByPosition(
     allItems
@@ -270,7 +268,9 @@ function Navbar() {
   return (
     <nav
       ref={navbarRef}
-      className={clsx("navbar", "navbar--light", "navbar--fixed-top", {
+      className={clsx("navbar", "navbar--fixed-top", {
+        "navbar--dark": style === "dark",
+        "navbar--primary": style === "primary",
         "navbar-sidebar--show": sidebarShown,
         [styles.navbarHideable]: hideOnScroll,
         [styles.navbarHidden]: !isNavbarVisible,
@@ -287,51 +287,23 @@ function Navbar() {
               onClick={showSidebar}
               onKeyDown={showSidebar}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
-                viewBox="0 0 30 30"
-                role="img"
-                focusable="false"
-              >
-                <title>Menu</title>
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeMiterlimit="10"
-                  strokeWidth="2"
-                  d="M4 7h22M4 15h22M4 23h22"
-                />
-              </svg>
+              <IconMenu />
             </div>
           )}
-          <Link className="navbar__brand" to={logoLink} {...logoLinkProps}>
-            {logoImageUrl != null && (
-              <img
-                key={isClient}
-                className="navbar__logo"
-                src={logoImageUrl}
-                alt={logoAlt}
-              />
-            )}
-            {title != null && (
-              <strong
-                className={clsx("navbar__title", {
-                  [styles.hideLogoText]: isSearchBarExpanded,
-                })}
-              >
-                {title}
-              </strong>
-            )}
-          </Link>
+          <Logo
+            className="navbar__brand"
+            imageClassName="navbar__logo"
+            titleClassName={clsx("navbar__title", {
+              [styles.hideLogoText]: isSearchBarExpanded,
+            })}
+          />
           {leftItems.map((item, i) => (
             <NavbarItem {...item} key={i} />
           ))}
         </div>
         <div className="navbar__items navbar__items--right">
-          {productItems.map((item, i) => (
-            <SiteItem {...item} key={i} />
+          {productItems.map((linkItem, i) => (
+            <SiteItem {...linkItem} key={i} />
           ))}
           {rightItems.map((item, i) => (
             <NavbarItem {...item} key={i} />
@@ -357,24 +329,12 @@ function Navbar() {
       />
       <div className="navbar-sidebar">
         <div className="navbar-sidebar__brand">
-          <Link
+          <Logo
             className="navbar__brand"
+            imageClassName="navbar__logo"
+            titleClassName="navbar__title"
             onClick={hideSidebar}
-            to={logoLink}
-            {...logoLinkProps}
-          >
-            {logoImageUrl != null && (
-              <img
-                key={isClient}
-                className="navbar__logo"
-                src={logoImageUrl}
-                alt={logoAlt}
-              />
-            )}
-            {title != null && (
-              <strong className="navbar__title">{title}</strong>
-            )}
-          </Link>
+          />
           {!disableColorModeSwitch && sidebarShown && (
             <Toggle
               aria-label="Dark mode toggle in sidebar"

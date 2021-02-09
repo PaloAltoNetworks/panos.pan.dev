@@ -7,12 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Wait for the Netlify Preview
-        uses: jakepartusch/wait-for-netlify-action@v1
-        id: netlify
+      - name: Waiting for Netlify build preview
+        uses: probablyup/wait-for-netlify-action@3.2.0
+        id: waitForNetlifyDeploy
         with:
-          site_name: 'panos-pan-dev'
-          max_timeout: 1800
+          site_id: 'panos-pan-dev'
+        env:
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
       - name: Audit URLs using Lighthouse
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v3

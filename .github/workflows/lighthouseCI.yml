@@ -12,6 +12,7 @@ jobs:
         id: wait_for_netlify_deploy
         with:
           site_name: "panos-pan-dev"
+          max_timeout: 2400  
         env:
           NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
       - name: Audit URLs using Lighthouse

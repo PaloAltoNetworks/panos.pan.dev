@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/791dfbf1-c6e8-447d-ac4d-220cb8aa7c6f/deploy-status)](https://app.netlify.com/sites/condescending-mcclintock-5c4d6f/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/791dfbf1-c6e8-447d-ac4d-220cb8aa7c6f/deploy-status)](https://app.netlify.com/sites/panos-pan-dev/deploys)
 
 # PAN-OS® for Developers
 

@@ -20,8 +20,9 @@ module.exports = {
     algolia: {
       apiKey: "cc0f2da5c80d2fb8dedb7ef9b56b52f2",
       indexName: "pan",
-      algoliaOptions: {
+      searchParameters: {
         typoTolerance: false,
+        'facetFilters': ["tags:strata"]
       }, // Optional, if provided by Algolia
     },
     sidebarCollapsible: true,

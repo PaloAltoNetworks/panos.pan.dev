@@ -11,7 +11,7 @@ jobs:
         uses: kamranayub/wait-for-netlify-action@2.0.0
         id: wait_for_netlify_deploy
         with:
-          site_name: "https://panos-pan-dev.netlify.app"
+          site_name: "panos-pan-dev"
         env:
           NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
       - name: Audit URLs using Lighthouse

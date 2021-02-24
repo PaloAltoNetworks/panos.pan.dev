@@ -132,6 +132,10 @@ module.exports = {
       id: "expedition/expedition_qs",
     },
     {
+      type: "doc",
+      id: "expedition/expedition_export",
+    },
+    {
       type: "category",
       collapsed: false,
       label: "Expedition-API",

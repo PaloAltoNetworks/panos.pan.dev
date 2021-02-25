@@ -97,7 +97,10 @@ Save the output with below commands:
 ```console
 set console page 0
 get config 
-```
+```  
+:::note
+ if Screenos is managed by NSM; rule description is only visible in NSM not directly on FW
+:::
 ## Checkpoint
 ### Checkpoint R80.X & R77.X 
 

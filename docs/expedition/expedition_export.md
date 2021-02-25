@@ -18,7 +18,7 @@ image: /img/expedition.png
 ---
 ## Export Vendor Configuration 
 
-Please refer individual vendor sections for instructions on how to export the configuration. 
+Please refer to the individual vendor sections for instructions on how to export the configuration. For quick vendor navigation, use the table of contents to the right
 
 
 ## Fortinet

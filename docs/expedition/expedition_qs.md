@@ -1,9 +1,9 @@
 ---
 id: expedition_qs
-title: Expedition 2.0 QuickStart
-sidebar_label: QuickStart
+title: Expedition 2.0 Installation
+sidebar_label: Installation
 hide_title: true
-description: Expedition 2.0 QuickStart
+description: Expedition 2.0 Installation
 keywords:
   - pan-os
   - panos

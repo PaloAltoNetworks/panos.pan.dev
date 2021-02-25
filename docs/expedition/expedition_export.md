@@ -61,7 +61,10 @@ Juniper SRX (Junos) configuration files are similar to PAN-OS configuration file
 ```console
 show config | display xml | no-more
 ```
-**2. Modify the configuration file**
+**2. Modify the configuration file** 
+:::note
+For Import to Expedition 2.0 , you can import the original xml configuration directly , do not need to go through this step
+:::
 
 The file has to start with XML tag ```<configuration>``` without attributes and end with the closing
  ```</configuration>``` tag. Failure to remove the unneeded attributes is the leading cause of failure during the import into Expedition. The first line of the XML file should look like the following:  
@@ -89,15 +92,16 @@ Then in the File Download dialog box, click **Save**.  Navigate to the location 
 
 **2. Using the CLI:**  
 
-Save the existing configuration to a TFTP server with the command:  
+Save the output with below commands:  
 
 ```console
-save config to tftp <tftp_server_ip> <config_filename>  
+set console page 0
+get config 
 ```
 ## Checkpoint
 ### Checkpoint R80.X & R77.X 
 
-1. Obtain the newest Checkpoint showpolicy package via <a href="https://github.com/CheckPointSW/ShowPolicyPackage/">**Checkpoint ShowPolicy Package**</a>  
+1. Obtain the newest Checkpoint ShowPolicy package via <a href="https://github.com/CheckPointSW/ShowPolicyPackage/">**Checkpoint ShowPolicy Package**</a>  
 2. Following below commands to create SCP user on Checkpoint Security Management Server , the scp user will be used to transfer the checkpoint configurations from checkpoint management server to your local machine. 
 
 **R77.X**
@@ -157,7 +161,7 @@ $MDS_FWDIR/scripts/web_api_show_package.sh -k <PACKAGE NAME> -d <DOMAIN NAME>
 Use of CMA Name is not supported. Only use the Domain name or the CMA IP.
 :::
 
-Finally after doing all this you should be able to transfer the outfile over SCP.
+Finally after doing all this you should be able to transfer the output over SCP.
 PLEASE NOTE THIS IS ALL ARBITRARY DEPENDING ON WHAT YOU HAVE SET UP AND WHERE YOU WOULD LIKE TO SAVE IT.  
 
 :::note
@@ -167,7 +171,10 @@ The configuration is exported as a **.tar.gz** file.
 4. Obtain route file using below command: 
 ```console
 netstat -nr
-``` 
+```  
+
+&nbsp;   &nbsp;   or  
+
 ```console
 show route all
 ```
@@ -190,7 +197,7 @@ changeto context <name>
 changeto system
 ```  
 :::note
-The configuration is exported as a “.text” file and is readable using any text editor.
+The configuration is exported as a **.text** file and is readable using any text editor.
 :::  
 
 ## SonicWall

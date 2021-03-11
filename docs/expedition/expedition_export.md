@@ -102,18 +102,11 @@ get config
  if Screenos is managed by NSM; rule description is only visible in NSM not directly on FW
 :::
 ## Checkpoint
-### Checkpoint R80.X & R77.X 
+### Checkpoint >= R80.X
 
 1. Obtain the newest Checkpoint ShowPolicy package via <a href="https://github.com/CheckPointSW/ShowPolicyPackage/">**Checkpoint ShowPolicy Package**</a>  
 2. Following below commands to create SCP user on Checkpoint Security Management Server , the scp user will be used to transfer the checkpoint configurations from checkpoint management server to your local machine. 
 
-**R77.X**
-```console
-add user scpuser uid 2600 homedir /home/scpuser
-set user scpuser shell /usr/bin/scponly
-set user scpuser password
-save config‍‍‍‍‍‍‍‍
-```
 **R80.X**
 ```console
 add user scpuser uid 2600 homedir /home/scpuser
@@ -171,7 +164,7 @@ PLEASE NOTE THIS IS ALL ARBITRARY DEPENDING ON WHAT YOU HAVE SET UP AND WHERE YO
 The configuration is exported as a **.tar.gz** file.
 :::
 
-4. Obtain route file using below command: 
+#### 4. Obtain route file using below command: 
 ```console
 netstat -nr
 ```  
@@ -184,6 +177,51 @@ show route all
 :::note
 The route file is needed for Expedition to do zone calculations
 :::
+
+### Checkpoint < R80.X
+:::info
+Both Checkpoint Management server and Gateway with version lower than R80.x , below are the required files:  
+
+**− Objects_5_0.C**  
+**− Policy.W**  
+**− Rulebases_5_0.fws**  
+**− RouteFile**  
+
+:::  
+
+Please refer corresponding section based on your checkpoint management tool:  
+
+**Smart Center**
+
+Obtain below configuration files from **'$FWDIR/conf'**:
+
+1. Objects – **objects_5_0.C** (Check Point NG/NGX) or **objects.C** (Check Point 4.x) contains the firewall's object definitions.
+2. Policy rulebases – ***.w** or **rulebases_5_0.fws**. The file name is ```"<package name>.W"``` (default "Standard.W") or "rulebases_5_0.fws".
+3. Route File, please refer to the [previous section step 4](#4-obtain-route-file-using-below-command)
+
+
+**MDS/Provider-1**
+
+**Global Policies and Objects**   
+
+The files necessary to migrate the global policies and objects are located in the ```opt/<cpversion>/conf``` directory of the MDS.  Although these files are synchronized between MDS systems in a multi-MDS environment, it is suggested to pull them from the master MDS, which is authoritative for the database. 
+
+1. From expert mode CLI on the Provider-1 server, cd to **“$MDSDIR/conf”**
+2. Export the Objects_5_0.C, Rulebases_5_0.fws, and Policy.W files
+
+**CMA Policies and Objects**  
+
+Individual CMA object databases are contained in unique subdirectories underneath the **“customers”** directory on the MDS:  
+
+If the customer is using CMA redundancy, it is suggested to pull the files from the “primary” CMA.
+To retrieve the files required by the migration tool:  
+
+1. From the MDS/Provider-1 CLI, switch “context” to the relevant CMA
+2. Navigate to the **/conf** directory within that CMA
+3. Export the Objects_5_0.C , Rulebases_5_0.fws and Policy.W files
+4. Route file, please refer to the [previous section step 4](#4-obtain-route-file-using-below-command)
+
+
 ## Cisco
 Issue below commands in the CLI:
 

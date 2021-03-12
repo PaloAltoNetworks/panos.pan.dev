@@ -94,9 +94,14 @@ Alternatively , you could also do it via your script:
 Make a `POST` request to the Expedition’s hostname or IP address using the administrative credentials, where you will have to replace the fields _YourExpeditionIP_, _username_ and _password_ with your actual values.  
 
 ```shell-session
-curl -X POST "https://<YourExpeditionIP>/api/v1/login" -H "accept: application/json" -H "Content-Type: application/json" -H "X-CSRF-TOKEN: " -d "{\"username\":\"<username>",\"password\":\"<password>"}"
+curl -X POST -k "https://<YourExpeditionIP>/api/v1/login" -H "accept: application/json" -H "Content-Type: application/json" -H "X-CSRF-TOKEN: " -d "{\"username\":\"<username>\”,\”password\":\"<password>\”}”
 ```
 
+Example of the curl command:
+
+```shell-session
+curl -X POST -k "https://192.168.55.144/api/v1/login" -H "accept: application/json" -H "Content-Type: application/json" -H "X-CSRF-TOKEN: " -d "{\"username\":\"admin\",\"password\":\"paloalto\"}"
+```
 
 
 A successful API call returns, within the Contents section, `status="success"` along with the API key within the `api_key` element, found under `Contents->response->data->content`:

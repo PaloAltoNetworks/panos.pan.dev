@@ -81,7 +81,9 @@ pipe it at the output of a cURL command and pack everything as a CGI script.
 But in this tutorial we're going to levarage the GO Package https://pkg.go.dev/github.com/xhoms/panoslib/uid
 to follow a diferent approach: we'll hijack User-ID messages by implementing a micro-service
 that behaves as a reverse proxy between the application that features the User-ID client and
-the PAN-OS device.
+the PAN-OS device. I like this approach because it opens the door to other use cases like 
+enforcing timeout (adding timeout to entries that do not have them), converting DAG messages
+into DUG equivalents or adding additional tags based on the source application.
 
 ### Building a reverse-proxy micro-service skeleton
 

@@ -54,6 +54,7 @@ module.exports = {
         "apis/panos_tutorials_address_group",
         "apis/panos_tutorials_rule_hit_count",
         "apis/panos_tutorials_rulebase_to_csv",
+        "apis/panos_tutorials_uid_monitor",
       ],
     },
   ],

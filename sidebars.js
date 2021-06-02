@@ -82,6 +82,12 @@ module.exports = {
     {
       type: "category",
       collapsed: false,
+      label: "Terraformer",
+      items: ["automation/terraformer_qs"],
+    },
+    {
+      type: "category",
+      collapsed: false,
       label: "Tutorials",
       items: ["automation/automation_tutorials_ansible_srule"],
     },

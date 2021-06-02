@@ -238,7 +238,7 @@ changeto context <name>
 changeto system
 ```  
 :::note
-The configuration is exported as a **.text** file and is readable using any text editor.
+The configuration is exported as a **.txt** file and is readable using any text editor.
 :::  
 
 ## SonicWall
@@ -248,6 +248,10 @@ Issue below commands in CLI:
 no cli pager session
 show current-config
 ```
+
+:::note
+The configuration is exported as a **.txt** file, **.EXP** format is not supported. 
+:::  
 
 ## Forcepoint  
 
@@ -270,11 +274,14 @@ cf netgroup q >> config_sidewinder.txt
 cf application q >> config_sidewinder.txt
 cf appgroup q >> config_sidewinder.txt
 cf host q >> config_sidewinder.txt  
-```
+```  
+
 ### StoneSoft
 
-Migration of Stonesoft configurations require a Two-Step process. Please, read the following instructions to support the process.  
+Please follow the below instructions to export the StoneSoft configuration: 
 
-1. BROWSE for Stonesoft XML configuration files using the Single File or Multiple Files options. Policy names and Domain Names will be presented  
-
-2. Select the policies wishing to migrate and click on IMPORT SELECTED POLICIES  
+1. Select  Menu > File > Export > Export All Elements.
+2. Select an option:
+    Enter a file name for the export file.
+    Click Browse to select the location where you want to create the file.
+3. Click Export.

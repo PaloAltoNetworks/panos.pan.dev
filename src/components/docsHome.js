@@ -102,6 +102,10 @@ function Docs() {
                     Terraform
                   </Link>
                   <br></br>
+                  <Link href={useBaseUrl("docs/automation/terraformer_qs")}>
+                    Terraformer
+                  </Link>
+                  <br></br>
                   <Link
                     href={useBaseUrl(
                       "docs/automation/automation_tutorials_ansible_srule"

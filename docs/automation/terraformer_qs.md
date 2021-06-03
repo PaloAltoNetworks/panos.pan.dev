@@ -76,7 +76,6 @@ Steps to use the Terraformer Container
     -e PANOS_HOSTNAME=192.168.1.1 \
     -e PANOS_USERNAME=admin \
     -e PANOS_PASSWORD=admin \
-    -v $(pwd)/provider.tf:/root/provider.tf \
     -v $(pwd)/.terraform:/root/.terraform \
     -v $(pwd)/.terraform.d:/root/.terraform.d \
     -v $(pwd)/generated:/root/generated \

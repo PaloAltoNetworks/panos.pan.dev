@@ -1,9 +1,9 @@
 info:
   description: |
-    Please refer [IoT Public API Headers](/docs/api/iot-public-api-headers) to know how to get API Key<br/>
+    Please refer [IoT Public API Headers](iot-public-api-headers) to know how to get API Key<br/>
     List of public APIs from IoT security:
-    1. Link to [Get Device Detail](/docs/api/iot-public-api#operation/device-detail)
-    2. Link to [Get Device Inventory](/docs/api/iot-public-api#operation/device-inventory)
+    1. Link to [Get Device Detail](iot-api#operation/device-detail)
+    2. Link to [Get Device Inventory](iot-api#operation/device-inventory)
   title: IoT Public API Overview
   version: v4.0
   contact: {}

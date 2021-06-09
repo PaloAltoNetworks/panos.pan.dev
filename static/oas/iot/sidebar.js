@@ -29,6 +29,7 @@ function genEndpoints() {
     var category = {
       type: 'category',
       label: categoryLabel,
+      collapsed: false,
     };
     var items = [`${relativePath}/${docId}`];
     for ([path, methods] of Object.entries(paths)) {

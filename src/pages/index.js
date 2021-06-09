@@ -40,7 +40,7 @@ const features = [
       <div className={styles.buttons}>
         <Link
           className={classnames('button button--primary button--md', styles.featureButtons)}
-          href="/api/iot/iot-api"
+          href="/api/iot/iot-public-api"
         >
           API Reference
         </Link>

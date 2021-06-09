@@ -40,7 +40,7 @@
   --ifm-background-color: #fff;
   --ifm-background-surface-color: #fff;
   --ifm-footer-background-color: #2d3436 !important;
-  --ifm-footer-title-color: #fff;
+  --ifm-footer-title-color: #fff !important;
   --ifm-footer-link-color: #fff;
   --ifm-heading-font-weight: 700;
   --ifm-button-font-weight: 600;
@@ -124,6 +124,10 @@ html[data-theme='dark'] {
 .navbar__inner {
   max-width: 1360px;
   margin: 0 auto;
+}
+
+.footer__title {
+  color: var(--ifm-footer-title-color) !important;
 }
 
 /* Force homepage to full width */

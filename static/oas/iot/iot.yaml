@@ -297,19 +297,16 @@ components:
 
   examples:
     ClientErrorResponseExample:
-      description: Client Error Response Example
       value: {
         code: '400',
         msg: invalid request
       }
     ServerErrorResponseExample:
-      description: Server Error Response Example
       value: {
         code: '500',
         msg: internal server error
       }
     DeviceDetailResponseExample:
-      description: Success Response Example
       value: {
         deviceid: 34:02:86:44:65:36,
         hostname: InfusionPump-20,
@@ -330,7 +327,6 @@ components:
         number_of_info_alerts: 0
       }
     DeviceInventoryResponseExample:
-      description: Success Response Example
       value: {
         total: 1,
         devices: [

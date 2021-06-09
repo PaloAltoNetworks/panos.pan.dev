@@ -6,84 +6,92 @@
  */
 
 module.exports = {
-  title: "Palo Alto Networks for Developers",
-  url: "https://panos.pan.dev",
-  baseUrl: "/",
-  favicon: "img/strata_favicon.png",
-  organizationName: "PaloAltoNetworks", // Usually your GitHub org/user name.
-  projectName: "panos.pan.dev", // Usually your repo name.
+  title: 'Palo Alto Networks for Developers',
+  url: 'https://panos.pan.dev',
+  baseUrl: '/',
+  favicon: 'img/strata_favicon.png',
+  organizationName: 'PaloAltoNetworks', // Usually your GitHub org/user name.
+  projectName: 'panos.pan.dev', // Usually your repo name.
   themeConfig: {
     prism: {
-      theme: require("prism-react-renderer/themes/github"),
-      darkTheme: require("prism-react-renderer/themes/oceanicNext"),
+      theme: require('prism-react-renderer/themes/github'),
+      darkTheme: require('prism-react-renderer/themes/oceanicNext'),
     },
     algolia: {
-      apiKey: "cc0f2da5c80d2fb8dedb7ef9b56b52f2",
-      indexName: "pan",
+      apiKey: 'cc0f2da5c80d2fb8dedb7ef9b56b52f2',
+      indexName: 'pan',
       searchParameters: {
         typoTolerance: false,
-        'facetFilters': ["tags:strata"]
+        facetFilters: ['tags:strata'],
       }, // Optional, if provided by Algolia
     },
     sidebarCollapsible: true,
     navbar: {
-      title: "",
+      title: '',
       logo: {
-        alt: "PAN-OS® for Developers",
-        src: "img/Strata_Tagline_Logo_RGB.svg",
-        srcDark: "img/Strata_Tagline_Logo_RGB_Nameplate_Reversed.svg",
+        alt: 'PAN-OS® for Developers',
+        src: 'img/Strata_Tagline_Logo_RGB.svg',
+        srcDark: 'img/Strata_Tagline_Logo_RGB_Nameplate_Reversed.svg',
       },
       items: [
         {
-          label: "Docs",
-          to: "docs",
-          position: "left",
+          label: 'Docs',
+          to: 'docs',
+          position: 'left',
         },
         {
-          href: "https://medium.com/palo-alto-networks-developer-blog",
-          position: "right",
-          className: "header-medium-link",
-          "aria-label": "Palo Alto Networks Developer Blog",
+          label: 'IoT API',
+          to: 'api/iot/iot-api',
+          postition: 'left',
         },
         {
-          href: "https://github.com/PaloAltoNetworks",
-          position: "right",
-          className: "header-github-link",
-          "aria-label": "Palo Alto Networks GitHub Org",
+          href: 'https://medium.com/palo-alto-networks-developer-blog',
+          position: 'right',
+          className: 'header-medium-link',
+          'aria-label': 'Palo Alto Networks Developer Blog',
+        },
+        {
+          href: 'https://github.com/PaloAltoNetworks',
+          position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'Palo Alto Networks GitHub Org',
         },
       ],
     },
     footer: {
       links: [
         {
-          title: "Docs",
+          title: 'Docs',
           items: [
             {
-              label: "APIs and SDKs",
-              to: "docs/apis",
+              label: 'API Guides and SDKs',
+              to: 'docs/apis',
             },
             {
-              label: "Automation",
-              to: "docs/automation",
+              label: 'IoT API',
+              to: 'api/iot/iot-api',
             },
             {
-              label: "Cloud Templates",
-              to: "docs/cloud",
+              label: 'Automation',
+              to: 'docs/automation',
+            },
+            {
+              label: 'Cloud Templates',
+              to: 'docs/cloud',
             },
           ],
         },
         {
-          title: "Community",
+          title: 'Community',
           items: [
             {
-              label: "Automation and API",
-              href:
-                "https://live.paloaltonetworks.com/t5/Automation-API/ct-p/automation",
+              label: 'Automation and API',
+              href: 'https://live.paloaltonetworks.com/t5/Automation-API/ct-p/automation',
             },
           ],
         },
         {
-          title: "Social",
+          title: 'Social',
           items: [
             {
               html: `
@@ -96,80 +104,95 @@ module.exports = {
         },
       ],
       logo: {
-        alt: "Palo Alto Networks for Developers",
-        src: "img/PANW_Parent_Brand_Primary_Logo_KO.png",
-        href: "https://pan.dev",
+        alt: 'Palo Alto Networks for Developers',
+        src: 'img/PANW_Parent_Brand_Primary_Logo_KO.png',
+        href: 'https://pan.dev',
       },
       copyright: `Copyright © ${new Date().getFullYear()} Palo Alto Networks, Inc.`,
     },
   },
-  themes: ["@docusaurus/theme-live-codeblock"],
+  themes: ['@docusaurus/theme-live-codeblock'],
   presets: [
     [
-      "@docusaurus/preset-classic",
+      '@docusaurus/preset-classic',
       {
         docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
-          editUrl:
-            "https://github.com/PaloAltoNetworks/panos.pan.dev/tree/master",
-          path: "docs",
+          sidebarPath: require.resolve('./sidebars.js'),
+          editUrl: 'https://github.com/PaloAltoNetworks/panos.pan.dev/tree/master',
+          path: 'docs',
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve('./src/css/custom.css'),
         },
       },
     ],
   ],
   plugins: [
     [
-      "@docusaurus/plugin-sitemap",
+      '@docusaurus/plugin-sitemap',
       {
-        id: "panos-site-map",
-        cacheTime: 600 * 1000, // 600 sec - cache purge period
-        changefreq: "weekly",
+        id: 'panos-site-map',
+        changefreq: 'weekly',
         priority: 0.5,
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'api',
+        sidebarPath: require.resolve('./api.sidebars.js'),
+        editUrl: 'https://github.com/PaloAltoNetworks/panos.pan.dev/tree/master/',
+        routeBasePath: 'api',
+        include: ['**/*.md', '**/*.mdx'], // Extensions to include.
+        docLayoutComponent: '@theme/DocPage',
+        docItemComponent: '@theme/APIDocItem',
+        remarkPlugins: [],
+        rehypePlugins: [],
+        path: 'api',
+        showLastUpdateAuthor: true,
+        showLastUpdateTime: true,
       },
     ],
   ],
   customFields: {
     sites: [
       {
-        label: "Products",
+        label: 'Products',
         items: [
           {
-            href: "https://cortex.pan.dev",
-            label: "Cortex",
-            logo: "/img/cortexfavicon.png",
+            href: 'https://cortex.pan.dev',
+            label: 'Cortex',
+            logo: '/img/cortexfavicon.png',
           },
           {
-            href: "https://xsoar.pan.dev",
-            label: "Cortex XSOAR",
-            logo: "/img/Cortex-XSOAR-product-green.svg",
+            href: 'https://xsoar.pan.dev',
+            label: 'Cortex XSOAR',
+            logo: '/img/Cortex-XSOAR-product-green.svg',
           },
           {
-            href: "https://panos.pan.dev",
-            label: "PAN-OS",
-            logo: "/img/strata_favicon.png",
+            href: 'https://panos.pan.dev',
+            label: 'PAN-OS',
+            logo: '/img/strata_favicon.png',
           },
           {
-            href: "https://prisma.pan.dev",
-            label: "Prisma Cloud",
-            logo: "/img/prismafavicon.png",
+            href: 'https://prisma.pan.dev',
+            label: 'Prisma Cloud',
+            logo: '/img/prismafavicon.png',
           },
         ],
-        position: "products",
+        position: 'products',
       },
     ],
   },
-  onBrokenLinks: "warn",
-  onDuplicateRoutes: "warn",
+  onBrokenLinks: 'warn',
+  onDuplicateRoutes: 'warn',
   stylesheets: [
     {
-      href: "https://use.fontawesome.com/releases/v5.15.0/css/all.css",
-      type: "text/css",
-      rel: "stylesheet",
+      href: 'https://use.fontawesome.com/releases/v5.15.0/css/all.css',
+      type: 'text/css',
+      rel: 'stylesheet',
     },
   ],
 };

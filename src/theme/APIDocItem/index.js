@@ -18,7 +18,7 @@ import clsx from 'clsx';
 import styles from './styles.module.css';
 import { useActivePlugin, useVersions, useActiveVersion } from '@theme/hooks/useDocs';
 
-function DocItem(props) {
+function APIDocItem(props) {
   const { content: DocContent } = props;
   const {
     metadata,
@@ -74,16 +74,6 @@ function DocItem(props) {
             {(editUrl || lastUpdatedAt || lastUpdatedBy) && (
               <div className="margin-vert--xl">
                 <div className="row">
-                  <div className="col">{editUrl && <EditThisPage editUrl={editUrl} />}</div>
-                  {(lastUpdatedAt || lastUpdatedBy) && (
-                    <LastUpdated
-                      lastUpdatedAt={lastUpdatedAt}
-                      formattedLastUpdatedAt={formattedLastUpdatedAt}
-                      lastUpdatedBy={lastUpdatedBy}
-                    />
-                  )}
-                </div>
-                <div className="row">
                   <div className="col text--right">
                     <Link
                       className={classnames('button button--outline button--primary button--md')}
@@ -111,4 +101,4 @@ function DocItem(props) {
   );
 }
 
-export default DocItem;
+export default APIDocItem;

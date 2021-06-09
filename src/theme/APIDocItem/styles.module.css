@@ -11,9 +11,9 @@
 }
 
 .docItemContainer {
-  margin-right: 1rem;
   padding: 0 0.5rem;
-  max-width: calc(var(--ifm-container-width));
+  margin: 0 auto;
+  box-sizing: content-box;
 }
 
 @media only screen and (min-width: 997px) {
@@ -22,9 +22,15 @@
   }
 }
 
-@media (min-width: 997px) and (max-width: 1320px) {
+@media (min-width: 997px) and (max-width: 1400px) {
   .docItemWrapper {
-    max-width: calc(var(--ifm-container-width) - 300px - var(--ifm-spacing-horizontal) * 2);
+    max-width: calc(var(--ifm-container-width) - 300px);
+  }
+}
+
+@media (min-width: 1400px) {
+  .docItemWrapper {
+    max-width: calc(var(--ifm-container-width));
   }
 }
 
@@ -32,4 +38,8 @@
   .docItemContainer {
     padding: 0 0.3rem;
   }
+}
+
+.docLastUpdatedAt {
+  font-weight: bold;
 }

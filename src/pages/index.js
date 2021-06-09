@@ -5,55 +5,61 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import Link from "@docusaurus/Link";
-import useBaseUrl from "@docusaurus/useBaseUrl";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Layout from "@theme/Layout";
-import classnames from "classnames";
-import React, { useRef } from "react";
-import ScrollUpButton from "react-scroll-up-button";
-import styles from "./styles.module.css";
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Layout from '@theme/Layout';
+import classnames from 'classnames';
+import React, { useRef } from 'react';
+import ScrollUpButton from 'react-scroll-up-button';
+import styles from './styles.module.css';
 
 const features = [
   {
     title: <>PAN-OS® APIs</>,
-    imageUrl: "/img/panos_apis.svg",
+    imageUrl: '/img/panos_apis.svg',
     description: (
       <>
-        Our APIs and SDKs provide a collection of open, feature-rich automation
-        opportunities for configuration and management.
+        Our APIs and SDKs provide a collection of open, feature-rich automation opportunities for configuration and
+        management.
       </>
     ),
     button: (
       <div className={styles.buttons}>
-        <Link
-          className={classnames(
-            "button button--primary button--md",
-            styles.featureButtons
-          )}
-          href="/docs/apis"
-        >
+        <Link className={classnames('button button--primary button--md', styles.featureButtons)} href="/docs/apis">
           Learn More
         </Link>
       </div>
     ),
   },
   {
+    title: <>IoT API</>,
+    imageUrl: '/img/IoT-security.svg',
+    description: <>Explore the IoT API Reference Docs</>,
+    button: (
+      <div className={styles.buttons}>
+        <Link
+          className={classnames('button button--primary button--md', styles.featureButtons)}
+          href="/api/iot/iot-api"
+        >
+          API Reference
+        </Link>
+      </div>
+    ),
+  },
+  {
     title: <>Infrastructure-as-Code</>,
-    imageUrl: "/img/ansible_terraform.png",
+    imageUrl: '/img/ansible_terraform.png',
     description: (
       <>
-        Version control your infrastructure and eliminate human-error. Declare
-        the target configuration and let them automate the rest.
+        Version control your infrastructure and eliminate human-error. Declare the target configuration and let them
+        automate the rest.
       </>
     ),
     button: (
       <div className={styles.buttons}>
         <Link
-          className={classnames(
-            "button button--primary button--md",
-            styles.featureButtons
-          )}
+          className={classnames('button button--primary button--md', styles.featureButtons)}
           href="/docs/automation"
         >
           Learn More
@@ -63,22 +69,13 @@ const features = [
   },
   {
     title: <>Cloud Templates</>,
-    imageUrl: "/img/cloud_security.svg",
+    imageUrl: '/img/cloud_security.svg',
     description: (
-      <>
-        Auto-scale a firewall with a cloud application while ensuring a seamless
-        policy across on-prem and cloud.
-      </>
+      <>Auto-scale a firewall with a cloud application while ensuring a seamless policy across on-prem and cloud.</>
     ),
     button: (
       <div className={styles.buttons}>
-        <Link
-          className={classnames(
-            "button button--primary button--md",
-            styles.featureButtons
-          )}
-          href="/docs/cloud"
-        >
+        <Link className={classnames('button button--primary button--md', styles.featureButtons)} href="/docs/cloud">
           Learn More
         </Link>
       </div>
@@ -86,20 +83,17 @@ const features = [
   },
   {
     title: <>Expedition</>,
-    imageUrl: "/img/expedition.png",
+    imageUrl: '/img/expedition.png',
     description: (
       <>
-        Migrate configuration from legacy firewalls to Palo Alto Networks.
-        Policy optimization, object cleanup, App-ID adoption and more!
+        Migrate configuration from legacy firewalls to Palo Alto Networks. Policy optimization, object cleanup, App-ID
+        adoption and more!
       </>
     ),
     button: (
       <div className={styles.buttons}>
         <Link
-          className={classnames(
-            "button button--primary button--md",
-            styles.featureButtons
-          )}
+          className={classnames('button button--primary button--md', styles.featureButtons)}
           href="/docs/expedition"
         >
           Learn More
@@ -112,12 +106,12 @@ const features = [
 function Feature({ imageUrl, title, description, button }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
-    <div className={classnames("col col--3", styles.features)}>
-      <div className={classnames("card shadow--lw", styles.card)}>
+    <div className={classnames('col col--4', styles.features)}>
+      <div className={classnames('card shadow--lw', styles.card)}>
         <div className="card__image">
           <img src={imgUrl} title={title} className={styles.cardImage} />
         </div>
-        <div className={(classnames("card__body"), styles.cardBody)}>
+        <div className={(classnames('card__body'), styles.cardBody)}>
           <h4>{title}</h4>
           <small>{description}</small>
         </div>
@@ -130,8 +124,7 @@ function Feature({ imageUrl, title, description, button }) {
 function Home() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
-  const scrollToRef = (ref) =>
-    ref.current.scrollIntoView({ behavior: "smooth" });
+  const scrollToRef = (ref) => ref.current.scrollIntoView({ behavior: 'smooth' });
   const vertificalsRef = useRef(null);
   const toolsRef = useRef(null);
   const scrollToVerticals = () => scrollToRef(vertificalsRef);
@@ -143,24 +136,19 @@ function Home() {
       wrapperClassName="homepage"
     >
       <ScrollUpButton />
-      <header className={classnames("hero hero--primary", styles.heroBanner)}>
+      <header className={classnames('hero hero--primary', styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">
-            <span className={styles.heroProjectKeywords}>Build</span>{" "}
+            <span className={styles.heroProjectKeywords}>Build</span>{' '}
             <span className={styles.heroProjectText}>Next-gen Automation</span>
           </h1>
           <h6 className="hero__subtitle">
             <span className={styles.heroProjectText}>with the only </span>
-            <span className={styles.heroProjectKeywords}>
-              next-generation security
-            </span>{" "}
+            <span className={styles.heroProjectKeywords}>next-generation security</span>{' '}
             <span className={styles.heroProjectText}>platform</span>
           </h6>
           <div className={styles.buttons}>
-            <Link
-              className={classnames("button button--lg", styles.getStarted)}
-              onClick={scrollToTools}
-            >
+            <Link className={classnames('button button--lg', styles.getStarted)} onClick={scrollToTools}>
               Explore Tools
             </Link>
           </div>
@@ -170,7 +158,7 @@ function Home() {
         {features && features.length && (
           <section className={styles.features} ref={vertificalsRef}>
             <div className="container">
-              <div className="row">
+              <div className={classnames('row centerFeatures')}>
                 {features.map((props, idx) => (
                   <Feature key={idx} {...props} />
                 ))}
@@ -181,32 +169,22 @@ function Home() {
         <section className={styles.expedition}>
           <div className="container">
             <div className="row row--no-gutters">
-              <div className={classnames("col col--3")}>
+              <div className={classnames('col col--3')}>
                 <div className="text">
-                  <img
-                    className={styles.toolImage}
-                    src="/img/expedition.png"
-                    alt="Expedition 2.0"
-                  />
+                  <img className={styles.toolImage} src="/img/expedition.png" alt="Expedition 2.0" />
                 </div>
                 <h1 className={styles.text__dark}>Expedition 2.0</h1>
-                <p className={styles.text__gray}>
-                  Migrate configuration from legacy firewalls to Palo Alto
-                  Networks
-                </p>
+                <p className={styles.text__gray}>Migrate configuration from legacy firewalls to Palo Alto Networks</p>
                 <div>
                   <Link
-                    className={classnames(
-                      "button button--info button--lg",
-                      styles.expeditionButton
-                    )}
+                    className={classnames('button button--info button--lg', styles.expeditionButton)}
                     href="/docs/expedition"
                   >
                     Learn More
                   </Link>
                 </div>
               </div>
-              <div className={classnames("col col--9")}>
+              <div className={classnames('col col--9')}>
                 <div className="text text--center">
                   <img
                     src="/img/expedition2_architecture.svg"
@@ -222,263 +200,159 @@ function Home() {
           <div className="container">
             <div className="row">
               {/* PAN Device Framework */}
-              <div className={classnames("col col--3", styles.tools)}>
+              <div className={classnames('col col--3', styles.tools)}>
                 <div className="text text--center">
-                  <img
-                    className={styles.toolImage}
-                    src="/img/python.png"
-                    alt="PAN Device Framework"
-                  />
+                  <img className={styles.toolImage} src="/img/python.png" alt="PAN Device Framework" />
                 </div>
                 <h4>PAN Device Framework</h4>
-                <p className={styles.text__gray}>
-                  Object-oriented SDK for PAN-OS® and Panorama
-                </p>
+                <p className={styles.text__gray}>Object-oriented SDK for PAN-OS® and Panorama</p>
                 <div className={styles.buttons}>
                   <Link
-                    className={classnames(
-                      "button button--info button--md",
-                      styles.quickstart
-                    )}
+                    className={classnames('button button--info button--md', styles.quickstart)}
                     href="/docs/apis/pandevice_qs"
                   >
                     Quickstart
                   </Link>
                   <Link
-                    className={classnames(
-                      "button button--secondary button--md",
-                      styles.github
-                    )}
+                    className={classnames('button button--secondary button--md', styles.github)}
                     href="https://github.com/PaloAltoNetworks/pandevice"
                   >
-                    <i
-                      className={classnames("fab fa-github", styles.githubFont)}
-                    ></i>
+                    <i className={classnames('fab fa-github', styles.githubFont)}></i>
                   </Link>
                 </div>
               </div>
               {/* PAN Python SDK */}
-              <div className={classnames("col col--3", styles.tools)}>
+              <div className={classnames('col col--3', styles.tools)}>
                 <div className="text--center">
-                  <img
-                    className={styles.toolImage}
-                    src="img/python.png"
-                    alt="PAN Python SDK"
-                  />
+                  <img className={styles.toolImage} src="img/python.png" alt="PAN Python SDK" />
                 </div>
                 <h4>PAN Python SDK</h4>
-                <p className={styles.text__gray}>
-                  Multi-tool set for PAN-OS®, Panorama, WildFire and AutoFocus®
-                </p>
+                <p className={styles.text__gray}>Multi-tool set for PAN-OS®, Panorama, WildFire and AutoFocus®</p>
                 <div className={styles.buttons}>
                   <Link
-                    className={classnames(
-                      "button button--info button--md",
-                      styles.quickstart
-                    )}
+                    className={classnames('button button--info button--md', styles.quickstart)}
                     href="/docs/apis/panpython_qs"
                   >
                     Quickstart
                   </Link>
                   <Link
-                    className={classnames(
-                      "button button--secondary button--md",
-                      styles.github
-                    )}
+                    className={classnames('button button--secondary button--md', styles.github)}
                     href="https://github.com/kevinsteves/pan-python"
                   >
-                    <i
-                      className={classnames("fab fa-github", styles.githubFont)}
-                    ></i>
+                    <i className={classnames('fab fa-github', styles.githubFont)}></i>
                   </Link>
                 </div>
               </div>
               {/* PAN Go SDK */}
-              <div className={classnames("col col--3", styles.tools)}>
+              <div className={classnames('col col--3', styles.tools)}>
                 <div className="text--center">
-                  <img
-                    className={styles.toolImage}
-                    src="/img/gopher.png"
-                    alt="PAN Go SDK"
-                  />
+                  <img className={styles.toolImage} src="/img/gopher.png" alt="PAN Go SDK" />
                 </div>
                 <h4>PAN Go SDK</h4>
-                <p className={styles.text__gray}>
-                  Cross version mechanism for interacting with PAN devices
-                </p>
+                <p className={styles.text__gray}>Cross version mechanism for interacting with PAN devices</p>
                 <div className={styles.buttons}>
                   <Link
-                    className={classnames(
-                      "button button--info button--md",
-                      styles.quickstart
-                    )}
+                    className={classnames('button button--info button--md', styles.quickstart)}
                     href="/docs/apis/pango_qs"
                   >
                     Quickstart
                   </Link>
                   <Link
-                    className={classnames(
-                      "button button--secondary button--md",
-                      styles.github
-                    )}
+                    className={classnames('button button--secondary button--md', styles.github)}
                     href="https://github.com/PaloAltoNetworks/pango"
                   >
-                    <i
-                      className={classnames("fab fa-github", styles.githubFont)}
-                    ></i>
+                    <i className={classnames('fab fa-github', styles.githubFont)}></i>
                   </Link>
                 </div>
               </div>
               {/* Ansible */}
-              <div className={classnames("col col--3", styles.tools)}>
+              <div className={classnames('col col--3', styles.tools)}>
                 <div className="text--center">
-                  <img
-                    className={styles.toolImage}
-                    src="/img/ansible_logo.png"
-                    alt="Ansible"
-                  />
+                  <img className={styles.toolImage} src="/img/ansible_logo.png" alt="Ansible" />
                 </div>
                 <h4>Ansible</h4>
-                <p className={styles.text__gray}>
-                  Ansible modules for Palo Alto Networks NGFWs
-                </p>
+                <p className={styles.text__gray}>Ansible modules for Palo Alto Networks NGFWs</p>
                 <div className={styles.buttons}>
                   <Link
-                    className={classnames(
-                      "button button--info button--md",
-                      styles.quickstart
-                    )}
+                    className={classnames('button button--info button--md', styles.quickstart)}
                     href="/docs/automation/ansible_qs"
                   >
                     Quickstart
                   </Link>
                   <Link
-                    className={classnames(
-                      "button button--secondary button--md",
-                      styles.github
-                    )}
+                    className={classnames('button button--secondary button--md', styles.github)}
                     href="https://github.com/PaloAltoNetworks/ansible-pan"
                   >
-                    <i
-                      className={classnames("fab fa-github", styles.githubFont)}
-                    ></i>
+                    <i className={classnames('fab fa-github', styles.githubFont)}></i>
                   </Link>
                 </div>
               </div>
               {/* Expedition */}
-              <div
-                className={classnames("col col--3 col--offset-1", styles.tools)}
-              >
+              <div className={classnames('col col--3 col--offset-1', styles.tools)}>
                 <div className="text--center">
-                  <img
-                    className={styles.toolImage}
-                    src="/img/expedition.png"
-                    alt="Expedition"
-                  />
+                  <img className={styles.toolImage} src="/img/expedition.png" alt="Expedition" />
                 </div>
                 <h4>Expedition 2.0</h4>
-                <p className={styles.text__gray}>
-                  Migrate configuration from legacy firewalls to Palo Alto
-                  Networks
-                </p>
+                <p className={styles.text__gray}>Migrate configuration from legacy firewalls to Palo Alto Networks</p>
                 <div className={styles.buttons}>
                   <Link
-                    className={classnames(
-                      "button button--info button--md",
-                      styles.quickstart
-                    )}
+                    className={classnames('button button--info button--md', styles.quickstart)}
                     href="/docs/expedition/expedition_qs"
                   >
                     Quickstart
                   </Link>
                   <Link
-                    className={classnames(
-                      "button button--secondary button--md",
-                      styles.github
-                    )}
+                    className={classnames('button button--secondary button--md', styles.github)}
                     href="https://live.paloaltonetworks.com/t5/expedition-migration-tool/ct-p/migration_tool"
                   >
-                    <i
-                      className={classnames("fas fa-users", styles.githubFont)}
-                    ></i>
+                    <i className={classnames('fas fa-users', styles.githubFont)}></i>
                   </Link>
                 </div>
               </div>
               {/* Terraform Templates */}
-              <div className={classnames("col col--3", styles.tools)}>
+              <div className={classnames('col col--3', styles.tools)}>
                 <div className="text--center">
-                  <img
-                    className={styles.toolImage}
-                    src="/img/terraform_logo.png"
-                    alt="Terraform Templates"
-                  />
+                  <img className={styles.toolImage} src="/img/terraform_logo.png" alt="Terraform Templates" />
                 </div>
                 <h4>Terraform Templates</h4>
-                <p className={styles.text__gray}>
-                  Deploy infrastructure on AWS and Azure secured by PAN NGFWs
-                </p>
+                <p className={styles.text__gray}>Deploy infrastructure on AWS and Azure secured by PAN NGFWs</p>
                 <div className={styles.buttons}>
                   <Link
-                    className={classnames(
-                      "button button--info button--md",
-                      styles.quickstart
-                    )}
+                    className={classnames('button button--info button--md', styles.quickstart)}
                     href="/docs/automation/terraform_qs"
                   >
                     Quickstart
                   </Link>
                   <Link
-                    className={classnames(
-                      "button button--secondary button--md",
-                      styles.github
-                    )}
+                    className={classnames('button button--secondary button--md', styles.github)}
                     href="https://github.com/PaloAltoNetworks/terraform-templates"
                   >
-                    <i
-                      className={classnames("fab fa-github", styles.githubFont)}
-                    ></i>
+                    <i className={classnames('fab fa-github', styles.githubFont)}></i>
                   </Link>
                 </div>
               </div>
               {/* Cloud Templates */}
-              <div className={classnames("col col--3", styles.tools)}>
+              <div className={classnames('col col--3', styles.tools)}>
                 <div className="text--center">
-                  <img
-                    className={styles.toolImage}
-                    src="/img/cloud_security.svg"
-                    alt="Cloud Templates"
-                  />
+                  <img className={styles.toolImage} src="/img/cloud_security.svg" alt="Cloud Templates" />
                 </div>
                 <h4>Cloud Templates</h4>
-                <p className={styles.text__gray}>
-                  Templates to automate your cloud security journey
-                </p>
+                <p className={styles.text__gray}>Templates to automate your cloud security journey</p>
                 <div className={styles.buttons}>
-                  <Link
-                    className={classnames(
-                      "button button--info button--md",
-                      styles.quickstart
-                    )}
-                    href="/docs/cloud"
-                  >
+                  <Link className={classnames('button button--info button--md', styles.quickstart)} href="/docs/cloud">
                     Overview
                   </Link>
                   <Link
-                    className={classnames(
-                      "button button--secondary button--md",
-                      styles.github
-                    )}
+                    className={classnames('button button--secondary button--md', styles.github)}
                     href="https://live.paloaltonetworks.com/t5/Cloud-Integration/ct-p/Cloud_Templates"
                   >
-                    <i
-                      className={classnames("fas fa-users", styles.githubFont)}
-                    ></i>
+                    <i className={classnames('fas fa-users', styles.githubFont)}></i>
                   </Link>
                 </div>
               </div>
 
               {/* Placeholder */}
-              <div className={classnames("col col--3", styles.tools)}></div>
+              <div className={classnames('col col--3', styles.tools)}></div>
             </div>
           </div>
         </section>

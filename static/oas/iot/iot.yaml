@@ -1,0 +1,348 @@
+info:
+  description: |
+    Please refer [IoT Public API Headers](iot-public-api-headers) to know how to get API Key<br/>
+    List of public APIs from IoT security:
+    1. Link to [Get Device Detail](iot-public-api#operation/device-detail)
+    2. Link to [Get Device Inventory](iot-public-api#operation/device-inventory)
+  title: IoT Public API Overview
+  version: v4.0
+  contact: {}
+openapi: 3.0.0
+servers:
+- url: https://{customer-name}.iot.paloaltonetworks.com
+tags:
+- description: The IoT APIs are listed below.
+  name: IoT Public API
+paths:
+  /pub/v4.0/device:
+    get:
+      description: Get a list of device details for the device with the specified MAC address
+      operationId: device-detail
+      parameters:
+      - description: The customer ID specifies the API call for a specific tenant.
+        in: query
+        name: customerid
+        required: true
+        schema:
+          type: string
+      - description: The device ID specifies the MAC address of the device for which you want to get details.
+        in: query
+        name: deviceid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response (We only show some importants fields here)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IoTDeviceDetailResponse'
+              examples:
+                deviceDetailResponseExample:
+                  $ref: '#/components/examples/DeviceDetailResponseExample'
+        '4XX':
+          description: Client Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                deviceDetailResponseExample:
+                  $ref: '#/components/examples/ClientErrorResponseExample'
+        '5XX':
+          description: Server Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                deviceDetailResponseExample:
+                  $ref: '#/components/examples/ServerErrorResponseExample'
+      security:
+      - API-Key-Auth: []
+      summary: Device Detail
+      tags: 
+        - IoT API
+
+  /pub/v4.0/device/list:
+    get:
+      description: Get a list of all the devices in your IoT Security inventory.
+      operationId: device-inventory
+      parameters:
+      - description: The customer ID specifies the API call for a specific tenant.
+        in: query
+        name: customerid
+        required: true
+        schema:
+          type: string
+      - description: Field to set the start of a time range for retrieving devices.
+        in: query
+        name: stime
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - description: Field to get monitored devices or all discovered devices
+        in: query
+        name: filter_monitored
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+      - description: Field to get items on subsequent pages
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+      - description: Field specifying thenumber of items for each page.
+        in: query
+        name: pagelength
+        required: false
+        schema:
+          type: integer
+      - description: Field to determine if all fields of devices needed to return
+        in: query
+        name: detail
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+      - description: 'Field to set sort direction: ascending or descending'
+        in: query
+        name: sortdirection
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - description: Field to set sorting column
+        in: query
+        name: sortfield
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response (We only show some importants fields here)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IoTDeviceInventoryResponse'
+              examples:
+                deviceDetailResponseExample:
+                  $ref: '#/components/examples/DeviceInventoryResponseExample'
+        '4XX':
+          description: Client Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                deviceDetailResponseExample:
+                  $ref: '#/components/examples/ClientErrorResponseExample'
+        '5XX':
+          description: Server Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                deviceDetailResponseExample:
+                  $ref: '#/components/examples/ServerErrorResponseExample'
+      security:
+      - API-Key-Auth: []
+      summary: Device Inventory
+      tags: 
+        - IoT API
+
+components:
+  securitySchemes:
+    X-Key-Id:
+      description: Your API header requires X-Key-Id for authentication.
+      type: apiKey
+      in: header
+      name: X-Key-Id
+    X-Access-Key:
+      description: Your API header requires X-Key-Id for authentication.
+      type: apiKey
+      in: header
+      name: X-Access-Key
+
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: HTTP Status Code
+        msg:
+          type: string
+          description: Error Message
+  
+    IoTDeviceDetailResponse:
+      type: object
+      properties:
+        deviceid:
+          type: string
+          description: The device ID, which IoT Security uses to identify and track the device
+        hostname:
+          type: string
+          description: The device hostname
+        category:
+          type: string
+          description: The category to which the device belongs
+        profile:
+          type: string
+          description: The device profile assigned to the device
+        profile_type:
+          type: string
+          description: The type of device profile, such as IoT or Non_IoT
+        profile_vertical:
+          type: string
+          description: The industry vertical for the profile such as Medical, IT Devices, and Office
+        ip_address:
+          type: string
+          description: The IP address of the device
+        mac_address:
+          type: string
+          description: The MAC address of the device
+        risk_score:
+          type: integer
+          description: The risk score of the device
+        risk_level:
+          type: string
+          description: 'The risk level of the device; there are four: low, medium, high, and critical'
+        last_activity:
+          type: string
+          format: date-time
+          description: A UTC timestamp for the last detected device activity
+        confidence_score:
+          type: string
+          description: The confidence score for device classification
+        subnet:
+          type: string
+          description: The subnet to which the device is attached
+        number_of_critical_alerts:
+          type: integer
+          description: The number of critical alerts for the device
+        number_of_warning_alerts:
+          type: integer
+          description: The number of warning alerts for the device
+        number_of_caution_alerts:
+          type: integer
+          description: The number of caution alerts for the device
+        number_of_info_alerts:
+          type: integer
+          description: The number of info alerts for the device
+
+    IoTDeviceInventoryResponse:
+        type: object
+        properties:
+          total:
+            type: integer
+            description: The number of devices matching the request
+          devices:
+            type: array
+            description: An array containing device details
+            items:
+              $ref: '#/components/schemas/DeviceDetails'
+
+    DeviceDetails:
+      type: object
+      properties:
+        deviceid:
+          type: string
+          description: The device ID, which IoT Security uses to identify and track the device
+        hostname:
+          type: string
+          description: The device hostname
+        category:
+          type: string
+          description: The category to which the device belongs
+        profile:
+          type: string
+          description: The device profile assigned to the device
+        profile_type:
+          type: string
+          description: The type of device profile, such as IoT or Non_IoT
+        profile_vertical:
+          type: string
+          description: The industry vertical for the profile such as Medical, IT Devices, and Office
+        ip_address:
+          type: string
+          description: The IP address of the device
+        mac_address:
+          type: string
+          description: The MAC address of the device
+        risk_score:
+          type: integer
+          description: The risk score of the device
+        risk_level:
+          type: string
+          description: 'The risk level of the device; there are four: low, medium, high, and critical'
+        last_activity:
+          type: string
+          format: date-time
+          description: A UTC timestamp for the last detected device activity
+        confidence_score:
+          type: string
+          description: The confidence score for device classification
+
+  examples:
+    ClientErrorResponseExample:
+      value: {
+        code: '400',
+        msg: invalid request
+      }
+    ServerErrorResponseExample:
+      value: {
+        code: '500',
+        msg: internal server error
+      }
+    DeviceDetailResponseExample:
+      value: {
+        deviceid: 34:02:86:44:65:36,
+        hostname: InfusionPump-20,
+        category: Infusion System,
+        profile: Sigma Spectrum Infusion System,
+        profile_type: IoT,
+        profile_vertical: Medical,
+        ip_address: 192.168.10.121,
+        mac_address: 34:02:86:44:65:36,
+        risk_score: 0,
+        risk_level: low,
+        last_activity: 2018-05-31T18:39:37.404Z,
+        confidence_score: '90',
+        subnet: 192.168.10.121/28,
+        number_of_critical_alerts: 0,
+        number_of_warning_alerts: 0,
+        number_of_caution_alerts: 0,
+        number_of_info_alerts: 0
+      }
+    DeviceInventoryResponseExample:
+      value: {
+        total: 1,
+        devices: [
+          {
+            deviceid: 34:02:86:44:65:36,
+            hostname: InfusionPump-20,
+            category: Infusion System,
+            profile: Sigma Spectrum Infusion System,
+            profile_type: IoT,
+            profile_vertical: Medical,
+            ip_address: 192.168.10.121,
+            mac_address: 34:02:86:44:65:36,
+            risk_score: 0,
+            risk_level: low,
+            last_activity: 2018-05-31T18:39:37.404Z,
+            confidence_score: '90'
+          }
+        ]
+      }

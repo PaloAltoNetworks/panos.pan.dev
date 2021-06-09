@@ -10,7 +10,7 @@
  * and scoped locally.
  */
 
- /* Hero */
+/* Hero */
 .heroBanner {
   padding: 4rem 0;
   text-align: center;
@@ -45,11 +45,11 @@
 }
 
 .particles {
-  background-color: "#262941";
+  background-color: '#262941';
   z-index: -10;
-  position: "absolute";
-  width: "100%";
-  height: "100%";
+  position: 'absolute';
+  width: '100%';
+  height: '100%';
   top: 0;
   left: 0;
 }
@@ -103,6 +103,10 @@
   background-color: #3b4446;
 }
 
+.toolTitle {
+  color: white;
+}
+
 .toolImage {
   height: 80px;
   max-width: 100%;
@@ -121,7 +125,6 @@
 
 /* Features */
 .features {
-  align-items: center;
   padding: 2rem 0;
   width: 100%;
   display: flex;
@@ -163,7 +166,7 @@
   color: white;
   text-align: left;
   justify-content: left;
-  background-color: #F5F5FA;
+  background-color: #f5f5fa;
 }
 
 .expeditionImage {

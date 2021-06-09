@@ -43,8 +43,8 @@ module.exports = {
           label: 'API Reference',
           items: [
             {
-              to: '/api/iot/iot-api',
-              label: 'IoT API',
+              to: '/api/iot/iot-public-api',
+              label: 'IoT Public API',
             },
           ],
           position: 'left',
@@ -73,8 +73,8 @@ module.exports = {
               to: 'docs/apis',
             },
             {
-              label: 'IoT API',
-              to: 'api/iot/iot-api',
+              label: 'IoT Public API',
+              to: 'api/iot/iot-public-api',
             },
             {
               label: 'Automation',

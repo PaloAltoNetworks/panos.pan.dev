@@ -103,6 +103,10 @@
   background-color: #3b4446;
 }
 
+.toolTitle {
+  color: white;
+}
+
 .toolImage {
   height: 80px;
   max-width: 100%;

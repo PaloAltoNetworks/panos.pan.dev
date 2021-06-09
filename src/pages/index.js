@@ -16,7 +16,7 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: <>PAN-OS® APIs</>,
+    title: <h4>PAN-OS® APIs</h4>,
     imageUrl: '/img/panos_apis.svg',
     description: (
       <>
@@ -33,9 +33,9 @@ const features = [
     ),
   },
   {
-    title: <>IoT API</>,
+    title: <h4>IoT Public API</h4>,
     imageUrl: '/img/IoT-security.svg',
-    description: <>Explore the IoT API Reference Docs</>,
+    description: <>Explore the IoT Public API Reference Docs</>,
     button: (
       <div className={styles.buttons}>
         <Link
@@ -48,7 +48,7 @@ const features = [
     ),
   },
   {
-    title: <>Infrastructure-as-Code</>,
+    title: <h4>Infrastructure-as-Code</h4>,
     imageUrl: '/img/ansible_terraform.png',
     description: (
       <>
@@ -68,7 +68,7 @@ const features = [
     ),
   },
   {
-    title: <>Cloud Templates</>,
+    title: <h4>Cloud Templates</h4>,
     imageUrl: '/img/cloud_security.svg',
     description: (
       <>Auto-scale a firewall with a cloud application while ensuring a seamless policy across on-prem and cloud.</>
@@ -82,7 +82,7 @@ const features = [
     ),
   },
   {
-    title: <>Expedition</>,
+    title: <h4>Expedition</h4>,
     imageUrl: '/img/expedition.png',
     description: (
       <>
@@ -112,7 +112,7 @@ function Feature({ imageUrl, title, description, button }) {
           <img src={imgUrl} title={title} className={styles.cardImage} />
         </div>
         <div className={(classnames('card__body'), styles.cardBody)}>
-          <h4>{title}</h4>
+          <div className="toolTitle">{title}</div>
           <small>{description}</small>
         </div>
         <div className="card__footer">{button}</div>
@@ -204,7 +204,7 @@ function Home() {
                 <div className="text text--center">
                   <img className={styles.toolImage} src="/img/python.png" alt="PAN Device Framework" />
                 </div>
-                <h4>PAN Device Framework</h4>
+                <div className="toolTitle">PAN Device Framework</div>
                 <p className={styles.text__gray}>Object-oriented SDK for PAN-OS® and Panorama</p>
                 <div className={styles.buttons}>
                   <Link
@@ -226,7 +226,7 @@ function Home() {
                 <div className="text--center">
                   <img className={styles.toolImage} src="img/python.png" alt="PAN Python SDK" />
                 </div>
-                <h4>PAN Python SDK</h4>
+                <div className="toolTitle">PAN Python SDK</div>
                 <p className={styles.text__gray}>Multi-tool set for PAN-OS®, Panorama, WildFire and AutoFocus®</p>
                 <div className={styles.buttons}>
                   <Link
@@ -248,7 +248,7 @@ function Home() {
                 <div className="text--center">
                   <img className={styles.toolImage} src="/img/gopher.png" alt="PAN Go SDK" />
                 </div>
-                <h4>PAN Go SDK</h4>
+                <div className="toolTitle">PAN Go SDK</div>
                 <p className={styles.text__gray}>Cross version mechanism for interacting with PAN devices</p>
                 <div className={styles.buttons}>
                   <Link
@@ -270,7 +270,7 @@ function Home() {
                 <div className="text--center">
                   <img className={styles.toolImage} src="/img/ansible_logo.png" alt="Ansible" />
                 </div>
-                <h4>Ansible</h4>
+                <div className="toolTitle">Ansible</div>
                 <p className={styles.text__gray}>Ansible modules for Palo Alto Networks NGFWs</p>
                 <div className={styles.buttons}>
                   <Link
@@ -292,7 +292,7 @@ function Home() {
                 <div className="text--center">
                   <img className={styles.toolImage} src="/img/expedition.png" alt="Expedition" />
                 </div>
-                <h4>Expedition 2.0</h4>
+                <div className="toolTitle">Expedition 2.0</div>
                 <p className={styles.text__gray}>Migrate configuration from legacy firewalls to Palo Alto Networks</p>
                 <div className={styles.buttons}>
                   <Link
@@ -314,7 +314,7 @@ function Home() {
                 <div className="text--center">
                   <img className={styles.toolImage} src="/img/terraform_logo.png" alt="Terraform Templates" />
                 </div>
-                <h4>Terraform Templates</h4>
+                <div className="toolTitle">Terraform Templates</div>
                 <p className={styles.text__gray}>Deploy infrastructure on AWS and Azure secured by PAN NGFWs</p>
                 <div className={styles.buttons}>
                   <Link
@@ -336,7 +336,7 @@ function Home() {
                 <div className="text--center">
                   <img className={styles.toolImage} src="/img/cloud_security.svg" alt="Cloud Templates" />
                 </div>
-                <h4>Cloud Templates</h4>
+                <div className="toolTitle">Cloud Templates</div>
                 <p className={styles.text__gray}>Templates to automate your cloud security journey</p>
                 <div className={styles.buttons}>
                   <Link className={classnames('button button--info button--md', styles.quickstart)} href="/docs/cloud">

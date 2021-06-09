@@ -2,8 +2,8 @@ info:
   description: |
     Please refer [IoT Public API Headers](iot-public-api-headers) to know how to get API Key<br/>
     List of public APIs from IoT security:
-    1. Link to [Get Device Detail](iot-api#operation/device-detail)
-    2. Link to [Get Device Inventory](iot-api#operation/device-inventory)
+    1. Link to [Get Device Detail](iot-public-api#operation/device-detail)
+    2. Link to [Get Device Inventory](iot-public-api#operation/device-inventory)
   title: IoT Public API Overview
   version: v4.0
   contact: {}
@@ -12,7 +12,7 @@ servers:
 - url: https://{customer-name}.iot.paloaltonetworks.com
 tags:
 - description: The IoT APIs are listed below.
-  name: IoT API
+  name: IoT Public API
 paths:
   /pub/v4.0/device:
     get:

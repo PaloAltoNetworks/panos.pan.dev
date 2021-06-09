@@ -40,9 +40,14 @@ module.exports = {
           position: 'left',
         },
         {
-          label: 'IoT API',
-          to: 'api/iot/iot-api',
-          postition: 'left',
+          label: 'API Reference',
+          items: [
+            {
+              to: '/api/iot/iot-api',
+              label: 'IoT API',
+            },
+          ],
+          position: 'left',
         },
         {
           href: 'https://medium.com/palo-alto-networks-developer-blog',

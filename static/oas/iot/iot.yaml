@@ -4,6 +4,8 @@ info:
     List of public APIs from IoT security:
     1. Link to [Get Device Detail](iot-public-api#operation/device-detail)
     2. Link to [Get Device Inventory](iot-public-api#operation/device-inventory)
+    3. Link to [Get Security Alerts](iot-public-api#operation/alert-list)
+    4. Link to [Resolve a Security Alert](iot-public-api#operation/alert-resolve)
   title: IoT Public API Overview
   version: v4.0
   contact: {}
@@ -62,7 +64,7 @@ paths:
       security:
       - API-Key-Auth: []
       summary: Device Detail
-      tags: 
+      tags:
         - IoT API
 
   /pub/v4.0/device/list:
@@ -159,7 +161,177 @@ paths:
       security:
       - API-Key-Auth: []
       summary: Device Inventory
-      tags: 
+      tags:
+        - IoT API
+
+  /pub/v4.0/alert/list:
+    get:
+      description: Get a list of security alerts.
+      operationId: alert-list
+      parameters:
+      - description: The customer ID specifies the API call for a specific tenant.
+        in: query
+        name: customerid
+        required: true
+        schema:
+          type: string
+      - description: Optional field specifying the alert type as policy_alert. The following value is a string.
+        in: query
+        name: type
+        required: false
+        schema:
+          type: string
+      - description: Optional field specifying the alert type as policy_alert. The following value is a string.
+        in: query
+        name: type
+        required: false
+        schema:
+          type: string
+      - description: Optional field to get only active alerts (resolved=no, the default) or resolved alerts (resolved=yes). The following value is a string.
+        in: query
+        name: resolved
+        required: false
+        schema:
+          type: string
+      - description: Field to get items on subsequent pages. For example, if your first request is pagelength = 100, you will get the first 100 device alerts. To get the next 100, add offset = 100 to your second request. This skips the first 100 alerts and gets the next 100 starting from 101.
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+      - description: Optional but recommended field specifying the number of items for each page. The default page length for alerts is 200 and the maximum is 1000. Setting a shorter length improves response times. The following value is an integer.
+        in: query
+        name: pagelength
+        required: false
+        schema:
+          type: integer
+      - description: Optional field defining whether the alerts are organized in ascending order asc (oldest to newest) or descending order desc (newest to oldest). The default is desc. The following value is a string.
+        in: query
+        name: sortdirection
+        required: false
+        schema:
+          type: string
+      - description: Optional field that defines how alerts are ordered. Only date is supported as the following value and it is a string.
+        in: query
+        name: sortfield
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response (We only show some importants fields here)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IoTSecurityAlertResponse'
+              examples:
+                securityAlertsResponseExample:
+                  $ref: '#/components/examples/SecurityAlertResponseExample'
+        '4XX':
+          description: Client Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                securityAlertsResponseExample:
+                  $ref: '#/components/examples/ClientErrorResponseExample'
+        '5XX':
+          description: Server Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                securityAlertsResponseExample:
+                  $ref: '#/components/examples/ServerErrorResponseExample'
+      security:
+      - API-Key-Auth: []
+      summary: Security Alerts
+      tags:
+        - IoT API
+
+  /pub/v4.0/alert/update:
+    put:
+      description: Resolve a security alert.
+      operationId: alert-resolve
+      parameters:
+      - description: The alert ID being resolved. To retrieve a list of security alerts, including their IDs, use [Get Security Alerts](iot-public-api#operation/alert-list)
+        in: query
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The customer ID specifies the API call for a specific tenant.
+        in: query
+        name: customerid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - reason
+                - reason_type
+                - resolved
+              properties:
+                reason:
+                  type: string
+                  description: This is the reason for resolving the alert. The following value is a string and cannot contain any special characters.
+                reason_type:
+                  type: string
+                  description: 'This is the type of reason for resolving the alert and is one of the following array of values:
+                    1. No Action Needed
+                    2. Issue Mitigated
+                    3. Normal behavior for this device
+                    4. Normal behavior for all devices in the same IoT profile'
+                resolved:
+                  type: string
+                  description: This defines the alert as resolved. The following value is a string and must be yes.
+            examples:
+              payloadExample:
+                summary: An example of payload of resolving a security alert
+                value:
+                  reason: The alert poses no threat
+                  resolved: yes
+                  reason_type: ['No Action Needed']
+
+      responses:
+        '200':
+          description: Successful Response (We only show some importants fields here)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResolveSecurityAlertResponse'
+              examples:
+                resolveSecurityAlertResponseExample:
+                  $ref: '#/components/examples/ResolveSecurityAlertResponseExample'
+        '4XX':
+          description: Client Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                resolveSecurityAlertResponseExample:
+                  $ref: '#/components/examples/ClientErrorResponseExample'
+        '5XX':
+          description: Server Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                resolveSecurityAlertResponseExample:
+                  $ref: '#/components/examples/ServerErrorResponseExample'
+      security:
+      - API-Key-Auth: []
+      summary: Resolve a Security Alert
+      tags:
         - IoT API
 
 components:
@@ -185,7 +357,7 @@ components:
         msg:
           type: string
           description: Error Message
-  
+
     IoTDeviceDetailResponse:
       type: object
       properties:
@@ -243,16 +415,38 @@ components:
           description: The number of info alerts for the device
 
     IoTDeviceInventoryResponse:
-        type: object
-        properties:
-          total:
-            type: integer
-            description: The number of devices matching the request
-          devices:
-            type: array
-            description: An array containing device details
-            items:
-              $ref: '#/components/schemas/DeviceDetails'
+      type: object
+      properties:
+        total:
+          type: integer
+          description: The number of devices matching the request
+        devices:
+          type: array
+          description: An array containing device details
+          items:
+            $ref: '#/components/schemas/DeviceDetails'
+
+    IoTSecurityAlertResponse:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: The number of security alerts matching the request
+        items:
+          type: array
+          description: An array containing security alerts
+          items:
+            $ref: '#/components/schemas/AlertDetails'
+
+    ResolveSecurityAlertResponse:
+      type: object
+      properties:
+        api:
+          type: string
+          description: The API path
+        ver:
+          type: string
+          description: API version
 
     DeviceDetails:
       type: object
@@ -294,6 +488,55 @@ components:
         confidence_score:
           type: string
           description: The confidence score for device classification
+
+    AlertDetails:
+      type: object
+      properties:
+        resolved:
+          type: string
+          description: Whether the alert has been resolved yes or not no
+        date:
+          type: string
+          description: The alert detection date
+        deviceid:
+          type: string
+          description: The MAC address or IP address of a device
+        name:
+          type: string
+          description: The alert name
+        severity:
+          type: string
+          description: 'The severity level of an alert: high, medium, low, info'
+        severityNumber:
+          type: integer
+          description: 'The severity number matching the severity level: high = 4, medium = 3, low = 2, info = 1'
+        type:
+          type: string
+          description: The type of alert
+        description:
+          type: string
+          description: The alert description
+        tenantid:
+          type: string
+          description: The internal customer ID
+        zb_ticketid:
+          type: string
+          description: The unique ticket ID
+        id:
+          type: string
+          description: The alert ID. This is the ID to use when resolving an alert through the API
+        profile:
+          type: string
+          description: The device profile to which the alert belongs
+        category:
+          type: string
+          description: The device category to which the alert belongs
+        hostname:
+          type: string
+          description: The hostname of the device to which the alert belongs
+        reason_history:
+          type: string
+          description: The history of actions taken to investigate and resolve the alert
 
   examples:
     ClientErrorResponseExample:
@@ -345,4 +588,44 @@ components:
             confidence_score: '90'
           }
         ]
+      }
+    SecurityAlertResponseExample:
+      value: {
+        total: 1,
+        items: [
+          {
+            resolved': 'no',
+            date': '2020-05-12T01:23:10.630Z',
+            deviceid': '18:65:90:cd:88:0d',
+            name': 'zingcloud alert bg job integration test at 1589246590630',
+            severity': 'high',
+            severityNumber': 4,
+            type': 'policy_alert',
+            description': 'The baseline policy defines a criteria to match normal connections between devices in two different networks or device groups. It is a positive detection if connections outside of this definition are observed.',
+            tenantid': 'acmecorp' ,
+            zb_ticketid: 'alert-hNMleG1nW',
+            id: '5eb9fa8127b736d82bf7840a',
+            profile: 'Macintosh-MacPro',
+            category: 'Personal Computer',
+            hostname: 'cntl-201-2',
+            internal_hostname: 'cntl-201-2',
+            siteid: '0',
+            serviceLevel': '',
+            reason_history: [],
+            msg': {
+              severity: 'high',
+              description: 'The baseline policy defines criteria to match normal connections between devices in two different networks or device groups. It is a positive detection if connections outside of this definition are observed.',
+              name: 'zingcloud alert bg job integration test at 1589246590630',
+              id: 'hNMleG1nW',
+              ruleid: '5a26f169c8272f0b00c5ef1a',
+              zb_ticketid: 'alert-hNMleG1nW',
+              hostname: 'unknown'
+            }
+          }
+        ]
+      }
+    ResolveSecurityAlertResponseExample:
+      value: {
+        api: '/pub/v4.0/alert/update',
+        ver: 'v4.0'
       }

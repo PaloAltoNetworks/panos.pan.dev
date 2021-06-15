@@ -22,6 +22,12 @@ paths:
     get:
       description: Get a list of device details for the device with the specified MAC address
       operationId: device-detail
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Device Detail
+      tags:
+        - IoT Public API
       parameters:
       - description: The customer ID specifies the API call for a specific tenant.
         in: query
@@ -52,8 +58,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               examples:
-                deviceDetailResponseExample:
-                  $ref: '#/components/examples/ClientErrorResponseExample'
+                Bad Request:
+                  $ref: '#/components/examples/BadRequestResponseExample'
+                Unauthrorized Request:
+                  $ref: '#/components/examples/UnauthorizedResponseExample'
         '5XX':
           description: Server Error Response
           content:
@@ -63,16 +71,17 @@ paths:
               examples:
                 deviceDetailResponseExample:
                   $ref: '#/components/examples/ServerErrorResponseExample'
-      security:
-      - API-Key-Auth: []
-      summary: Device Detail
-      tags:
-        - IoT API
 
   /pub/v4.0/device/list:
     get:
       description: Get a list of all the devices in your IoT Security inventory.
       operationId: device-inventory
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Device Inventory
+      tags:
+        - IoT Public API
       parameters:
       - description: The customer ID specifies the API call for a specific tenant.
         in: query
@@ -149,8 +158,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               examples:
-                deviceInventoryResponseExample:
-                  $ref: '#/components/examples/ClientErrorResponseExample'
+                Bad Request:
+                  $ref: '#/components/examples/BadRequestResponseExample'
+                Unauthrorized Request:
+                  $ref: '#/components/examples/UnauthorizedResponseExample'
         '5XX':
           description: Server Error Response
           content:
@@ -160,16 +171,17 @@ paths:
               examples:
                 deviceInventoryResponseExample:
                   $ref: '#/components/examples/ServerErrorResponseExample'
-      security:
-      - API-Key-Auth: []
-      summary: Device Inventory
-      tags:
-        - IoT API
 
   /pub/v4.0/alert/list:
     get:
       description: Get a list of security alerts.
       operationId: alert-list
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Security Alerts
+      tags:
+        - IoT Public API
       parameters:
       - description: The customer ID specifies the API call for a specific tenant.
         in: query
@@ -236,8 +248,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               examples:
-                securityAlertsResponseExample:
-                  $ref: '#/components/examples/ClientErrorResponseExample'
+                Bad Request:
+                  $ref: '#/components/examples/BadRequestResponseExample'
+                Unauthrorized Request:
+                  $ref: '#/components/examples/UnauthorizedResponseExample'
         '5XX':
           description: Server Error Response
           content:
@@ -247,16 +261,17 @@ paths:
               examples:
                 securityAlertsResponseExample:
                   $ref: '#/components/examples/ServerErrorResponseExample'
-      security:
-      - API-Key-Auth: []
-      summary: Security Alerts
-      tags:
-        - IoT API
 
   /pub/v4.0/alert/update:
     put:
       description: Resolve a security alert.
       operationId: alert-resolve
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Resolve a Security Alert
+      tags:
+        - IoT Public API
       parameters:
       - description: The alert ID being resolved. To retrieve a list of security alerts, including their IDs, use [Get Security Alerts](iot-public-api#operation/alert-list)
         in: query
@@ -319,8 +334,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               examples:
-                resolveSecurityAlertResponseExample:
-                  $ref: '#/components/examples/ClientErrorResponseExample'
+                Bad Request:
+                  $ref: '#/components/examples/BadRequestResponseExample'
+                Unauthrorized Request:
+                  $ref: '#/components/examples/UnauthorizedResponseExample'
         '5XX':
           description: Server Error Response
           content:
@@ -330,16 +347,17 @@ paths:
               examples:
                 resolveSecurityAlertResponseExample:
                   $ref: '#/components/examples/ServerErrorResponseExample'
-      security:
-      - API-Key-Auth: []
-      summary: Resolve a Security Alert
-      tags:
-        - IoT API
 
   /pub/v4.0/vulnerability/list:
     get:
       description: Get a list of security alerts.
       operationId: vulnerability-list
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Vulnerabilities
+      tags:
+        - IoT Public API
       parameters:
       - description: The customer ID specifies the API call for a specific tenant.
         in: query
@@ -400,8 +418,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               examples:
-                vulnerabilityListResponseExample:
-                  $ref: '#/components/examples/ClientErrorResponseExample'
+                Bad Request:
+                  $ref: '#/components/examples/BadRequestResponseExample'
+                Unauthrorized Request:
+                  $ref: '#/components/examples/UnauthorizedResponseExample'
         '5XX':
           description: Server Error Response
           content:
@@ -411,16 +431,17 @@ paths:
               examples:
                 vulnerabilityListResponseExample:
                   $ref: '#/components/examples/ServerErrorResponseExample'
-      security:
-      - API-Key-Auth: []
-      summary: Vulnerabilities
-      tags:
-        - IoT API
 
   /pub/v4.0/vulnerability/update:
     put:
       description: Mark one or more instances of a vulnerability as resolved.
       operationId: vulnerability-resolve
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Resolve Vulnerabilty Instances
+      tags:
+        - IoT Public API
       parameters:
       - description: The customer ID specifies the API call for a specific tenant.
         in: query
@@ -444,7 +465,7 @@ paths:
                   type: string
                   description: "This is a list of one or more ticket IDs fir vulnerability instances being resolved.
                     If you include the ticket IDs for multiple vulnerability instances, separate them by commas; for example: 'ticketIdList': ['vuln-1a4a72c2', 'vuln-1a4a72c3', 'vuln-1a4a72c4']
-                    To retrieve a list of vulnerabilities and vulnerability instances, including their ticket IDs, use Get Vulnerabilities and refer to the zb_ticketid values."
+                    To retrieve a list of vulnerabilities and vulnerability instances, including their ticket IDs, use [Get Vulnerabilities](iot-public-api#operation/vulnerability-list) and refer to the zb_ticketid values."
                 action:
                   type: string
                   description: This is the action employed to resolve the vulnerability instance. The following value is a string and must be either mitigate or ignore.
@@ -478,8 +499,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               examples:
-                resolveSecurityAlertResponseExample:
-                  $ref: '#/components/examples/ClientErrorResponseExample'
+                Bad Request:
+                  $ref: '#/components/examples/BadRequestResponseExample'
+                Unauthrorized Request:
+                  $ref: '#/components/examples/UnauthorizedResponseExample'
         '5XX':
           description: Server Error Response
           content:
@@ -489,11 +512,6 @@ paths:
               examples:
                 resolveSecurityAlertResponseExample:
                   $ref: '#/components/examples/ServerErrorResponseExample'
-      security:
-      - API-Key-Auth: []
-      summary: Resolve Vulnerabilty Instances
-      tags:
-        - IoT API
 
 components:
   securitySchemes:
@@ -503,7 +521,7 @@ components:
       in: header
       name: X-Key-Id
     X-Access-Key:
-      description: Your API header requires X-Key-Id for authentication.
+      description: Your API header requires X-Key-Key for authentication.
       type: apiKey
       in: header
       name: X-Access-Key
@@ -804,10 +822,16 @@ components:
           description: The name of the vulnerability
 
   examples:
-    ClientErrorResponseExample:
+    BadRequestResponseExample:
       value: {
         code: '400',
         msg: invalid request
+      }
+
+    UnauthorizedResponseExample:
+      value: {
+        code: '403',
+        msg: no access
       }
 
     ServerErrorResponseExample:

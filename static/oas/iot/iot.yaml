@@ -6,6 +6,8 @@ info:
     2. Link to [Get Device Inventory](iot-public-api#operation/device-inventory)
     3. Link to [Get Security Alerts](iot-public-api#operation/alert-list)
     4. Link to [Resolve a Security Alert](iot-public-api#operation/alert-resolve)
+    4. Link to [Get Vulnerabilities](iot-public-api#operation/vulnerability-list)
+    4. Link to [Resolve Vulnerability Instances](iot-public-api#operation/vulnerability-resolve)
   title: IoT Public API Overview
   version: v4.0
   contact: {}
@@ -138,7 +140,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/IoTDeviceInventoryResponse'
               examples:
-                deviceDetailResponseExample:
+                deviceInventoryResponseExample:
                   $ref: '#/components/examples/DeviceInventoryResponseExample'
         '4XX':
           description: Client Error Response
@@ -147,7 +149,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               examples:
-                deviceDetailResponseExample:
+                deviceInventoryResponseExample:
                   $ref: '#/components/examples/ClientErrorResponseExample'
         '5XX':
           description: Server Error Response
@@ -156,7 +158,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               examples:
-                deviceDetailResponseExample:
+                deviceInventoryResponseExample:
                   $ref: '#/components/examples/ServerErrorResponseExample'
       security:
       - API-Key-Auth: []
@@ -334,6 +336,165 @@ paths:
       tags:
         - IoT API
 
+  /pub/v4.0/vulnerability/list:
+    get:
+      description: Get a list of security alerts.
+      operationId: vulnerability-list
+      parameters:
+      - description: The customer ID specifies the API call for a specific tenant.
+        in: query
+        name: customerid
+        required: true
+        schema:
+          type: string
+      - description: Optional field setting the start of a time range for retrieving vulnerabilities. For example, to get all vulnerabilities since November 3, 2020 (Pacific Standard Time), the start time would be stime=2020-11-3T08:00Z.
+        in: query
+        name: stime
+        required: false
+        schema:
+          type: string
+      - description: Field to get items on subsequent pages. For example, if your first request is pagelength = 100, you will get the first 100 vulnerabilities (indexed from 0 to 99). To get the next 100, add offset = 100 to your second request. This skips the first 100 vulnerabilities and gets the next 100 starting from index number 100.
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+      - description: Optional but recommended field specifying the number of items for each page. The default page length for vulnerabilities is unlimited and the maximum is 1000.  Setting a shorter length improves response times. The following value is an integer.
+        in: query
+        name: pagelength
+        required: false
+        schema:
+          type: integer
+      - description: Optional field defining a specific vulnerability. If omitted, all vulnerabilities are returned. The following value is a string.
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+      - description: Optional field that retrieves only confirmed or potential vulnerabilities. The following field is either the string Confirmed or Potential. If no value is passed, both types of vulnerabilities are returned.
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+      - description: When requesting all vulnerabilities, the value is the string device. When requesting all vulnerabilities for a specific device, the value is string vulnerability followed by @deviceid=<device_id>, where the device ID is either a MAC address or, for static IP devices, an IP address.
+        in: query
+        name: groupby
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response (We only show some importants fields here)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IoTVulnerabilyListResponse'
+              examples:
+                vulnerabilityListResponseExample:
+                  $ref: '#/components/examples/VulnerabilityListResponseExample'
+        '4XX':
+          description: Client Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                vulnerabilityListResponseExample:
+                  $ref: '#/components/examples/ClientErrorResponseExample'
+        '5XX':
+          description: Server Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                vulnerabilityListResponseExample:
+                  $ref: '#/components/examples/ServerErrorResponseExample'
+      security:
+      - API-Key-Auth: []
+      summary: Vulnerabilities
+      tags:
+        - IoT API
+
+  /pub/v4.0/vulnerability/update:
+    put:
+      description: Mark one or more instances of a vulnerability as resolved.
+      operationId: vulnerability-resolve
+      parameters:
+      - description: The customer ID specifies the API call for a specific tenant.
+        in: query
+        name: customerid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - ticketIdList
+                - action
+                - reason
+                - full_name
+              properties:
+                ticketIdList:
+                  type: string
+                  description: "This is a list of one or more ticket IDs fir vulnerability instances being resolved.
+                    If you include the ticket IDs for multiple vulnerability instances, separate them by commas; for example: 'ticketIdList': ['vuln-1a4a72c2', 'vuln-1a4a72c3', 'vuln-1a4a72c4']
+                    To retrieve a list of vulnerabilities and vulnerability instances, including their ticket IDs, use Get Vulnerabilities and refer to the zb_ticketid values."
+                action:
+                  type: string
+                  description: This is the action employed to resolve the vulnerability instance. The following value is a string and must be either mitigate or ignore.
+                reason:
+                  type: string
+                  description: This is the reason for resolving the vulnerability instance. The following value is a string and cannot contain any special characters.
+                full_name:
+                  type: string
+                  description: This is the name of the vulnerability; for example, CVE-2018-18568.
+            examples:
+              payloadExample:
+                summary: An example of payload of resolving a vulnerability instance
+                value:
+                  reason: Threat was removed
+                  full_name: CVE-2018-18568
+                  ticketIdList: ['vuln-1a4a72c2']
+                  action: mitigate
+
+      responses:
+        '200':
+          description: Successful Response (We only show some importants fields here)
+          content:
+            application/json:
+              examples:
+                resolveSecurityAlertResponseExample:
+                  $ref: '#/components/examples/ResolveVulnerabilityInstanceResponseExample'
+        '4XX':
+          description: Client Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                resolveSecurityAlertResponseExample:
+                  $ref: '#/components/examples/ClientErrorResponseExample'
+        '5XX':
+          description: Server Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                resolveSecurityAlertResponseExample:
+                  $ref: '#/components/examples/ServerErrorResponseExample'
+      security:
+      - API-Key-Auth: []
+      summary: Resolve Vulnerabilty Instances
+      tags:
+        - IoT API
+
 components:
   securitySchemes:
     X-Key-Id:
@@ -448,6 +609,28 @@ components:
           type: string
           description: API version
 
+    IoTVulnerabilyListResponse:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: The number of vulnerablities matching the request
+        items:
+          type: array
+          description: An array containing vulnerablities
+          items:
+            $ref: '#/components/schemas/Vulnerabilies'
+
+    ResolveVulnerabilityResponse:
+      type: object
+      properties:
+        api:
+          type: string
+          description: The API path
+        ver:
+          type: string
+          description: API version
+
     DeviceDetails:
       type: object
       properties:
@@ -538,17 +721,101 @@ components:
           type: string
           description: The history of actions taken to investigate and resolve the alert
 
+    Vulnerabilies:
+      type: object
+      properties:
+        items:
+          type: string
+          description: Introduces items in the list of vulnerabilities
+        name:
+          type: string
+          description: The hostname of the device associated with a vulnerability instance
+        ip:
+          type: string
+          description: The IP address of the device associated with a vulnerability instance
+        deviceid:
+          type: string
+          description: The MAC address or IP address of the device
+        profile:
+          type: string
+          description: The profile to which the device belongs
+        profile_vertical:
+          type: string
+          description: The vertical to which the device profile belongs
+        display_profile_category:
+          type: string
+          description: The category to which the device profile belongs
+        vendor:
+          type: string
+          description: The device vendor
+        model:
+          type: string
+          description: The device model
+        os:
+          type: string
+          description: The device OS
+        osCombined:
+          type: string
+          description: The OS and OS version combined
+        siteid:
+          type: string
+          description: The ID of the site where the device is deployed
+        asset_tag:
+          type: string
+          description: The asset tag of the device; if none, then “null” is returned
+        sn:
+          type: string
+          description: The device serial number
+        date:
+          type: string
+          description: The date of the latest activity of the device
+        risk_score:
+          type: integer
+          description: The risk score of the vulnerability
+        risk_level:
+          type: string
+          description: 'The risk level of the vulnerability: Low, Medium, High, or Critical'
+        ticketState:
+          type: string
+          description: The state of the zb_ticket for a vulnerability instance —investigation, remediation, resolved, or new if the vulnerability was detected but nobody has yet taken action to address it
+        zb_ticketid:
+          type: string
+          description: The unique ticket ID for a vulnerability instance
+        ticketAssignees:
+          type: string
+          description: The email address of one or more people assigned to remediate a vulnerability instance; if there aren’t any, null is returned
+        reason_history:
+          type: string
+          description: An array that holds the history of all actions taken on a vulnerability instance, including status changes, user notes, if it was sent to asset management, and if it was resolved; if no actions were taken, null is returned
+        remediate_workorder:
+          type: string
+          description: The work order number returned from an integrated third-party asset management system such as AIMS, Connectiv, Nuvolo, or ServiceNow to which a vulnerability instance was sent
+        remediate_checkbox:
+          type: string
+          description: Index values indicating the type of information sent to asset management; 0 = vulnerability summary, 1 = vulnerability impact, 2 = device information
+        remediate_instruction:
+          type: string
+          description: Additional instructions included with the work order
+        detected_date:
+          type: string
+          description: The date when a vulnerability instance was originally detected
+        vulnerability_name:
+          type: string
+          description: The name of the vulnerability
+
   examples:
     ClientErrorResponseExample:
       value: {
         code: '400',
         msg: invalid request
       }
+
     ServerErrorResponseExample:
       value: {
         code: '500',
         msg: internal server error
       }
+
     DeviceDetailResponseExample:
       value: {
         deviceid: 34:02:86:44:65:36,
@@ -569,6 +836,7 @@ components:
         number_of_caution_alerts: 0,
         number_of_info_alerts: 0
       }
+
     DeviceInventoryResponseExample:
       value: {
         total: 1,
@@ -589,6 +857,7 @@ components:
           }
         ]
       }
+
     SecurityAlertResponseExample:
       value: {
         total: 1,
@@ -624,8 +893,72 @@ components:
           }
         ]
       }
+
     ResolveSecurityAlertResponseExample:
       value: {
         api: '/pub/v4.0/alert/update',
         ver: 'v4.0'
+      }
+
+    VulnerabilityListResponseExample:
+      value: {
+        'ver': 'v4.0',
+        'api': '/vulnerability/list',
+        'items': [
+          {
+            'name': 'Polycom_64167f372d45',
+            'ip': '10.1.1.84',
+            'deviceid': '64:16:7f:37:2d:45',
+            'profile': 'Polycom IP Phone',
+            'profile_vertical': 'Office',
+            'display_profile_category': 'IP Phone',
+            'vendor': 'Polycom',
+            'model': 'VVX601',
+            'os': 'Embedded',
+            'osCombined': 'Embedded',
+            'siteid': '0',
+            'asset_tag': null,
+            'sn': null,
+            'date': '2020-05-12T01:28:26.986Z',
+            'risk_score': 20,
+            'risk_level': 'Low',
+            'ticketState': 'new',
+            'zb_ticketid': 'vuln-52f40a58',
+            'ticketAssignees': [ 'analyst1@acmecorp.com'],
+            'reason_history': [
+              {
+                'action': 'sent to asset management: aims',
+                'reason': 'Check system',
+                'reason_type': null,
+                'user_email': 'admin@acmecorp.com',
+                'timestamp': '2019-10-18T22:00:20.255Z',
+                'aims_workorder_number': 152027
+              }
+            ],
+          'remediate_workorder': '152027',
+          'remediate_checkbox': '0,1,2',
+          'remediate_instruction': null,
+          'detected_date': '2019-10-15T20:18:42.135Z',
+          'vulnerability_name': 'CVE-2019-12948'
+          }
+        ]
+      }
+
+    ResolveVulnerabilityInstanceResponseExample:
+      value: {
+        "api": "/pub/v4.0/vulnerability/update",
+        "ver":"v4.0",
+        "updatedVulnerInstanceList":
+          [
+            "newLevel": "Low",
+            "newScore": 18,
+            "newAnomalyMap":
+              {
+                "application": 0.125,
+                "payload": 0.125,
+                "internal": 0.125,
+                "external": 0.125,
+                "protocol": 0.125
+              }
+          ]
       }

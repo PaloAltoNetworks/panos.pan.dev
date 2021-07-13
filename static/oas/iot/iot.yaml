@@ -513,6 +513,195 @@ paths:
                 resolveSecurityAlertResponseExample:
                   $ref: '#/components/examples/ServerErrorResponseExample'
 
+  /pub/v4.0/device/bulkUpdate?updateSource=cisco_wlc:
+    put:
+      description: 'Bulk update devices for Cisco WLC'
+      operationId: cisco-wlc-bulk-update
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Bulk Update Devices - Cisco WLC
+      tags:
+        - IoT Public API
+      parameters:
+      - description: The customer ID specifies the API call for a specific tenant.
+        in: query
+        name: customerid
+        required: true
+        schema:
+          type: string
+      - description: Source of integration
+        in: query
+        name: updateSource
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CiscoWLCDevicePayloadSchema'
+            examples:
+              payloadExample:
+                $ref: '#/components/examples/CiscoWLCDeviceBulkUpdatePayloadExample'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkUpdateDeviceResponseSchema'
+              examples:
+                resolveSecurityAlertResponseExample:
+                  $ref: '#/components/examples/CiscoWLCBulkUpdateDevicesResponseExample'
+        '4XX':
+          description: Client Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Bad Request:
+                  $ref: '#/components/examples/BadRequestResponseExample'
+                Unauthrorized Request:
+                  $ref: '#/components/examples/UnauthorizedResponseExample'
+        '5XX':
+          description: Server Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                resolveSecurityAlertResponseExample:
+                  $ref: '#/components/examples/ServerErrorResponseExample'
+
+  /pub/v4.0/device/bulkUpdate?updateSource=aruba_wlc:
+    put:
+      description: 'Bulk update devices for Aruba WLC'
+      operationId: aruba-wlc-bulk-update
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Bulk Update Devices - Aruba WLC
+      tags:
+        - IoT Public API
+      parameters:
+      - description: The customer ID specifies the API call for a specific tenant.
+        in: query
+        name: customerid
+        required: true
+        schema:
+          type: string
+      - description: Source of integration
+        in: query
+        name: updateSource
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArubaWLCDevicePayloadSchema'
+            examples:
+              payloadExample:
+                $ref: '#/components/examples/ArubaWLCDeviceBulkUpdatePayloadExample'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkUpdateDeviceResponseSchema'
+              examples:
+                resolveSecurityAlertResponseExample:
+                  $ref: '#/components/examples/ArubaWLCBulkUpdateDevicesResponseExample'
+        '4XX':
+          description: Client Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Bad Request:
+                  $ref: '#/components/examples/BadRequestResponseExample'
+                Unauthrorized Request:
+                  $ref: '#/components/examples/UnauthorizedResponseExample'
+        '5XX':
+          description: Server Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                resolveSecurityAlertResponseExample:
+                  $ref: '#/components/examples/ServerErrorResponseExample'
+
+  /pub/v4.0/device/bulkUpdate?updateSource=snmp:
+    put:
+      description: 'Bulk update devices for SNMP'
+      operationId: snmp-bulk-update
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Bulk Update Devices - SNMP
+      tags:
+        - IoT Public API
+      parameters:
+      - description: The customer ID specifies the API call for a specific tenant.
+        in: query
+        name: customerid
+        required: true
+        schema:
+          type: string
+      - description: Source of integration
+        in: query
+        name: updateSource
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SNMPDevicePayloadSchema'
+            examples:
+              payloadExample:
+                $ref: '#/components/examples/SNMPDeviceBulkUpdatePayloadExample'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkUpdateDeviceResponseSchema'
+              examples:
+                resolveSecurityAlertResponseExample:
+                  $ref: '#/components/examples/SNMPBulkUpdateDevicesResponseExample'
+        '4XX':
+          description: Client Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Bad Request:
+                  $ref: '#/components/examples/BadRequestResponseExample'
+                Unauthrorized Request:
+                  $ref: '#/components/examples/UnauthorizedResponseExample'
+        '5XX':
+          description: Server Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                resolveSecurityAlertResponseExample:
+                  $ref: '#/components/examples/ServerErrorResponseExample'
+
 components:
   securitySchemes:
     X-Key-Id:
@@ -821,6 +1010,185 @@ components:
           type: string
           description: The name of the vulnerability
 
+    CiscoWLCDevicePayloadSchema:
+      type: object
+      required:
+        - devicelist
+      properties:
+        devicelist:
+          type: array
+          description: devices
+          items:
+            type: object
+            properties:
+              macAddress:
+                type: string
+              ipAddress:
+                type: string
+              radio:
+                type: string
+              connectionState:
+                type: string
+              wlanId:
+                type: string
+              SSID:
+                type: string
+              connectedDuration:
+                type: string
+              authentication:
+                type: string
+              status:
+                type: string
+              authMethod:
+                type: string
+              encryptionCipher:
+                type: string
+              rssi:
+                type: string
+              snr:
+                type: string
+              apName:
+                type: string
+              apIPAddress:
+                type: string
+              apMacAddress:
+                type: string
+              apRadioSlotId:
+                type: string
+              apModel:
+                type: string
+              location:
+                type: string
+              country:
+                type: string
+              BSSID:
+                type: string
+              apencryptionCipher:
+                type: string
+              deviceType:
+                type: string
+              bluetoothType:
+                type: string
+                description: Only if isBluetooth is true
+              bluetoothDiscType:
+                type: string
+                description: Only if isBluetooth is true
+              frequency:
+                type: string
+                description: Only if isBluetooth is true
+              channel:
+                type: string
+                description: Only if isBluetooth is true
+              isBluetooth:
+                type: boolean
+
+    ArubaWLCDevicePayloadSchema:
+      type: object
+      required:
+        - devicelist
+      properties:
+        devicelist:
+          type: array
+          description: devices
+          items:
+            type: object
+            properties:
+              macAddress:
+                type: string
+              ipAddress:
+                type: string
+              radio:
+                type: string
+              connectionState:
+                type: string
+              wlanId:
+                type: string
+              SSID:
+                type: string
+              connectedDuration:
+                type: string
+              authentication:
+                type: string
+              authMethod:
+                type: string
+              encryptionCipher:
+                type: string
+              rssi:
+                type: string
+              snr:
+                type: string
+              apName:
+                type: string
+              apIPAddress:
+                type: string
+              apMacAddress:
+                type: string
+              apRadioSlotId:
+                type: string
+              apModel:
+                type: string
+              location:
+                type: string
+              country:
+                type: string
+              authenticationStatus:
+                type: string
+              port:
+                type: string
+              slotsNumber:
+                type: string
+              totalClients:
+                type: string
+              bluetoothType:
+                type: string
+                description: Only if isBluetooth is true
+              bluetoothDiscType:
+                type: string
+                description: Only if isBluetooth is true
+              isBluetooth:
+                type: boolean
+
+    SNMPDevicePayloadSchema:
+      type: object
+      required:
+        - devicelist
+      properties:
+        devicelist:
+          type: array
+          description: devices
+          items:
+            type: object
+            properties:
+              deviceid:
+                type: string
+              connect_evtContent.ip:
+                type: string
+              display_switchName:
+                type: string
+              display_phyPort:
+                type: string
+              display_switchIP:
+                type: string
+
+    BulkUpdateDeviceResponseSchema:
+      type: object
+      properties:
+        api:
+          type: string
+          description: API path
+        ver:
+          type: string
+          description: API version
+        code:
+          type: string
+          description: successful code(1)
+        message:
+          type: string
+          description: successful message
+        updatedDeviceNum:
+          type: integer
+          description: number of devices updated
+
   examples:
     BadRequestResponseExample:
       value: {
@@ -985,4 +1353,107 @@ components:
                 "protocol": 0.125
               }
           ]
+      }
+
+    CiscoWLCBulkUpdateDevicesResponseExample:
+      value: {
+        api: "device/bulkUpdate",
+        ver: "v4.0",
+        code: 1,
+        message: "OK",
+        updatedDeviceNum: 5
+      }
+
+    ArubaWLCBulkUpdateDevicesResponseExample:
+      value: {
+        api: "device/bulkUpdate",
+        ver: "v4.0",
+        code: 1,
+        message: "OK",
+        updatedDeviceNum: 5
+      }
+
+    SNMPBulkUpdateDevicesResponseExample:
+      value: {
+        api: "device/bulkUpdate",
+        ver: "v4.0",
+        code: 1,
+        message: "OK",
+        updatedDeviceNum: 5
+      }
+
+    CiscoWLCDeviceBulkUpdatePayloadExample:
+      summary: An example of payload of device list for Cisco WLC
+      value: {
+        devicelist: [
+          {
+              "macAddress": "34:f3:9a:69:6f:e5",
+              "connectedDuration": "51233",
+              "wlanId": "shuai 123",
+              "apModel": "shuai 123",
+              "location": "shuai 123",
+              "country": "shuai 123",
+              "SSID": "shuai 123",
+              "apName":"shuai 1235",
+              "apIPAddress": "shuai 1235",
+              "rssi" :"shuai 123",
+              "snr" :"shuai 123",
+              "authMethod": "shuai 123",
+              "encryptionCipher": "shuai 123",
+              "radio":"shuai 123"
+          }
+        ]
+      }
+
+    ArubaWLCDeviceBulkUpdatePayloadExample:
+      summary: An example of payload of device list for Aruba WLC
+      value: {
+        devicelist: [
+          {
+              "apIPAddress": "10.6.72.235",
+              "apMacAddress": "24:62:ce:cd:71:84",
+              "apModel": "505",
+              "apName": "24:62:ce:cd:71:84",
+              "bluetoothDeviceType": "AP's local beacon:iBeacon:Beacon management capable",
+              "bluetoothType": "BLE",
+              "connectedDuration": "00:02:10",
+              "connectionState": "Yes",
+              "macAddress": "28:de:65:16:5b:f4",
+              "location": "abc",
+              "isBluetooth": true
+          },
+          {
+              "macAddress": "34:f3:9a:69:6f:e5",
+              "connectedDuration": "51233",
+              "wlanId": "shuai 123",
+              "apModel": "shuai 123",
+              "location": "shuai 123",
+              "country": "shuai 123",
+              "SSID": "shuai 123",
+              "apName": "shuai 1235",
+              "apIPAddress": "shuai 1235",
+              "rssi": "shuai 123",
+              "snr": "shuai 123",
+              "authMethod": "shuai 123",
+              "encryptionCipher": "shuai 123",
+              "radio": "shuai 123"
+          }
+        ]
+      }
+
+    SNMPDeviceBulkUpdatePayloadExample:
+      summary: An example of payload of device list for SNMP
+      value: {
+        devicelist: [
+          {
+              "deviceid": "00:0c:29:8f:20:9a",
+              "connect_evtContent.ip": "10.6.72.216",
+              "display_switchName": "zbmvsw9300-01.8.8.8.8",
+              "display_switchIP": "10.6.72.104"
+          },
+          {
+              "deviceid": "6c:6c:d3:aa:d0:81",
+              "display_phyPort": "Gi1/0/2"
+          }
+        ]
       }

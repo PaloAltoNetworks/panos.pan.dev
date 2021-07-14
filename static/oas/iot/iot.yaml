@@ -1127,7 +1127,7 @@ components:
               bluetoothType:
                 type: string
                 description: Only if isBluetooth is true
-              bluetoothDiscType:
+              bluetoothDeviceType:
                 type: string
                 description: Only if isBluetooth is true
               frequency:
@@ -1199,11 +1199,17 @@ components:
               bluetoothType:
                 type: string
                 description: Only if isBluetooth is true
-              bluetoothDiscType:
+              bluetoothDeviceType:
                 type: string
                 description: Only if isBluetooth is true
               isBluetooth:
                 type: boolean
+              hwType:
+                type: string
+                description: Only if isBluetooth is true
+              fwVersion:
+                type: string
+                description: Only if isBluetooth is true
 
     SNMPBulkUpdateDevicePayloadSchema:
       type: object

@@ -513,6 +513,63 @@ paths:
                 resolveSecurityAlertResponseExample:
                   $ref: '#/components/examples/ServerErrorResponseExample'
 
+  /pub/v4.0/device/bulkUpdate:
+    put:
+      description: 'General bulk update devices. Currently, it is being used for DNAC and Cisco Prime integrations.'
+      operationId: general-bulk-update
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Bulk Update Devices - General
+      tags:
+        - IoT Public API
+      parameters:
+      - description: The customer ID specifies the API call for a specific tenant.
+        in: query
+        name: customerid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeneralBulkUpdateDevicePayloadSchema'
+            examples:
+              payloadExample:
+                $ref: '#/components/examples/GeneralBulkUpdateDevicePayloadExample'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkUpdateDeviceResponseSchema'
+              examples:
+                resolveSecurityAlertResponseExample:
+                  $ref: '#/components/examples/SNMPBulkUpdateDevicesResponseExample'
+        '4XX':
+          description: Client Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Bad Request:
+                  $ref: '#/components/examples/BadRequestResponseExample'
+                Unauthrorized Request:
+                  $ref: '#/components/examples/UnauthorizedResponseExample'
+        '5XX':
+          description: Server Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                resolveSecurityAlertResponseExample:
+                  $ref: '#/components/examples/ServerErrorResponseExample'
+
   /pub/v4.0/device/bulkUpdate?updateSource=cisco_wlc:
     put:
       description: 'Bulk update devices for Cisco WLC'
@@ -541,7 +598,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CiscoWLCDevicePayloadSchema'
+              $ref: '#/components/schemas/CiscoWLCBulkUpdateDevicePayloadSchema'
             examples:
               payloadExample:
                 $ref: '#/components/examples/CiscoWLCDeviceBulkUpdatePayloadExample'
@@ -604,7 +661,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ArubaWLCDevicePayloadSchema'
+              $ref: '#/components/schemas/ArubaWLCBulkUpdateDevicePayloadSchema'
             examples:
               payloadExample:
                 $ref: '#/components/examples/ArubaWLCDeviceBulkUpdatePayloadExample'
@@ -667,7 +724,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SNMPDevicePayloadSchema'
+              $ref: '#/components/schemas/SNMPBulkUpdateDevicePayloadSchema'
             examples:
               payloadExample:
                 $ref: '#/components/examples/SNMPDeviceBulkUpdatePayloadExample'
@@ -1010,7 +1067,7 @@ components:
           type: string
           description: The name of the vulnerability
 
-    CiscoWLCDevicePayloadSchema:
+    CiscoWLCBulkUpdateDevicePayloadSchema:
       type: object
       required:
         - devicelist
@@ -1082,7 +1139,7 @@ components:
               isBluetooth:
                 type: boolean
 
-    ArubaWLCDevicePayloadSchema:
+    ArubaWLCBulkUpdateDevicePayloadSchema:
       type: object
       required:
         - devicelist
@@ -1148,7 +1205,7 @@ components:
               isBluetooth:
                 type: boolean
 
-    SNMPDevicePayloadSchema:
+    SNMPBulkUpdateDevicePayloadSchema:
       type: object
       required:
         - devicelist
@@ -1188,6 +1245,38 @@ components:
         updatedDeviceNum:
           type: integer
           description: number of devices updated
+
+    GeneralBulkUpdateDevicePayloadSchema:
+      type: object
+      required:
+        - devicelist
+      properties:
+        devicelist:
+          type: array
+          description: devices
+          items:
+            type: object
+            properties:
+              location:
+                type: string
+              switch_ip:
+                type: string
+              switch_name:
+                type: string
+              ap_ip:
+                type: string
+              ap_name:
+                type: string
+              WireWireless:
+                type: string
+              protocol_name:
+                type: string
+              vlan:
+                type: string
+              ip:
+                type: string
+              source:
+                type: string
 
   examples:
     BadRequestResponseExample:
@@ -1389,18 +1478,18 @@ components:
           {
               "macAddress": "34:f3:9a:69:6f:e5",
               "connectedDuration": "51233",
-              "wlanId": "shuai 123",
-              "apModel": "shuai 123",
-              "location": "shuai 123",
-              "country": "shuai 123",
-              "SSID": "shuai 123",
-              "apName":"shuai 1235",
-              "apIPAddress": "shuai 1235",
-              "rssi" :"shuai 123",
-              "snr" :"shuai 123",
-              "authMethod": "shuai 123",
-              "encryptionCipher": "shuai 123",
-              "radio":"shuai 123"
+              "wlanId": "sample wlan",
+              "apModel": "sample ap model",
+              "location": "sample location",
+              "country": "sample country",
+              "SSID": "sample SSID",
+              "apName": "sample ap name",
+              "apIPAddress": "sample ap IP address",
+              "rssi": "sample rssi",
+              "snr": "sample snr",
+              "authMethod": "sample auth method",
+              "encryptionCipher": "sample encryption cipher",
+              "radio": "sample radio"
           }
         ]
       }
@@ -1425,18 +1514,18 @@ components:
           {
               "macAddress": "34:f3:9a:69:6f:e5",
               "connectedDuration": "51233",
-              "wlanId": "shuai 123",
-              "apModel": "shuai 123",
-              "location": "shuai 123",
-              "country": "shuai 123",
-              "SSID": "shuai 123",
-              "apName": "shuai 1235",
-              "apIPAddress": "shuai 1235",
-              "rssi": "shuai 123",
-              "snr": "shuai 123",
-              "authMethod": "shuai 123",
-              "encryptionCipher": "shuai 123",
-              "radio": "shuai 123"
+              "wlanId": "sample wlan",
+              "apModel": "sample ap model",
+              "location": "sample location",
+              "country": "sample country",
+              "SSID": "sample SSID",
+              "apName": "sample ap name",
+              "apIPAddress": "sample ap IP address",
+              "rssi": "sample rssi",
+              "snr": "sample snr",
+              "authMethod": "sample auth method",
+              "encryptionCipher": "sample encryption cipher",
+              "radio": "sample radio"
           }
         ]
       }
@@ -1454,6 +1543,25 @@ components:
           {
               "deviceid": "6c:6c:d3:aa:d0:81",
               "display_phyPort": "Gi1/0/2"
+          }
+        ]
+      }
+
+    GeneralBulkUpdateDevicePayloadExample:
+      summary: An example of payload of general device list
+      value: {
+        devicelist: [
+          {
+            location: 'sample location',
+            switch_ip: 'sample switch ip',
+            switch_name: 'sample switch name',
+            ap_ip: 'sample ap_ip',
+            ap_name: 'sample ap_name',
+            WireWireless: 'sample wirewireless',
+            protocol_name: 'sample protocol',
+            vlan: 'sample vlan',
+            ip: 'sample ip',
+            source: "sample config source"
           }
         ]
       }

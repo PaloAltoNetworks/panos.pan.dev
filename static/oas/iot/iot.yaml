@@ -530,6 +530,12 @@ paths:
         required: true
         schema:
           type: string
+      - description: Source of integration
+        in: query
+        name: updateSource
+        required: false
+        schema:
+          type: string
       requestBody:
         required: true
         content:
@@ -590,7 +596,7 @@ paths:
       - description: Source of integration
         in: query
         name: updateSource
-        required: false
+        required: true
         schema:
           type: string
       requestBody:
@@ -653,7 +659,7 @@ paths:
       - description: Source of integration
         in: query
         name: updateSource
-        required: false
+        required: true
         schema:
           type: string
       requestBody:
@@ -716,7 +722,7 @@ paths:
       - description: Source of integration
         in: query
         name: updateSource
-        required: false
+        required: true
         schema:
           type: string
       requestBody:
@@ -1482,20 +1488,20 @@ components:
       value: {
         devicelist: [
           {
-              "macAddress": "34:f3:9a:69:6f:e5",
-              "connectedDuration": "51233",
-              "wlanId": "sample wlan",
-              "apModel": "sample ap model",
-              "location": "sample location",
-              "country": "sample country",
-              "SSID": "sample SSID",
-              "apName": "sample ap name",
-              "apIPAddress": "sample ap IP address",
-              "rssi": "sample rssi",
-              "snr": "sample snr",
-              "authMethod": "sample auth method",
-              "encryptionCipher": "sample encryption cipher",
-              "radio": "sample radio"
+              "apIPAddress": "10.6.72.226",
+              "apMacAddress": "6c:20:56:e6:87:0e",
+              "apModel": "AIR-CAP3602I-A-K9",
+              "apName": "DOLORES",
+              "bluetoothDeviceType": "BLE Beacon",
+              "bluetoothType": "BLE",
+              "channel": "unknown",
+              "connectedDuration": "01d:23h:08m:49s",
+              "connectionState": "Yes",
+              "frequency": "2.4GHz",
+              "isBluetooth": true,
+              "location": "default location",
+              "macAddress": "04:a3:16:71:0a:f6",
+              "rssi": "-60dBm"
           }
         ]
       }
@@ -1515,7 +1521,9 @@ components:
               "connectionState": "Yes",
               "macAddress": "28:de:65:16:5b:f4",
               "location": "abc",
-              "isBluetooth": true
+              "isBluetooth": true,
+              "hwType": "sample hwtype",
+              "fwVersion": "sample fwVersion"
           },
           {
               "macAddress": "34:f3:9a:69:6f:e5",

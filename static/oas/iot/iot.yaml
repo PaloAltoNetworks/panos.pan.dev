@@ -1488,20 +1488,42 @@ components:
       value: {
         devicelist: [
           {
-              "apIPAddress": "10.6.72.226",
-              "apMacAddress": "6c:20:56:e6:87:0e",
-              "apModel": "AIR-CAP3602I-A-K9",
-              "apName": "DOLORES",
-              "bluetoothDeviceType": "BLE Beacon",
-              "bluetoothType": "BLE",
-              "channel": "unknown",
-              "connectedDuration": "01d:23h:08m:49s",
-              "connectionState": "Yes",
-              "frequency": "2.4GHz",
-              "isBluetooth": true,
-              "location": "default location",
-              "macAddress": "04:a3:16:71:0a:f6",
-              "rssi": "-60dBm"
+            "apIPAddress": "10.6.72.226",
+            "apMacAddress": "6c:20:56:e6:87:0e",
+            "apModel": "AIR-CAP3602I-A-K9",
+            "apName": "DOLORES",
+            "bluetoothDeviceType": "BLE Beacon",
+            "bluetoothType": "BLE",
+            "channel": "unknown",
+            "connectedDuration": "01d:23h:08m:49s",
+            "connectionState": "Yes",
+            "frequency": "2.4GHz",
+            "isBluetooth": true,
+            "location": "default location",
+            "macAddress": "04:a3:16:71:0a:f6",
+            "rssi": "-60dBm"
+          }
+          {
+            "SSID": "DOLORES",
+            "apIPAddress": "10.6.72.226",
+            "apMacAddress": "6c:20:56:e6:87:0e",
+            "apModel": "AIR-CAP3602I-A-K9",
+            "apName": "DOLORES",
+            "apRadioSlotId": "0",
+            "authMethod": "WPA2 PSK",
+            "authentication": "Yes",
+            "connectedDuration": "26000",
+            "connectionState": "Associated",
+            "country": "US",
+            "encryptionCipher": "CCMP-128 (AES)",
+            "ipAddress": "2.2.2.1",
+            "location": "california",
+            "macAddress": "55:66:aa:bb:77:cc",
+            "radio": "802.11n(2.4 GHz)",
+            "rssi": "-30 dBm",
+            "snr": "51 dB",
+            "status": "Associated",
+            "wlanId": "1"
           }
         ]
       }

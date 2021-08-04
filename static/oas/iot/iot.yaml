@@ -1588,7 +1588,7 @@ components:
       value: {
         devicelist: [
           {
-            location: 'sample test location',
+            location: 'sample location',
             switch_ip: 'sample switch ip',
             switch_name: 'sample switch name',
             ap_ip: 'sample ap_ip',

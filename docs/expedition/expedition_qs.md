@@ -16,6 +16,11 @@ keywords:
   - expedition
 image: /img/expedition.png
 ---
+
+**<font color="red">Expedition 1.x is the main supported tool at this point, Expedition 2.0 official release date has been scheduled on April, 2022 , please refer to the below live article for more details:</font>**  
+
+https://live.paloaltonetworks.com/t5/expedition-articles/expedition-2-0-release-date-postponed/ta-p/423747
+
 ## Install Expedition
 
 Expedition 2.0 is in constant development to cover new functionalities available in the market and to correct implementation issues that are identified in the code. To keep the Expedition instance up to date, the tool is initially provided as a Debian package. In the future we will also offer containerized flavors of the tool to allow installing it on other platforms rather than Debian based ones.  

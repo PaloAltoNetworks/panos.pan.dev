@@ -1,7 +1,7 @@
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
-import React from "react";
 import merge from "lodash.merge";
 import useThemeContext from "@theme/hooks/useThemeContext";
+import React from "react";
 
 
 let RedocStandalone = () => <div></div>;
@@ -24,8 +24,8 @@ const DOCUSAURUS = {
   fontFamily: "var(--ifm-font-family-base)",
   fontSize: "var(--ifm-font-size-base)",
   dark: {
-    primaryText: "#ababa9", // var(--ifm-font-color-base)
-    secondaryText: "#ffcb06", // var(--ifm-font-color-secondary)
+    primaryText: "#f5f6f7", // var(--ifm-font-color-base)
+    secondaryText: "#212121", // var(--ifm-font-color-secondary)
     backgroundColor: "#121212",
   }
 };
@@ -54,7 +54,7 @@ let LIGHT_THEME_OPTIONS = {
 let DARK_THEME_OPTIONS = {
   colors: {
     text: {
-      primary: DOCUSAURUS.dark.primaryText,
+      primary: "#c9c9c9",
       secondary: DOCUSAURUS.dark.secondaryText,
     },
   },
@@ -78,13 +78,13 @@ let DARK_THEME_OPTIONS = {
  */
 function getThemeOptions(isDarkMode) {
   let baseTheme = {
-    spacing: {sectionVertical: '60', unit: '2',},
+    spacing: {unit: '1',},
     colors: {
       primary: {
-        main: "#ffba00"
+        main: "#fa582d"
       },
       success: {
-        main: "#ffba00"
+        main: "#00cc66"
       },
       error: {
         main: "#fa383e"
@@ -93,7 +93,7 @@ function getThemeOptions(isDarkMode) {
         main: "#ffcb06"
       },
       warning: {
-        main: "#ffba00"
+        main: "#00c0e8"
       },
       http: {
         get: ({ colors }) => (colors.info.main),
@@ -123,7 +123,8 @@ function getThemeOptions(isDarkMode) {
       },
       code: {
           lineHeight: "var(--ifm-pre-line-height)",
-          fontFamily: "var(--ifm-font-family-monospace)"
+          fontFamily: "var(--ifm-font-family-monospace)",
+          wrap: "true"
       }
     }
 
@@ -151,16 +152,15 @@ function Redocusaurus(props) {
       <RedocStandalone
         specUrl={props.spec}
         options={{
-          scrollYOffset: ".navbar",
           theme,
           hideDownloadButton: true,
-          nativeScrollBars: false,
+          nativeScrollbars: true,
           disableSearch: true,
           hideSchemaPattern: false,
           pathInMiddlePanel: true,
           suppressWarnings: true,
           showExtensions: true,
-          hideLoading: true,
+          hideLoading: false,
           jsonSampleExpandLevel: 1,
           simpleOneOfTypeLabel: false,
         }}

@@ -296,6 +296,7 @@ examples:
     value: {
       devicelist: [
         {
+          deviceid: 'sample deviceid',
           location: 'sample location',
           switch_ip: 'sample switch ip',
           switch_name: 'sample switch name',

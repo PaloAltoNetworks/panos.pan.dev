@@ -489,6 +489,8 @@ schemas:
         items:
           type: object
           properties:
+            deviceid:
+              type: string
             location:
               type: string
             switch_ip:

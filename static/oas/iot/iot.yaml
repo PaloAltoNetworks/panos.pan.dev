@@ -75,6 +75,8 @@ paths:
         - IoT Public API
       parameters:
         $ref: 'api/public/alertResolve.yaml#/parameters'
+      requestBody:
+        $ref: 'api/public/alertResolve.yaml#/requestBody'
       responses:
         $ref: 'api/public/alertResolve.yaml#/responses'
 
@@ -105,6 +107,8 @@ paths:
         - IoT Public API
       parameters:
         $ref: 'api/public/vulnerabilityResolve.yaml#/parameters'
+      requestBody:
+        $ref: 'api/public/vulnerabilityResolve.yaml#/requestBody'
       responses:
         $ref: 'api/public/vulnerabilityResolve.yaml#/responses'
 
@@ -120,6 +124,8 @@ paths:
         - IoT Public API
       parameters:
         $ref: 'api/public/bulkUpdate.yaml#/parameters'
+      requestBody:
+        $ref: 'api/public/bulkUpdate.yaml#/requestBody'
       responses:
         $ref: 'api/public/bulkUpdate.yaml#/responses'
 
@@ -135,6 +141,8 @@ paths:
         - IoT Public API
       parameters:
         $ref: 'api/public/bulkUpdateCiscoWLC.yaml#/parameters'
+      requestBody:
+        $ref: 'api/public/bulkUpdateCiscoWLC.yaml#/requestBody'
       responses:
         $ref: 'api/public/bulkUpdateCiscoWLC.yaml#/responses'
 
@@ -150,6 +158,8 @@ paths:
         - IoT Public API
       parameters:
         $ref: 'api/public/bulkUpdateArubaWLC.yaml#/parameters'
+      requestBody:
+        $ref: 'api/public/bulkUpdateArubaWLC.yaml#/requestBody'
       responses:
         $ref: 'api/public/bulkUpdateArubaWLC.yaml#/responses'
 
@@ -165,6 +175,8 @@ paths:
         - IoT Public API
       parameters:
         $ref: 'api/public/bulkUpdateSNMP.yaml#/parameters'
+      requestBody:
+        $ref: 'api/public/bulkUpdateSNMP.yaml#/requestBody'
       responses:
         $ref: 'api/public/bulkUpdateSNMP.yaml#/responses'
 

@@ -258,18 +258,18 @@ examples:
         {
             "macAddress": "34:f3:9a:69:6f:e5",
             "connectedDuration": "51233",
-            "wlanId": "sample wlan",
-            "apModel": "sample ap model",
-            "location": "sample location",
-            "country": "sample country",
-            "SSID": "sample SSID",
-            "apName": "sample ap name",
-            "apIPAddress": "sample ap IP address",
-            "rssi": "sample rssi",
-            "snr": "sample snr",
-            "authMethod": "sample auth method",
-            "encryptionCipher": "sample encryption cipher",
-            "radio": "sample radio"
+            "wlanId": "1",
+            "apModel": "303",
+            "location": "PANW",
+            "country": "USA",
+            "SSID": "DOLORES",
+            "apName": "d0:d3:e0:c3:57:ec",
+            "apIPAddress": "10.6.72.240",
+            "rssi": "38",
+            "snr": "57",
+            "authMethod": "WPA2 PSK",
+            "encryptionCipher": "CCMP-128 (AES)",
+            "radio": "802.11a"
         }
       ]
     }

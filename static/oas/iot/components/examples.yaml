@@ -296,17 +296,20 @@ examples:
     value: {
       devicelist: [
         {
-          deviceid: 'sample deviceid',
-          location: 'sample location',
-          switch_ip: 'sample switch ip',
-          switch_name: 'sample switch name',
-          ap_ip: 'sample ap_ip',
-          ap_name: 'sample ap_name',
-          WireWireless: 'sample wirewireless',
-          protocol_name: 'sample protocol',
-          vlan: 'sample vlan',
-          ip: 'sample ip',
-          source: "sample config source"
+          deviceid: '00:00:2a:01:00:24',
+          config_source: 'dnac',
+          ip: '10.14.1.123',
+          location: 'HQ/Floor 17',
+          ap_ip: '10.6.72.226',
+          ap_name: 'DOLORES',
+          SSID: 'vmwareguest',
+          switch_ip: '10.10.20.82',
+          switch_name: 'leaf2.test.com',
+          switch_if_name: 'GigabitEthernet1/0/4',
+          vlan: 823,
+          vlan_name: 'Cameras',
+          protocol_name: 'dns,ssl,ping',
+          WireWireless: 'WIRED'
         }
       ]
     }

@@ -491,23 +491,29 @@ schemas:
           properties:
             deviceid:
               type: string
+            config_source:
+              type: string
+            ip:
+              type: string
             location:
-              type: string
-            switch_ip:
-              type: string
-            switch_name:
               type: string
             ap_ip:
               type: string
             ap_name:
               type: string
-            WireWireless:
+            SSID:
               type: string
-            protocol_name:
+            switch_ip:
+              type: string
+            switch_name:
+              type: string
+            switch_if_name:
               type: string
             vlan:
               type: string
-            ip:
+            vlan_name:
               type: string
-            source:
+            protocol_name:
+              type: string
+            WireWireless:
               type: string

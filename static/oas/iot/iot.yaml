@@ -799,7 +799,7 @@ paths:
                   description: 'The Xsoar Playbook status. Possible values: [error, success, disabled].'
                 timestamp:
                   type: integer
-                  description: 'The timestamp of sending the status to cloud side.'
+                  description: 'The timestamp when sending the status to cloud side in milliseconds.'
                 integration_name:
                   type: string
                   description: 'The third-party integration name of the playbook.'
@@ -857,6 +857,109 @@ paths:
                   resolveSecurityAlertResponseExample:
                     $ref: '#/components/examples/ServerErrorResponseExample'
 
+  /pub/v4.0/xsoar/device/scanDetails:
+    post:
+      description: 'Receiving the scanner list and profile list for the specific scanner.'
+      operationId: xsoar-device-scan-detail
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Receiving Vulnerability Scanner Metadata
+      tags:
+        - IoT Public API
+      parameters:
+        - description: The customer ID specifies the API call for a specific tenant.
+          in: query
+          name: customerid
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - scannerList
+                - profileList
+                - scanType
+                - timestamp
+              properties:
+                scannerList:
+                  type: array
+                  description: 'The array of scanners or engines.'
+                profileList:
+                  type: array
+                  description: 'The array of profiles or templates.'
+                siteIdList:
+                  type: array
+                  description: 'The site id list. It is required for Rapid7.'
+                scanType:
+                  type: string
+                  description: 'The type of device vulnerability scan.'
+                timestamp:
+                  type: integer
+                  description: 'The timestamp when sending the metadata to cloud side in milliseconds.'
+            examples:
+              - payloadExample:
+                summary: Payload Example sending Qualys scan details
+                value:
+                  profileList: ["WannaCry and Shadow Brokers", "2008 SANS20 Options"]
+                  scannerList: ["Scanner-1"]
+                  scanType: 'qualys'
+                  timestamp: 1590881696000
+              - payloadExample:
+                summary: Payload Example sending Rapid7 scan details
+                value:
+                  scannerList: [{"engineId": "1", "engineName": "test engine"}]
+                  profileList: [{"templateId": "1", "templateName": "test tempalte"}]
+                  siteIdList: [{"siteId": "134", "siteName": "zingbox office"}, {"siteId": "2", "siteName": "panw office"}]
+                  scanType: 'rapid7'
+                  timestamp: 1590881696000
+              - payloadExample:
+                summary: Payload Example sending Tenable scan details
+                value:
+                  profileList: [{"profileId": "fc2fa8b3-028b-83e8-2ebd-4705d0de38bc621fbb0e783517bc",
+                                 "profileName": "Malware Scan"}, {"profileId": "b9e01ede-c502-a064-cbca-e0f75d7743549709aaa0d800a65e","profileName": "DROWN Detection"}]
+                  scannerList: [{"scannerId": 133708, "scannerName": "India Cloud Scanners"}, {"scannerId": 125641, "scannerName": "UK London Cloud Scanners"}]
+                  scanType: 'tenable'
+                  timestamp: 1590881696000
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  resceived:
+                    type: string
+                    description: Confirmation from cloud side.
+              examples:
+                value: {
+                  received: 'yes'
+                }
+        '4XX':
+          description: Client Error Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Bad Request:
+                  $ref: '#/components/examples/BadRequestResponseExample'
+                Unauthrorized Request:
+                  $ref: '#/components/examples/UnauthorizedResponseExample'
+          '5XX':
+            description: Server Error Response
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ErrorResponse'
+                examples:
+                  resolveSecurityAlertResponseExample:
+                    $ref: '#/components/examples/ServerErrorResponseExample'
 
 
 components:

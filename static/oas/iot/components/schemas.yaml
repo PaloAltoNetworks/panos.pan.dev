@@ -493,6 +493,7 @@ schemas:
               type: string
             config_source:
               type: string
+              enum: ['dnac', 'prime']
             ip:
               type: string
             location:

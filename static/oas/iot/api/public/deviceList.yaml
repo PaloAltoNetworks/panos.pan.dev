@@ -1,0 +1,89 @@
+parameters:
+- description: The customer ID specifies the API call for a specific tenant.
+  in: query
+  name: customerid
+  required: true
+  schema:
+    type: string
+- description: Field to set the start of a time range for retrieving devices.
+  in: query
+  name: stime
+  required: false
+  schema:
+    type: string
+    format: date-time
+- description: Field to get monitored devices or all discovered devices
+  in: query
+  name: filter_monitored
+  required: false
+  schema:
+    type: string
+    enum:
+    - 'true'
+    - 'false'
+- description: Field to get items on subsequent pages
+  in: query
+  name: offset
+  required: false
+  schema:
+    type: integer
+- description: Field specifying thenumber of items for each page.
+  in: query
+  name: pagelength
+  required: false
+  schema:
+    type: integer
+- description: Field to determine if all fields of devices needed to return
+  in: query
+  name: detail
+  required: false
+  schema:
+    type: string
+    enum:
+    - 'true'
+    - 'false'
+- description: 'Field to set sort direction: ascending or descending'
+  in: query
+  name: sortdirection
+  required: false
+  schema:
+    type: string
+    enum:
+    - asc
+    - desc
+- description: Field to set sorting column
+  in: query
+  name: sortfield
+  required: false
+  schema:
+    type: string
+responses:
+  '200':
+    description: Successful Response (We only show some importants fields here)
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/IoTDeviceInventoryResponse'
+        examples:
+          deviceInventoryResponseExample:
+            $ref: '../../components/examples.yaml#/examples/DeviceInventoryResponseExample'
+  '4XX':
+    description: Client Error Response
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/ErrorResponse'
+        examples:
+          Bad Request:
+            $ref: '../../components/examples.yaml#/examples/BadRequestResponseExample'
+          Unauthrorized Request:
+            $ref: '../../components/examples.yaml#/examples/UnauthorizedResponseExample'
+  '5XX':
+    description: Server Error Response
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/ErrorResponse'
+        examples:
+          deviceInventoryResponseExample:
+            $ref: '../../components/examples.yaml#/examples/ServerErrorResponseExample'

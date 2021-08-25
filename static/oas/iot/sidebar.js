@@ -11,7 +11,7 @@ function genEndpoints() {
   const endpoints = [];
   const css_overrides = [];
   // Absolute path from project root
-  specs = globby.sync(["./static/oas/iot/*.yaml"], {
+  specs = globby.sync(['./static/oas/iot/iot.yaml'], {
     absolute: false,
     objectMode: true,
     deep: 1,

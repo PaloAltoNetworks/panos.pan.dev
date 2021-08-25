@@ -1,0 +1,79 @@
+parameters:
+- description: The customer ID specifies the API call for a specific tenant.
+  in: query
+  name: customerid
+  required: true
+  schema:
+    type: string
+- description: Optional field specifying the alert type as policy_alert. The following value is a string.
+  in: query
+  name: type
+  required: false
+  schema:
+    type: string
+- description: Optional field specifying the alert type as policy_alert. The following value is a string.
+  in: query
+  name: type
+  required: false
+  schema:
+    type: string
+- description: Optional field to get only active alerts (resolved=no, the default) or resolved alerts (resolved=yes). The following value is a string.
+  in: query
+  name: resolved
+  required: false
+  schema:
+    type: string
+- description: Field to get items on subsequent pages. For example, if your first request is pagelength = 100, you will get the first 100 device alerts. To get the next 100, add offset = 100 to your second request. This skips the first 100 alerts and gets the next 100 starting from 101.
+  in: query
+  name: offset
+  required: false
+  schema:
+    type: integer
+- description: Optional but recommended field specifying the number of items for each page. The default page length for alerts is 200 and the maximum is 1000. Setting a shorter length improves response times. The following value is an integer.
+  in: query
+  name: pagelength
+  required: false
+  schema:
+    type: integer
+- description: Optional field defining whether the alerts are organized in ascending order asc (oldest to newest) or descending order desc (newest to oldest). The default is desc. The following value is a string.
+  in: query
+  name: sortdirection
+  required: false
+  schema:
+    type: string
+- description: Optional field that defines how alerts are ordered. Only date is supported as the following value and it is a string.
+  in: query
+  name: sortfield
+  required: false
+  schema:
+    type: string
+responses:
+  '200':
+    description: Successful Response (We only show some importants fields here)
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/IoTSecurityAlertResponse'
+        examples:
+          securityAlertsResponseExample:
+            $ref: '../../components/examples.yaml#/examples/SecurityAlertResponseExample'
+  '4XX':
+    description: Client Error Response
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/ErrorResponse'
+        examples:
+          Bad Request:
+            $ref: '../../components/examples.yaml#/examples/BadRequestResponseExample'
+          Unauthrorized Request:
+            $ref: '../../components/examples.yaml#/examples/UnauthorizedResponseExample'
+  '5XX':
+    description: Server Error Response
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/ErrorResponse'
+        examples:
+          securityAlertsResponseExample:
+            $ref: '../../components/examples.yaml#/examples/ServerErrorResponseExample'

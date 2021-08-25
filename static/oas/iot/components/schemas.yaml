@@ -1,0 +1,520 @@
+schemas:
+  ErrorResponse:
+    type: object
+    properties:
+      code:
+        type: string
+        description: HTTP Status Code
+      msg:
+        type: string
+        description: Error Message
+
+  IoTDeviceDetailResponse:
+    type: object
+    properties:
+      deviceid:
+        type: string
+        description: The device ID, which IoT Security uses to identify and track the device
+      hostname:
+        type: string
+        description: The device hostname
+      category:
+        type: string
+        description: The category to which the device belongs
+      profile:
+        type: string
+        description: The device profile assigned to the device
+      profile_type:
+        type: string
+        description: The type of device profile, such as IoT or Non_IoT
+      profile_vertical:
+        type: string
+        description: The industry vertical for the profile such as Medical, IT Devices, and Office
+      ip_address:
+        type: string
+        description: The IP address of the device
+      mac_address:
+        type: string
+        description: The MAC address of the device
+      risk_score:
+        type: integer
+        description: The risk score of the device
+      risk_level:
+        type: string
+        description: 'The risk level of the device; there are four: low, medium, high, and critical'
+      last_activity:
+        type: string
+        format: date-time
+        description: A UTC timestamp for the last detected device activity
+      confidence_score:
+        type: string
+        description: The confidence score for device classification
+      subnet:
+        type: string
+        description: The subnet to which the device is attached
+      number_of_critical_alerts:
+        type: integer
+        description: The number of critical alerts for the device
+      number_of_warning_alerts:
+        type: integer
+        description: The number of warning alerts for the device
+      number_of_caution_alerts:
+        type: integer
+        description: The number of caution alerts for the device
+      number_of_info_alerts:
+        type: integer
+        description: The number of info alerts for the device
+
+  IoTDeviceInventoryResponse:
+    type: object
+    properties:
+      total:
+        type: integer
+        description: The number of devices matching the request
+      devices:
+        type: array
+        description: An array containing device details
+        items:
+          $ref: '#/schemas/DeviceDetails'
+
+  IoTSecurityAlertResponse:
+    type: object
+    properties:
+      total:
+        type: integer
+        description: The number of security alerts matching the request
+      items:
+        type: array
+        description: An array containing security alerts
+        items:
+          $ref: '#/schemas/AlertDetails'
+
+  ResolveSecurityAlertResponse:
+    type: object
+    properties:
+      api:
+        type: string
+        description: The API path
+      ver:
+        type: string
+        description: API version
+
+  IoTVulnerabilyListResponse:
+    type: object
+    properties:
+      total:
+        type: integer
+        description: The number of vulnerablities matching the request
+      items:
+        type: array
+        description: An array containing vulnerablities
+        items:
+          $ref: '#/schemas/Vulnerabilies'
+
+  ResolveVulnerabilityResponse:
+    type: object
+    properties:
+      api:
+        type: string
+        description: The API path
+      ver:
+        type: string
+        description: API version
+
+  DeviceDetails:
+    type: object
+    properties:
+      deviceid:
+        type: string
+        description: The device ID, which IoT Security uses to identify and track the device
+      hostname:
+        type: string
+        description: The device hostname
+      category:
+        type: string
+        description: The category to which the device belongs
+      profile:
+        type: string
+        description: The device profile assigned to the device
+      profile_type:
+        type: string
+        description: The type of device profile, such as IoT or Non_IoT
+      profile_vertical:
+        type: string
+        description: The industry vertical for the profile such as Medical, IT Devices, and Office
+      ip_address:
+        type: string
+        description: The IP address of the device
+      mac_address:
+        type: string
+        description: The MAC address of the device
+      risk_score:
+        type: integer
+        description: The risk score of the device
+      risk_level:
+        type: string
+        description: 'The risk level of the device; there are four: low, medium, high, and critical'
+      last_activity:
+        type: string
+        format: date-time
+        description: A UTC timestamp for the last detected device activity
+      confidence_score:
+        type: string
+        description: The confidence score for device classification
+
+  AlertDetails:
+    type: object
+    properties:
+      resolved:
+        type: string
+        description: Whether the alert has been resolved yes or not no
+      date:
+        type: string
+        description: The alert detection date
+      deviceid:
+        type: string
+        description: The MAC address or IP address of a device
+      name:
+        type: string
+        description: The alert name
+      severity:
+        type: string
+        description: 'The severity level of an alert: high, medium, low, info'
+      severityNumber:
+        type: integer
+        description: 'The severity number matching the severity level: high = 4, medium = 3, low = 2, info = 1'
+      type:
+        type: string
+        description: The type of alert
+      description:
+        type: string
+        description: The alert description
+      tenantid:
+        type: string
+        description: The internal customer ID
+      zb_ticketid:
+        type: string
+        description: The unique ticket ID
+      id:
+        type: string
+        description: The alert ID. This is the ID to use when resolving an alert through the API
+      profile:
+        type: string
+        description: The device profile to which the alert belongs
+      category:
+        type: string
+        description: The device category to which the alert belongs
+      hostname:
+        type: string
+        description: The hostname of the device to which the alert belongs
+      reason_history:
+        type: string
+        description: The history of actions taken to investigate and resolve the alert
+
+  Vulnerabilies:
+    type: object
+    properties:
+      items:
+        type: string
+        description: Introduces items in the list of vulnerabilities
+      name:
+        type: string
+        description: The hostname of the device associated with a vulnerability instance
+      ip:
+        type: string
+        description: The IP address of the device associated with a vulnerability instance
+      deviceid:
+        type: string
+        description: The MAC address or IP address of the device
+      profile:
+        type: string
+        description: The profile to which the device belongs
+      profile_vertical:
+        type: string
+        description: The vertical to which the device profile belongs
+      display_profile_category:
+        type: string
+        description: The category to which the device profile belongs
+      vendor:
+        type: string
+        description: The device vendor
+      model:
+        type: string
+        description: The device model
+      os:
+        type: string
+        description: The device OS
+      osCombined:
+        type: string
+        description: The OS and OS version combined
+      siteid:
+        type: string
+        description: The ID of the site where the device is deployed
+      asset_tag:
+        type: string
+        description: The asset tag of the device; if none, then “null” is returned
+      sn:
+        type: string
+        description: The device serial number
+      date:
+        type: string
+        description: The date of the latest activity of the device
+      risk_score:
+        type: integer
+        description: The risk score of the vulnerability
+      risk_level:
+        type: string
+        description: 'The risk level of the vulnerability: Low, Medium, High, or Critical'
+      ticketState:
+        type: string
+        description: The state of the zb_ticket for a vulnerability instance —investigation, remediation, resolved, or new if the vulnerability was detected but nobody has yet taken action to address it
+      zb_ticketid:
+        type: string
+        description: The unique ticket ID for a vulnerability instance
+      ticketAssignees:
+        type: string
+        description: The email address of one or more people assigned to remediate a vulnerability instance; if there aren’t any, null is returned
+      reason_history:
+        type: string
+        description: An array that holds the history of all actions taken on a vulnerability instance, including status changes, user notes, if it was sent to asset management, and if it was resolved; if no actions were taken, null is returned
+      remediate_workorder:
+        type: string
+        description: The work order number returned from an integrated third-party asset management system such as AIMS, Connectiv, Nuvolo, or ServiceNow to which a vulnerability instance was sent
+      remediate_checkbox:
+        type: string
+        description: Index values indicating the type of information sent to asset management; 0 = vulnerability summary, 1 = vulnerability impact, 2 = device information
+      remediate_instruction:
+        type: string
+        description: Additional instructions included with the work order
+      detected_date:
+        type: string
+        description: The date when a vulnerability instance was originally detected
+      vulnerability_name:
+        type: string
+        description: The name of the vulnerability
+
+  CiscoWLCBulkUpdateDevicePayloadSchema:
+    type: object
+    required:
+      - devicelist
+    properties:
+      devicelist:
+        type: array
+        description: devices
+        items:
+          type: object
+          properties:
+            macAddress:
+              type: string
+            ipAddress:
+              type: string
+            radio:
+              type: string
+            connectionState:
+              type: string
+            wlanId:
+              type: string
+            SSID:
+              type: string
+            connectedDuration:
+              type: string
+            authentication:
+              type: string
+            status:
+              type: string
+            authMethod:
+              type: string
+            encryptionCipher:
+              type: string
+            rssi:
+              type: string
+            snr:
+              type: string
+            apName:
+              type: string
+            apIPAddress:
+              type: string
+            apMacAddress:
+              type: string
+            apRadioSlotId:
+              type: string
+            apModel:
+              type: string
+            location:
+              type: string
+            country:
+              type: string
+            BSSID:
+              type: string
+            apencryptionCipher:
+              type: string
+            deviceType:
+              type: string
+            bluetoothType:
+              type: string
+              description: Only if isBluetooth is true
+            bluetoothDeviceType:
+              type: string
+              description: Only if isBluetooth is true
+            frequency:
+              type: string
+              description: Only if isBluetooth is true
+            channel:
+              type: string
+              description: Only if isBluetooth is true
+            isBluetooth:
+              type: boolean
+
+  ArubaWLCBulkUpdateDevicePayloadSchema:
+    type: object
+    required:
+      - devicelist
+    properties:
+      devicelist:
+        type: array
+        description: devices
+        items:
+          type: object
+          properties:
+            macAddress:
+              type: string
+            ipAddress:
+              type: string
+            radio:
+              type: string
+            connectionState:
+              type: string
+            wlanId:
+              type: string
+            SSID:
+              type: string
+            connectedDuration:
+              type: string
+            authentication:
+              type: string
+            authMethod:
+              type: string
+            encryptionCipher:
+              type: string
+            rssi:
+              type: string
+            snr:
+              type: string
+            apName:
+              type: string
+            apIPAddress:
+              type: string
+            apMacAddress:
+              type: string
+            apRadioSlotId:
+              type: string
+            apModel:
+              type: string
+            location:
+              type: string
+            country:
+              type: string
+            authenticationStatus:
+              type: string
+            port:
+              type: string
+            slotsNumber:
+              type: string
+            totalClients:
+              type: string
+            bluetoothType:
+              type: string
+              description: Only if isBluetooth is true
+            bluetoothDeviceType:
+              type: string
+              description: Only if isBluetooth is true
+            isBluetooth:
+              type: boolean
+            hwType:
+              type: string
+              description: Only if isBluetooth is true
+            fwVersion:
+              type: string
+              description: Only if isBluetooth is true
+
+  SNMPBulkUpdateDevicePayloadSchema:
+    type: object
+    required:
+      - devicelist
+    properties:
+      devicelist:
+        type: array
+        description: devices
+        items:
+          type: object
+          properties:
+            deviceid:
+              type: string
+            connect_evtContent.ip:
+              type: string
+            display_switchName:
+              type: string
+            display_phyPort:
+              type: string
+            display_switchIP:
+              type: string
+
+  BulkUpdateDeviceResponseSchema:
+    type: object
+    properties:
+      api:
+        type: string
+        description: API path
+      ver:
+        type: string
+        description: API version
+      code:
+        type: string
+        description: successful code(1)
+      message:
+        type: string
+        description: successful message
+      updatedDeviceNum:
+        type: integer
+        description: number of devices updated
+
+  GeneralBulkUpdateDevicePayloadSchema:
+    type: object
+    required:
+      - devicelist
+    properties:
+      devicelist:
+        type: array
+        description: devices
+        items:
+          type: object
+          properties:
+            deviceid:
+              type: string
+            config_source:
+              type: string
+              enum: ['dnac', 'prime']
+            ip:
+              type: string
+            location:
+              type: string
+            ap_ip:
+              type: string
+            ap_name:
+              type: string
+            SSID:
+              type: string
+            switch_ip:
+              type: string
+            switch_name:
+              type: string
+            switch_if_name:
+              type: string
+            vlan:
+              type: string
+            vlan_name:
+              type: string
+            protocol_name:
+              type: string
+            WireWireless:
+              type: string

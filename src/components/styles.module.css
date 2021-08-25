@@ -69,8 +69,10 @@
 }
 
 .card {
-  max-width: 348px;
-  margin: auto;
+  max-width: 90%;
+  margin: 0 auto;
+  height: 100%;
+  box-shadow: #a4a9ad;
 }
 
 .cardImage {

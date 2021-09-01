@@ -11,6 +11,7 @@
         ]
       }
     ],
+    "target": "panos.pan.dev",
     "public": "build",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   }

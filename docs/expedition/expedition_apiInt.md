@@ -16,7 +16,12 @@ keywords:
   - configuration
 
 image: /img/expedition.png
----
+---  
+
+:::note 
+Expedition 1.x is the only supported version at time. Expedition 2.0 is scheduled to release in April, 2022. Learn more about the release at our [Live Community](https://live.paloaltonetworks.com/t5/expedition-articles/expedition-2-0-release-date-postponed/ta-p/423747) site.
+:::  
+
 ## Introduction  
 The Expedition 2.0 tool aims at facilitating the consumption of PANOS features and assisting on the correct application of good practices in on NGFW devices. 
 For instance, the tool can assist on the implementation of security policies using Applications, Users and Regions, 

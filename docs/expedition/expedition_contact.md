@@ -13,8 +13,12 @@ keywords:
   - migration
   - firewall
   - configuration
-image: /img/expedition.png
----
+image: /img/expedition.png  
+---  
+
+:::note
+Expedition 1.x is the only supported version at time. Expedition 2.0 is scheduled to release in April, 2022. Learn more about the release at our [Live Community](https://live.paloaltonetworks.com/t5/expedition-articles/expedition-2-0-release-date-postponed/ta-p/423747) site.
+:::  
 
 # Contact
 We want to thank you for using Expedition 2.0 and to improve the security posture of your organization.

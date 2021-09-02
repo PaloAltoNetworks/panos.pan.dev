@@ -50,7 +50,7 @@ Table1: Expedition VM recommended system requirements
 ## Installing the Expedition Packages
 
 :::note
-Expedition2 Installation Script is scheduled to be released on April, 2022. 
+Expedition 2 Installation Script is scheduled to be released in April, 2022. 
 :::note 
 
 The script will perform some initial verifications, including the existence of a user with username “expedition”, and that the Expedition package has not been installed in advance, so it would not modify the settings of an already installed Expedition VM.

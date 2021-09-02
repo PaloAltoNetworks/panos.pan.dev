@@ -1,0 +1,49 @@
+parameters:
+- description: The customer ID specifies the API call for a specific tenant.
+  in: query
+  name: customerid
+  required: true
+  schema:
+    type: string
+- description: The tag typementions type of tag.
+  in: query
+  name: type
+  required: false  
+  schema:
+    type: string
+- description: This is the source of the user-defined tags assigned to IoT devices and must be followed by the string tenant.
+  in: query
+  name: source
+  required: true  
+  schema:
+    type: string
+responses:
+  '200':
+    description: Successful Response (We only show some importants fields here)
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/IoTTagListResponse'
+        examples:
+          deviceDetailResponseExample:
+            $ref: '../../components/examples.yaml#/examples/IoTTagListResponseExample'
+  '4XX':
+    description: Client Error Response
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/ErrorResponse'
+        examples:
+          Bad Request:
+            $ref: '../../components/examples.yaml#/examples/BadRequestResponseExample'
+          Unauthrorized Request:
+            $ref: '../../components/examples.yaml#/examples/UnauthorizedResponseExample'
+  '5XX':
+    description: Server Error Response
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/ErrorResponse'
+        examples:
+          deviceDetailResponseExample:
+            $ref: '../../components/examples.yaml#/examples/ServerErrorResponseExample'

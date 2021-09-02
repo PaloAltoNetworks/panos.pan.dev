@@ -5,12 +5,15 @@ parameters:
   required: true
   schema:
     type: string
-- description: The tag typementions type of tag.
+- description: The tag type mentions type of tag.
   in: query
   name: type
   required: false  
   schema:
     type: string
+    enum:
+      - 'custom'
+      - 'system'
 - description: This is the source of the user-defined tags assigned to IoT devices and must be followed by the string tenant.
   in: query
   name: source

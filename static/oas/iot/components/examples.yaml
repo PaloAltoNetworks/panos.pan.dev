@@ -38,8 +38,8 @@ examples:
       number_of_info_alerts: 0,
       allTags: [
                   {
-                  "tagType": "tagkey1",
-                  "tagValue": "tagval1",
+                  "tagType": "zzzNoTagTypeABC",
+                  "tagValue": "special_blocked",
                   "tagId": "60f221a219e22f10003a965e"
                 }
             ]
@@ -64,8 +64,8 @@ examples:
           confidence_score: '90',
           allTags: [
                   {
-                  "tagType": "tagkey1",
-                  "tagValue": "tagval1",
+                  "tagType": "zzzNoTagTypeABC",
+                  "tagValue": "special_blocked",
                   "tagId": "60f221a219e22f10003a965e"
                 }
             ]
@@ -82,8 +82,8 @@ examples:
           "_id": {
             "tagId": "60f221a219e22f10003a965e"
           },
-          "tagType": "tagkey1",
-          "tagValue": "tagval1",
+          "tagType": "zzzNoTagTypeABC",
+          "tagValue": "special_blocked",
           "tagId": "60f221a219e22f10003a965e",
           "type": "custom"
         },

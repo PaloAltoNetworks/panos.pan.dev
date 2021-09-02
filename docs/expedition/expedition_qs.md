@@ -49,9 +49,9 @@ Table1: Expedition VM recommended system requirements
 
 ## Installing the Expedition Packages
 
-Expedition2 should be installed in a clean VM Ubuntu 18.04 AMD64 Server using an installation script that can be downloaded from
-
-https://conversionupdates.paloaltonetworks.com/initSetup2beta.sh
+:::note
+Expedition 2 Installation Script is scheduled to be released in April, 2022. 
+:::note 
 
 The script will perform some initial verifications, including the existence of a user with username “expedition”, and that the Expedition package has not been installed in advance, so it would not modify the settings of an already installed Expedition VM.
 

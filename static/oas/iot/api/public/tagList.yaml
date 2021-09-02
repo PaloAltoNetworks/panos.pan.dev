@@ -20,6 +20,9 @@ parameters:
   required: true  
   schema:
     type: string
+    enum:
+      - 'predefined'
+      - 'tenant'    
 responses:
   '200':
     description: Successful Response (We only show some importants fields here)

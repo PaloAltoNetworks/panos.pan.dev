@@ -64,6 +64,11 @@ schemas:
       number_of_info_alerts:
         type: integer
         description: The number of info alerts for the device
+      allTags:
+        type: array 
+        description: List of Tagtype-TagValue pairs for the Device
+        items:
+          $ref: '#/schemas/TagDetails'
 
   IoTDeviceInventoryResponse:
     type: object
@@ -77,6 +82,20 @@ schemas:
         items:
           $ref: '#/schemas/DeviceDetails'
 
+  IoTTagListResponse:
+    type: object
+    properties:
+      totalTags:
+        type: integer
+        description: The number of tags matching the request
+      tags:
+        type: array
+        description: An array containing tags
+        items:
+          $ref: '#/schemas/TagDetails'
+
+  
+
   IoTSecurityAlertResponse:
     type: object
     properties:
@@ -88,6 +107,26 @@ schemas:
         description: An array containing security alerts
         items:
           $ref: '#/schemas/AlertDetails'
+      deviceTags:
+        type: object
+        description: A dictionary containing tags for devices
+        properties:
+          id:
+            type: object
+            description: id is the Key for the DeviceTags
+            properties:
+              deviceid:
+                type: string
+                description: deviceid is the Key for the DeviceTagMapping
+              tagIdList:
+                type: array
+                description: List of Tag IDs
+              allTags:
+                type: array 
+                description: List of Tagtype-TagValue pairs for the Device
+                items:
+                  $ref: '#/schemas/TagDetails'  
+
 
   ResolveSecurityAlertResponse:
     type: object
@@ -161,6 +200,46 @@ schemas:
       confidence_score:
         type: string
         description: The confidence score for device classification
+      allTags:
+        type: array 
+        description: List of Tagtype-TagValue pairs for the Device
+        items:
+          $ref: '#/schemas/TagDetails'
+
+
+
+  DeviceTags:
+    type: object
+    properties:
+      id:
+        type: object
+        description: id is the Key for the DeviceTags
+        properties:
+          deviceid:
+            type: string
+            description: deviceid is the Key for the DeviceTagMapping
+          tagIdList:
+            type: array
+            description: deviceid is the Key for the DeviceTagMapping
+          allTags:
+            type: array 
+            description: List of Tagtype-TagValue pairs for the Device
+            items:
+              $ref: '#/schemas/TagDetails' 
+ 
+
+  TagDetails:
+    type: object
+    properties:
+      tagType:
+        type: string
+        description: tagType is the Key for a Tag
+      tagValue:
+        type: string
+        description: tagValue is the Value for the Key
+      tagId:
+        type: string
+        description: tagId is the ID of Tag 
 
   AlertDetails:
     type: object
@@ -292,6 +371,11 @@ schemas:
       vulnerability_name:
         type: string
         description: The name of the vulnerability
+      allTags:
+        type: array 
+        description: List of Tagtype-TagValue pairs for the Device
+        items:
+          $ref: '#/schemas/TagDetails'      
 
   CiscoWLCBulkUpdateDevicePayloadSchema:
     type: object

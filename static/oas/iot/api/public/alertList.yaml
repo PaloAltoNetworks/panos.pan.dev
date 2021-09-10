@@ -11,12 +11,6 @@ parameters:
   required: false
   schema:
     type: string
-- description: Optional field specifying the alert type as policy_alert. The following value is a string.
-  in: query
-  name: type
-  required: false
-  schema:
-    type: string
 - description: Optional field to get only active alerts (resolved=no, the default) or resolved alerts (resolved=yes). The following value is a string.
   in: query
   name: resolved

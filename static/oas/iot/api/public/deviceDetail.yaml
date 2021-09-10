@@ -5,7 +5,7 @@ parameters:
   required: true
   schema:
     type: string
-- description: The device ID specifies the MAC address of the device for which you want to get details.
+- description: The device ID specifies the MAC address of the device for which you want to get details. For a static IP device, the device ID is its static IP address.
   in: query
   name: deviceid
   required: true

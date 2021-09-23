@@ -322,7 +322,7 @@ examples:
       total: 10,
       policies: [
         {
-          'id': '12sdgjkh234',
+          'id': '0ca5fe320d6d631c40259be8861d764a',
           'removed': false,
           'geo': 'intranet',
           'action': 'allow',
@@ -380,7 +380,7 @@ examples:
             ]
           },
           {
-            'id': '12sdgjkh235',
+            'id': '1ca5fe320d6d631c40259be8861d764a',
             'removed': false,
             'geo': 'internet',
             'action': 'allow',

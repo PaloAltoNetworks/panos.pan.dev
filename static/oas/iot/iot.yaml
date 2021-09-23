@@ -180,6 +180,21 @@ paths:
       responses:
         $ref: 'api/public/bulkUpdateSNMP.yaml#/responses'
 
+  /pub/v4.0/policy/recommendation:
+    get:
+      description: 'Fetch active policy recommendation rules'
+      operationId: policy-recommendation
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Policy Recommendations
+      tags:
+        - IoT Public API
+      parameters:
+        $ref: 'api/public/policyRecommendation.yaml#/parameters'
+      responses:
+        $ref: 'api/public/policyRecommendation.yaml#/responses'
+
 components:
   securitySchemes:
     $ref: 'components/securitySchemes.yaml#/securitySchemes'

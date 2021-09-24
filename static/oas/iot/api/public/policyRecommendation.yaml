@@ -6,11 +6,12 @@ parameters:
   schema:
     type: string
 - name: profile
-  description: Filter policy recommendation rules by source profile names
+  description: Filter policy recommendation rules by source profile names. The value should be a string split by comma
   in: query
   required: false
   schema:
     type: string
+  example: Palo Alto Networks Device,iPhone,Polycom IP Phone
 - name: offset
   description: Field to get items on subsequent pages. For example, if your first request is pagelength = 100, you will get the first 100 items (indexed from 0 to 99). To get the next 100, add offset = 100 to your second request. This skips the first 100 items and gets the next 100 starting from index number 100.
   in: query

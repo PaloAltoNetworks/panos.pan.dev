@@ -6,8 +6,9 @@ info:
     2. Link to [Get Device Inventory](iot-public-api#operation/device-inventory)
     3. Link to [Get Security Alerts](iot-public-api#operation/alert-list)
     4. Link to [Resolve a Security Alert](iot-public-api#operation/alert-resolve)
-    4. Link to [Get Vulnerabilities](iot-public-api#operation/vulnerability-list)
-    4. Link to [Resolve Vulnerability Instances](iot-public-api#operation/vulnerability-resolve)
+    5. Link to [Get Vulnerabilities](iot-public-api#operation/vulnerability-list)
+    6. Link to [Resolve Vulnerability Instances](iot-public-api#operation/vulnerability-resolve)
+    7. Link to [Get Tags List](iot-public-api#operation/tags-list)
   title: IoT Public API Overview
   version: v4.0
   contact: {}
@@ -47,6 +48,21 @@ paths:
         $ref: 'api/public/deviceList.yaml#/parameters'
       responses:
         $ref: 'api/public/deviceList.yaml#/responses'
+
+  /pub/v4.0/tag/list:
+    get:
+      description: 'Get a list of user-defined tags assigned to IoT devices.' 
+      operationId: tags-list
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Tags List
+      tags:
+        - IoT Public API
+      parameters:
+        $ref: 'api/public/tagList.yaml#/parameters'
+      responses:
+        $ref: 'api/public/tagList.yaml#/responses'
 
   /pub/v4.0/alert/list:
     get:

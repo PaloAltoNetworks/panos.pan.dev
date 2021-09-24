@@ -6,7 +6,7 @@ parameters:
   schema:
     type: string
 - name: profile
-  description: Filter policy recommendation rules by source profile names. The value should be a string split by comma
+  description: Filter policy recommendation rules by source IoT profile names. The value should be a string with profile names split by comma. All profiles must be IoT profiles.
   in: query
   required: false
   schema:

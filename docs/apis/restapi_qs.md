@@ -31,7 +31,7 @@ The following guide will walk you through sending API requests to the PAN-OS® R
 
 3. Assign the admin role to an administrator account.
 
-   _Consult the [official product documentation](https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-panorama-api/get-started-with-the-pan-os-xml-api/get-your-api-key.html) for more details._
+   _Consult the [official product documentation](https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-panorama-api/get-started-with-the-pan-os-xml-api/get-your-api-key.html) for more details._
 
 ## Get Your API Key
 

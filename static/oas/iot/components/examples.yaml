@@ -318,7 +318,7 @@ examples:
     summary: An example of policy recommendation API response
     value: {
       ver: 'v4.0',
-      api: '/pub/policy/recommendation',
+      api: '/policy/recommendation',
       total: 10,
       policies: [
         {

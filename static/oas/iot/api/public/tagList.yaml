@@ -5,22 +5,34 @@ parameters:
   required: true
   schema:
     type: string
-- description: The device ID specifies the MAC address of the device for which you want to get details. For a static IP device, the device ID is its static IP address.
+- description: The type identifies the tag as either a system-defined tag or a custom tag.
   in: query
-  name: deviceid
-  required: true
+  name: type
+  required: false  
   schema:
     type: string
+    enum:
+      - 'custom'
+      - 'system'
+- description: This is the source of the user-defined tags assigned to IoT devices and must be followed by the string tenant.
+  in: query
+  name: source
+  required: true  
+  schema:
+    type: string
+    enum:
+      - 'predefined'
+      - 'tenant'    
 responses:
   '200':
     description: Successful Response (We only show some importants fields here)
     content:
       application/json:
         schema:
-          $ref: '../../components/schemas.yaml#/schemas/IoTDeviceDetailResponse'
+          $ref: '../../components/schemas.yaml#/schemas/IoTTagListResponse'
         examples:
           deviceDetailResponseExample:
-            $ref: '../../components/examples.yaml#/examples/DeviceDetailResponseExample'
+            $ref: '../../components/examples.yaml#/examples/IoTTagListResponseExample'
   '4XX':
     description: Client Error Response
     content:

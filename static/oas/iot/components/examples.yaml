@@ -35,7 +35,14 @@ examples:
       number_of_critical_alerts: 0,
       number_of_warning_alerts: 0,
       number_of_caution_alerts: 0,
-      number_of_info_alerts: 0
+      number_of_info_alerts: 0,
+      allTags: [
+                  {
+                  "tagType": "zzzNoTagTypeABC",
+                  "tagValue": "special_blocked",
+                  "tagId": "60f221a219e22f10003a965e"
+                }
+            ]
     }
 
   DeviceInventoryResponseExample:
@@ -54,7 +61,40 @@ examples:
           risk_score: 0,
           risk_level: low,
           last_activity: 2018-05-31T18:39:37.404Z,
-          confidence_score: '90'
+          confidence_score: '90',
+          allTags: [
+                  {
+                  "tagType": "zzzNoTagTypeABC",
+                  "tagValue": "special_blocked",
+                  "tagId": "60f221a219e22f10003a965e"
+                }
+            ]
+        }
+      ]
+    }
+
+
+  IoTTagListResponseExample:
+    value: { 
+      totalTags: 2,
+      tags: [
+        {
+          "_id": {
+            "tagId": "60f221a219e22f10003a965e"
+          },
+          "tagType": "zzzNoTagTypeABC",
+          "tagValue": "special_blocked",
+          "tagId": "60f221a219e22f10003a965e",
+          "type": "custom"
+        },
+        {
+          "_id": {
+            "tagId": "60dad9446e89f01000b8950f"
+          },
+          "tagType": "Risk3",
+          "tagValue": "RiskHighFirst",
+          "tagId": "60dad9446e89f01000b8950f",
+          "type": "custom"
         }
       ]
     }
@@ -92,7 +132,32 @@ examples:
             hostname: 'unknown'
           }
         }
-      ]
+      ],
+      "deviceTags": {
+        "00:0e:dd:51:aa:f2": {
+        "deviceid": "00:0e:dd:51:aa:f2",
+        "tagIdList": [
+        "6030135777a1d6fb488e26ad",
+        "60301332ff1679e9481b62a6",
+        "602ca12179bc780a2333895d",
+        "603012a37ebd56bc48921703",
+        "603012c976a6c0da487530b3",
+        "PurdueLevel5",
+        "PurdueLevel4"
+        ],
+        "allTags": [
+        {
+          "tagType": "TestFilter",
+          "tagValue": "withTagInLocalFilter5",
+          "tagId": "6030135777a1d6fb488e26ad"
+        },
+        {
+          "tagType": "TestFilter",
+          "tagValue": "withTagInLocalFilter4",
+          "tagId": "60301332ff1679e9481b62a6"
+        }]
+        }
+      }
     }
 
   ResolveSecurityAlertResponseExample:
@@ -140,7 +205,18 @@ examples:
         'remediate_checkbox': '0,1,2',
         'remediate_instruction': null,
         'detected_date': '2019-10-15T20:18:42.135Z',
-        'vulnerability_name': 'CVE-2019-12948'
+        'vulnerability_name': 'CVE-2019-12948',
+        "allTags": [
+        {
+          "tagType": "TestFilter",
+          "tagValue": "withTagInLocalFilter5",
+          "tagId": "6030135777a1d6fb488e26ad"
+        },
+        {
+          "tagType": "TestFilter",
+          "tagValue": "withTagInLocalFilter4",
+          "tagId": "60301332ff1679e9481b62a6"
+        }] 
         }
       ]
     }

@@ -1,0 +1,59 @@
+parameters:
+- name: customerid
+  description: The customer ID specifies the API call for a specific tenant.
+  in: query
+  required: true
+  schema:
+    type: string
+- name: profile
+  description: Filter policy recommendation rules by source IoT profile names. The value should be a string with profile names split by comma. All profiles must be IoT profiles.
+  in: query
+  required: false
+  schema:
+    type: string
+  example: Palo Alto Networks Device,iPhone,Polycom IP Phone
+- name: offset
+  description: Field to get items on subsequent pages. For example, if your first request is pagelength = 100, you will get the first 100 items (indexed from 0 to 99). To get the next 100, add offset = 100 to your second request. This skips the first 100 items and gets the next 100 starting from index number 100.
+  in: query
+  schema:
+    type: integer
+    default: 0
+  example: 100
+- name: pagelength
+  description: Field specifying the number of items for each page. The default page length is. Setting a shorter length improves response times. The following value is an integer.
+  in: query
+  schema:
+    type: integer
+    default: 10000
+  example: 200
+
+responses:
+  '200':
+    description: Successful Response
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/PolicyRecommendationResponse'
+        examples:
+          PolicyRecommendationResponse:
+            $ref: '../../components/examples.yaml#/examples/PolicyRecommendationResponse'
+  '4XX':
+    description: Client Error Response
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/ErrorResponse'
+        examples:
+          Bad Request:
+            $ref: '../../components/examples.yaml#/examples/BadRequestResponseExample'
+          Unauthrorized Request:
+            $ref: '../../components/examples.yaml#/examples/UnauthorizedResponseExample'
+  '5XX':
+    description: Server Error Response
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/ErrorResponse'
+        examples:
+          PolicyRecommendationResponse:
+            $ref: '../../components/examples.yaml#/examples/ServerErrorResponseExample'

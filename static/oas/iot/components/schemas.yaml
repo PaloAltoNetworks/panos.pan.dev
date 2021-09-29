@@ -602,3 +602,91 @@ schemas:
               type: string
             WireWireless:
               type: string
+
+  PolicyRecommendationResponse:
+    type: object
+    required:
+      - ver
+      - api
+      - total
+      - policies
+    properties:
+      ver:
+        type: string
+        description: API version
+      api:
+        type: string
+        description: API path
+      total:
+        type: integer
+        description: total number of policy recommendation rules available
+      policies:
+        type: array
+        description: policy recommendation rules
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            removed:
+              type: boolean
+              description: Whether a rule is removed or not
+            geo:
+              type: string
+              description: Whether a rule is internal or external. intranet represents intenral. internet means external
+              enum: [ intranet, internet ]
+            action:
+              type: string
+              default: allow
+              description: So far, IoT only supports allow as an action.
+            lastActivityTime:
+              type: string
+              description: The last activity time of a rule
+            sourceProfiles:
+              type: array
+              default: []
+              description: List of source profiles.
+            sourceIpList:
+              type: array
+              default: []
+              description: List of source IPs.
+            sourceZones:
+              type: array
+              default: []
+              description: List of source zones.
+            apps:
+              type: array
+              default: []
+              description: List of applications involved in the rule.
+            destinationZones:
+              type: array
+              default: []
+              description: List of destination zones.
+            destinationProfiles:
+              type: array
+              default: []
+              description: List of destination profiles.
+            destinationFqdnList:
+              type: array
+              default: []
+              description: List of destination FQDNs.
+            destinationIpList:
+              type: array
+              default: []
+              description: List of destination IPs.
+            destinationUrlCategories:
+              type: array
+              default: []
+              description: List of categories of destination URLs.
+            services:
+              type: array
+              default: []
+              description: List of services.
+            tags:
+              type: array
+              default: [ IoTSecurityRecommended ]
+              description: List of tags.
+            securityProfiles:
+              type: array
+              default: []
+              description: List of security profiles

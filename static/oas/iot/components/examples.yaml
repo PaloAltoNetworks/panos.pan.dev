@@ -389,3 +389,131 @@ examples:
         }
       ]
     }
+
+  PolicyRecommendationResponse:
+    summary: An example of policy recommendation API response
+    value: {
+      ver: 'v4.0',
+      api: '/policy/recommendation',
+      total: 10,
+      policies: [
+        {
+          'id': '0ca5fe320d6d631c40259be8861d764a',
+          'removed': false,
+          'geo': 'intranet',
+          'action': 'allow',
+          'lastActivityTime': '2021-09-21T21:53:42.754Z',
+          'sourceProfiles': [
+              'APC(Schneider Electric) Smart PowerSupply'
+          ],
+          'sourceIpList': [],
+          'sourceZones': [],
+          'apps': [
+              'dhcp',
+              'unknown-udp',
+              'unknown-tcp'
+          ],
+          'destinationZones': [],
+          'destinationProfiles': ['Windows'],
+          'destinationFqdnList': [],
+          'destinationIpList': ['162.12.232.81', '162.12.232.80'],
+          'destinationUrlCategories': [],
+          'services': [
+              'udp/67',
+              'tcp/67',
+              'service-http',
+              'service-https'
+          ],
+          'tags': [
+              'IoTSecurityRecommended',
+              'test-tag'
+          ],
+          'securityProfiles': [
+            {
+                'type': 'virus',
+                'name': 'default'
+            },
+            {
+                'type': 'vulnerability',
+                'name': 'default'
+            },
+            {
+                'type': 'spyware',
+                'name': 'default'
+            },
+            {
+                'type': 'url-filtering',
+                'name': 'default'
+            },
+            {
+                'type': 'file-blocking',
+                'name': 'basic file blocking'
+            },
+            {
+                'type': 'wildfire-analysis',
+                'name': 'default'
+            }
+            ]
+          },
+          {
+            'id': '1ca5fe320d6d631c40259be8861d764a',
+            'removed': false,
+            'geo': 'internet',
+            'action': 'allow',
+            'lastActivityTime': '2021-08-27T01:14:18.818Z',
+            'sourceProfiles': [
+                'Polycom IP Phone'
+            ],
+            'sourceIpList': [],
+            'sourceZones': [],
+            'apps': [
+                'rtp-base',
+                'unknown-udp',
+                'unknown-tcp'
+            ],
+            'destinationZones': [],
+            'destinationProfiles': [],
+            'destinationFqdnList': [
+                '162.12.232.81'
+            ],
+            'destinationIpList': [],
+            'destinationUrlCategories': [],
+            'services': [
+                'udp/47390',
+                'udp/32576',
+                'udp/35204',
+                'service-http',
+                'service-https'
+            ],
+            'tags': [
+                'IoTSecurityRecommended'
+            ],
+            'securityProfiles': [
+              {
+                  'type': 'virus',
+                  'name': 'default'
+              },
+              {
+                  'type': 'vulnerability',
+                  'name': 'default'
+              },
+              {
+                  'type': 'spyware',
+                  'name': 'default'
+              },
+              {
+                  'type': 'url-filtering',
+                  'name': 'default'
+              },
+              {
+                  'type': 'file-blocking',
+                  'name': 'basic file blocking'
+              },
+              {
+                  'type': 'wildfire-analysis',
+                  'name': 'default'
+              }
+            ]
+          }
+      ]
+    }

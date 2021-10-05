@@ -57,6 +57,15 @@ parameters:
   required: false
   schema:
     type: string
+- description: Field to filter devices with traffic restricted
+  in: query
+  name: trafficRestricted
+  required: false
+  schema:
+    type: string
+    enum: ['yes', 'no']
+  example: 'yes'
+
 responses:
   '200':
     description: Successful Response (We only show some importants fields here)

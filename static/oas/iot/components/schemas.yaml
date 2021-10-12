@@ -65,7 +65,7 @@ schemas:
         type: integer
         description: The number of info alerts for the device
       allTags:
-        type: array 
+        type: array
         description: List of Tagtype-TagValue pairs for the Device
         items:
           $ref: '#/schemas/TagDetails'
@@ -94,7 +94,7 @@ schemas:
         items:
           $ref: '#/schemas/TagDetails'
 
-  
+
 
   IoTSecurityAlertResponse:
     type: object
@@ -122,10 +122,10 @@ schemas:
                 type: array
                 description: List of Tag IDs
               allTags:
-                type: array 
+                type: array
                 description: List of Tagtype-TagValue pairs for the Device
                 items:
-                  $ref: '#/schemas/TagDetails'  
+                  $ref: '#/schemas/TagDetails'
 
 
   ResolveSecurityAlertResponse:
@@ -201,10 +201,13 @@ schemas:
         type: string
         description: The confidence score for device classification
       allTags:
-        type: array 
+        type: array
         description: List of Tagtype-TagValue pairs for the Device
         items:
           $ref: '#/schemas/TagDetails'
+      trafficRestricted:
+        type: boolean
+        description: Whether a device has traffic restricted or not.
 
 
 
@@ -222,11 +225,11 @@ schemas:
             type: array
             description: deviceid is the Key for the DeviceTagMapping
           allTags:
-            type: array 
+            type: array
             description: List of Tagtype-TagValue pairs for the Device
             items:
-              $ref: '#/schemas/TagDetails' 
- 
+              $ref: '#/schemas/TagDetails'
+
 
   TagDetails:
     type: object
@@ -239,7 +242,7 @@ schemas:
         description: tagValue is the Value for the Key
       tagId:
         type: string
-        description: tagId is the ID of Tag 
+        description: tagId is the ID of Tag
 
   AlertDetails:
     type: object
@@ -372,10 +375,10 @@ schemas:
         type: string
         description: The name of the vulnerability
       allTags:
-        type: array 
+        type: array
         description: List of Tagtype-TagValue pairs for the Device
         items:
-          $ref: '#/schemas/TagDetails'      
+          $ref: '#/schemas/TagDetails'
 
   CiscoWLCBulkUpdateDevicePayloadSchema:
     type: object

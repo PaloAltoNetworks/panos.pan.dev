@@ -68,14 +68,15 @@ examples:
                   "tagValue": "special_blocked",
                   "tagId": "60f221a219e22f10003a965e"
                 }
-            ]
+          ],
+          trafficRestriced: true
         }
       ]
     }
 
 
   IoTTagListResponseExample:
-    value: { 
+    value: {
       totalTags: 2,
       tags: [
         {
@@ -216,7 +217,7 @@ examples:
           "tagType": "TestFilter",
           "tagValue": "withTagInLocalFilter4",
           "tagId": "60301332ff1679e9481b62a6"
-        }] 
+        }]
         }
       ]
     }

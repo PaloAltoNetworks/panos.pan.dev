@@ -190,6 +190,12 @@ module.exports = {
         sidebarCollapsible: true,
       },
     ],
+    [
+      require.resolve("./docusaurus-plugin-gtm/index.js"),
+      {
+        gtm: "GTM-NL8M763", //GTM-XXXXXX
+      },
+    ],
   ],
   themes: [require.resolve("./docusaurus-plugin-webpack/src/index.cjs")],
   onBrokenLinks: "warn",

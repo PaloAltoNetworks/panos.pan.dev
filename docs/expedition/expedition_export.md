@@ -104,7 +104,8 @@ get config
 ## Checkpoint
 ### Checkpoint >= R80.X
 
-1. Obtain the newest Checkpoint ShowPolicy package via <a href="https://github.com/CheckPointSW/ShowPolicyPackage/">**Checkpoint ShowPolicy Package**</a>  
+1. Obtain the newest Checkpoint ShowPolicy package via <a href="https://github.com/CheckPointSW/ShowPolicyPackage/">**Checkpoint ShowPolicy Package**</a>  . Please make sure you obtain the latest version which is v2.0.6.  
+
 2. Following below commands to create SCP user on Checkpoint Security Management Server , the scp user will be used to transfer the checkpoint configurations from checkpoint management server to your local machine. 
 
 **R80.X**
@@ -134,7 +135,7 @@ java -jar web_api_show_package-jar-with-dependencies.jar -k <PACKAGE NAME>
 java -jar web_api_show_package-jar-with-dependencies.jar -k <PACKAGE NAME> -d <DOMAIN NAME>
 ```
 :::note
-This tool is already installed on CheckPoint Security Management servers running version R80 with Jumbo-HF and above.
+This tool is already installed on CheckPoint Security Management servers running version R80 with Jumbo-HF and above. Please make sure you update the tool to the latest version which is v2.0.6.
 
 The Check Point Management Server also has a wrapper script so the tool can be run as  
 $MDS_FWDIR/scripts/web_api_show_package.sh which in turn executes  

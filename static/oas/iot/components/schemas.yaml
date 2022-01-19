@@ -435,8 +435,6 @@ schemas:
               type: string
             apencryptionCipher:
               type: string
-            deviceType:
-              type: string
             bluetoothType:
               type: string
               description: Only if isBluetooth is true

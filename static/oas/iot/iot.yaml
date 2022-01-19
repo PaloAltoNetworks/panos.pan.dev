@@ -114,7 +114,7 @@ paths:
 
   /pub/v4.0/device/bulkUpdate:
     put:
-      description: 'General bulk update devices. Currently, it is being used for DNAC and CISCO Prime integrations.'
+      description: 'Bulk update devices for DNAC and CISCO Prime integrations.'
       operationId: general-bulk-update
       security:
       - X-Key-Id:  []
@@ -131,7 +131,7 @@ paths:
 
   /pub/v4.0/device/bulkUpdate?updateSource=cisco_wlc:
     put:
-      description: 'Bulk update devices for Cisco WLC'
+      description: 'Bulk update devices for CISCO WLC'
       operationId: cisco-wlc-bulk-update
       security:
       - X-Key-Id:  []

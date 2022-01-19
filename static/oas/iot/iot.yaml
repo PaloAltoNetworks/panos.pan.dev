@@ -114,12 +114,12 @@ paths:
 
   /pub/v4.0/device/bulkUpdate:
     put:
-      description: 'General bulk update devices. Currently, it is being used for DNAC and Cisco Prime integrations.'
+      description: 'General bulk update devices. Currently, it is being used for DNAC and CISCO Prime integrations.'
       operationId: general-bulk-update
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Bulk Update Devices - General
+      summary: Bulk Update Devices - DNAC and CISCO Prime
       tags:
         - IoT Public API
       parameters:

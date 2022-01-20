@@ -135,7 +135,7 @@ paths:
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Bulk Update Devices - DNAC and CISCO Prime
+      summary: Bulk Device Updates - DNAC and CISCO Prime
       tags:
         - IoT Public API
       parameters:
@@ -147,12 +147,12 @@ paths:
 
   /pub/v4.0/device/bulkUpdate?updateSource=cisco_wlc:
     put:
-      description: 'Bulk update devices for CISCO WLC'
+      description: 'Bulk device updates for CISCO WLC'
       operationId: cisco-wlc-bulk-update
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Bulk Update Devices - Cisco WLC
+      summary: Bulk Device Updates - Cisco WLC
       tags:
         - IoT Public API
       parameters:
@@ -164,12 +164,12 @@ paths:
 
   /pub/v4.0/device/bulkUpdate?updateSource=aruba_wlc:
     put:
-      description: 'Bulk update devices for Aruba WLC'
+      description: 'Bulk device updates for Aruba WLC'
       operationId: aruba-wlc-bulk-update
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Bulk Update Devices - Aruba WLC
+      summary: Bulk Device Updates - Aruba WLC
       tags:
         - IoT Public API
       parameters:
@@ -181,12 +181,12 @@ paths:
 
   /pub/v4.0/device/bulkUpdate?updateSource=snmp:
     put:
-      description: 'Bulk update devices for SNMP'
+      description: 'Bulk device updates for SNMP'
       operationId: snmp-bulk-update
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Bulk Update Devices - SNMP
+      summary: Bulk Device Updates - SNMP
       tags:
         - IoT Public API
       parameters:
@@ -195,6 +195,23 @@ paths:
         $ref: 'api/public/bulkUpdateSNMP.yaml#/requestBody'
       responses:
         $ref: 'api/public/bulkUpdateSNMP.yaml#/responses'
+
+  /pub/v4.0/device/bulkUpdate?updateSource=cellular:
+    put:
+      description: 'Bulk device updates for cellular devices'
+      operationId: cellular-bulk-update
+      security:
+        - X-Key-Id:  []
+          X-Access-Key: []
+      summary: Bulk Device Updates - Cellular Devices
+      tags:
+        - IoT Public API
+      parameters:
+        $ref: 'api/public/bulkUpdateCellular.yaml#/parameters'
+      requestBody:
+        $ref: 'api/public/bulkUpdateCellular.yaml#/requestBody'
+      responses:
+        $ref: 'api/public/bulkUpdateCellular.yaml#/responses'
 
   /pub/v4.0/policy/recommendation:
     get:

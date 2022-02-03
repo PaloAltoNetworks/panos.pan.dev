@@ -220,7 +220,7 @@ paths:
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Policy Recommendations
+      summary: Security Policy Rule Recommendations
       tags:
         - IoT Public API
       parameters:

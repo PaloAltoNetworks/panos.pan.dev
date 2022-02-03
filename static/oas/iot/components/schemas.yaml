@@ -569,10 +569,8 @@ schemas:
               type: string
             msisdn:
               type: string
-            sessionStart:
-              type: date
-            sessionEnd:
-              type: date
+            SessionEvtType:
+              type: string
 
   BulkUpdateDeviceResponseSchema:
     type: object

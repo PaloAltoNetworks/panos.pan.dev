@@ -544,6 +544,34 @@ schemas:
             display_switchIP:
               type: string
 
+  CellularBulkUpdateDevicePayloadSchema:
+    type: object
+    required:
+      - devicelist
+    properties:
+      devicelist:
+        type: array
+        description: devices
+        items:
+          type: object
+          properties:
+            ipAddress:
+              type: string
+            ipv6Address:
+              type: string
+            imei:
+              type: string
+            iccid:
+              type: string
+            imsi:
+              type: string
+            apn:
+              type: string
+            msisdn:
+              type: string
+            SessionEvtType:
+              type: string
+
   BulkUpdateDeviceResponseSchema:
     type: object
     properties:

@@ -65,8 +65,72 @@ schemas:
         type: integer
         description: The number of info alerts for the device
       allTags:
-        type: array 
+        type: array
         description: List of Tagtype-TagValue pairs for the Device
+        items:
+          $ref: '#/schemas/TagDetails'
+
+  DeviceDetailPerIPResponse:
+    type: object
+    properties:
+      deviceid:
+        type: string
+        description: The device ID, which IoT Security uses to identify and track the device
+      hostname:
+        type: string
+        description: The device hostname
+      category:
+        type: string
+        description: The category to which the device belongs
+      profile:
+        type: string
+        description: The device profile assigned to the device
+      profile_type:
+        type: string
+        description: The type of device profile, such as IoT or Non_IoT
+      profile_vertical:
+        type: string
+        description: The industry vertical for the profile such as Medical, IT Devices, and Office
+      ip_address:
+        type: string
+        description: The IP address of the device
+      mac_address:
+        type: string
+        description: The MAC address of the device
+      risk_score:
+        type: integer
+        description: The risk score of the device
+      risk_level:
+        type: string
+        description: 'The risk level of the device; there are four: low, medium, high, and critical'
+      last_activity:
+        type: string
+        format: date-time
+        description: A UTC timestamp for the last detected device activity
+      confidence_score:
+        type: string
+        description: The confidence score for device classification
+      subnet:
+        type: string
+        description: The subnet to which the device is attached
+      number_of_critical_alerts:
+        type: integer
+        description: The number of critical alerts for the device
+      number_of_warning_alerts:
+        type: integer
+        description: The number of warning alerts for the device
+      number_of_caution_alerts:
+        type: integer
+        description: The number of caution alerts for the device
+      number_of_info_alerts:
+        type: integer
+        description: The number of info alerts for the device
+      tagIdList:
+        type: array
+        description: A list of IDs for user- and system-defined tags assigned to the device
+      allTags:
+        type: array
+        description: "An array of user-defined tags assigned to the device. Each item in the array consists of three attributes: tagType, tagValue, and tagId."
         items:
           $ref: '#/schemas/TagDetails'
 
@@ -94,7 +158,7 @@ schemas:
         items:
           $ref: '#/schemas/TagDetails'
 
-  
+
 
   IoTSecurityAlertResponse:
     type: object
@@ -122,10 +186,10 @@ schemas:
                 type: array
                 description: List of Tag IDs
               allTags:
-                type: array 
+                type: array
                 description: List of Tagtype-TagValue pairs for the Device
                 items:
-                  $ref: '#/schemas/TagDetails'  
+                  $ref: '#/schemas/TagDetails'
 
 
   ResolveSecurityAlertResponse:
@@ -201,10 +265,13 @@ schemas:
         type: string
         description: The confidence score for device classification
       allTags:
-        type: array 
+        type: array
         description: List of Tagtype-TagValue pairs for the Device
         items:
           $ref: '#/schemas/TagDetails'
+      trafficRestricted:
+        type: boolean
+        description: Whether a device has traffic restricted or not.
 
 
 
@@ -222,11 +289,11 @@ schemas:
             type: array
             description: deviceid is the Key for the DeviceTagMapping
           allTags:
-            type: array 
+            type: array
             description: List of Tagtype-TagValue pairs for the Device
             items:
-              $ref: '#/schemas/TagDetails' 
- 
+              $ref: '#/schemas/TagDetails'
+
 
   TagDetails:
     type: object
@@ -239,7 +306,7 @@ schemas:
         description: tagValue is the Value for the Key
       tagId:
         type: string
-        description: tagId is the ID of Tag 
+        description: tagId is the ID of Tag
 
   AlertDetails:
     type: object
@@ -372,10 +439,10 @@ schemas:
         type: string
         description: The name of the vulnerability
       allTags:
-        type: array 
+        type: array
         description: List of Tagtype-TagValue pairs for the Device
         items:
-          $ref: '#/schemas/TagDetails'      
+          $ref: '#/schemas/TagDetails'
 
   CiscoWLCBulkUpdateDevicePayloadSchema:
     type: object
@@ -431,8 +498,6 @@ schemas:
             BSSID:
               type: string
             apencryptionCipher:
-              type: string
-            deviceType:
               type: string
             bluetoothType:
               type: string
@@ -543,6 +608,34 @@ schemas:
             display_switchIP:
               type: string
 
+  CellularBulkUpdateDevicePayloadSchema:
+    type: object
+    required:
+      - devicelist
+    properties:
+      devicelist:
+        type: array
+        description: devices
+        items:
+          type: object
+          properties:
+            ipAddress:
+              type: string
+            ipv6Address:
+              type: string
+            imei:
+              type: string
+            iccid:
+              type: string
+            imsi:
+              type: string
+            apn:
+              type: string
+            msisdn:
+              type: string
+            SessionEvtType:
+              type: string
+
   BulkUpdateDeviceResponseSchema:
     type: object
     properties:
@@ -602,3 +695,91 @@ schemas:
               type: string
             WireWireless:
               type: string
+
+  PolicyRecommendationResponse:
+    type: object
+    required:
+      - ver
+      - api
+      - total
+      - policies
+    properties:
+      ver:
+        type: string
+        description: API version
+      api:
+        type: string
+        description: API path
+      total:
+        type: integer
+        description: total number of policy recommendation rules available
+      policies:
+        type: array
+        description: policy recommendation rules
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            removed:
+              type: boolean
+              description: Whether a rule is removed or not
+            geo:
+              type: string
+              description: Whether a rule is internal or external. intranet represents intenral. internet means external
+              enum: [ intranet, internet ]
+            action:
+              type: string
+              default: allow
+              description: So far, IoT only supports allow as an action.
+            lastActivityTime:
+              type: string
+              description: The last activity time of a rule
+            sourceProfiles:
+              type: array
+              default: []
+              description: List of source profiles.
+            sourceIpList:
+              type: array
+              default: []
+              description: List of source IPs.
+            sourceZones:
+              type: array
+              default: []
+              description: List of source zones.
+            apps:
+              type: array
+              default: []
+              description: List of applications involved in the rule.
+            destinationZones:
+              type: array
+              default: []
+              description: List of destination zones.
+            destinationProfiles:
+              type: array
+              default: []
+              description: List of destination profiles.
+            destinationFqdnList:
+              type: array
+              default: []
+              description: List of destination FQDNs.
+            destinationIpList:
+              type: array
+              default: []
+              description: List of destination IPs.
+            destinationUrlCategories:
+              type: array
+              default: []
+              description: List of categories of destination URLs.
+            services:
+              type: array
+              default: []
+              description: List of services.
+            tags:
+              type: array
+              default: [ IoTSecurityRecommended ]
+              description: List of tags.
+            securityProfiles:
+              type: array
+              default: []
+              description: List of security profiles

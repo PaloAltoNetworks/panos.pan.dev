@@ -45,6 +45,39 @@ examples:
             ]
     }
 
+  DeviceDetailPerIPResponseExample:
+    value: {
+      deviceid: 34:02:86:44:65:36,
+      hostname: InfusionPump-20,
+      category: Infusion System,
+      profile: Sigma Spectrum Infusion System,
+      profile_type: IoT,
+      profile_vertical: Medical,
+      ip_address: 192.168.10.121,
+      mac_address: 34:02:86:44:65:36,
+      risk_score: 0,
+      risk_level: low,
+      last_activity: 2018-05-31T18:39:37.404Z,
+      confidence_score: '90',
+      subnet: 192.168.10.121/28,
+      number_of_critical_alerts: 0,
+      number_of_warning_alerts: 0,
+      number_of_caution_alerts: 0,
+      number_of_info_alerts: 0,
+      allTags: [
+        {
+          tagType: "zzzNoTagTypeABC",
+          tagValue: "special_blocked",
+          tagId: "60f221a219e22f10003a965e"
+        }
+      ],
+      tagIdList: [
+        "6030135777a1d6fb488e26ad",
+        "60301332ff1679e9481b62a6",
+        "602ca12179bc780a2333895d",
+      ]
+    }
+
   DeviceInventoryResponseExample:
     value: {
       total: 1,
@@ -68,14 +101,15 @@ examples:
                   "tagValue": "special_blocked",
                   "tagId": "60f221a219e22f10003a965e"
                 }
-            ]
+          ],
+          trafficRestriced: true
         }
       ]
     }
 
 
   IoTTagListResponseExample:
-    value: { 
+    value: {
       totalTags: 2,
       tags: [
         {
@@ -216,7 +250,7 @@ examples:
           "tagType": "TestFilter",
           "tagValue": "withTagInLocalFilter4",
           "tagId": "60301332ff1679e9481b62a6"
-        }] 
+        }]
         }
       ]
     }
@@ -259,6 +293,15 @@ examples:
     }
 
   SNMPBulkUpdateDevicesResponseExample:
+    value: {
+      api: "device/bulkUpdate",
+      ver: "v4.0",
+      code: 1,
+      message: "OK",
+      updatedDeviceNum: 5
+    }
+
+  CellularBulkUpdateDevicesResponseExample:
     value: {
       api: "device/bulkUpdate",
       ver: "v4.0",
@@ -367,6 +410,24 @@ examples:
       ]
     }
 
+  CellularDeviceBulkUpdatePayloadExample:
+    summary: An example of payload of device list for Mobile devices
+    value: {
+      devicelist: [
+        {
+          "ipAddress": "10.6.72.216",
+          "ipv6Address": "FE80:CD00:0000:0CDE:1257:0000:211E:729C",
+          "imei": "000000000000000",
+          "iccid": "891004234814455936F",
+          "imsi": "313460000000001",
+          "apn": "006-007-001-000",
+          "msisdn": "919825098250",
+          "sessionStart": "ISODate('2022-01-05T14:48:00.000Z')",
+          "sessionEnd": "ISODate('2022-01-10T14:48:00.000Z')"
+        }
+      ]
+    }
+
   GeneralBulkUpdateDevicePayloadExample:
     summary: An example of payload of general device list
     value: {
@@ -387,5 +448,133 @@ examples:
           protocol_name: 'dns,ssl,ping',
           WireWireless: 'WIRED'
         }
+      ]
+    }
+
+  PolicyRecommendationResponse:
+    summary: An example of policy recommendation API response
+    value: {
+      ver: 'v4.0',
+      api: '/policy/recommendation',
+      total: 10,
+      policies: [
+        {
+          'id': '0ca5fe320d6d631c40259be8861d764a',
+          'removed': false,
+          'geo': 'intranet',
+          'action': 'allow',
+          'lastActivityTime': '2021-09-21T21:53:42.754Z',
+          'sourceProfiles': [
+              'APC(Schneider Electric) Smart PowerSupply'
+          ],
+          'sourceIpList': [],
+          'sourceZones': [],
+          'apps': [
+              'dhcp',
+              'unknown-udp',
+              'unknown-tcp'
+          ],
+          'destinationZones': [],
+          'destinationProfiles': ['Windows'],
+          'destinationFqdnList': [],
+          'destinationIpList': ['162.12.232.81', '162.12.232.80'],
+          'destinationUrlCategories': [],
+          'services': [
+              'udp/67',
+              'tcp/67',
+              'service-http',
+              'service-https'
+          ],
+          'tags': [
+              'IoTSecurityRecommended',
+              'test-tag'
+          ],
+          'securityProfiles': [
+            {
+                'type': 'virus',
+                'name': 'default'
+            },
+            {
+                'type': 'vulnerability',
+                'name': 'default'
+            },
+            {
+                'type': 'spyware',
+                'name': 'default'
+            },
+            {
+                'type': 'url-filtering',
+                'name': 'default'
+            },
+            {
+                'type': 'file-blocking',
+                'name': 'basic file blocking'
+            },
+            {
+                'type': 'wildfire-analysis',
+                'name': 'default'
+            }
+            ]
+          },
+          {
+            'id': '1ca5fe320d6d631c40259be8861d764a',
+            'removed': false,
+            'geo': 'internet',
+            'action': 'allow',
+            'lastActivityTime': '2021-08-27T01:14:18.818Z',
+            'sourceProfiles': [
+                'Polycom IP Phone'
+            ],
+            'sourceIpList': [],
+            'sourceZones': [],
+            'apps': [
+                'rtp-base',
+                'unknown-udp',
+                'unknown-tcp'
+            ],
+            'destinationZones': [],
+            'destinationProfiles': [],
+            'destinationFqdnList': [
+                '162.12.232.81'
+            ],
+            'destinationIpList': [],
+            'destinationUrlCategories': [],
+            'services': [
+                'udp/47390',
+                'udp/32576',
+                'udp/35204',
+                'service-http',
+                'service-https'
+            ],
+            'tags': [
+                'IoTSecurityRecommended'
+            ],
+            'securityProfiles': [
+              {
+                  'type': 'virus',
+                  'name': 'default'
+              },
+              {
+                  'type': 'vulnerability',
+                  'name': 'default'
+              },
+              {
+                  'type': 'spyware',
+                  'name': 'default'
+              },
+              {
+                  'type': 'url-filtering',
+                  'name': 'default'
+              },
+              {
+                  'type': 'file-blocking',
+                  'name': 'basic file blocking'
+              },
+              {
+                  'type': 'wildfire-analysis',
+                  'name': 'default'
+              }
+            ]
+          }
       ]
     }

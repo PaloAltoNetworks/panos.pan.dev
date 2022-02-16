@@ -409,23 +409,6 @@ examples:
         }
       ]
     }
-  CellularDeviceBulkUpdatePayloadExample:
-    summary: An example of payload of device list for Mobile devices
-    value: {
-      devicelist: [
-        {
-          "ipAddress": "10.6.72.216",
-          "ipv6Address": "FE80:CD00:0000:0CDE:1257:0000:211E:729C",
-          "imei": "000000000000000",
-          "iccid": "891004234814455936F",
-          "imsi": "313460000000001",
-          "apn": "006-007-001-000",
-          "msisdn": "919825098250",
-          "sessionStart": "ISODate('2022-01-05T14:48:00.000Z')"
-          "sessionEnd": "ISODate('2022-01-10T14:48:00.000Z')"
-        }
-      ]
-    }
 
   CellularDeviceBulkUpdatePayloadExample:
     summary: An example of payload of device list for Mobile devices

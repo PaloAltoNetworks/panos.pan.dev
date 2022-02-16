@@ -3,12 +3,13 @@ info:
     Please refer [IoT Public API Authentication](iot-public-api-headers) to know how to get API Key<br/>
     List of public APIs from IoT security:
     1. Link to [Get Device Detail](iot-public-api#operation/device-detail)
-    2. Link to [Get Device Inventory](iot-public-api#operation/device-inventory)
-    3. Link to [Get Security Alerts](iot-public-api#operation/alert-list)
-    4. Link to [Resolve a Security Alert](iot-public-api#operation/alert-resolve)
-    5. Link to [Get Vulnerabilities](iot-public-api#operation/vulnerability-list)
-    6. Link to [Resolve Vulnerability Instances](iot-public-api#operation/vulnerability-resolve)
-    7. Link to [Get Tags List](iot-public-api#operation/tags-list)
+    2. Link to [Get Device Detail Per IP](iot-public-api#operation/device-detail-ip)
+    3. Link to [Get Device Inventory](iot-public-api#operation/device-inventory)
+    4. Link to [Get Security Alerts](iot-public-api#operation/alert-list)
+    5. Link to [Resolve a Security Alert](iot-public-api#operation/alert-resolve)
+    6. Link to [Get Vulnerabilities](iot-public-api#operation/vulnerability-list)
+    7. Link to [Resolve Vulnerability Instances](iot-public-api#operation/vulnerability-resolve)
+    8. Link to [Get Tags List](iot-public-api#operation/tags-list)
   title: IoT Public API Overview
   version: v4.0
   contact: {}
@@ -34,6 +35,21 @@ paths:
       responses:
         $ref: 'api/public/deviceDetail.yaml#/responses'
 
+  /pub/v4.0/device/ip:
+    get:
+      description: 'Get Device Details per IP Address <br/> <b>Rate limiting<b/>: 60 times per minute'
+      operationId: device-detail-ip
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Device Detail Per IP
+      tags:
+        - IoT Public API
+      parameters:
+        $ref: 'api/public/deviceDetailPerIP.yaml#/parameters'
+      responses:
+        $ref: 'api/public/deviceDetailPerIP.yaml#/responses'
+
   /pub/v4.0/device/list:
     get:
       description: 'Get a list of all the devices in your IoT Security inventory. <br/> <b>Rate limiting<b/>: 60 times per minute'
@@ -51,7 +67,7 @@ paths:
 
   /pub/v4.0/tag/list:
     get:
-      description: 'Get a list of user-defined tags assigned to IoT devices.' 
+      description: 'Get a list of user-defined tags assigned to IoT devices.'
       operationId: tags-list
       security:
       - X-Key-Id:  []

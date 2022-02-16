@@ -70,6 +70,70 @@ schemas:
         items:
           $ref: '#/schemas/TagDetails'
 
+  DeviceDetailPerIPResponse:
+    type: object
+    properties:
+      deviceid:
+        type: string
+        description: The device ID, which IoT Security uses to identify and track the device
+      hostname:
+        type: string
+        description: The device hostname
+      category:
+        type: string
+        description: The category to which the device belongs
+      profile:
+        type: string
+        description: The device profile assigned to the device
+      profile_type:
+        type: string
+        description: The type of device profile, such as IoT or Non_IoT
+      profile_vertical:
+        type: string
+        description: The industry vertical for the profile such as Medical, IT Devices, and Office
+      ip_address:
+        type: string
+        description: The IP address of the device
+      mac_address:
+        type: string
+        description: The MAC address of the device
+      risk_score:
+        type: integer
+        description: The risk score of the device
+      risk_level:
+        type: string
+        description: 'The risk level of the device; there are four: low, medium, high, and critical'
+      last_activity:
+        type: string
+        format: date-time
+        description: A UTC timestamp for the last detected device activity
+      confidence_score:
+        type: string
+        description: The confidence score for device classification
+      subnet:
+        type: string
+        description: The subnet to which the device is attached
+      number_of_critical_alerts:
+        type: integer
+        description: The number of critical alerts for the device
+      number_of_warning_alerts:
+        type: integer
+        description: The number of warning alerts for the device
+      number_of_caution_alerts:
+        type: integer
+        description: The number of caution alerts for the device
+      number_of_info_alerts:
+        type: integer
+        description: The number of info alerts for the device
+      tagIdList:
+        type: array
+        description: A list of IDs for user- and system-defined tags assigned to the device
+      allTags:
+        type: array
+        description: "An array of user-defined tags assigned to the device. Each item in the array consists of three attributes: tagType, tagValue, and tagId."
+        items:
+          $ref: '#/schemas/TagDetails'
+
   IoTDeviceInventoryResponse:
     type: object
     properties:

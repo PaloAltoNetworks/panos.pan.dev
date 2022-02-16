@@ -45,6 +45,39 @@ examples:
             ]
     }
 
+  DeviceDetailPerIPResponseExample:
+    value: {
+      deviceid: 34:02:86:44:65:36,
+      hostname: InfusionPump-20,
+      category: Infusion System,
+      profile: Sigma Spectrum Infusion System,
+      profile_type: IoT,
+      profile_vertical: Medical,
+      ip_address: 192.168.10.121,
+      mac_address: 34:02:86:44:65:36,
+      risk_score: 0,
+      risk_level: low,
+      last_activity: 2018-05-31T18:39:37.404Z,
+      confidence_score: '90',
+      subnet: 192.168.10.121/28,
+      number_of_critical_alerts: 0,
+      number_of_warning_alerts: 0,
+      number_of_caution_alerts: 0,
+      number_of_info_alerts: 0,
+      allTags: [
+        {
+          tagType: "zzzNoTagTypeABC",
+          tagValue: "special_blocked",
+          tagId: "60f221a219e22f10003a965e"
+        }
+      ],
+      tagIdList: [
+        "6030135777a1d6fb488e26ad",
+        "60301332ff1679e9481b62a6",
+        "602ca12179bc780a2333895d",
+      ]
+    }
+
   DeviceInventoryResponseExample:
     value: {
       total: 1,
@@ -376,6 +409,7 @@ examples:
         }
       ]
     }
+
   CellularDeviceBulkUpdatePayloadExample:
     summary: An example of payload of device list for Mobile devices
     value: {
@@ -388,7 +422,7 @@ examples:
           "imsi": "313460000000001",
           "apn": "006-007-001-000",
           "msisdn": "919825098250",
-          "sessionStart": "ISODate('2022-01-05T14:48:00.000Z')"
+          "sessionStart": "ISODate('2022-01-05T14:48:00.000Z')",
           "sessionEnd": "ISODate('2022-01-10T14:48:00.000Z')"
         }
       ]

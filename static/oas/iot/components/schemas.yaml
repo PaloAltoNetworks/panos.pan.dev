@@ -681,17 +681,17 @@ schemas:
               type: string
             SSID:
               type: string
-            switch_ip:
+            switchIP:
               type: string
-            switch_name:
+            switchName:
+              type: string
+            switchPort:
               type: string
             switch_if_name:
               type: string
             vlan:
               type: string
             vlan_name:
-              type: string
-            protocol_name:
               type: string
             WireWireless:
               type: string

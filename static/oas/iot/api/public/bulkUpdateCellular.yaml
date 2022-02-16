@@ -1,19 +1,25 @@
 parameters:
-- description: The customer ID specifies the API call for a specific tenant.
-  in: query
-  name: customerid
-  required: true
-  schema:
-    type: string
+  - description: The customer ID specifies the API call for a specific tenant.
+    in: query
+    name: customerid
+    required: true
+    schema:
+      type: string
+  - description: Source of integration
+    in: query
+    name: updateSource
+    required: true
+    schema:
+      type: string
 requestBody:
   required: true
   content:
     application/json:
       schema:
-        $ref: '../../components/schemas.yaml#/schemas/GeneralBulkUpdateDevicePayloadSchema'
+        $ref: '../../components/schemas.yaml#/schemas/CellularBulkUpdateDevicePayloadSchema'
       examples:
         payloadExample:
-          $ref: '../../components/examples.yaml#/examples/GeneralBulkUpdateDevicePayloadExample'
+          $ref: '../../components/examples.yaml#/examples/CellularDeviceBulkUpdatePayloadExample'
 responses:
   '200':
     description: Successful Response
@@ -23,7 +29,7 @@ responses:
           $ref: '../../components/schemas.yaml#/schemas/BulkUpdateDeviceResponseSchema'
         examples:
           resolveSecurityAlertResponseExample:
-            $ref: '../../components/examples.yaml#/examples/SNMPBulkUpdateDevicesResponseExample'
+            $ref: '../../components/examples.yaml#/examples/CellularBulkUpdateDevicesResponseExample'
   '4XX':
     description: Client Error Response
     content:

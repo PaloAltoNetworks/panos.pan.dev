@@ -41,6 +41,13 @@ parameters:
   required: false
   schema:
     type: string
+- description: Optional field setting the start of a time range for retrieving alerts that have been created in DB or updated.
+  in: query
+  name: updatedCreatedAfter
+  required: false
+  schema:
+    type: string
+    format: date-time
 responses:
   '200':
     description: Successful Response (We only show some importants fields here)

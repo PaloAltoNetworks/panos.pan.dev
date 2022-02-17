@@ -12,6 +12,13 @@ parameters:
   schema:
     type: string
     format: date-time
+- description: Field to set the end of a time range for retrieving devices.
+  in: query
+  name: etime
+  required: false
+  schema:
+    type: string
+    format: date-time
 - description: Field to get monitored devices or all discovered devices
   in: query
   name: filter_monitored

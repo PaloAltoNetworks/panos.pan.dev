@@ -158,6 +158,8 @@ module.exports = {
             "expedition/managing_jobs",
           ],
         },
+      ],
+    },
     {
       type: "doc",
       id: "expedition/expedition_contact",

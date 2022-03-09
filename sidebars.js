@@ -158,17 +158,6 @@ module.exports = {
             "expedition/managing_jobs",
           ],
         },
-        {
-          type: "category",
-          collapsed: false,
-          label: "Expedition-Workflows",
-          items: [
-            "expedition/creating_migration_zip",
-            "expedition/creating_migration_zip_2",
-            "expedition/expedition_workflow_migration",
-            "expedition/expedition_workflow_filters",
-          ],
-        },
       ],
     },
     {

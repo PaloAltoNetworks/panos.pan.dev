@@ -572,6 +572,50 @@ schemas:
             SessionEvtType:
               type: string
 
+  SccmBulkUpdateDevicePayloadSchema:
+    type: object
+    required:
+      - devicelist
+    properties:
+      devicelist:
+        type: array
+        description: devices
+        items:
+          type: object
+          properties:
+            deviceid:
+              type: string
+              description: Required field
+            serialNumber:
+              type: string
+            vendor:
+              type: string
+            model: 
+              type: string
+            diskEncryptionStatus:
+              type: string
+            diskEncryptionStatusSource:
+              type: string
+              description: Should only input when diskEncryptionStatus is valid
+            windowsInstalledPatches:
+              type: string
+            windowsInstalledPatchesSource:
+              type: string
+              description: Should only input when windowsInstalledPatches is valid
+            windowsInstalledSoftware:
+              type: string
+            windowsGUID: 
+              type: string
+            windowsGUIDSource: 
+              type: string
+              description: Should only input when windowsGUID is valid
+            sccmSite:
+              type: string
+            sccmDomain:
+              type: string
+
+            
+            
   BulkUpdateDeviceResponseSchema:
     type: object
     properties:

@@ -276,6 +276,14 @@ examples:
       message: "OK",
       updatedDeviceNum: 5
     }
+  SccmBulkUpdateDevicesResponseExample:
+    value: {
+      api: "device/bulkUpdate",
+      ver: "v4.0",
+      code: 1,
+      message: "OK",
+      updatedDeviceNum: 5
+    }
 
   CiscoWLCDeviceBulkUpdatePayloadExample:
     summary: An example of payload of device list for Cisco WLC
@@ -390,6 +398,26 @@ examples:
           "msisdn": "919825098250",
           "sessionStart": "ISODate('2022-01-05T14:48:00.000Z')"
           "sessionEnd": "ISODate('2022-01-10T14:48:00.000Z')"
+        }
+      ]
+    }
+  SccmDeviceBulkUpdatePayloadExample:
+    summary: An example of payload of device list for SCCM
+    value: {
+      devicelist: [
+        {
+          "serialNumber": "1R2RZY2",
+          "vendor": "Apple Inc.",
+          "model": "MacBook Pro",
+          "diskEncryptionStatus": "Encrypted",
+          "diskEncryptionStatusSource": "sccm",
+          "windowsInstalledPatches": "11.1",
+          "windowsInstalledPatchesSource": "sccm",
+          "windowsInstalledSoftware": "Microsoft 365"
+          "windowsGUID": "6B29FC40-CA47-1067-B31D-00DD010662DA",
+          "windowsGUIDSource": "sccm",
+          "sccmSite": "Site A",
+          "sccmDomain": "sccm.com"
         }
       ]
     }

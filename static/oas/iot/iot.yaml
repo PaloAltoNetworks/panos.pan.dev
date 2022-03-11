@@ -212,6 +212,22 @@ paths:
         $ref: 'api/public/bulkUpdateCellular.yaml#/requestBody'
       responses:
         $ref: 'api/public/bulkUpdateCellular.yaml#/responses'
+  /pub/v4.0/device/bulkUpdate?updateSource=sccm:
+    put:
+      description: 'Bulk device updates for sccm devices'
+      operationId: sccm-bulk-update
+      security:
+        - X-Key-Id:  []
+          X-Access-Key: []
+      summary: Bulk Device Updates - SCCM Devices
+      tags:
+        - IoT Public API
+      parameters:
+        $ref: 'api/public/bulkUpdateSccm.yaml#/parameters'
+      requestBody:
+        $ref: 'api/public/bulkUpdateSccm.yaml#/requestBody'
+      responses:
+        $ref: 'api/public/bulkUpdateSccm.yaml#/responses'
 
   /pub/v4.0/policy/recommendation:
     get:

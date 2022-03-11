@@ -13,7 +13,7 @@ keywords:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This tutorial covers how to add & populate Static and Dynamic Address Groups to PAN-OS using API. If you are looking into adding IPs to Dynamic Address Groups using the Dynamic Address Group API, please refer to the [dedicated tutorial](panos_dag_qs).
+This tutorial covers how to add & populate Static and Dynamic Address Groups to PAN-OS using API. If you are looking into adding IPs to Dynamic Address Groups using the Dynamic Address Group API, please refer to the [dedicated tutorial](panos_dag_qs.md).
 
 This tutorial has 2 sections: the first section covers [static Address Groups](#static-address-groups), the second section covers  [Dynamic Address Groups](#dynamic-address-groups).
 
@@ -23,7 +23,7 @@ To follow this tutorial, it is recommended that that you are familiar with the c
 
 Make sure you have a Palo Alto Networks Next-Generation Firewall deployed and that you have administrative access to its Management interface via HTTPS. To avoid potential disruptions, it's recommended to run all the tests on a **non-production** environment.
 
-No specific programming language expertise is required, although _Python_ is recommended. Examples with both [XML API](/docs/apis/xmlapi_qs), [REST API](/docs/apis/restapi_qs) and [pan-python](/docs/apis/panpython_qs) are provided.
+No specific programming language expertise is required, although _Python_ is recommended. Examples with both [XML API](xmlapi_qs.md), [REST API](restapi_qs.md) and [pan-python](panpython_qs.md) are provided.
 
 ## Static Address Groups
 
@@ -49,19 +49,19 @@ Static Address Groups are address groups whose content is statically defined ins
 }>
 <TabItem value="xml">
 
-Please refer to the [XML API Quickstart](xmlapi_qs) for instructions.
+Please refer to the [XML API Quickstart](xmlapi_qs.md) for instructions.
 
 </TabItem>
 
 <TabItem value="rest">
 
-Please refer to the [REST API Quickstart](restapi_qs) for instructions.
+Please refer to the [REST API Quickstart](restapi_qs.md) for instructions.
 
 </TabItem>
 
 <TabItem value="pp">
 
-Please refer to the [pan-python guide](panpython_apikey) for details.
+Please refer to the [pan-python guide](panpython_apikey.md) for details.
 
 </TabItem>
 </Tabs>
@@ -547,7 +547,7 @@ print(xapi.xml_root())
 
 Dynamic Address Groups are defined as boolean expressions over IP tags. Every time an IP is tagged using the Dynamic Address Group API, PAN-OS evaluates the expression associated with a Dynamic Address Group. If the result is *true*, then the IP is automatically added to the Dynamic Address Group.
 
-Dynamic Address Groups is a powerful mechanism that could be used to cover many use cases, for details about populating the Dynamic Address Group refer to the [dedicated tutorial](panos_dag_qs).
+Dynamic Address Groups is a powerful mechanism that could be used to cover many use cases, for details about populating the Dynamic Address Group refer to the [dedicated tutorial](panos_dag_qs.md).
 
 ### Steps
 
@@ -672,4 +672,4 @@ See [Step 5 of Static Address Group section](#step-5-commit)
 
 ### Step 4: Populate the Dynamic Address Group
 
-Not covered here, check the [dedicated tutorial](panos_dag_qs)
+Not covered here, check the [dedicated tutorial](panos_dag_qs.md)

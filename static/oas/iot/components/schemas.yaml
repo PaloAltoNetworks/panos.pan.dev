@@ -594,21 +594,12 @@ schemas:
               type: string
             diskEncryptionStatus:
               type: string
-            diskEncryptionStatusSource:
-              type: string
-              description: Should only input when diskEncryptionStatus is valid
             windowsInstalledPatches:
               type: string
-            windowsInstalledPatchesSource:
-              type: string
-              description: Should only input when windowsInstalledPatches is valid
             windowsInstalledSoftware:
               type: string
             windowsGUID: 
               type: string
-            windowsGUIDSource: 
-              type: string
-              description: Should only input when windowsGUID is valid
             sccmSite:
               type: string
             sccmDomain:

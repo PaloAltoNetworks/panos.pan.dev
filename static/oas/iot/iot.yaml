@@ -5,11 +5,12 @@ info:
     1. Link to [Get Device Detail](iot-public-api#operation/device-detail)
     2. Link to [Get Device Detail Per IP](iot-public-api#operation/device-detail-ip)
     3. Link to [Get Device Inventory](iot-public-api#operation/device-inventory)
-    4. Link to [Get Security Alerts](iot-public-api#operation/alert-list)
-    5. Link to [Resolve a Security Alert](iot-public-api#operation/alert-resolve)
-    6. Link to [Get Vulnerabilities](iot-public-api#operation/vulnerability-list)
-    7. Link to [Resolve Vulnerability Instances](iot-public-api#operation/vulnerability-resolve)
-    8. Link to [Get Tags List](iot-public-api#operation/tags-list)
+    4. Link to [Get Profile Mapping](iot-public-api#operation/profile-mapping)
+    5. Link to [Get Security Alerts](iot-public-api#operation/alert-list)
+    6. Link to [Resolve a Security Alert](iot-public-api#operation/alert-resolve)
+    7. Link to [Get Vulnerabilities](iot-public-api#operation/vulnerability-list)
+    8. Link to [Resolve Vulnerability Instances](iot-public-api#operation/vulnerability-resolve)
+    9. Link to [Get Tags List](iot-public-api#operation/tags-list)
   title: IoT Public API Overview
   version: v4.0
   contact: {}
@@ -64,6 +65,21 @@ paths:
         $ref: 'api/public/deviceList.yaml#/parameters'
       responses:
         $ref: 'api/public/deviceList.yaml#/responses'
+
+  /pub/v4.0/profile/mapping:
+    get:
+      description: 'Get a list of mappings among device profile, category and vertical from IoT Security Solution <br/> <b>Rate limiting<b/>: 180 times per minute'
+      operationId: profile-mapping
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Profile Mapping
+      tags:
+        - IoT Public API
+      parameters:
+        $ref: 'api/public/profileMapping.yaml#/parameters'
+      responses:
+        $ref: 'api/public/profileMapping.yaml#/responses'
 
   /pub/v4.0/tag/list:
     get:

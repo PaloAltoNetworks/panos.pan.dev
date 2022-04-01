@@ -146,6 +146,39 @@ schemas:
         items:
           $ref: '#/schemas/DeviceDetails'
 
+  IoTProfileMappingResponse:
+    type: object
+    required:
+      - ver
+      - api
+      - count
+      - mapping
+    properties:
+      ver:
+        type: string
+        description: API version
+      api:
+        type: string
+        description: API path
+      count:
+        type: integer
+        description: number of profile mappings
+      mapping:
+        type: array
+        description: mapping among profile, category and vertical
+        items:
+          type: object
+          properties:
+            profile:
+              type: string
+              description: device profile
+            category:
+              type: string
+              description: device category
+            vertical:
+              type: string
+              description: device vertical
+
   IoTTagListResponse:
     type: object
     properties:
@@ -157,8 +190,6 @@ schemas:
         description: An array containing tags
         items:
           $ref: '#/schemas/TagDetails'
-
-
 
   IoTSecurityAlertResponse:
     type: object
@@ -190,7 +221,6 @@ schemas:
                 description: List of Tagtype-TagValue pairs for the Device
                 items:
                   $ref: '#/schemas/TagDetails'
-
 
   ResolveSecurityAlertResponse:
     type: object
@@ -273,8 +303,6 @@ schemas:
         type: boolean
         description: Whether a device has traffic restricted or not.
 
-
-
   DeviceTags:
     type: object
     properties:
@@ -293,7 +321,6 @@ schemas:
             description: List of Tagtype-TagValue pairs for the Device
             items:
               $ref: '#/schemas/TagDetails'
-
 
   TagDetails:
     type: object

@@ -107,6 +107,42 @@ examples:
       ]
     }
 
+  IoTProfileMappingResponseExmaple:
+    value: {
+      count: 6,
+      mapping: [
+        {
+          profile: 'American Dynamics IP Camera',
+          category: 'Camera',
+          vertical: 'Office'
+        },
+        {
+          profile: 'Hitachi Maxell Device',
+          category: 'Electronics IoT',
+          vertical: 'Generic IoT'
+        },
+        {
+          profile: 'Mitsumi Electric Device',
+          category: 'Electronics IoT',
+          vertical: 'Generic IoT'
+        },
+        {
+          profile: 'Sony Device',
+          category: 'Electronics IoT',
+          vertical: 'Generic IoT'
+        },
+        {
+          profile: 'JK microsystems Device',
+          category: 'Industrial Controller',
+          vertical: 'Industrial'
+        },
+        {
+          profile: 'Siemens PLC',
+          category: 'Industrial Controller',
+          vertical: 'Industrial'
+        }
+      ]
+    }
 
   IoTTagListResponseExample:
     value: {

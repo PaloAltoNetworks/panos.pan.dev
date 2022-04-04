@@ -149,17 +149,9 @@ schemas:
   IoTProfileMappingResponse:
     type: object
     required:
-      - ver
-      - api
       - count
       - mapping
     properties:
-      ver:
-        type: string
-        description: API version
-      api:
-        type: string
-        description: API path
       count:
         type: integer
         description: number of profile mappings

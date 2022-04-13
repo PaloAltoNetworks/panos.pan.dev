@@ -740,9 +740,6 @@ schemas:
           properties:
             id:
               type: string
-            removed:
-              type: boolean
-              description: Whether a rule is removed or not
             geo:
               type: string
               description: Whether a rule is internal or external. intranet represents intenral. internet means external

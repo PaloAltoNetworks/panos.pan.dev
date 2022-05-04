@@ -505,9 +505,7 @@ examples:
           'sourceIpList': [],
           'sourceZones': [],
           'apps': [
-              'dhcp',
-              'unknown-udp',
-              'unknown-tcp'
+              'dhcp'
           ],
           'destinationZones': [],
           'destinationProfiles': ['Windows'],
@@ -562,9 +560,7 @@ examples:
             'sourceIpList': [],
             'sourceZones': [],
             'apps': [
-                'rtp-base',
-                'unknown-udp',
-                'unknown-tcp'
+                'rtp-base'
             ],
             'destinationZones': [],
             'destinationProfiles': [],

@@ -496,7 +496,6 @@ examples:
       policies: [
         {
           'id': '0ca5fe320d6d631c40259be8861d764a',
-          'removed': false,
           'geo': 'intranet',
           'action': 'allow',
           'lastActivityTime': '2021-09-21T21:53:42.754Z',
@@ -554,7 +553,6 @@ examples:
           },
           {
             'id': '1ca5fe320d6d631c40259be8861d764a',
-            'removed': false,
             'geo': 'internet',
             'action': 'allow',
             'lastActivityTime': '2021-08-27T01:14:18.818Z',

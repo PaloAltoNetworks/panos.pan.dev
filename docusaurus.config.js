@@ -7,8 +7,12 @@
 
 module.exports = {
   title: "Palo Alto Networks for Developers",
-  url: "https://panos.pan.dev",
-  baseUrl: "/",
+  url: process.env.CI_PAGES_URL
+    ? process.env.CI_PAGES_URL
+    : "https://panos.pan.dev",
+  baseUrl: process.env.CI_MERGE_REQUEST_IID
+    ? `/-/${process.env.CI_PROJECT_NAME}/-/jobs/${process.env.CI_JOB_ID}/artifacts/public/`
+    : "/",
   favicon: "img/strata_favicon.png",
   organizationName: "PaloAltoNetworks", // Usually your GitHub org/user name.
   projectName: "panos.pan.dev", // Usually your repo name.

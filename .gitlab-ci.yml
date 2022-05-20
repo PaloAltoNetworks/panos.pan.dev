@@ -1,4 +1,4 @@
-image: node:15.12.0-alpine
+image: docker.art.code.pan.run/build-tools--image-node:16.ep1
 
 cache:
   paths:

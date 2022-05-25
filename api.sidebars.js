@@ -5,6 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+
 module.exports = {
-  iot: require('./static/oas/iot/sidebar').sidebar,
+  iot:
+      require('./static/oas/iot/sidebar').sidebar,
+
+
+  tp:
+      require('./static/oas/tp/sidebar').sidebar,
+ 
 };

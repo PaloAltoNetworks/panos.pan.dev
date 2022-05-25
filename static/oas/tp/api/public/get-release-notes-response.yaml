@@ -1,0 +1,26 @@
+responses:
+  '200':
+    description: Request succeeded
+    content:
+      'application/json':
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/GetReleaseNotesSuccessResponse'
+    headers:
+      X-RateLimit-Limit:
+        description: Request limit per day
+        schema:
+          type: integer
+        example: 2000
+
+  '4XX':
+    description: client related error response
+    content:
+      'application/json':
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/GetFailResponse'
+  '5XX':
+    description: server related error response
+    content:
+      'application/json':
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/GetFailResponse'

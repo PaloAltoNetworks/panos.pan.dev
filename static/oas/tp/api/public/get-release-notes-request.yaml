@@ -1,0 +1,15 @@
+parameters:
+- name: type
+  description: "Specifies the type of release notes from which to retrieve information about threat signature updates. Currently, the only available option is the Applications and Threats Content release notes. 
+  Possible Values - content [Applications and Threats Content release notes]"
+  in: query
+  schema:
+    type: string
+  example: "content"
+
+- name: version
+  description: Specifies the release note version, based on the versioning taxonomy of the release note type.
+  in: query
+  schema:
+    type: string
+  example: "8446-6886"

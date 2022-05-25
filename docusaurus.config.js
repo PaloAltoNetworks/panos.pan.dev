@@ -54,6 +54,10 @@ module.exports = {
               to: "/docs/apis",
               label: "Other APIs",
             },
+            {
+              to: "/api/tp/tp-public-api-overview",
+              label: "Threat Vault Public API (BETA)",
+            },
           ],
           position: "left",
         },
@@ -107,6 +111,10 @@ module.exports = {
             {
               label: "IoT Public API",
               to: "api/iot/iot-public-api",
+            },
+            {
+              label: "Threat Vault Public API (BETA)",
+              to: "api/tp/tp-public-api-overview",
             },
             {
               label: "Automation",

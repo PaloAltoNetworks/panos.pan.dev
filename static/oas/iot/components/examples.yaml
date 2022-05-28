@@ -276,11 +276,16 @@ examples:
       message: "OK",
       updatedDeviceNum: 5
     }
-<<<<<<< HEAD
   SccmBulkUpdateDevicesResponseExample:
-=======
+    value: {
+      api: "device/bulkUpdate",
+      ver: "v4.0",
+      code: 1,
+      message: "OK",
+      updatedDeviceNum: 5
+    }
+    
   CrowdstrikeBulkUpdateDevicesResponseExample:
->>>>>>> 7ba0105fd9879b52e52c3b353a037bb0083cf029
     value: {
       api: "device/bulkUpdate",
       ver: "v4.0",

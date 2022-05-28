@@ -345,6 +345,15 @@ examples:
       message: "OK",
       updatedDeviceNum: 5
     }
+  SccmBulkUpdateDevicesResponseExample:
+    value: {
+      api: "device/bulkUpdate",
+      ver: "v4.0",
+      code: 1,
+      message: "OK",
+      updatedDeviceNum: 5
+    }
+    
   CrowdstrikeBulkUpdateDevicesResponseExample:
     value: {
       api: "device/bulkUpdate",
@@ -471,6 +480,20 @@ examples:
         }
       ]
     }
+  SccmDeviceBulkUpdatePayloadExample:
+    summary: An example of payload of device list for SCCM
+    value: {
+      devicelist: [
+        {
+          "serialNumber": "1R2RZY2",
+          "vendor": "Apple Inc.",
+          "model": "MacBook Pro",
+          "diskEncryptionStatus": "Encrypted",
+          "windowsInstalledPatches": "11.1",
+          "windowsInstalledSoftware": "Microsoft 365"
+          "windowsGUID": "6B29FC40-CA47-1067-B31D-00DD010662DA",
+          "sccmSite": "Site A",
+          "sccmDomain": "sccm.com"
   CrowdstrikeDeviceBulkUpdatePayloadExample:
     summary: An example of payload of device list for Crowdstrike Falcon
     value: {

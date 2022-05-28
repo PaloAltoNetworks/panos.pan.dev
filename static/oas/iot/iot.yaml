@@ -244,6 +244,22 @@ paths:
         $ref: 'api/public/bulkUpdateCellular.yaml#/requestBody'
       responses:
         $ref: 'api/public/bulkUpdateCellular.yaml#/responses'
+  /pub/v4.0/device/bulkUpdate?updateSource=crowdstrike_falcon:
+    put:
+      description: 'Bulk device updates for Crowdstrike Falcon devices'
+      operationId: crowdstrike-bulk-update
+      security:
+        - X-Key-Id:  []
+          X-Access-Key: []
+      summary: Bulk Device Updates - Crowdstrike Falcon Devices
+      tags:
+        - IoT Public API
+      parameters:
+        $ref: 'api/public/bulkUpdateCrowdstrike.yaml#/parameters'
+      requestBody:
+        $ref: 'api/public/bulkUpdateCrowdstrike.yaml#/requestBody'
+      responses:
+        $ref: 'api/public/bulkUpdateCrowdstrike.yaml#/responses'
 
   /pub/v4.0/policy/recommendation:
     get:

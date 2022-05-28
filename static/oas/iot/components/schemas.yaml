@@ -605,7 +605,38 @@ schemas:
             sccmDomain:
               type: string
 
-            
+  CrowdstrikeBulkUpdateDevicePayloadSchema:
+    type: object
+    required:
+      - devicelist
+    properties:
+      devicelist:
+        type: array
+        description: devices
+        items:
+          type: object
+          properties:
+            deviceid:
+              type: string
+              description: Required field
+            is_isolated:
+              type: string
+            operational_status:
+              type: string
+            group_name: 
+              type: string
+            os_type:
+              type: string
+            os_version:
+              type: string
+            os_build:
+              type: string
+            hostname: 
+              type: string
+            serial_number:
+              type: string
+            vendor:
+              type: string
             
   BulkUpdateDeviceResponseSchema:
     type: object

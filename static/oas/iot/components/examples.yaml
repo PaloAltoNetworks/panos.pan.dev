@@ -276,7 +276,11 @@ examples:
       message: "OK",
       updatedDeviceNum: 5
     }
+<<<<<<< HEAD
   SccmBulkUpdateDevicesResponseExample:
+=======
+  CrowdstrikeBulkUpdateDevicesResponseExample:
+>>>>>>> 7ba0105fd9879b52e52c3b353a037bb0083cf029
     value: {
       api: "device/bulkUpdate",
       ver: "v4.0",
@@ -415,6 +419,21 @@ examples:
           "windowsGUID": "6B29FC40-CA47-1067-B31D-00DD010662DA",
           "sccmSite": "Site A",
           "sccmDomain": "sccm.com"
+  CrowdstrikeDeviceBulkUpdatePayloadExample:
+    summary: An example of payload of device list for Crowdstrike Falcon
+    value: {
+      devicelist: [
+        {
+          "deviceid": "00:0c:29:8f:20:9a",
+          "is_isolated": "yes",
+          "operational_status": "Not Available",
+          "group_name": "Group 1",
+          "os_type": "Windows",
+          "os_version": "11.1",
+          "os_build": "Beta Build"
+          "hostname": "cntl-201-2",
+          "serial_number": "6B29FC40-CA47-1067-B31D-00DD010662DA",
+          "vendor": "Microsoft"
         }
       ]
     }

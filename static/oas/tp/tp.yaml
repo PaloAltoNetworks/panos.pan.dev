@@ -1,11 +1,11 @@
 info:
   description: |
-    The Threat Prevention Public API endpoints are available to customers with an active Threat Prevention or Advanced Threat Prevention subscription.
+    The Threat Prevention API endpoints are available to customers with an active Threat Prevention or Advanced Threat Prevention subscription.
 
-    List of Threat Prevention Public API endpoints:
+    List of Threat Prevention API endpoints:
     1. Link to [Retrieve IPS Threat Metadata](threat-prevention-public-api-endpoints#operation/threats)
     2. Link to [Retrieve Release-Note Information](threat-prevention-public-api-endpoints#operation/release_notes)
-  title: Threat Prevention Public API Overview
+  title: Threat Prevention API Overview
   version: v1.0 BETA
   contact:
     email: tp-infra@paloaltonetworks.com
@@ -14,8 +14,8 @@ servers:
   - url: 'https://tpp.tpcloud.paloaltonetworks.com/service/publicapi/v1'
     description: The base URI 
 tags:
-- description: Threat Prevention Public API endpoints are listed below. These APIs are currently in BETA. Please contact your Palo Alto Networks salesperson for more information.
-  name: Threat Prevention Public API Endpoints
+- description: Threat Prevention API endpoints are listed below. These APIs are currently in BETA. Please contact your Palo Alto Networks salesperson for more information.
+  name: Threat Prevention API Endpoints
 
 paths:
 

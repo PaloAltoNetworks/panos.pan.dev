@@ -58,7 +58,7 @@ const features = [
   },
 
   {
-    title: <h4>Threat Vault Public API (BETA)</h4>,
+    title: <h4>Threat Vault API (BETA)</h4>,
     imageUrl: "/img/advanced-threat-prevention.png",
     description: <>API reference documentation about accessing Threat Vault data for Threat Prevention and Advanced Threat Prevention security subscription holders.</>,
     button: (

@@ -1,7 +1,7 @@
 ---
 id: tp-public-api-manage-key
-title: Threat Vault Public API Key Management
-sidebar_label: Threat Vault Public Key Management
+title: Threat Vault API Key Management
+sidebar_label: Threat Vault Key Management
 ---
 
 To generate or revoke the API key:

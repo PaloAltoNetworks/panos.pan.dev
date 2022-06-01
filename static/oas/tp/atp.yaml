@@ -2,10 +2,10 @@ info:
   description: |
     The Advanced Threat Prevention API endpoints require an active subscription to the Advanced Threat Prevention security service. These endpoints can only be accessed using the API key associated with the account that holds the subscription. Attempting to view an unauthorized report ID will not return any results.
 
-    List of Advanced Threat Prevention Public API endpoints:
-    1. Link to [Retrieve Advanced Threat Prevention cloud analysis report](advanced-threat-prevention-public-api-endpoints#operation/post_atp_reports_batch_mode)
-    2. Link to [Retrieve the Advanced Threat Prevention cloud analysis report PCAP](advanced-threat-prevention-public-api-endpoints#operation/get_atp_pcaps)
-  title: Advanced Threat Prevention Public API Overview
+    List of Advanced Threat Prevention API endpoints:
+    1. Link to [Retrieve Advanced Threat Prevention cloud analysis report](advanced-threat-prevention-api-endpoints#operation/post_atp_reports_batch_mode)
+    2. Link to [Retrieve the Advanced Threat Prevention cloud analysis report PCAP](advanced-threat-prevention-api-endpoints#operation/get_atp_pcaps)
+  title: Advanced Threat Prevention API Overview
   version: v1.0 BETA
   contact:
     email: tp-infra@paloaltonetworks.com
@@ -14,8 +14,8 @@ servers:
   - url: 'https://tpp.tpcloud.paloaltonetworks.com/service/publicapi/v1/'
     description: The base URI 
 tags:
-- description: Advanced Threat Prevention Public API endpoints are listed below. These APIs are currently in BETA. Please contact your Palo Alto Networks salesperson for more information.
-  name: Advanced Threat Prevention Public API Endpoints
+- description: Advanced Threat Prevention API endpoints are listed below. These APIs are currently in BETA. Please contact your Palo Alto Networks salesperson for more information.
+  name: Advanced Threat Prevention API Endpoints
 
 paths:
   /atp/reports:

@@ -19,7 +19,7 @@ image: /img/expedition.png
 ---  
 
 :::note 
-Expedition 1.x is the only supported version at time. Expedition 2.0 is scheduled to release in May, 2022. Learn more about the release at our [Live Community](https://live.paloaltonetworks.com/t5/expedition-articles/expedition-2-0-release-date-postponed/ta-p/423747) site.
+Expedition 1.x is the only supported version at time. Learn more about the release at our [Live Community](https://live.paloaltonetworks.com/t5/expedition-articles/expedition-2-0-release-date-postponed/ta-p/423747) site.
 :::  
 
 ## Introduction  
@@ -42,7 +42,7 @@ while the HTTP verbs (GET, POST, PUT, DELETE) indicate the action to be applied 
 For example,  the following request describes a request to list (_GET_) existing _address_ objects in MyProject.  
   
 ```console
-GET https://myExpedition.local/api/v1/MyProject/objects/address 
+GET https://localhost/api/v1/project/{project_id}/object/address 
 ```
 
 
@@ -68,11 +68,8 @@ Expedition offers a web resource for documenting the Expedition API and trying i
 The documentation is based on the Swagger framework, and is provided in each Expedition VM under the following URL:  
 
 ```Console
-   https://<YourExpeditionIP>/api/<version>/documentation
+   https://localhost/api/<version>/documentation
 ```
-Where `<YourExpeditionIP>` should be replaced with your actual Expedition IP address  
-and `<version>` should be filled with the revision we want to study, currently `v1`. 
-
 In order to be able to consume the different API methods, it is necessary to have a valid session (for authentication and authorization). 
 This can be performed in Swagger by making a first request to the /api/v1/login route.
 A request is made by clicking on the selected route to call, activate the interactive mode via the button `Try it out`, 
@@ -99,13 +96,13 @@ Alternatively , you could also do it via your script:
 Make a `POST` request to the Expedition’s hostname or IP address using the administrative credentials, where you will have to replace the fields _YourExpeditionIP_, _username_ and _password_ with your actual values.  
 
 ```shell-session
-curl -X POST -k "https://<YourExpeditionIP>/api/v1/login" -H "accept: application/json" -H "Content-Type: application/json" -H "X-CSRF-TOKEN: " -d "{\"username\":\"<username>\”,\”password\":\"<password>\”}”
+curl -X POST -k "https://localhost/api/v1/login" -H "accept: application/json" -H "Content-Type: application/json" -H "X-CSRF-TOKEN: " -d "{\"username\":\"<username>\”,\”password\":\"<password>\”}”
 ```
 
 Example of the curl command:
 
 ```shell-session
-curl -X POST -k "https://192.168.55.144/api/v1/login" -H "accept: application/json" -H "Content-Type: application/json" -H "X-CSRF-TOKEN: " -d "{\"username\":\"admin\",\"password\":\"paloalto\"}"
+curl -X POST -k "https://localhost/api/v1/login" -H "accept: application/json" -H "Content-Type: application/json" -H "X-CSRF-TOKEN: " -d "{\"username\":\"admin\",\"password\":\"paloalto\"}"
 ```
 
 
@@ -153,7 +150,7 @@ import requests
 import urllib3
 
 data = {"username":"admin", "password":"paloalto"}
-r = requests.post('https://'+ip+'/api/v1/login', data=data, verify=False)
+r = requests.post('https://localhost/api/v1/login', data=data, verify=False)
 response=r.json()
 apiKey = json.dumps(response['Contents']['response']['data']['content']['api_key'])
 auth_token = apiKey[1:-1]

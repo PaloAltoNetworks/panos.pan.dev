@@ -158,6 +158,17 @@ module.exports = {
             "expedition/managing_jobs",
           ],
         },
+        "expedition/expedition_workflow_filters",
+        {
+          type: "category",
+          collapsed: false,
+          label: "Expedition-API Use Cases",
+          items: [
+            "expedition/expedition_workflow_migration",
+            "expedition/expedition_workflow_removeunused",
+            "expedition/expedition_workflow_bulkchange",
+          ],
+        },
       ],
     },
     {

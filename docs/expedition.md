@@ -17,7 +17,7 @@ image: /img/expedition.png
 ---  
 
 :::note 
-Expedition 1.x is the only supported version at time. Expedition 2.0 is scheduled to release in April, 2022. Learn more about the release at our [Live Community](https://live.paloaltonetworks.com/t5/expedition-articles/expedition-2-0-release-date-postponed/ta-p/423747) site.
+Expedition 1.x is the only supported version at time.  Learn more about the release at our [Live Community](https://live.paloaltonetworks.com/t5/expedition/ct-p/migration_tool) site.
 :::  
 
 ## What is Expedition?
@@ -35,22 +35,72 @@ With Expedition 2.0, we had two main goals on mind:
 
 With all these huge improvements, we expect the next time you use Expedition the journey to excellence will be easier.  
 
-## Expedition 2.0 Modules
-The Expedition 2.0 tool aims at facilitating the consumption of PANOS features and assisting on the correct application of good practices in on NGFW devices.  
+## Expedition 2.0 Architecture   
 
-For instance, the tool can assist on the implementation of security policies using Applications, Users and Regions, 
-the reduction of number of address and service objects to increase policy administration
-and advising on potential configuration inconsistencies and deficiencies to help placing the focus on those relevant points, among other features.  
+The Expedition 2 container image consists of a set of individual containers (see Figure 1) that interact between each other, being the expedition-api the orchestrator for all workflow interactions. In the current version Expedition 2.0, the following packages, services and version should be found:  
 
-To achieve the above-mentioned features and more, the Expedition 2.0 has been designed to be divided in four main process modules  (represented in green in below image) to provide web access to the tool, API feature accessibility, configuration conversions and data analytics. Additionally, two relaying modules (in white) are required for data storage and access control.
+**Expedition-API**:  
 
-An extra module (in blue) can be constructed by the community, making use if the API to generate scripts for automation (script processing), using the language of preference. Ultimately, a library of scripts with different workflows can be constructed by sharing those scripts in public/private repositories.  
-This separation of concerns, allows each module to evolve and improve the overall functionality, increase reusability and reliability.  
-The modules are:
-- **Expedition Web API**: Exposes all the Expedition functionalities via an Application Program Interface that offers high level of scripting and automation 
-- **Expedition Web UI**: Provides a web interface that offers access to all Expedition functionalities with a low learning curve_
-- **Expedition Converter**: In charge of parsing and translating third party vendors' configurations into PANOS firewalls and Panoramas
-- **Expedition Analytics**: Offers functionalities for traffic log analytics, rule improvement suggestions, and other "data analytics"-related tasks  
+Container is intended to provide a RESTful API that can be consumed by your scripting language of choice and to present the UI (HTML/JS). The back-end API is  developed using the Laravel PHP framework and served via Apache 2.  Also running one or more PHP Agent(s) to support asynchronous requests that help with the execution of automated tasks and multi-processing actions. The agents also consume the API and communications with them are performed via RabbitMQ.  
+
+- Services installed:  
+    - Apache/2.4.53  
+    - PHP/7.4.29  
+- API (Laravel) logs path:  
+    - /var/www/html/expedition-api/storage/logs    
+- Some configuration files are stored in volumes on the host.
+
+
+**RabbitMQ**:  
+
+Container to provide the RabbitMQ service for asynchronous requests. Communications are performed between web service API calls and PHP agents. Stopping this service will prevent agents from receiving messages for the execution of blocking or long lasting tasks, such as downloading configuration files from a PANOS device, doing reverse DNS resolutions, autoprocessing CSV traffic log files, among others.  
+
+- Services installed:  
+    - RabbitMQ/3.8  
+
+
+**Expedition-db**:  
+
+Container intended to provide a RDBMS as storage for the application data. Stopping this container will block all Expedition’s functionalities, as it would interrupt authentication, access to project information, or auditing.  
+
+- DB files are stored as volumes on the host.
+- Services installed:
+    - Maria DB ver. 10.8.2  
+- Databases:  
+    - Projects databases (as exp_XX). A project is a collection of information related to a specific migration to a device. Each project is stored on a dedicated database within the same RDBMS.  
+    - Authentication and authorization database (as pandbRBAC). Database to store application information such as users, grants and others.
+    - Other databases. Additional databases that may be used to contain global values, such as device capacities, etc.  
+
+
+**Expedition-parsers**:  
+
+Container intended to provide the parser library and workflows to migrate from third party vendors  to Palo Alto Networks configurations. This container includes mappings for specific service to configuration conversions when those are not TCP or UDP protocols.
+Not directly available to be consumed by the user, but by the Expedition-API container when migrations are being requested. This container does not expose an API.
+This container does not have persistence, therefore all data generated is only available during the container lifecycle.  
+
+- Services installed:  
+  - Apache/2.x  
+  - PHP/7.0  
+
+**Expedition-parsers-db**:  
+
+Helper container for the expedition-parser container to store temporal data needed for parsing vendor configs. After a migration, the databases are wiped.  
+- Without persistence so all data generated is available during the container lifecycle.  
+- Services installed:  
+  - Maria DB ver. 10.2
+- Databases:  
+  - Projects DB. A project is a collection of information related to a specific migration to a device. Each project is stored on a dedicated database within the same RDBMS. The databases resemble the structure used by parsers in Expedition 1.  
+  - PANDBRAC DB. Database to store  information required for the migration scripts, such as name of the project under migration, version of the PANOS target device, and user controls.  
+
+:::note 
+In order to persist users’ projects and devices’ information, some data is stored in shared volumes with the host (your computer). These shared space can be found in the /volumes folder, containing the following subfolders:  
+  
+/volumes/user_space  
+/volumes/mysql_files  
+:::  
+
+
+
 
 
 ![Architecture](/img/expedition/expedition2_arc.svg "Architecture")  

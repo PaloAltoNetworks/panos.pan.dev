@@ -1,0 +1,29 @@
+responses:
+  '200':
+    description: Request succeeded
+    content:
+      'application/octet-stream':
+        schema:
+          type: string
+          format: binary
+    headers:
+      X-RateLimit-Limit:
+        $ref: '../../components/headers.yaml#/headers/X-RateLimit-Limit'
+      X-RateLimit-Remaining:
+        $ref: '../../components/headers.yaml#/headers/X-RateLimit-Remaining'
+      X-RateLimit-Reset:
+        $ref: '../../components/headers.yaml#/headers/X-RateLimit-Reset'
+
+  '4XX':
+    description: Certificate related error response
+    content:
+      'application/json':
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/GetFailResponse'
+
+  '5XX':
+    description: Server related error response
+    content:
+      'application/json':
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/GetFailResponse'

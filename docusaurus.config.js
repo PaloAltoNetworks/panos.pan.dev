@@ -7,8 +7,12 @@
 
 module.exports = {
   title: "Palo Alto Networks for Developers",
-  url: "https://panos.pan.dev",
-  baseUrl: "/",
+  url: process.env.CI_PAGES_URL
+    ? process.env.CI_PAGES_URL
+    : "https://panos.pan.dev",
+  baseUrl: process.env.CI_MERGE_REQUEST_IID
+    ? `/-/${process.env.CI_PROJECT_NAME}/-/jobs/${process.env.CI_JOB_ID}/artifacts/public/`
+    : "/",
   favicon: "img/strata_favicon.png",
   organizationName: "PaloAltoNetworks", // Usually your GitHub org/user name.
   projectName: "panos.pan.dev", // Usually your repo name.
@@ -49,6 +53,10 @@ module.exports = {
             {
               to: "/docs/apis",
               label: "Other APIs",
+            },
+            {
+              to: "/api/tp/tp-public-api-overview",
+              label: "Threat Vault Public API (BETA)",
             },
           ],
           position: "left",
@@ -103,6 +111,10 @@ module.exports = {
             {
               label: "IoT Public API",
               to: "api/iot/iot-public-api",
+            },
+            {
+              label: "Threat Vault Public API (BETA)",
+              to: "api/tp/tp-public-api-overview",
             },
             {
               label: "Automation",

@@ -1,0 +1,14 @@
+headers:
+  X-RateLimit-Limit:
+    description: The maximum number of requests that the user is permitted to make per minute.
+    schema:
+      type: integer
+    example: 200
+  X-RateLimit-Remaining:
+    description: The number of requests remaining in the current rate limit window.
+    schema:
+      type: integer
+  X-RateLimit-Reset:
+    description: The timestamp at which the current rate limit window resets
+    schema:
+      type: integer

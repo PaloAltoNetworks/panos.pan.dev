@@ -27,6 +27,7 @@ parameters:
 - name: pagelength
   description:  "default page length for policy rule recommendations is 1000 and
  the maximum is 1000. Setting a shorter length improves response times."
+  in: query
   schema:
     type: integer
     default: 10000

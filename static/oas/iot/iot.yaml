@@ -135,7 +135,7 @@ paths:
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Vulnerabilities
+      summary: Get a list of vulnerabilities.
       tags:
         - IoT Public API
       parameters:

@@ -23,12 +23,12 @@ tags:
 paths:
   /pub/v4.0/device:
     get:
-      description: 'Get a list of device details for the device with the specified MAC address. <br/> <b>Rate limiting<b/>: 60 times per minute'
+      description: 'Get a list of device details for the device with the specified MAC address or, for a static IP device, the device with the specified static IP address. <br/> <b>Rate limiting<b/>: 60 times per minute'
       operationId: device-detail
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Device Detail
+      summary: Device Details
       tags:
         - IoT Public API
       parameters:
@@ -38,12 +38,12 @@ paths:
 
   /pub/v4.0/device/ip:
     get:
-      description: 'Get Device Details per IP Address <br/> <b>Rate limiting<b/>: 60 times per minute'
+      description: 'Get a list of device details for the device with the specified IP address. <br/> <b>Rate limiting<b/>: 60 times per minute'
       operationId: device-detail-ip
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Device Detail Per IP
+      summary: Device Detail per IP Address
       tags:
         - IoT Public API
       parameters:
@@ -68,7 +68,7 @@ paths:
 
   /pub/v4.0/profile/mapping:
     get:
-      description: 'Get a list of mappings among device profile, category and vertical from IoT Security Solution <br/> <b>Rate limiting<b/>: 180 times per minute'
+      description: 'Get a list of mappings of each device profile to a category and industry vertical. This list is for all device profiles that can appear in IoT Security, not just those in your environment. <br/> <b>Rate limiting<b/>: 180 times per minute'
       operationId: profile-mapping
       security:
       - X-Key-Id:  []

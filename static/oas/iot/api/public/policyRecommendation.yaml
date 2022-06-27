@@ -1,6 +1,6 @@
 parameters:
 - name: customerid
-  description: The customer ID specifies the API call for a specific tenant.
+  description: The customer ID to which the API call is directed
   in: query
   required: true
   schema:
@@ -13,15 +13,20 @@ parameters:
     type: string
   example: Palo Alto Networks Device,iPhone,Polycom IP Phone
 - name: offset
-  description: Field to get items on subsequent pages. For example, if your first request is pagelength = 100, you will get the first 100 items (indexed from 0 to 99). To get the next 100, add offset = 100 to your second request. This skips the first 100 items and gets the next 100 starting from index number 100.
+  description: "In addition to the pagelength parameter, offset gets items on
+  subsequent pages. For example, if the page length of your first
+  request is 100, you get the first 100 policy rule recommendations.
+  To get the next 100, add offset=100 to your second request. This
+  skips the first 100 recommendations and gets the next 100 starting
+  from 101."
   in: query
   schema:
     type: integer
     default: 0
   example: 100
 - name: pagelength
-  description: Field specifying the number of items for each page. The default page length is. Setting a shorter length improves response times. The following value is an integer.
-  in: query
+  description:  "default page length for policy rule recommendations is 1000 and
+ the maximum is 1000. Setting a shorter length improves response times."
   schema:
     type: integer
     default: 10000

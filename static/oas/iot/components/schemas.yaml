@@ -14,7 +14,7 @@ schemas:
     properties:
       deviceid:
         type: string
-        description: The device ID, which IoT Security uses to identify and track the device
+        description: The device ID, which IoT Security uses to identify and track a device
       hostname:
         type: string
         description: The device hostname
@@ -32,16 +32,16 @@ schemas:
         description: The industry vertical for the profile such as Medical, IT Devices, and Office
       ip_address:
         type: string
-        description: The IP address of the device
+        description: The IP address of a device
       mac_address:
         type: string
-        description: The MAC address of the device
+        description: The MAC address of a device
       risk_score:
         type: integer
-        description: The risk score of the device
+        description: The risk score of a device
       risk_level:
         type: string
-        description: 'The risk level of the device; there are four: low, medium, high, and critical'
+        description: 'The risk level of a device; There are four: low, medium, high, and critical'
       last_activity:
         type: string
         format: date-time
@@ -66,7 +66,7 @@ schemas:
         description: The number of info alerts for the device
       allTags:
         type: array
-        description: List of Tagtype-TagValue pairs for the Device
+        description: A list of tags applied to devices
         items:
           $ref: '#/schemas/TagDetails'
 
@@ -75,7 +75,7 @@ schemas:
     properties:
       deviceid:
         type: string
-        description: The device ID, which IoT Security uses to identify and track the device
+        description: The device ID, which IoT Security uses to identify and track a device
       hostname:
         type: string
         description: The device hostname
@@ -93,16 +93,16 @@ schemas:
         description: The industry vertical for the profile such as Medical, IT Devices, and Office
       ip_address:
         type: string
-        description: The IP address of the device
+        description: The IP address of a device
       mac_address:
         type: string
-        description: The MAC address of the device
+        description: The MAC address of a device
       risk_score:
         type: integer
-        description: The risk score of the device
+        description: The risk score of a device
       risk_level:
         type: string
-        description: 'The risk level of the device; there are four: low, medium, high, and critical'
+        description: 'The risk level of a device; There are four: low, medium, high, and critical'
       last_activity:
         type: string
         format: date-time
@@ -127,10 +127,10 @@ schemas:
         description: The number of info alerts for the device
       tagIdList:
         type: array
-        description: A list of IDs for user- and system-defined tags assigned to the device
+        description: A list of IDs for user- and system-defined tags assigned to a device
       allTags:
         type: array
-        description: "An array of user-defined tags assigned to the device. Each item in the array consists of three attributes: tagType, tagValue, and tagId."
+        description: "An array of user-defined tags assigned to a device. Each item in the array consists of three attributes: tagType, tagValue, and tagId."
         items:
           $ref: '#/schemas/TagDetails'
 
@@ -154,22 +154,22 @@ schemas:
     properties:
       count:
         type: integer
-        description: number of profile mappings
+        description: The total number of profile mappings
       mapping:
         type: array
-        description: mapping among profile, category and vertical
+        description: An array containing profile mappings
         items:
           type: object
           properties:
             profile:
               type: string
-              description: device profile
+              description: The name of a device profile
             category:
               type: string
-              description: device category
+              description: The category to which the profile is mapped
             vertical:
               type: string
-              description: device vertical
+              description: The industry vertical to which the profile is mapped
 
   IoTTagListResponse:
     type: object
@@ -179,7 +179,7 @@ schemas:
         description: The number of tags matching the request
       tags:
         type: array
-        description: An array containing tags
+        description: "An array of user-defined tags assigned to a device. Each item in the array consists of three attributes: tagType, tagValue, and tagId."
         items:
           $ref: '#/schemas/TagDetails'
 
@@ -196,11 +196,11 @@ schemas:
           $ref: '#/schemas/AlertDetails'
       deviceTags:
         type: object
-        description: A dictionary containing tags for devices
+        description: A list of device tags
         properties:
           id:
             type: object
-            description: id is the Key for the DeviceTags
+            description: The ID numbers of user-defined tags
             properties:
               deviceid:
                 type: string
@@ -251,7 +251,7 @@ schemas:
     properties:
       deviceid:
         type: string
-        description: The device ID, which IoT Security uses to identify and track the device
+        description: The device ID, which IoT Security uses to identify and track a device
       hostname:
         type: string
         description: The device hostname
@@ -269,16 +269,16 @@ schemas:
         description: The industry vertical for the profile such as Medical, IT Devices, and Office
       ip_address:
         type: string
-        description: The IP address of the device
+        description: The IP address of a device
       mac_address:
         type: string
-        description: The MAC address of the device
+        description: The MAC address of a device
       risk_score:
         type: integer
-        description: The risk score of the device
+        description: The risk score of a device
       risk_level:
         type: string
-        description: 'The risk level of the device; there are four: low, medium, high, and critical'
+        description: 'The risk level of a device; There are four: low, medium, high, and critical'
       last_activity:
         type: string
         format: date-time
@@ -293,7 +293,8 @@ schemas:
           $ref: '#/schemas/TagDetails'
       trafficRestricted:
         type: boolean
-        description: Whether a device has traffic restricted or not.
+        description: Whether traffic restriction is being applied to a device (yes) or not (no)
+
 
   DeviceTags:
     type: object
@@ -319,20 +320,29 @@ schemas:
     properties:
       tagType:
         type: string
-        description: tagType is the Key for a Tag
+        description: The key for a user-defined tag
       tagValue:
         type: string
-        description: tagValue is the Value for the Key
+        description: The value of the tag key for a user-defined tag
       tagId:
         type: string
-        description: tagId is the ID of Tag
+        description: The ID of a user-defined tag
 
   AlertDetails:
     type: object
     properties:
       resolved:
         type: string
-        description: Whether the alert has been resolved yes or not no
+        description: Whether the alert has been resolved (yes) or not (no)
+      siteid:
+        type: string
+        description: The ID number that IoT Security assigns to the site for internal use
+      trafficDirection:
+        type: string
+        description: The direction of the traffic on the device that triggered the alert; “inbound” if the device is a server and “outbound” if it’s a client
+      siteName:
+        type: string
+        description: The name of the site where the alert occurred
       date:
         type: string
         description: The alert detection date
@@ -376,18 +386,16 @@ schemas:
         type: string
         description: The history of actions taken to investigate and resolve the alert
 
+
   Vulnerabilies:
     type: object
     properties:
-      items:
-        type: string
-        description: Introduces items in the list of vulnerabilities
       name:
         type: string
         description: The hostname of the device associated with a vulnerability instance
       ip:
         type: string
-        description: The IP address of the device associated with a vulnerability instance
+        description: The IP address of a device associated with a vulnerability instance
       deviceid:
         type: string
         description: The MAC address or IP address of the device
@@ -459,7 +467,7 @@ schemas:
         description: The name of the vulnerability
       allTags:
         type: array
-        description: List of Tagtype-TagValue pairs for the Device
+        description: "An array of user-defined tags assigned to the device. Each item in the array consists of three attributes: tagType, tagValue, and tagId."
         items:
           $ref: '#/schemas/TagDetails'
 
@@ -673,7 +681,7 @@ schemas:
               type: string
             vendor:
               type: string
-            model: 
+            model:
               type: string
             diskEncryptionStatus:
               type: string
@@ -681,7 +689,7 @@ schemas:
               type: string
             windowsInstalledSoftware:
               type: string
-            windowsGUID: 
+            windowsGUID:
               type: string
             sccmSite:
               type: string
@@ -706,7 +714,7 @@ schemas:
               type: string
             operational_status:
               type: string
-            group_name: 
+            group_name:
               type: string
             os_type:
               type: string
@@ -714,13 +722,13 @@ schemas:
               type: string
             os_build:
               type: string
-            hostname: 
+            hostname:
               type: string
             serial_number:
               type: string
             vendor:
               type: string
-            
+
   BulkUpdateDeviceResponseSchema:
     type: object
     properties:
@@ -791,77 +799,108 @@ schemas:
     properties:
       ver:
         type: string
-        description: API version
+        description: The API version
       api:
         type: string
-        description: API path
+        description: The API path
       total:
         type: integer
-        description: total number of policy recommendation rules available
+        description: The total number of active recommended policy rules for which information was returned
       policies:
         type: array
-        description: policy recommendation rules
+        description: An array of active recommended policy rules
         items:
           type: object
           properties:
             id:
               type: string
+              description: Unique identifier composed of alphanumeric characters for the policy rule
+            policySetName:
+              type: string
+              description: Name of the user-defined policy set to which the policy rule
             geo:
               type: string
-              description: Whether a rule is internal or external. intranet represents intenral. internet means external
+              description: "Location of the destination in the policy rule (string): intranet (internal) or internet (external)"
               enum: [ intranet, internet ]
             action:
               type: string
               default: allow
-              description: So far, IoT only supports allow as an action.
+              description: Action the firewall takes when applying the policy rule, which is always allow
             lastActivityTime:
               type: string
-              description: The last activity time of a rule
+              description: UTC timestamp for the last detected network activity corresponding to the elements in this policy rule
             sourceProfiles:
               type: array
               default: []
-              description: List of source profiles.
+              description: "Device profile assigned to devices initiating traffic to which the policy rule applies. Note: Although this is an array, there can only be a single source profile."
             sourceIpList:
               type: array
               default: []
-              description: List of source IPs.
+              description: "List of source IP addresses to which the policy rule applies.
+ Note: This is included in anticipation of future functionality and
+ is currently always empty."
             sourceZones:
               type: array
               default: []
-              description: List of source zones.
+              description: List of source zones to which the policy rule applies
             apps:
               type: array
               default: []
-              description: List of applications involved in the rule.
+              description: Applications to which the policy rule applies, such as youtube-base
             destinationZones:
               type: array
               default: []
-              description: List of destination zones.
+              description: List of destination zones to which the policy rule applies
             destinationProfiles:
               type: array
               default: []
-              description: List of destination profiles.
+              description: "Device profile of the destination in the policy rule. A
+ destination device profile is used when the source and destination
+ are in the same intranet and IoT Security is monitoring them both
+ and has assigned a profile to the destination."
             destinationFqdnList:
               type: array
               default: []
-              description: List of destination FQDNs.
+              description: "List of destination FQDNs to which the policy rule applies.
+ Note: When a destination is external, IoT Security displays its IP
+ address in destinationFqdnList. When it’s internal, IoT Security
+ displays it in destinationIpList."
             destinationIpList:
               type: array
               default: []
-              description: List of destination IPs.
+              description: "List of destination IP addresses to which the policy rule
+ applies. Note: When a destination is internal, IoT Security
+ displays its IP address in destinationIpList. When it’s external,
+ IoT Security displays it in destinationFqdnList."
             destinationUrlCategories:
               type: array
               default: []
-              description: List of categories of destination URLs.
+              description: "List of categories to which the policy rule applies, Some examples: games, entertainment, and health-and medicine"
             services:
               type: array
               default: []
-              description: List of services.
+              description: "List of non-standard service port numbers for an application or
+the user-defined values service-http and service-https. Note: When
+IoT Security identifies an application that's using non-standard
+UDP or TCP port numbers, it displays the application name in
+"apps" and the non-standard port numbers in "services". When an
+application is using standard ports, IoT Security displays the
+application name and leaves "services" empty. If a user manually
+applied one of the predefined services servicehttp or service-
+https to an application, then the predefined service name appears
+in "services"."
             tags:
               type: array
               default: [ IoTSecurityRecommended ]
-              description: List of tags.
+              description: "System-defined tag IoTSecurityRecommended and any user-defined
+ tags applied to the policy rule"
             securityProfiles:
               type: array
               default: []
-              description: List of security profiles
+              description: "List of Security profiles for antivirus, vulnerability protection, anti-spyware, and so on in the policy rule"
+            firewallList:
+              type: array
+              description: List of firewalls that enforce the policy rule
+            deviceGroups:
+              type: array
+              description: (Panorama) List of device groups containing firewalls that enforce the policy rule

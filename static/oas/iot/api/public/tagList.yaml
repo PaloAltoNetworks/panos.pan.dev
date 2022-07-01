@@ -1,5 +1,5 @@
 parameters:
-- description: The customer ID specifies the API call for a specific tenant.
+- description: The customer ID to which the API call is directed
   in: query
   name: customerid
   required: true
@@ -8,24 +8,24 @@ parameters:
 - description: The type identifies the tag as either a system-defined tag or a custom tag.
   in: query
   name: type
-  required: false  
+  required: false
   schema:
     type: string
     enum:
       - 'custom'
       - 'system'
-- description: This is the source of the user-defined tags assigned to IoT devices and must be followed by the string tenant.
+- description: The source of the user-defined tags assigned to IoT devices. The following string must be <b>tenant</b>.
   in: query
   name: source
-  required: true  
+  required: true
   schema:
     type: string
     enum:
       - 'predefined'
-      - 'tenant'    
+      - 'tenant'
 responses:
   '200':
-    description: Successful Response (We only show some importants fields here)
+    description: Successful Response (We only show some important fields here)
     content:
       application/json:
         schema:

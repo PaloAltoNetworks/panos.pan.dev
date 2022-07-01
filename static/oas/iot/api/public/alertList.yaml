@@ -17,7 +17,7 @@ parameters:
   required: false
   schema:
     type: string
-- description: In addition to the pagelength parameter, offset gets items on subsequent pages. For example, if the page length of your first request is 100, you get the first 100 alerts. To get the next 100, add offset=100 to your second request. This skips the first 100 alerts and gets the next 100 starting from 101.
+- description: In addition to the <b>pagelength</b> parameter, offset gets items on subsequent pages. For example, if the page length of your first request is 100, you get the first 100 alerts. To get the next 100, add offset=100 to your second request. This skips the first 100 alerts and gets the next 100 starting from 101.
   in: query
   name: offset
   required: false
@@ -29,17 +29,17 @@ parameters:
   required: false
   schema:
     type: integer
-- description: The start of a time range for alerts to retrieve. For example, stime=2021-10-6T07:00Z. (It’s unnecessary to set etime=now or etime=<time> because it is always treated as now.)
+- description: The start of a time range for alerts to retrieve. For example, <b>stime=2021-10-6T07:00Z</b>. (It’s unnecessary to set <b>etime=now</b> or <b>etime</b>=\<time\> because it is always treated as <b>now</b>.)
   in: query
   name: stime
   required: false
-- description: "The direction in which returned alerts are organized: ascending order asc (oldest to newest) or descending order desc (newest to oldest, the default)"
+- description: "The direction in which returned alerts are organized: ascending order <b>asc</b> (oldest to newest) or descending order <b>desc</b> (newest to oldest, the default)"
   in: query
   name: sortdirection
   required: false
   schema:
     type: string
-- description: The device attribute to use for sorting. date and severityNumber are supported as the following value and the value types are string and integer respectively. The default way to sort alerts is by date in descending order.
+- description: The device attribute to use for sorting. <b>date</b> and <b>severityNumber</b> are supported as the following value and the value types are <b>string</b> and <b>integer</b> respectively. The default way to sort alerts is by date in descending order.
   in: query
   name: sortfield
   required: false

@@ -14,7 +14,7 @@ parameters:
     enum:
       - 'custom'
       - 'system'
-- description: The source of the user-defined tags assigned to IoT devices. The following string must be tenants.
+- description: The source of the user-defined tags assigned to IoT devices. The following string must be <b>tenant</b>.
   in: query
   name: source
   required: true

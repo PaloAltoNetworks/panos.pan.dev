@@ -1,0 +1,47 @@
+parameters:
+- description: The customer ID to which the API call is directed
+  in: query
+  name: customerid
+  required: true
+  schema:
+    type: string
+requestBody:
+  required: true
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        properties:
+          file:
+            type: string
+            format: binary
+responses:
+  '200':
+    description: Successful Response
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/NetworkDiscoveryGraphUpdateResponseSchema'
+        examples:
+          resolveSecurityAlertResponseExample:
+            $ref: '../../components/examples.yaml#/examples/NetworkDiscoveryGraphUpdateResponseExample'
+  '4XX':
+    description: Client Error Response
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/ErrorResponse'
+        examples:
+          Bad Request:
+            $ref: '../../components/examples.yaml#/examples/BadRequestResponseExample'
+          Unauthrorized Request:
+            $ref: '../../components/examples.yaml#/examples/UnauthorizedResponseExample'
+  '5XX':
+    description: Server Error Response
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas.yaml#/schemas/ErrorResponse'
+        examples:
+          resolveSecurityAlertResponseExample:
+            $ref: '../../components/examples.yaml#/examples/ServerErrorResponseExample'

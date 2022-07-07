@@ -301,6 +301,53 @@ paths:
       responses:
         $ref: 'api/public/policyRecommendation.yaml#/responses'
 
+  /pub/v4.0/network/ndNodeGraphBulkUpdate:
+    put:
+      description: 'Update node graphs lldp, cdp neighbors'
+      operationId: network-discovery
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Network Discovery - Graph Update
+      tags:
+        - IoT Public API
+      parameters:
+        $ref: 'api/public/ndGraphUpdate.yaml#/parameters'
+      responses:
+        $ref: 'api/public/ndGraphUpdate.yaml#/responses'
+
+  /pub/v4.0/network/ndNodeL2L3BulkUpdate:
+    put:
+      description: 'Update Nodes vlan, interface and subnet data'
+      operationId: network-discovery
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Network Discovery - Detail Update
+      tags:
+        - IoT Public API
+      parameters:
+        $ref: 'api/public/ndL2L3Update.yaml#/parameters'
+      responses:
+        $ref: 'api/public/ndL2L3Update.yaml#/responses'
+
+  /pub/v4.0/network/ndNodeEndpointBulkUpdate:
+    put:
+      description: 'Update Node endpoint data'
+      operationId: network-discovery
+      security:
+      - X-Key-Id:  []
+        X-Access-Key: []
+      summary: Network Discovery - Endpoint Update
+      tags:
+        - IoT Public API
+      parameters:
+        $ref: 'api/public/ndEndpoint.yaml#/parameters'
+      responses:
+        $ref: 'api/public/ndEndpoint.yaml#/responses'
+
+
+
 components:
   securitySchemes:
     $ref: 'components/securitySchemes.yaml#/securitySchemes'

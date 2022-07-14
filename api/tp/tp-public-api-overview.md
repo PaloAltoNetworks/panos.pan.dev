@@ -12,5 +12,5 @@ The Threat Vault API is currently in BETA.
 
 Things to consider:
    - To make Advanced | Threat Prevention API GET/POST requests, you must retrieve your API key, which is used to authenticate API calls. Each license provides one API key, regardless of the number of users tied to the account.
-   - The number of API requests that can be submitted is throttled on a per API key basis. To control the number of requests you can make, you need to observe Advanced | Threat Prevention API Rate Limits.
+   - The number of API requests that can be submitted is throttled on a per API key basis. To control the number of requests you can make, you need to observe [Threat Vault API Access Limits](tp-public-api-access-limits).
 

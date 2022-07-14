@@ -8,7 +8,7 @@ The Threat Vault API included with the Threat Prevention and Advanced Threat Pre
 
 Consider the following example:
 
-A user makes 100 concurrent requests hourly from 1:00PM to 6:00PM. :
+A user makes 100 concurrent requests hourly from 1:00PM to 6:00PM:
 
    - The timestamps associated with a request is recorded and tracked until it expires for *both* the 1 minute and 24 hour period rate limiters.
    - In this case, the 1 minute rate limiter for each batch of concurrent requests deducts from your maximum query limit for 1 minute after the requests are made. This means your rate limit was consumed by 100 for that one minute period (the maximum is 200), but is refreshed when the timestamp for a request expires, one minute after the requests are submitted.
@@ -21,5 +21,3 @@ If you exceed the usage limits, the API response returns the following code: 429
 | `X-RateLimit-Limit`                      | Specifies the maximum number of requests that the user is permitted to make per minute. |
 | `X-RateLimit-Remaining`                  | Specifies the number of requests remaining in the current one minute rate limit window. |
 | `X-RateLimit-Reset`                      | Indicates the timestamp at which the current one minute rate limit window resets. |
-
-The 24 hour period usage statistics are currently only available in the response message.

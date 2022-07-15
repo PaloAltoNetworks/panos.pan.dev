@@ -1,21 +1,21 @@
 info:
   description: |
-    The Threat Prevention Public API endpoints are available to customers with an active Threat Prevention or Advanced Threat Prevention subscription.
+    The Threat Prevention API endpoints are available to customers with an active Threat Prevention or Advanced Threat Prevention subscription.
 
-    List of Threat Prevention Public API endpoints:
+    List of Threat Prevention API endpoints:
     1. Link to [Retrieve IPS Threat Metadata](threat-prevention-public-api-endpoints#operation/threats)
     2. Link to [Retrieve Release-Note Information](threat-prevention-public-api-endpoints#operation/release_notes)
-  title: Threat Prevention Public API Overview
+  title: Threat Prevention API Overview
   version: v1.0 BETA
   contact:
     email: tp-infra@paloaltonetworks.com
 openapi: 3.0.0
 servers:
-  - url: 'https://tpp.tpcloud.paloaltonetworks.com/service/publicapi/v1'
+  - url: 'https://api.threatvault.paloaltonetworks.com/service/v1'
     description: The base URI 
 tags:
-- description: Threat Prevention Public API endpoints are listed below. These APIs are currently in BETA. Please contact your Palo Alto Networks salesperson for more information.
-  name: Threat Prevention Public API Endpoints
+- description: Threat Prevention API endpoints are listed below. These APIs are currently in BETA. Please contact your Palo Alto Networks salesperson for more information.
+  name: Threat Prevention API Endpoints
 
 paths:
 
@@ -25,7 +25,7 @@ paths:
       operationId: threats
       description: A GET request to retrieve threat signature metadata. Palo Alto Networks provides a unique threat signature ID number based on the signature category as managed by the firewall - anti-spyware, vulnerability, and file-format.
       security:
-        - X-TPP-API-KEY: []
+        - X-TV-API-KEY: []
       summary: Get Threat Metadata
       parameters:
         $ref: 'api/requests/get-threats.yaml#/parameters'
@@ -37,7 +37,7 @@ paths:
       operationId: release_notes
       description: A GET request to retrieve Applications and Threats content update release note information. The includes details about new and modified threat signatures, updates to App-IDs and HTTP decoders as well as descriptions about other changes introduced in the specified release.
       security:
-        - X-TPP-API-KEY: []
+        - X-TV-API-KEY: []
       summary: Get Content Release Notes
       parameters:
         $ref: 'api/requests/get-release-notes.yaml#/parameters'

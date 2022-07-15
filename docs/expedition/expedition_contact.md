@@ -16,14 +16,11 @@ keywords:
 image: /img/expedition.png  
 ---  
 
-:::note
-Expedition 1.x is the only supported version at time. Expedition 2.0 is scheduled to release in May, 2022. Learn more about the release at our [Live Community](https://live.paloaltonetworks.com/t5/expedition-articles/expedition-2-0-release-date-postponed/ta-p/423747) site.
-:::  
 
 # Contact
-We want to thank you for using Expedition 2.0 and to improve the security posture of your organization.
+We want to thank you for using Expedition and to improve the security posture of your organization.
 
-Expedition 2.0 is a **Palo Alto Networks©** community supported tool. Please visit your <a href="https://live.paloaltonetworks.com/t5/expedition-migration-tool/ct-p/migration_tool">**Live**</a> site for support and to contribute with your
+Expedition is a **Palo Alto Networks©** community supported tool. Please visit your <a href="https://live.paloaltonetworks.com/t5/expedition-migration-tool/ct-p/migration_tool">**Live**</a> site for support and to contribute with your
 experience assisting others.
 
 Access the <a href="https://live.paloaltonetworks.com/t5/expedition-migration-tool/ct-p/migration_tool"> Live Community Site </a> 
@@ -33,8 +30,9 @@ To report bugs, requests for new features or personal contact, please reach us v
 | Role                                        | Members                        | e-mail                                           |
 |---------------------------------------------|--------------------------------|--------------------------------------------------|
 |  <small>Director                   </small> | <small>Albert Estevez</small>  | <small><aestevez@paloaltonetworks.com></small>   |
+|  <small>Senior Manager Solutions Architect</small> | <small>David Puigdomenech</small>   | <small><dpuigdomenec@paloaltonetworks.com></small>    |
 |  <small>Architecture and Analytics </small> | <small>Didac Gil</small>       | <small><dgildelaig@paloaltonetworks.com></small> |
 |  <small>API development            </small> | <small>Anna Carreras</small>   | <small><abarbany@paloaltonetworks.com></small>   |
 |  <small>Converter development      </small> | <small>Sven Waschkut</small>   | <small><swaschkut@paloaltonetworks.com></small>  |
-|  <small>Support                    </small> | <small>Lynn Chiang</small>     | <small><lychiang@paloaltonetworks.com></small>   |
-|  <small>Support                    </small> | <small>Andres Zuniga</small>   | <small><azuniga@paloaltonetworks.com></small>    |
+| <small>Front-End development      </small> | <small>Janosch Zbick</small>   | <small><jzbick@paloaltonetworks.com></small>  |
+|  <small>Support                    </small> | <small>Lynn Chiang</small>     | <small><lychiang@paloaltonetworks.com></small> |

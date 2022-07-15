@@ -1,16 +1,6 @@
 info:
   description: |
     Please refer [IoT Public API Authentication](iot-public-api-headers) to know how to get API Key<br/>
-    List of public APIs from IoT security:
-    1. Link to [Get Device Detail](iot-public-api#operation/device-detail)
-    2. Link to [Get Device Detail Per IP](iot-public-api#operation/device-detail-ip)
-    3. Link to [Get Device Inventory](iot-public-api#operation/device-inventory)
-    4. Link to [Get Profile Mapping](iot-public-api#operation/profile-mapping)
-    5. Link to [Get Security Alerts](iot-public-api#operation/alert-list)
-    6. Link to [Resolve a Security Alert](iot-public-api#operation/alert-resolve)
-    7. Link to [Get Vulnerabilities](iot-public-api#operation/vulnerability-list)
-    8. Link to [Resolve Vulnerability Instances](iot-public-api#operation/vulnerability-resolve)
-    9. Link to [Get Tags List](iot-public-api#operation/tags-list)
   title: IoT Public API Overview
   version: v4.0
   contact: {}
@@ -23,12 +13,12 @@ tags:
 paths:
   /pub/v4.0/device:
     get:
-      description: 'Get a list of device details for the device with the specified MAC address. <br/> <b>Rate limiting<b/>: 60 times per minute'
+      description: 'Get a list of device details for the device with the specified MAC address or, for a static IP device, the device with the specified static IP address. <br/> <b>Rate limiting<b/>: 60 times per minute'
       operationId: device-detail
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Device Detail
+      summary: Device Details
       tags:
         - IoT Public API
       parameters:
@@ -38,12 +28,12 @@ paths:
 
   /pub/v4.0/device/ip:
     get:
-      description: 'Get Device Details per IP Address <br/> <b>Rate limiting<b/>: 60 times per minute'
+      description: 'Get a list of device details for the device with the specified IP address. <br/> <b>Rate limiting<b/>: 60 times per minute'
       operationId: device-detail-ip
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Device Detail Per IP
+      summary: Device Detail per IP Address
       tags:
         - IoT Public API
       parameters:
@@ -68,7 +58,7 @@ paths:
 
   /pub/v4.0/profile/mapping:
     get:
-      description: 'Get a list of mappings among device profile, category and vertical from IoT Security Solution <br/> <b>Rate limiting<b/>: 180 times per minute'
+      description: 'Get a list of mappings of each device profile to a category and industry vertical. This list is for all device profiles that can appear in IoT Security, not just those in your environment. <br/> <b>Rate limiting<b/>: 180 times per minute'
       operationId: profile-mapping
       security:
       - X-Key-Id:  []
@@ -103,7 +93,7 @@ paths:
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Security Alerts
+      summary: Get Security Alerts
       tags:
         - IoT Public API
       parameters:
@@ -130,7 +120,7 @@ paths:
 
   /pub/v4.0/vulnerability/list:
     get:
-      description: 'Get a list of security alerts. <br/> <b>Rate limiting<b/>: 60 times per minute'
+      description: 'Get a list of vulnerabilities. <br/> <b>Rate limiting<b/>: 60 times per minute'
       operationId: vulnerability-list
       security:
       - X-Key-Id:  []
@@ -244,6 +234,7 @@ paths:
         $ref: 'api/public/bulkUpdateCellular.yaml#/requestBody'
       responses:
         $ref: 'api/public/bulkUpdateCellular.yaml#/responses'
+  
   /pub/v4.0/device/bulkUpdate?updateSource=sccm:
     put:
       description: 'Bulk device updates for sccm devices'
@@ -260,6 +251,7 @@ paths:
         $ref: 'api/public/bulkUpdateSccm.yaml#/requestBody'
       responses:
         $ref: 'api/public/bulkUpdateSccm.yaml#/responses'
+  
   /pub/v4.0/device/bulkUpdate?updateSource=crowdstrike_falcon:
     put:
       description: 'Bulk device updates for Crowdstrike Falcon devices'
@@ -276,6 +268,23 @@ paths:
         $ref: 'api/public/bulkUpdateCrowdstrike.yaml#/requestBody'
       responses:
         $ref: 'api/public/bulkUpdateCrowdstrike.yaml#/responses'
+  
+  /pub/v4.0/network/subnetBulkUpdate?updateSource=ipam_infoblox:
+    put:
+      description: 'Bulk subnet updates from customer IPAM (infoblox)'
+      operationId: ipam-subnet-bulk-update
+      security:
+        - X-Key-Id:  []
+          X-Access-Key: []
+      summary: Bulk Subnet Updates - IPAM Infoblox
+      tags:
+        - IoT Public API
+      parameters:
+        $ref: 'api/public/bulkUpdateIPAMSubnet.yaml#/parameters'
+      requestBody:
+        $ref: 'api/public/bulkUpdateIPAMSubnet.yaml#/requestBody'
+      responses:
+        $ref: 'api/public/bulkUpdateIPAMSubnet.yaml#/responses'
 
   /pub/v4.0/policy/recommendation:
     get:

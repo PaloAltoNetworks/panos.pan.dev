@@ -1,11 +1,11 @@
 parameters:
-- description: The customer ID specifies the API call for a specific tenant.
+- description: The customer ID to which the API call is directed
   in: query
   name: customerid
   required: true
   schema:
     type: string
-- description: This is the IP address of the device for which you want to get details.
+- description: TThe IP address of a device for which you want to get details.
   in: query
   name: ip
   required: true
@@ -13,7 +13,7 @@ parameters:
     type: string
 responses:
   '200':
-    description: Successful Response (We only show some importants fields here)
+    description: Successful Response (We only show some important fields here)
     content:
       application/json:
         schema:

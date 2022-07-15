@@ -5,7 +5,7 @@ parameters:
   required: true
   schema:
     type: string
-- description: The customer ID specifies the API call for a specific tenant.
+- description: The customer ID to which the API call is directed
   in: query
   name: customerid
   required: true
@@ -24,17 +24,13 @@ requestBody:
         properties:
           reason:
             type: string
-            description: This is the reason for resolving the alert. The following value is a string and cannot contain any special characters.
+            description: The reason for resolving the alert. The following string cannot contain any special characters.
           reason_type:
             type: string
-            description: 'This is the type of reason for resolving the alert and is one of the following array of values:
-              1. No Action Needed
-              2. Issue Mitigated
-              3. Normal behavior for this device
-              4. Normal behavior for all devices in the same IoT profile'
+            description: "The reason for resolving the alert. It must be one of the following four text strings (excluding numbers): 1. No Action Needed 2. Issue Mitigated 3. Normal behavior for this device 4. Normal behavior for all devices in the same IoT profile"
           resolved:
             type: string
-            description: This defines the alert as resolved. The following value is a string and must be yes.
+            description: Declaration that the alert is resolved. The following string must be “yes”.
       examples:
         payloadExample:
           summary: An example of payload of resolving a security alert
@@ -45,7 +41,7 @@ requestBody:
 
 responses:
   '200':
-    description: Successful Response (We only show some importants fields here)
+    description: Successful Response (We only show some important fields here)
     content:
       application/json:
         schema:

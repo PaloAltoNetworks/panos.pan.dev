@@ -1,6 +1,6 @@
 securitySchemes:
-  X-TV-API-KEY:
+  X-API-KEY:
     description: The API header required for authentication.
     type: apiKey
     in: header
-    name: X-TV-API-KEY
+    name: X-API-KEY

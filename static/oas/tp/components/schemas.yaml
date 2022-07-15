@@ -80,20 +80,17 @@ schemas:
               type: string
               example:  "high"
             cve:
-              type: string
-              example:  "CVE-2007-1204, CVE-2021-35393"
+              type: array
+              example:  ["CVE-2007-1204", "CVE-2021-35393"]
             vendor:
-              type: string
-              example:  "MS07-019"
+              type: array
+              example:  ["MS07-019"]
             reference:
-              type: string
-              example:  "URLs of ...."
+              type: array
+              example:  ["Url1", "Url2"]
             status:
               type: string
               example: "released"
-            detection_logic:
-              type: string
-              example:  "The signature patterns ..."
             type:
               type: string
               example:  "vulnerability"
@@ -109,20 +106,6 @@ schemas:
             latest_release_time:
               type: string
               example: "2021-08-31 01:25:04"
-            json_data:
-              type: array
-              items:
-                type: object
-                properties:
-                  cvss_v3_score:
-                    type: string
-                    example: "1.2"
-                  decoder:
-                    type: string
-                    example: "http"
-                  change_data:
-                    type: string
-                    example: "improved ..."
 
   ReleaseNotesDataList:
     type: object
@@ -225,7 +208,7 @@ schemas:
                           example: "Vulnerability"
                         cve:
                           type: string
-                          example: "CVE-2006-3942;CVE-2006-1314"
+                          example: "CVE-2006-3942, CVE-2006-1314"
                         vendor:
                           type: string
                           example: "MS06-063"
@@ -245,7 +228,7 @@ schemas:
                     type: array
       release_time:
         type: string
-        example: "2021-08-27T03:10:03.000000Z"
+        example: "2021-08-27T03:10:03Z"
 
   ATPReportList:
     type: object

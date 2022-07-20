@@ -4,10 +4,10 @@ schemas:
     properties:
       code:
         type: string
-        description: HTTP Status Code
+        description: STATUS_CODE
       msg:
         type: string
-        description: Error Message
+        description: GENERAL_MESSAGE
 
   IoTDeviceDetailResponse:
     type: object
@@ -41,7 +41,7 @@ schemas:
         description: The risk score of a device
       risk_level:
         type: string
-        description: 'The risk level of a device; There are four: low, medium, high, and critical'
+        description: 'The risk level of a device. There are four: low, medium, high, and critical'
       last_activity:
         type: string
         format: date-time
@@ -66,7 +66,7 @@ schemas:
         description: The number of info alerts for the device
       allTags:
         type: array
-        description: A list of tags applied to devices
+        description: 'An array of user-defined tags assigned to a device. Each item in the array consists of three attributes: tagType, tagValue, and tagId.'
         items:
           $ref: '#/schemas/TagDetails'
 
@@ -102,7 +102,7 @@ schemas:
         description: The risk score of a device
       risk_level:
         type: string
-        description: 'The risk level of a device; There are four: low, medium, high, and critical'
+        description: 'The risk level of a device. There are four: low, medium, high, and critical'
       last_activity:
         type: string
         format: date-time
@@ -278,7 +278,7 @@ schemas:
         description: The risk score of a device
       risk_level:
         type: string
-        description: 'The risk level of a device; There are four: low, medium, high, and critical'
+        description: 'The risk level of a device. There are four: low, medium, high, and critical'
       last_activity:
         type: string
         format: date-time
@@ -286,9 +286,12 @@ schemas:
       confidence_score:
         type: string
         description: The confidence score for device classification
+      tagIdList:
+        type: array
+        description: A list of IDs for user- and system-defined tags assigned to a device
       allTags:
         type: array
-        description: List of Tagtype-TagValue pairs for the Device
+        description: 'An array of user-defined tags assigned to a device. Each item in the array consists of three attributes: tagType, tagValue, and tagId.'
         items:
           $ref: '#/schemas/TagDetails'
       trafficRestricted:
@@ -372,7 +375,7 @@ schemas:
         description: The unique ticket ID
       id:
         type: string
-        description: The alert ID. This is the ID to use when resolving an alert through the API
+        description: The alert ID. This is the ID to use when resolving an alert through the API.
       profile:
         type: string
         description: The device profile to which the alert belongs
@@ -385,6 +388,9 @@ schemas:
       reason_history:
         type: string
         description: The history of actions taken to investigate and resolve the alert
+      serviceLevel:
+        type: string
+        description:  '(For MSSP only) The level of service for an MSSP customer as defined by the MSSP owner; for example: Tier 1, Tier 2, Tier 3; or Platinum, Gold, Silver.'
 
 
   Vulnerabilies:
@@ -434,10 +440,10 @@ schemas:
         description: The date of the latest activity of the device
       risk_score:
         type: integer
-        description: The risk score of the vulnerability
+        description: The risk score of the vulnerability instance
       risk_level:
         type: string
-        description: 'The risk level of the vulnerability: Low, Medium, High, or Critical'
+        description: 'The risk level of the vulnerability instance: Low, Medium, High, or Critical'
       ticketState:
         type: string
         description: The state of the zb_ticket for a vulnerability instance —investigation, remediation, resolved, or new if the vulnerability was detected but nobody has yet taken action to address it
@@ -824,10 +830,10 @@ schemas:
         description: The API path
       total:
         type: integer
-        description: The total number of active recommended policy rules for which information was returned
+        description: The total number of activated recommended policy rules for which information was returned
       policies:
         type: array
-        description: An array of active recommended policy rules
+        description: An array of activated policy rule recommendations
         items:
           type: object
           properties:
@@ -839,7 +845,7 @@ schemas:
               description: Name of the user-defined policy set to which the policy rule
             geo:
               type: string
-              description: "Location of the destination in the policy rule (string): <b>intranet</b> (internal) or <b>internet</b> (external)"
+              description: "Location of the destination in the policy rule: <b>intranet</b> (internal) or <b>internet</b> (external)"
               enum: [ intranet, internet ]
             action:
               type: string

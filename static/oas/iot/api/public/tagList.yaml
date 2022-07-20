@@ -25,7 +25,7 @@ parameters:
       - 'tenant'
 responses:
   '200':
-    description: Successful Response (We only show some important fields here)
+    description: Successful Response (We only show some important fields here.)
     content:
       application/json:
         schema:
@@ -42,8 +42,10 @@ responses:
         examples:
           Bad Request:
             $ref: '../../components/examples.yaml#/examples/BadRequestResponseExample'
-          Unauthrorized Request:
+          Forbidden access:
             $ref: '../../components/examples.yaml#/examples/UnauthorizedResponseExample'
+          Too many requests:
+            $ref: '../../components/examples.yaml#/examples/RateLimitResponseExample'
   '5XX':
     description: Server Error Response
     content:

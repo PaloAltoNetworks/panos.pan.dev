@@ -1,6 +1,6 @@
 securitySchemes:
-  X-TPP-API-KEY:
-    description: The API header requires X-TPP-API-KEY for authentication.
+  X-API-KEY:
+    description: The API header required for authentication.
     type: apiKey
     in: header
-    name: X-TPP-API-KEY
+    name: X-API-KEY

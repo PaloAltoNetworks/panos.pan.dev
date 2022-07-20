@@ -17,6 +17,6 @@ parameters:
 
     ---
     ```
-    curl -H 'X-TPP-API-KEY: API_KEY' \
-      'https://api.tpp.paloaltonetworks.com/service/publicapi/v1/release-notes?type=content&version=8446-6886'
+    curl -H 'X-API-KEY: API_KEY' \
+      'https://api.threatvault.paloaltonetworks.com/service/v1/release-notes?type=content&version=8446-6886'
     ```

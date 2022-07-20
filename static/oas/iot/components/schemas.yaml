@@ -754,6 +754,25 @@ schemas:
         type: integer
         description: number of devices updated
 
+  BulkUpdateIPAMSubnetResponseSchema:
+    type: object
+    properties:
+      api:
+        type: string
+        description: API path
+      ver:
+        type: string
+        description: API version
+      code:
+        type: string
+        description: successful code(1)
+      message:
+        type: string
+        description: successful message
+      updatedDeviceNum:
+        type: integer
+        description: number of subnets updated
+
   GeneralBulkUpdateDevicePayloadSchema:
     type: object
     required:

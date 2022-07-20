@@ -369,6 +369,15 @@ examples:
       updatedDeviceNum: 5
     }
 
+  IPAMSubnetBulkUpdateResponseExample:
+    value: {
+      api: "network/subnetBulkUpdate",
+      ver: "v4.0",
+      code: 1,
+      message: "OK",
+      updatedSubnetNum: 4
+    }
+
   CiscoWLCDeviceBulkUpdatePayloadExample:
     summary: An example of payload of device list for Cisco WLC
     value: {
@@ -500,9 +509,10 @@ examples:
           "windowsGUID": "6B29FC40-CA47-1067-B31D-00DD010662DA",
           "sccmSite": "Site A",
           "sccmDomain": "sccm.com"
-          }
+        }
       ]
     }
+  
   CrowdstrikeDeviceBulkUpdatePayloadExample:
     summary: An example of payload of device list for Crowdstrike Falcon
     value: {
@@ -518,6 +528,62 @@ examples:
           "hostname": "cntl-201-2",
           "serial_number": "6B29FC40-CA47-1067-B31D-00DD010662DA",
           "vendor": "Microsoft"
+        }
+      ]
+    }
+
+  IPAMSubnetBulkUpdatePayloadExample:
+    summary: An example of payload of subnet nulk update learned from IPAM
+    value: {
+      "overwrite": true,
+      subnetlist: [
+        { 
+          "site": "test_site",
+          "vlan": "121",
+          "prefix": "10.6.72.0/24",
+          "parent": "",
+          "type": "subnet",
+          "description": "c1"
+        },
+        {
+          "site": "Headquarters_bld2",
+          "vlan": "109",
+          "prefix": "10.2.2.0/24",
+          "parent": "10.2.0.0/16",
+          "type": "subnet"
+        },
+        {
+          "site": "Headquarters_bld1",
+          "vlan": "100",
+          "prefix": "10.2.3.0/24",
+          "parent": "10.2.0.0/16",
+          "type": "subnet"
+        },
+        {
+          "site": "Headquarters_bld3_flr1",
+          "vlan": "107",
+          "prefix": "10.2.1.64/26",
+          "parent": "10.2.1.0/24",
+          "type": "subnet"
+        },
+        {
+          "vlan": "",
+          "prefix": "10.2.1.0/26",
+          "parent": "10.2.1.0/24",
+          "type": "subnet"
+        },
+        {
+          "site": "Headquarters",
+          "prefix": "10.2.0.0/16",
+          "parent": "",
+          "type": "block",
+          "description": "dc"
+        },
+        {
+          "site": "Headquarters_bld3",
+          "prefix": "10.2.1.0/24",
+          "parent": "10.2.0.0/16",
+          "type": "block"
         }
       ]
     }

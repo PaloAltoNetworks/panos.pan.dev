@@ -9,6 +9,6 @@ parameters:
       
       ---
       ```
-      curl -H 'X-TPP-API-KEY: API_KEY' \
-        'https://api.tpp.paloaltonetworks.com/service/publicapi/v1/atp/reports/pcaps?id=c25b5d86d8ac77e10376000517491157a07ac008bfc799f08795d59c57e23a50'
+      curl -H 'X-API-KEY: API_KEY' \
+        'https://api.threatvault.paloaltonetworks.com/service/v1/atp/reports/pcaps?id=c25b5d86d8ac77e10376000517491157a07ac008bfc799f08795d59c57e23a50'
       ```

@@ -18,7 +18,7 @@ paths:
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Device Details
+      summary: Get Device Details per MAC Address
       tags:
         - IoT Public API
       parameters:
@@ -33,7 +33,7 @@ paths:
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Device Detail per IP Address
+      summary: Get Device Details per IP Address
       tags:
         - IoT Public API
       parameters:
@@ -48,7 +48,7 @@ paths:
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Device Inventory
+      summary: Get the Device Inventory
       tags:
         - IoT Public API
       parameters:
@@ -63,7 +63,7 @@ paths:
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Profile Mapping
+      summary: Get Profile Mapping
       tags:
         - IoT Public API
       parameters:
@@ -78,7 +78,7 @@ paths:
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Tags List
+      summary: Get a List of User-defined Tags
       tags:
         - IoT Public API
       parameters:
@@ -269,12 +269,12 @@ paths:
 
   /pub/v4.0/policy/recommendation:
     get:
-      description: 'Fetch active policy recommendation rules'
+      description: 'Fetch all activated policy rule recommendations or all the activated recommendations for one or more IoT device profiles.'
       operationId: policy-recommendation
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Security Policy Rule Recommendations
+      summary: Get Activated Policy Rule Recommendations
       tags:
         - IoT Public API
       parameters:

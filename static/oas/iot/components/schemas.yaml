@@ -823,25 +823,25 @@ schemas:
 
   CustomAttributeBulkUpdateDeviceResponseSchema:
     type: object
-      properties:
-        api:
-          type: string
-          description: 'The path used to call the IoT Security API: “device/bulkupdate”'
-        ver:
-          type: string
-          description: 'The version of the IoT Security API: “v4.0”'
-        code:
-          type: string
-          description: 'The code number indicating success: 1'
-        message:
-          type: string
-          description: 'The message indicating success: “OK”'
-        updatedDeviceNum:
-          type: integer
-          description: 'The number of devices that IoT Security successfully updated'
-        errorCases:
-          type: Object
-          description: 'The cases that are not valid to update custom attribute'
+    properties:
+      api:
+        type: string
+        description: 'The path used to call the IoT Security API: “device/bulkupdate”'
+      ver:
+        type: string
+        description: 'The version of the IoT Security API: “v4.0”'
+      code:
+        type: string
+        description: 'The code number indicating success: 1'
+      message:
+        type: string
+        description: 'The message indicating success: “OK”'
+      updatedDeviceNum:
+        type: integer
+        description: 'The number of devices that IoT Security successfully updated'
+      errorCases:
+        type: Object
+        description: 'The cases that are not valid to update custom attribute'
 
 
   BulkUpdateIPAMSubnetResponseSchema:

@@ -389,7 +389,6 @@ examples:
     }
 
   CiscoWLCDeviceBulkUpdatePayloadExample:
-    summary: An example of payload of device list for Cisco WLC
     value: {
       devicelist: [
         {
@@ -434,7 +433,6 @@ examples:
     }
 
   ArubaWLCDeviceBulkUpdatePayloadExample:
-    summary: An example of payload of device list for Aruba WLC
     value: {
       devicelist: [
         {
@@ -472,7 +470,6 @@ examples:
     }
 
   SNMPDeviceBulkUpdatePayloadExample:
-    summary: An example of payload of device list for SNMP
     value: {
       devicelist: [
         {
@@ -489,23 +486,21 @@ examples:
     }
 
   CustomAttributeBulkUpdatePayloadExample:
-    summary: An example of payload of device list for updating devices' custom attribute
     value: {
       devicelist: [
         {
-          deviceid: "b8:27:eb:50:2b:0f"
-          tagType: "Department"
+          deviceid: "b8:27:eb:50:2b:0f",
+          tagType: "Department",
           tagValue: "IoT Security"
         }, {
-          deviceid: "b8:27:eb:50:2b:0f"
-          tagType: "Purdue Level"
+          deviceid: "b8:27:eb:50:2b:0f",
+          tagType: "Purdue Level",
           tagValue: "Level 3"
         }
       ]
     }
 
   CellularDeviceBulkUpdatePayloadExample:
-    summary: An example of payload of device list for Mobile devices
     value: {
       devicelist: [
         {
@@ -522,7 +517,6 @@ examples:
       ]
     }
   SccmDeviceBulkUpdatePayloadExample:
-    summary: An example of payload of device list for SCCM
     value: {
       devicelist: [
         {
@@ -540,7 +534,6 @@ examples:
     }
   
   CrowdstrikeDeviceBulkUpdatePayloadExample:
-    summary: An example of payload of device list for Crowdstrike Falcon
     value: {
       devicelist: [
         {
@@ -559,7 +552,6 @@ examples:
     }
 
   IPAMSubnetBulkUpdatePayloadExample:
-    summary: An example of payload of subnet nulk update learned from IPAM
     value: {
       "overwrite": true,
       subnetlist: [
@@ -615,7 +607,6 @@ examples:
     }
 
   GeneralBulkUpdateDevicePayloadExample:
-    summary: An example of payload of general device list
     value: {
       devicelist: [
         {
@@ -638,7 +629,6 @@ examples:
     }
 
   PolicyRecommendationResponse:
-    summary: An example of policy recommendation API response
     value: {
       ver: 'v4.0',
       api: '/policy/recommendation',

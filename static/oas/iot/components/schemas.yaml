@@ -484,68 +484,91 @@ schemas:
     properties:
       devicelist:
         type: array
-        description: devices
+        description: Array of device attributes from integrated Cisco WLAN controllers
         items:
           type: object
           properties:
             macAddress:
               type: string
+              description: The MAC address of a wireless client on the Cisco WLAN. IoT Security uses it to link device attributes from Cisco WLAN controllers to a device in its inventory.
             ipAddress:
               type: string
+              description: The MAC address of a wireless client on the Cisco WLAN. IoT Security uses it to link device attributes from Cisco WLAN controllers to a device in its inventory.
             radio:
               type: string
+              description: The radio band that the wireless client is using (2.4 GHz or 5 GHz)
             connectionState:
               type: string
+              description: Whether the wireless client is connected or not
             wlanId:
               type: string
+              description: An attribute that a WLAN controller sends an AP indicating the SSID an authenticated wireless client should join
             SSID:
               type: string
+              description: The service set identifier (SSID) on which the wireless client associates with the access point
             connectedDuration:
               type: string
+              description: The duration of the wireless client’s current connection
             authentication:
               type: string
+              description: Whether or not authentication is required to connect to the WLAN
             status:
               type: string
+              description: Whether the wireless client is authenticated or not
             authMethod:
               type: string
+              description: 'The method the wireless client uses to authenticate: WPA2 PSK, WPA 802.1X, WPA, WEP, open'
             encryptionCipher:
               type: string
+              description: The type of cipher the wireless client uses to encrypt communications, such as CCMP-128 (AES) or TKIP
             rssi:
               type: string
+              description: The received signal strength (RSSI) of the wireless client’s connection
             snr:
               type: string
+              description: The signal-to-noise ratio (SNR) of the wireless client’s connection
             apName:
               type: string
+              description: The name of the access point through which the device makes a wireless connection to the network
             apIPAddress:
               type: string
+              description: The IP address of the access point through which the device makes a wireless connection to the network
             apMacAddress:
               type: string
+              description: The MAC address of the access point through which the device makes a wireless connection to the network
             apRadioSlotId:
               type: string
+              descriptin: The radio slot ID on the access point
             apModel:
               type: string
+              description: The access point model
             location:
               type: string
+              description: The location of the device as learned from the location setting on the Cisco switch or access point to which the device connects
             country:
               type: string
+              description: The country for which the device is configured to operate its radio. This effects available radio channels and power levels.
             BSSID:
               type: string
+              description: The MAC address of the wireless interface on which the AP hosts the SSID
             apencryptionCipher:
               type: string
+              description: The set of encryption ciphers for which the AP broadcasts support in the beacons it broadcasts
             bluetoothType:
               type: string
-              description: Only if isBluetooth is true
+              description: (Bluetooth/BLE devices) Whether the wireless client uses Bluetooth or Bluetooth Low Energy (BLE)
             bluetoothDeviceType:
               type: string
-              description: Only if isBluetooth is true
+              description: (Bluetooth/BLE devices) The type of function the device is performing; for example, BLE Beacon
             frequency:
               type: string
-              description: Only if isBluetooth is true
+              description: '(Bluetooth/BLE devices) The radio frequency on which the Bluetooth or BLE client is communicating with the AP: 2.4 GHz'
             channel:
               type: string
-              description: Only if isBluetooth is true
+              description: '(Bluetooth/BLE devices) The radio channel on which the Bluetooth or BLE client is communicating with the AP'
             isBluetooth:
               type: boolean
+              description: Whether the wireless client uses Bluetooth/BLE or not
 
   ArubaWLCBulkUpdateDevicePayloadSchema:
     type: object
@@ -554,70 +577,88 @@ schemas:
     properties:
       devicelist:
         type: array
-        description: devices
+        description: Array of device attributes from integrated Aruba WLAN controllers
         items:
           type: object
           properties:
             macAddress:
               type: string
+              description: The MAC address of a wireless client on the Aruba WLAN. IoT Security uses it to link device attributes from Aruba WLAN controllers to a device in its inventory
             ipAddress:
               type: string
+              description: The wireless client IP address
             radio:
               type: string
+              description: The radio band that the wireless client is using (2.4 GHz or 5 GHz)
             connectionState:
               type: string
+              description: Whether the wireless client is connected or not
             wlanId:
               type: string
+              description: An attribute that a WLAN controller sends an AP indicating the SSID an authenticated wireless client should join
             SSID:
               type: string
+              description: The service set identifier (SSID) on which the wireless client associates with the access point
             connectedDuration:
               type: string
+              description: The duration of the wireless client’s current connection
             authentication:
               type: string
+              description: Whether or not authentication is required to connect to the WLAN
             authMethod:
               type: string
+              description: 'The method the wireless client uses to authenticate: WPA2 PSK, WPA 802.1X, WPA, WEP, open'
             encryptionCipher:
               type: string
+              description: The type of cipher the wireless client uses to encrypt communications, such as CCMP-128 (AES) or TKIP
             rssi:
               type: string
+              description: The received signal strength (RSSI) of the wireless client’s connection
             snr:
               type: string
+              description: The signal-to-noise ratio (SNR) of the wireless client’s connection
             apName:
               type: string
+              description: The name of the access point through which the device makes a wireless connection to the network
             apIPAddress:
               type: string
+              description: The IP address of the access point through which the device makes a wireless connection to the network
             apMacAddress:
               type: string
+              description: The MAC address of the access point through which the device makes a wireless connection to the network
             apRadioSlotId:
               type: string
+              description: The radio slot ID on the access point
             apModel:
               type: string
+              description: The access point model
             location:
               type: string
+              description: The location of the device as learned from the location setting on the switch or access point to which the device connects
             country:
               type: string
+              description: The country for which the device is configured to operate its radio. This effects available radio channels and power levels.
             authenticationStatus:
               type: string
-            port:
-              type: string
-            slotsNumber:
-              type: string
+              description: Whether the wireless client is authenticated or not
             totalClients:
               type: string
+              description: The total number of wireless clients currently associated with the AP
             bluetoothType:
               type: string
-              description: Only if isBluetooth is true
+              description: (Bluetooth/BLE devices) Whether the wireless client uses Bluetooth or Bluetooth Low Energy (BLE)
             bluetoothDeviceType:
               type: string
-              description: Only if isBluetooth is true
+              description: (BLE devices) The type of function the device is performing; for example, BLE Beacon
             isBluetooth:
               type: boolean
+              description: Whether the wireless client uses Bluetooth/BLE or not
             hwType:
               type: string
-              description: Only if isBluetooth is true
+              description: (BLE devices) The hardware type of the device
             fwVersion:
               type: string
-              description: Only if isBluetooth is true
+              description: (BLE devices) The firmware version running on the device
 
   SNMPBulkUpdateDevicePayloadSchema:
     type: object
@@ -626,20 +667,46 @@ schemas:
     properties:
       devicelist:
         type: array
-        description: devices
+        description: Array of device attributes from integrated switches using SNMP
         items:
           type: object
           properties:
             deviceid:
               type: string
+              description: The MAC address of a device connected to a switch. IoT Security uses it to link device attributes from a switch to a device in its inventory.
             connect_evtContent.ip:
               type: string
+              description: The IP address of the device connected to a switch
             display_switchName:
               type: string
+              description: The name of the switch to which the device is connected
             display_phyPort:
               type: string
+              description: The physical port on the switch to which the device is connected. Only Cisco Catalyst switches return this information.
             display_switchIP:
               type: string
+              description: IP addresses of neighboring switches
+
+  CustomAttributeBulkUpdateDevicePayloadSchema:
+    type: object
+    required:
+      - devicelist
+    properties:
+      devicelist:
+        type: array
+        description: Array of device custom attributes from users to update custom attribute values
+        items:
+          type: object
+          properties:
+            deviceid:
+              type: string
+              description: The device ID, which IoT Security uses to identify and track a device.
+            tagType:
+              type: string
+              description: The custom attribute name. The custom attribute should already exist in the IoT Security.
+            tagValue:
+              type: string
+              description: The value of the custom attribute.
 
   CellularBulkUpdateDevicePayloadSchema:
     type: object
@@ -740,38 +807,61 @@ schemas:
     properties:
       api:
         type: string
-        description: API path
+        description: 'The path used to call the IoT Security API: “device/bulkupdate”'
       ver:
         type: string
-        description: API version
+        description: 'The version of the IoT Security API: “v4.0”'
       code:
         type: string
-        description: successful code(1)
+        description: 'The code number indicating success: 1'
       message:
         type: string
-        description: successful message
+        description: 'The message indicating success: “OK”'
       updatedDeviceNum:
         type: integer
-        description: number of devices updated
+        description: 'The number of devices that IoT Security successfully updated'
+
+  CustomAttributeBulkUpdateDeviceResponseSchema:
+    type: object
+      properties:
+        api:
+          type: string
+          description: 'The path used to call the IoT Security API: “device/bulkupdate”'
+        ver:
+          type: string
+          description: 'The version of the IoT Security API: “v4.0”'
+        code:
+          type: string
+          description: 'The code number indicating success: 1'
+        message:
+          type: string
+          description: 'The message indicating success: “OK”'
+        updatedDeviceNum:
+          type: integer
+          description: 'The number of devices that IoT Security successfully updated'
+        errorCases:
+          type: Object
+          description: 'The cases that are not valid to update custom attribute'
+
 
   BulkUpdateIPAMSubnetResponseSchema:
     type: object
     properties:
       api:
         type: string
-        description: API path
+        description: 'The path used to call the IoT Security API: “device/bulkupdate”'
       ver:
         type: string
-        description: API version
+        description: 'The version of the IoT Security API: “v4.0”'
       code:
         type: string
-        description: successful code(1)
+        description: 'The code number indicating success: 1'
       message:
         type: string
-        description: successful message
+        description: 'The message indicating success: “OK”'
       updatedDeviceNum:
         type: integer
-        description: number of subnets updated
+        description: 'The number of devices that IoT Security successfully updated'
 
   GeneralBulkUpdateDevicePayloadSchema:
     type: object
@@ -780,39 +870,51 @@ schemas:
     properties:
       devicelist:
         type: array
-        description: devices
+        description: Array of device attributes from the integrated DNA Center or Prime instance
         items:
           type: object
           properties:
             deviceid:
               type: string
+              description: The MAC address of a device in the Cisco DNA Center or Prime inventory. IoT Security uses it to link attributes from a device in the other inventory to one in its own inventory.
             config_source:
               type: string
               enum: ['dnac', 'prime']
             ip:
               type: string
+              description: The device IP address
             location:
               type: string
+              description: The location of the device as learned from the location setting on the Cisco switch or access point to which the device connects
             ap_ip:
               type: string
+              description: The IP address of the access point through which the device makes a wireless connection to the network
             ap_name:
               type: string
+              description: The name of the access point through which the device makes a wireless connection to the network
             SSID:
               type: string
+              description: The SSID on which the device associates with the access point
             switchIP:
               type: string
+              description: The IP address of the switch to which the device makes a wired connection to the network
             switchName:
               type: string
+              description: The hostname of the switch to which the device makes a wired connection to the network
             switchPort:
               type: string
             switch_if_name:
               type: string
+              description: The Ethernet interface on the switch through which the device makes a wired connection to the network
             vlan:
               type: string
+              description: The ID of the VLAN that the device is in
             vlan_name:
               type: string
+              description: The name of the VLAN that the device is in
             WireWireless:
               type: string
+              description: "The type of network connection for the device: wired or wireless"
 
   PolicyRecommendationResponse:
     type: object

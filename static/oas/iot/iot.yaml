@@ -152,7 +152,7 @@ paths:
 
   /pub/v4.0/device/bulkUpdate:
     put:
-      description: 'Bulk update devices for DNAC and CISCO Prime integrations.'
+      description: 'Update devices in your IoT Security inventory with select device information that Cortex XSOAR retrieves from an integrated Cisco DNA Center or Cisco Prime instance.'
       operationId: general-bulk-update
       security:
       - X-Key-Id:  []
@@ -169,7 +169,7 @@ paths:
 
   /pub/v4.0/device/bulkUpdate?updateSource=cisco_wlc:
     put:
-      description: 'Bulk device updates for CISCO WLC'
+      description: 'Update devices in your IoT Security inventory with device information that Cortex XSOAR retrieves from integrated Cisco WLAN controllers.'
       operationId: cisco-wlc-bulk-update
       security:
       - X-Key-Id:  []
@@ -186,7 +186,7 @@ paths:
 
   /pub/v4.0/device/bulkUpdate?updateSource=aruba_wlc:
     put:
-      description: 'Bulk device updates for Aruba WLC'
+      description: 'Update devices in your IoT Security inventory with device information that Cortex XSOAR retrieves from integrated Aruba WLAN controllers.'
       operationId: aruba-wlc-bulk-update
       security:
       - X-Key-Id:  []
@@ -203,7 +203,7 @@ paths:
 
   /pub/v4.0/device/bulkUpdate?updateSource=snmp:
     put:
-      description: 'Bulk device updates for SNMP'
+      description: 'Update devices in your IoT Security inventory with device information that Cortex XSOAR retrieves from  integrated switches through SNMP.'
       operationId: snmp-bulk-update
       security:
       - X-Key-Id:  []
@@ -285,6 +285,23 @@ paths:
         $ref: 'api/public/bulkUpdateIPAMSubnet.yaml#/requestBody'
       responses:
         $ref: 'api/public/bulkUpdateIPAMSubnet.yaml#/responses'
+
+  /pub/v4.0/device/bulkUpdate?updateSource=customAttribute:
+    put:
+      description: 'Update devices custom attributes values'
+      operationId: custom-attribute-bulk-update
+      security:
+        - X-Key-Id:  []
+          X-Access-Key: []
+      summary: Bulk Device Updates - Custom Attribute
+      tags:
+        - IoT Public API
+      parameters:
+        $ref: 'api/public/bulkUpdateCustomAttribute.yaml#/parameters'
+      requestBody:
+        $ref: 'api/public/bulkUpdateCustomAttribute.yaml#/requestBody'
+      responses:
+        $ref: 'api/public/bulkUpdateCustomAttribute.yaml#/responses'
 
   /pub/v4.0/policy/recommendation:
     get:

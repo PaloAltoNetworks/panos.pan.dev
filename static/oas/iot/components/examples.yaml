@@ -334,6 +334,16 @@ examples:
       updatedDeviceNum: 5
     }
 
+  CustomAttributeBulkUpdateDevicesResponseExample:
+    value: {
+      api: "device/bulkUpdate",
+      ver: "v4.0",
+      code: 1,
+      message: "OK",
+      updatedDeviceNum: 4,
+      errorCases: {}
+    }
+
   SNMPBulkUpdateDevicesResponseExample:
     value: {
       api: "device/bulkUpdate",
@@ -474,6 +484,22 @@ examples:
         {
             "deviceid": "6c:6c:d3:aa:d0:81",
             "display_phyPort": "Gi1/0/2"
+        }
+      ]
+    }
+
+  CustomAttributeBulkUpdatePayloadExample:
+    summary: An example of payload of device list for updating devices' custom attribute
+    value: {
+      devicelist: [
+        {
+          deviceid: "b8:27:eb:50:2b:0f"
+          tagType: "Department"
+          tagValue: "IoT Security"
+        }, {
+          deviceid: "b8:27:eb:50:2b:0f"
+          tagType: "Purdue Level"
+          tagValue: "Level 3"
         }
       ]
     }

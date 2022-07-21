@@ -22,6 +22,7 @@ requestBody:
       examples:
         payloadExample:
           $ref: '../../components/examples.yaml#/examples/CustomAttributeBulkUpdatePayloadExample'
+
 responses:
   '200':
     description: Successful Response

@@ -47,7 +47,7 @@ module.exports = {
           label: "API Reference",
           items: [
             {
-              to: "/api/iot/iot-public-api",
+              to: "/api/iot/io-t-public-api-overview",
               label: "IoT Public API",
             },
             {
@@ -55,7 +55,7 @@ module.exports = {
               label: "Other APIs",
             },
             {
-              to: "/api/tp/tp-public-api-overview",
+              to: "/api/tp-public-api-overview",
               label: "Threat Vault API (BETA)",
             },
           ],
@@ -156,19 +156,17 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} Palo Alto Networks, Inc.`,
     },
   },
-  themes: ["@docusaurus/theme-live-codeblock"],
+  themes: ["docusaurus-theme-openapi-docs"],
   presets: [
     [
       "@docusaurus/preset-classic",
       {
         docs: {
-          remarkPlugins: [require('mdx-mermaid')],
+          id: "docs",
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl:
-            "https://github.com/PaloAltoNetworks/panos.pan.dev/tree/master",
-          path: "docs",
-          showLastUpdateAuthor: true,
-          showLastUpdateTime: true,
+          docItemComponent: "@theme/ApiItem",
+          remarkPlugins: [require('mdx-mermaid')],
+          editUrl: "https://github.com/PaloAltoNetworks/panos.pan.dev/tree/master",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -186,22 +184,34 @@ module.exports = {
       },
     ],
     [
+      "docusaurus-plugin-openapi-docs",
+      {
+        id: "api",
+        docsPluginId: "docs",
+        config: {
+          iot: {
+            specPath: "static/oas/iot",
+            outputDir: "api/iot"
+          },
+          tp: {
+            specPath: "static/oas/tp/tp.yaml",
+            outputDir: "api/tp",
+          },
+          atp: {
+            specPath: "static/oas/tp/atp.yaml",
+            outputDir: "api/atp",
+          }
+        }
+      },
+    ],
+    [
       "@docusaurus/plugin-content-docs",
       {
         id: "api",
-        sidebarPath: require.resolve("./api.sidebars.js"),
-        editUrl:
-          "https://github.com/PaloAltoNetworks/panos.pan.dev/tree/master/",
+        sidebarPath: require.resolve("./api/sidebars.js"),
         routeBasePath: "api",
-        include: ["**/*.md", "**/*.mdx"], // Extensions to include.
-        docLayoutComponent: "@theme/DocPage",
-        docItemComponent: "@theme/APIDocItem",
-        remarkPlugins: [],
-        rehypePlugins: [],
+        docItemComponent: "@theme/ApiItem",
         path: "api",
-        showLastUpdateAuthor: true,
-        showLastUpdateTime: true,
-        sidebarCollapsible: true,
       },
     ],
     [
@@ -211,7 +221,6 @@ module.exports = {
       },
     ],
   ],
-  themes: [require.resolve("./docusaurus-plugin-webpack/src/index.cjs")],
   onBrokenLinks: "warn",
   onDuplicateRoutes: "warn",
   stylesheets: [

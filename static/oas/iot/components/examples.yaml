@@ -748,3 +748,29 @@ examples:
           }
       ]
     }
+
+  NetworkDiscoveryGraphUpdateResponseExample:
+    value: {
+      api: "/network/ndNodeGraphBulkUpdate",
+      ver: "v4.0",
+      message: "success",
+      updatedNodes: 0
+    }
+
+  NetworkDiscoveryL2L3UpdateResponseExample:
+    value: {
+      api: "/network/ndNodeL2L3BulkUpdate",
+      ver: "v4.0",
+      message: "success",
+      updatedInterface: 2,
+      updatedSubnet: 2,
+      updatedDevice: 1
+    }
+
+  NetworkDiscoveryEndpointUpdateResponseExample:
+    value: {
+      api: "/network/ndNodeEndpointBulkUpdate",
+      ver: "v4.0",
+      message: "success",
+      updatedNodeEndpoints: 4
+    }

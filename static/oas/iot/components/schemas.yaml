@@ -1010,3 +1010,63 @@ schemas:
             deviceGroups:
               type: array
               description: (Panorama) List of device groups containing firewalls that enforce the policy rule
+
+  NetworkDiscoveryGraphUpdateResponseSchema:
+    type: object
+    properties:
+      api:
+        type: string
+        description: API path
+      ver:
+        type: string
+        description: API version
+      message:
+        type: string
+        description: successful message
+      updatedNodes:
+        type: integer
+        description: number of graph node updated
+
+  NetworkDiscoveryL2L3UpdateResponseSchema:
+    type: object
+    properties:
+      api:
+        type: string
+        description: API path
+      ver:
+        type: string
+        description: API version
+      message:
+        type: string
+        description: successful message
+      updatedInterface:
+        type: integer
+        description: number of interface updated
+      updatedSubnet:
+        type: integer
+        description: number of subnet updated
+      updatedDevice:
+        type: integer
+        description: number of device updated
+
+  NetworkDiscoveryEndpointUpdateResponseSchema:
+    type: object
+    properties:
+      api:
+        type: string
+        description: API path
+      ver:
+        type: string
+        description: API version
+      message:
+        type: string
+        description: successful message
+      updatedInterface:
+        type: integer
+        description: number of interface updated
+      updatedSubnet:
+        type: integer
+        description: number of subnet updated
+      updatedDevice:
+        type: integer
+        description: number of device updated

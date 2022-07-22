@@ -25,6 +25,8 @@ paths:
       security:
         - X-TV-API-KEY: []
       summary: Get ATP reports
+      tags: 
+        - Advanced Threat Prevention API Endpoints
       requestBody:
         required: true
         content:
@@ -48,6 +50,8 @@ paths:
       security:
         - X-TV-API-KEY: []
       summary: Get ATP cloud report PCAP
+      tags: 
+        - Advanced Threat Prevention API Endpoints
       parameters:
         $ref: 'api/requests/get-atp-pcap.yaml#/parameters'
       responses:

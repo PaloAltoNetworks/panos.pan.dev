@@ -27,6 +27,8 @@ paths:
       security:
         - X-TV-API-KEY: []
       summary: Get Threat Metadata
+      tags: 
+        - Threat Prevention API Endpoints
       parameters:
         $ref: 'api/requests/get-threats.yaml#/parameters'
       responses:
@@ -39,6 +41,8 @@ paths:
       security:
         - X-TV-API-KEY: []
       summary: Get Content Release Notes
+      tags: 
+        - Threat Prevention API Endpoints
       parameters:
         $ref: 'api/requests/get-release-notes.yaml#/parameters'
       responses:

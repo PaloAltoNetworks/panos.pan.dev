@@ -22,6 +22,7 @@
   --ifm-color-primary-light: #ffd020;
   --ifm-color-primary-lighter: #ffd32d;
   --ifm-color-primary-lightest: #ffdb54;
+
   /* Secondary Colors */
   --ifm-color-secondary: #f5f5fa;
   --ifm-color-secondary-dark: #d4d4e9;
@@ -30,13 +31,19 @@
   --ifm-color-secondary-light: #ffffff;
   --ifm-color-secondary-lighter: #ffffff;
   --ifm-color-secondary-lightest: #ffffff;
+
   /* Status Colors */
   --ifm-color-info: #ffcb06;
   --ifm-color-success: #00cc66;
   --ifm-color-warning: #00c0e8;
   --ifm-color-danger: #fa582d;
-
   --ifm-color-info-dark: #ffdb54;
+
+  --openapi-required: var(--ifm-color-danger) !important;
+  --openapi-code-blue: var(--ifm-color-warning) !important;
+  --openapi-code-red: var(--ifm-color-danger) !important;
+  --openapi-code-orange: var(--ifm-color-info) !important;
+  --openapi-code-green: var(--ifm-color-success) !important;
 
   /* Navbar */
   --ifm-navbar-search-input-color: var(--ifm-color-gray-900);
@@ -518,95 +525,56 @@ table td {
   color: var(--ifm-font-color-base);
 }
 
-/* Badges for APIs */
-.menu__link.get:after {
+/* Sidebar Method labels */
+.api-method > .menu__link {
+  align-items: center;
+  justify-content: start;
+}
+
+.api-method > .menu__link::before {
+  width: 50px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  border: 1px solid;
+  margin-right: var(--ifm-spacing-horizontal);
+  text-align: center;
+  flex-shrink: 0;
+  border-color: transparent;
+  color: white;
+}
+
+.get > .menu__link::before {
   content: "get";
-  display: inline-block;
-  position: relative;
-  top: 1px;
-  margin-right: -6px;
-  padding: 3px 6px;
-  border: 1px solid var(--ifm-color-primary);
-  border-radius: 3px;
   background-color: var(--ifm-color-primary);
-  text-transform: uppercase;
-  font-size: 10px;
-  line-height: 10px;
-  height: 10px;
-  font-weight: 600;
-  color: #212121;
 }
 
-.menu__link.post:after {
+.post > .menu__link::before {
   content: "post";
-  display: inline-block;
-  position: relative;
-  top: 1px;
-  margin-right: -6px;
-  padding: 3px 6px;
-  border: 1px solid var(--ifm-color-warning);
-  border-radius: 3px;
-  background-color: var(--ifm-color-warning);
-  text-transform: uppercase;
-  font-size: 10px;
-  line-height: 10px;
-  height: 10px;
-  font-weight: 600;
-  color: #212121;
+  background-color: var(--openapi-code-green);
 }
 
-.menu__link.delete:after {
-  content: "delete";
-  display: inline-block;
-  position: relative;
-  top: 1px;
-  margin-right: -6px;
-  padding: 3px 6px;
-  border: 1px solid var(--ifm-color-danger);
-  border-radius: 3px;
-  background-color: var(--ifm-color-danger);
-  text-transform: uppercase;
-  font-size: 10px;
-  line-height: 10px;
-  height: 10px;
-  font-weight: 600;
-  color: #212121;
+.delete > .menu__link::before {
+  content: "del";
+  background-color: var(--openapi-code-red);
 }
 
-.menu__link.patch:after {
-  content: "patch";
-  display: inline-block;
-  position: relative;
-  top: 1px;
-  margin-right: -6px;
-  padding: 3px 6px;
-  border: 1px solid var(--ifm-color-warning);
-  border-radius: 3px;
-  background-color: var(--ifm-color-warning);
-  text-transform: uppercase;
-  font-size: 10px;
-  line-height: 10px;
-  height: 10px;
-  font-weight: 600;
-  color: #212121;
-}
-
-.menu__link.put:after {
+.put > .menu__link::before {
   content: "put";
-  display: inline-block;
-  position: relative;
-  top: 1px;
-  margin-right: -6px;
-  padding: 3px 6px;
-  border: 1px solid var(--ifm-color-warning);
-  border-radius: 3px;
-  background-color: var(--ifm-color-warning);
-  text-transform: uppercase;
-  font-size: 10px;
-  line-height: 10px;
-  height: 10px;
-  font-weight: 600;
-  color: #212121;
+  background-color: var(--openapi-code-blue);
+}
+
+.patch > .menu__link::before {
+  content: "patch";
+  background-color: var(--openapi-code-orange);
+}
+
+.head > .menu__link::before {
+  content: "head";
+  background-color: var(--ifm-color-secondary-darkest);
 }
 
 /* Add logos to the products menus */

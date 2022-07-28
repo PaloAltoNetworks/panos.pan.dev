@@ -340,7 +340,7 @@ examples:
       ver: "v4.0",
       code: 1,
       message: "OK",
-      updatedDeviceNum: 4,
+      updatedAttributesNum: 4,
       errorCases: {}
     }
 

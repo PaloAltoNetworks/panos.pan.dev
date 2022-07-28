@@ -493,7 +493,7 @@ schemas:
               description: The MAC address of a wireless client on the Cisco WLAN. IoT Security uses it to link device attributes from Cisco WLAN controllers to a device in its inventory.
             ipAddress:
               type: string
-              description: The MAC address of a wireless client on the Cisco WLAN. IoT Security uses it to link device attributes from Cisco WLAN controllers to a device in its inventory.
+              description: The wireless client IP address
             radio:
               type: string
               description: The radio band that the wireless client is using (2.4 GHz or 5 GHz)
@@ -547,13 +547,13 @@ schemas:
               description: The location of the device as learned from the location setting on the Cisco switch or access point to which the device connects
             country:
               type: string
-              description: The country for which the device is configured to operate its radio. This effects available radio channels and power levels.
+              description: The country for which the device is configured to operate its radio. This affects available radio channels and power levels.
             BSSID:
               type: string
               description: The MAC address of the wireless interface on which the AP hosts the SSID
             apencryptionCipher:
               type: string
-              description: The set of encryption ciphers for which the AP broadcasts support in the beacons it broadcasts
+              description: The set of encryption ciphers for which the AP broadcasts support in its beacons
             bluetoothType:
               type: string
               description: (Bluetooth/BLE devices) Whether the wireless client uses Bluetooth or Bluetooth Low Energy (BLE)
@@ -583,7 +583,7 @@ schemas:
           properties:
             macAddress:
               type: string
-              description: The MAC address of a wireless client on the Aruba WLAN. IoT Security uses it to link device attributes from Aruba WLAN controllers to a device in its inventory
+              description: The MAC address of a wireless client on the Aruba WLAN. IoT Security uses it to link device attributes from Aruba WLAN controllers to a device in its inventory.
             ipAddress:
               type: string
               description: The wireless client IP address
@@ -637,7 +637,7 @@ schemas:
               description: The location of the device as learned from the location setting on the switch or access point to which the device connects
             country:
               type: string
-              description: The country for which the device is configured to operate its radio. This effects available radio channels and power levels.
+              description: The country for which the device is configured to operate its radio. This affects available radio channels and power levels.
             authenticationStatus:
               type: string
               description: Whether the wireless client is authenticated or not
@@ -836,9 +836,9 @@ schemas:
       message:
         type: string
         description: 'The message indicating success: “OK”'
-      updatedDeviceNum:
+      updatedAttributesNum:
         type: integer
-        description: 'The number of devices that IoT Security successfully updated'
+        description: 'The number of attributes that IoT Security successfully updated'
       errorCases:
         type: Object
         description: 'The cases that are not valid to update custom attribute'

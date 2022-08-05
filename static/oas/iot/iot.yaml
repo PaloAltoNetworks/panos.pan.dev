@@ -157,7 +157,7 @@ paths:
       security:
       - X-Key-Id:  []
         X-Access-Key: []
-      summary: Bulk Device Updates - DNAC and CISCO Prime
+      summary: Bulk Device Updates - Cisco DNAC and Prime
       tags:
         - IoT Public API
       parameters:

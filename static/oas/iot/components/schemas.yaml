@@ -538,7 +538,7 @@ schemas:
               description: The MAC address of the access point through which the device makes a wireless connection to the network
             apRadioSlotId:
               type: string
-              descriptin: The radio slot ID on the access point
+              description: The radio slot ID on the access point
             apModel:
               type: string
               description: The access point model
@@ -880,6 +880,7 @@ schemas:
             config_source:
               type: string
               enum: ['dnac', 'prime']
+              description: 'The source of the device information: "dnac" or "prime"'
             ip:
               type: string
               description: The device IP address

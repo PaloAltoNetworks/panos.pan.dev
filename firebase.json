@@ -21,10 +21,16 @@
         "type": 301
       },
       {
-        "source": "/api/tp/*",
+        "source": "/api/tp/**",
         "destination": "https://pan.dev/cdss/threat-vault/api",
         "type": 301
       }
     ]
+  },
+  "emulators": {
+    "hosting": {
+      "host": "localhost",
+      "port": "3000"
+    }
   }
 }

@@ -13,6 +13,18 @@
     ],
     "target": "panos.pan.dev",
     "public": "build",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "redirects": [
+      {
+        "source": "/api/tp",
+        "destination": "https://pan.dev/cdss/threat-vault/api",
+        "type": 301
+      },
+      {
+        "source": "/api/tp/*",
+        "destination": "https://pan.dev/cdss/threat-vault/api",
+        "type": 301
+      }
+    ]
   }
 }

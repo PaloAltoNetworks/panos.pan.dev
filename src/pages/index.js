@@ -58,25 +58,6 @@ const features = [
   },
 
   {
-    title: <h4>Threat Vault API (BETA)</h4>,
-    imageUrl: "/img/advanced-threat-prevention.png",
-    description: <>API reference documentation about accessing Threat Vault data for Threat Prevention and Advanced Threat Prevention security subscription holders.</>,
-    button: (
-      <div className={styles.buttons}>
-        <Link
-          className={classnames(
-            "button button--primary button--md",
-            styles.featureButtons
-          )}
-          href="/api/tp/tp-public-api-overview"
-        >
-          API Reference
-        </Link>
-      </div>
-    ),
-  },
-
-  {
     title: <h4>Infrastructure-as-Code</h4>,
     imageUrl: "/img/ansible_terraform.png",
     description: (

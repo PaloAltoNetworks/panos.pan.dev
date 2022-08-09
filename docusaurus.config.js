@@ -50,14 +50,6 @@ module.exports = {
               to: "/api/iot/iot-public-api",
               label: "IoT Public API",
             },
-            {
-              to: "/docs/apis",
-              label: "Other APIs",
-            },
-            {
-              to: "/api/tp/tp-public-api-overview",
-              label: "Threat Vault API (BETA)",
-            },
           ],
           position: "left",
         },
@@ -113,10 +105,6 @@ module.exports = {
               to: "api/iot/iot-public-api",
             },
             {
-              label: "Threat Vault API (BETA)",
-              to: "api/tp/tp-public-api-overview",
-            },
-            {
               label: "Automation",
               to: "docs/automation",
             },
@@ -162,7 +150,7 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          remarkPlugins: [require('mdx-mermaid')],
+          remarkPlugins: [require("mdx-mermaid")],
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl:
             "https://github.com/PaloAltoNetworks/panos.pan.dev/tree/master",

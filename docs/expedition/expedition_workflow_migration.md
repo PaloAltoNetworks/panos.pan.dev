@@ -193,7 +193,7 @@ API syntax for the step:
 | Method      | EndPoint                                     | Parameters                     | 
 |-------------|----------------------------------------------|--------------------------------|
 |    POST     | <small>`https://localhost/api/v1/project/{project_id}/migration/{migration_id}/upload/{vendorname}`</small> | <small>_in url_<br/> **"project_id"**:"projectId"<br/> **"migration_id"**:"migrationId"<br/> **"vendorname"**:"vendorname"<br/>in_body<br/> {**"name"**:"configname",**"config"**:"configfile" }</small> |  
-|    example  | <small>`https://localhost/api/v1/project/22/migration/25/cisco_asa`</small> | <small>{**"name"**:"cisco",**"config"**:cisco_config}</small>           | 
+|    example  | <small>`https://localhost/api/v1/project/22/migration/25/upload/cisco_asa`</small> | <small>{**"name"**:"cisco",**"config"**:cisco_config}</small>           | 
 
 :::info
 Available vendorname parameter can be used in the path are below:  
@@ -280,6 +280,9 @@ wait_for_job(jobId)
 Once the conversion has done, we can import the resulting XML config file into an existing project for later configuration manipulations, such as delete unused objects, rename zones, etc.  
 
 The API syntax for Importing the converted PAN-OS Configuration into the project:  
+
+The **device_id** were obtained from the [Step 4.](#step-4-create-a-new-migration-in-the-project) section.  
+
 
 | Method      | EndPoint                                   | Parameters | 
 |-------------|--------------------------------------------|------------|

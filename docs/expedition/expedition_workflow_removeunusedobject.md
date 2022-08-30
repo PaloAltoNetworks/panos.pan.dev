@@ -192,10 +192,13 @@ In the large amount of automation cases, we will require having an Expedition pr
 
 API syntax for creating a new project:  
 
+The **device_id** were obtained from the [Step 3.](#step-3-add-pan-os-device) section.  
+
+
 | Method      | Route                                    | Parameters                     | 
 |-------------|----------------------------------------------|--------------------------------|
-|    POST     | <small>`https://localhost/api/v1/project`</small> | <small>_in url_<br/>{ **"project"**:"project1", **"description"**:"Project for testing" }</small> |  
-|    example  | <small>`https://localhost/api/v1/project`</small> | <small>{"project":"MyLittleProject", "description":"A migration project"}</small>           | 
+|    POST     | <small>`https://localhost/api/v1/project`</small> | <small>_in url_<br/>{ **"project"**:"project1", **"description"**:"Project for testing",**"device_id"**: "deviceId" }</small> |  
+|    example  | <small>`https://localhost/api/v1/project`</small> | <small>{**"project"**:"MyLittleProject", **"description"**:"A migration project",**"device_id[0]**:DeviceId}</small>           | 
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[
@@ -333,7 +336,7 @@ print(statusmessage)
 
 ### Step 7. Get Source ID of the config file  
 
-In this step, we will make a API call to get **source_id** of the config file that's been imported to the project.  After this API call, you will parse the response that contains **source_id**. The **source_id** represnet the pan-os config file that you would like to work on, and it will be used in the subsequent API calls.  
+In this step, we will make a API call to get **source_id** of the config file that's been imported to the project.  After this API call, you will parse the response that contains **source_id**. The **source_id** represent the pan-os config file that you would like to work on, and it will be used in the subsequent API calls.  
 
 API syntax for the step:  
 
@@ -369,7 +372,7 @@ print("PAN-OS config source_id is: " + source_id)
 
 
 ### Step 8. Create a filter for unused objects  
-In this step, we will create a filter for unused address & address group objects . Please refer to the [Expedition-API Filters ](expedition_workflow_filters.md) section for details on filters. In this specific exmaple, we are sending the request body contains below data, this filter will filter on address, address group , service and service group objects that's are not being referenced in security policy and NAT policy. In the json response, you will get a filter_id , this filter_id will be used in the subsequent steps.  
+In this step, we will create a filter for unused address & address group objects . Please refer to the [Expedition-API Filters ](expedition_workflow_filters.md) section for details on filters. In this specific example, we are sending the request body contains below data, this filter will filter on address, address group , service and service group objects that's are not being referenced in security policy and NAT policy. In the json response, you will get a filter_id , this filter_id will be used in the subsequent steps.  
 
 
 ```json
@@ -539,6 +542,8 @@ print("Print the Filter Execution Result")
 After the filter is executed , we can print the collection content using below API call. 
 
 API syntax for the step:  
+
+collection_id were obtained from the response of the [Step 10.](#step-10-print-the-filter-result) section. 
 
 | Method      | Route                                     | Parameters                     | 
 |-------------|----------------------------------------------|--------------------------------|

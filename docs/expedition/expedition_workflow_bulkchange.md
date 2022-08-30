@@ -145,6 +145,8 @@ After devcie has been created , the next step will be uploading your pan-os conf
 
 API syntax for upload PAN-OS config into device :
 
+The **device_id** were obtained from the [Step 3.](#step-3-add-pan-os-device) section.  
+
 
 | Method      | Route                                    | Path Parameters                     | 
 |-------------|----------------------------------------------|--------------------------------|
@@ -188,10 +190,13 @@ In the large amount of automation cases, we will require having an Expedition pr
 
 API syntax for creating a new project:  
 
+The **device_id** were obtained from the [Step 3.](#step-3-add-pan-os-device) section. 
+
+
 | Method      | EndPoint                                     | Parameters                     | 
 |-------------|----------------------------------------------|--------------------------------|
-|    POST     | <small>`https://localhost/api/v1/project`</small> | <small>_in url_<br/>{ **"project"**:"project1", **"description"**:"Project for testing" }</small> |  
-|    example  | <small>`https://localhost/api/v1/project`</small> | <small>{"project":"MyLittleProject", "description":"A migration project"}</small>           | 
+|    POST     | <small>`https://localhost/api/v1/project`</small> | <small>_in url_<br/>{ **"project"**:"project1", **"description"**:"Project for testing",**"device_id"**: "deviceId" }</small> |  
+|    example  | <small>`https://localhost/api/v1/project`</small> | <small>{**"project"**:"MyLittleProject", **"description"**:"A migration project",**"device_id[0]**:DeviceId}</small>           | 
 
 <Tabs defaultValue={typeof window !== 'undefined' && localStorage.getItem('defaultLanguage') ? localStorage.getItem('defaultLanguage') : 'python'}
 values={[
@@ -329,7 +334,7 @@ print(statusmessage)
 
 ### Step 7. Get Source ID of the config file  
 
-In this step, we will make a API call to get **source_id** of the config file that's been imported to the project.  After this API call, you will parse the response that contains **source_id**. The **source_id** represnet the pan-os config file that you would like to work on, and it will be used in the subsequent API calls.  
+In this step, we will make a API call to get **source_id** of the config file that's been imported to the project.  After this API call, you will parse the response that contains **source_id**. The **source_id** represent the pan-os config file that you would like to work on, and it will be used in the subsequent API calls.  
 
 API syntax for the step:  
 

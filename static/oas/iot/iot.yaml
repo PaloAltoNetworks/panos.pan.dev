@@ -318,6 +318,21 @@ paths:
       responses:
         $ref: 'api/public/policyRecommendation.yaml#/responses'
 
+  /pub/v4.0/alertVuln/capability:
+    get:
+      description: 'Listing the current IoT capabilities on alert and vulnerability'
+      operationId: alertVuln-capability
+      security:
+        - X-Key-Id:  []
+          X-Access-Key: []
+      summary: Get Alert or Vulnerability Capabilities
+      tags:
+        - IoT Public API
+      parameters:
+        $ref: 'api/public/alertVuln.yaml#/parameters'
+      responses:
+        $ref: 'api/public/alertVuln.yaml#/responses'
+
 components:
   securitySchemes:
     $ref: 'components/securitySchemes.yaml#/securitySchemes'

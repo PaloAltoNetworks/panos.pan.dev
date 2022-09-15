@@ -917,6 +917,45 @@ schemas:
               type: string
               description: "The type of network connection for the device: wired or wireless"
 
+  AlertVulnerabilityCapabilityResponse:
+    type: object
+    required:
+      - ver
+      - api
+      - list
+      - total
+    properties:
+      ver:
+        type: string
+        description: The API version
+      api:
+        type: string
+        description: The API path
+      total:
+        type: integer
+        description: The total number of capabilities
+      list:
+        type: array
+        description: An array of alert capabilities
+        items:
+          type: object
+          properties:
+            name:
+              type: string
+              description: The name of the alert/vulnerability
+            description:
+              type: string
+              description: The descriptoin of this alert/vulnerability
+            source:
+              type: string
+              description: The source of this alert/vulnerability
+            severity:
+              type: string
+              description: The severity of this alert/vulnerability
+            type:
+              type: string
+              description: The type of the alert/vulnerability
+
   PolicyRecommendationResponse:
     type: object
     required:

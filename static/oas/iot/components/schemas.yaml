@@ -802,6 +802,37 @@ schemas:
             vendor:
               type: string
 
+  SplunkBulkUpdateDevicePayloadSchema:
+    type: object
+    required:
+      - devicelist
+    properties:
+      devicelist:
+        type: array
+        description: devices
+        items:
+          type: object
+          properties:
+            deviceid:
+              type: string
+              description: Required field
+            model:
+              type: string
+            vendor:
+              type: string
+            os_combined:
+              type: string
+            os_group:
+              type: string
+            serial_number:
+              type: string
+            netbios_domain:
+              type: string
+            netbios_hn:
+              type: string
+            dns_hn:
+              type: string
+
   BulkUpdateDeviceResponseSchema:
     type: object
     properties:

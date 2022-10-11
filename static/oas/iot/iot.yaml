@@ -268,7 +268,24 @@ paths:
         $ref: 'api/public/bulkUpdateCrowdstrike.yaml#/requestBody'
       responses:
         $ref: 'api/public/bulkUpdateCrowdstrike.yaml#/responses'
-  
+
+  /pub/v4.0/device/bulkUpdate?updateSource=splunk:
+    put:
+      description: 'Bulk device updates for Splunk devices'
+      operationId: splunk-bulk-update
+      security:
+        - X-Key-Id:  []
+          X-Access-Key: []
+      summary: Bulk Device Updates - Splunk Devices
+      tags:
+        - IoT Public API
+      parameters:
+        $ref: 'api/public/bulkUpdateSplunk.yaml#/parameters'
+      requestBody:
+        $ref: 'api/public/bulkUpdateSplunk.yaml#/requestBody'
+      responses:
+        $ref: 'api/public/bulkUpdateSplunk.yaml#/responses'
+
   /pub/v4.0/network/subnetBulkUpdate?updateSource=ipam_infoblox:
     put:
       description: 'Bulk subnet updates from customer IPAM (infoblox)'

@@ -8,6 +8,8 @@ This website is built using Docusaurus 2, a modern static website generator.
 
 ### Installation
 
+You might need to disable Global Protect inorder to install docusaurus.
+
 ```shell-session
 yarn
 ```

@@ -379,6 +379,9 @@ schemas:
       profile:
         type: string
         description: The device profile to which the alert belongs
+      profile_vertical:
+      type: string
+      description:The industry vertical for the profile such as Medical, IT Devices, and Office
       category:
         type: string
         description: The device category to which the alert belongs

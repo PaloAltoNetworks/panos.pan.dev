@@ -425,6 +425,15 @@ examples:
       updatedDeviceNum: 5
     }
 
+  SplunkBulkUpdateDevicesResponseExample:
+    value: {
+      api: "device/bulkUpdate",
+      ver: "v4.0",
+      code: 1,
+      message: "OK",
+      updatedDeviceNum: 5
+    }
+
   IPAMSubnetBulkUpdateResponseExample:
     value: {
       api: "network/subnetBulkUpdate",
@@ -593,6 +602,23 @@ examples:
           "hostname": "cntl-201-2",
           "serial_number": "6B29FC40-CA47-1067-B31D-00DD010662DA",
           "vendor": "Microsoft"
+        }
+      ]
+    }
+
+  SplunkDeviceBulkUpdatePayloadExample:
+    value: {
+      devicelist: [
+        {
+          "deviceid": "00:0c:29:8f:20:9a",
+          "model": "example_model",
+          "vendor": "example_vendor",
+          "os_combined": "example_os_combined",
+          "os_group": "example_os_group",
+          "serial_number": "serial_number",
+          "netbios_domain": "example_domain",
+          "netbios_hn": "example_hostname",
+          "dns_hn": "example_hostname",
         }
       ]
     }
